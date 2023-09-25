@@ -3,7 +3,7 @@ import Router from "./Router";
 import { GlobalStyles } from "./style/GloblalStyles";
 import { ThemeProvider } from "styled-components";
 import theme from "./style/theme";
-import StatusBar from "./components/moleclues/StatusBar";
+import { styled } from "styled-components";
 
 function App() {
   return (
@@ -11,12 +11,22 @@ function App() {
       <BrowserRouter>
         <GlobalStyles />
         <ThemeProvider theme={theme}>
-          <StatusBar />
-          <Router />
+          <AppContainer>
+            <Router />
+          </AppContainer>
         </ThemeProvider>
       </BrowserRouter>
     </>
   );
 }
+// 고정형
+const AppContainer = styled.div`
+  width: 375px;
+  height: 812px;
+  border-radius: 24px;
+  margin: 0 auto;
+  border-radius: 24px;
+  background-color: ${theme.colors.white};
+`;
 
 export default App;

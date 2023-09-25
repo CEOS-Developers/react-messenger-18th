@@ -1,5 +1,6 @@
 /* Pretendard, Lato */
 /* Pretendard */
+/* Segoe */
 @font-face {
   font-family: "Pretendard";
   src: url(../assets/fonts/Pretendard-Black.woff) format("woff");
@@ -71,4 +72,22 @@
   font-family: "Lato";
   src: url(../assets/fonts/Lato-Light.woff) format("woff");
   font-weigth: 200;
+}
+
+/* Segoe */
+
+@font-face {
+  font-family: "Segoe";
+  src: url(../assets/fonts/Segoe.woff) format("woff");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Segoe";
+  src: url(../assets/fonts/Segoe-Bold.woff) format("woff");
+  font-weight: 600;
+}
+@font-face {
+  font-family: "Segoe";
+  src: url(../assets/fonts/SegoePro-Semibold.woff) format("woff");
+  font-weight: 500;
 }

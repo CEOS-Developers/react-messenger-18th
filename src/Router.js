@@ -10,8 +10,6 @@ function Router() {
         <Route path="/chat" element={<Chat />}></Route>
         {/* 지금은 chat페이지로만 라우팅, 후에 페이지 추가 */}
         <Route path="/*" element={<Navigate to="/chat" />} />
-
-       
       </Routes>
     </>
   );

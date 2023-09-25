@@ -1,12 +1,12 @@
 const theme = {
-  // 사용할 색깔
+  // 사용할 색깔 모음
   colors: {
-    mainblack: "#0F1828",
+    mainBlack: "#0F1828",
     white: "#FFFFFF",
     gray: "#ADB5BD",
-    offwhite: "#EDEDED",
-    chatblue: "#002DE3",
-    background: "#002DE3",
+    offWhite: "#EDEDED",
+    chatBlue: "#002DE3",
+    chatBackground: "#002DE3",
   },
 };
 
