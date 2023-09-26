@@ -31,7 +31,8 @@ export const GlobalStyle = styled.createGlobalStyle`
     padding: 0;
   }
 
-  input:focus {
+  input:focus,
+  textarea:focus {
     outline: none;
   }
 
