@@ -11,17 +11,37 @@ import {
 } from "../../recoil/atom.ts";
 
 function ChatArea() {
+  // 전역 변수 구독
   const isUser1 = useRecoilValue(isUser1State);
   const user1Message = useRecoilValue(user1MessageState);
   const user2Message = useRecoilValue(user2MesasgeState);
 
-  // 로컬 스토리지에서 데이터꺼내오고
-  // 시간상의 순서로, 객체 리스트를 Recoil에 저장함
-  // 그리고 반복문에서는 객체 property에 따라서 랜더링 ChatArea
+  // user1Message와 user2Message를 합친 후 시간을 기준으로 정렬
+  console.log([...user1Message, ...user2Message]);
+  const combinedMessages = [...user1Message, ...user2Message].sort((a, b) => {
+    const timeA = a.time;
+    const timeB = b.time;
+    if (timeA < timeB) return -1;
+    if (timeA > timeB) return 1;
+    return 0;
+  });
 
-  const getDataFromLocal = () => {
-    localStorage.getItem("");
-  };
+
+
+  // 정렬된 메시지 리스트에 user 속성 추가
+  const sortedMessagesWithUser = combinedMessages.map((message) => {
+    const user = user1Message.find(
+      (userMessage) => userMessage.id === message.id
+    )
+      ? "User 1"
+      : "User 2";
+    return {
+      time: message.time,
+      text: message.text,
+      id: message.id,
+      user: user,
+    };
+  });
 
   return (
     <Flex color="chatBackground" borderBottom="1px" borderColor="offWhite">
@@ -35,12 +55,20 @@ function ChatArea() {
       >
         <Space height="25px" />
 
-        <ChatBubbleWhite />
-        <ChatBubbleBlue />
-        <ChatBubbleWhite />
-        <ChatBubbleBlue />
-        <ChatBubbleWhite />
-        <ChatBubbleBlue />
+        {sortedMessagesWithUser.map((el) => {
+          if (isUser1)
+            return el.user === "User 1" ? (
+              <ChatBubbleBlue text={el.text} time={el.time} key={el.id} />
+            ) : (
+              <ChatBubbleWhite text={el.text} time={el.time} key={el.id} />
+            );
+          else
+            return el.user === "User 1" ? (
+              <ChatBubbleWhite text={el.text} time={el.time} key={el.id} />
+            ) : (
+              <ChatBubbleBlue text={el.text} time={el.time} key={el.id} />
+            );
+        })}
 
         <Space height="42px" />
       </Flex>

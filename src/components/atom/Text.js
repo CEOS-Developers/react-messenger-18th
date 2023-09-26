@@ -10,13 +10,8 @@ export const Text = ({
   spacing = "-0px",
   font = "Pretendard",
   cursor = "inherit",
-  underline = false,
   lineHeight = "120%",
   align = "center",
-  shadow = false,
-  white = false,
-  blue = false,
-  isCut = false,
   ...rest
 }) => {
   return (
@@ -29,12 +24,7 @@ export const Text = ({
       font={font}
       align={align}
       cursor={cursor}
-      underline={underline}
       lineHeight={lineHeight}
-      shadow={shadow}
-      white={white}
-      blue={blue}
-      isCut={isCut}
       {...rest}
     >
       {children}

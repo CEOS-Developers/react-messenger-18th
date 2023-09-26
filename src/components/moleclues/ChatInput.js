@@ -12,17 +12,22 @@ import {
   user1MessageState,
   user2MesasgeState,
 } from "../../recoil/atom.ts";
+import dayjs from "dayjs";
+import { v4 as uuidv4 } from "uuid";
 
 function ChatInput() {
   const [inputMessage, setInputMessage] = useState("");
   const handleChange = (e) => {
     setInputMessage(e.target.value);
   };
-  const getTime = () => {};
+  const getTime = () => {
+    const currentTime = dayjs().format("HH:mm:ss");
+    return currentTime;
+  };
+
   const isUser1 = useRecoilValue(isUser1State);
   const [user1Message, setUser1Message] = useRecoilState(user1MessageState);
   const [user2Message, setUser2Message] = useRecoilState(user2MesasgeState);
-  console.log(user1Message);
 
   const handleKeyDown = (event) => {
     // 한글 입력시 두 번 입력 방지
@@ -31,12 +36,15 @@ function ChatInput() {
     }
     if (event.key === "Enter") {
       if (inputMessage.trim().length > 0) {
+        const newMessage = {
+          time: getTime(),
+          id: uuidv4(), // uuid를 통한 id 생성
+          text: inputMessage,
+        };
         if (isUser1) {
-          const newMessage = { time: getTime(), text: inputMessage };
           setUser1Message([...user1Message, newMessage]);
           localStorage.setItem("user1Message", JSON.stringify(user1Message));
         } else {
-          const newMessage = { time: getTime(), text: inputMessage };
           setUser2Message([...user2Message, newMessage]);
           localStorage.setItem("user2Message", JSON.stringify(user2Message));
         }
