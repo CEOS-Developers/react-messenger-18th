@@ -2,14 +2,20 @@ import { ReactNode } from 'react';
 import styled from 'styled-components';
 
 interface ButtonWithIconProps {
+  className?: string;
   children: ReactNode;
   handleOnClickButton?: () => void;
 }
 const ButtonWithIcon = ({
+  className,
   children,
   handleOnClickButton,
 }: ButtonWithIconProps) => {
-  return <Button onClick={handleOnClickButton}>{children}</Button>;
+  return (
+    <Button className={className} onClick={handleOnClickButton}>
+      {children}
+    </Button>
+  );
 };
 
 const Button = styled.button`
@@ -18,5 +24,11 @@ const Button = styled.button`
   display: inline-block;
   font-size: 0;
   line-height: 0;
+  display: flex;
+  // svg,
+  // img {
+  //   width: 100%;
+  //   height: 100%;
+  // }
 `;
 export default ButtonWithIcon;

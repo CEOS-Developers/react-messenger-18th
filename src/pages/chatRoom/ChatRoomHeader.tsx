@@ -14,6 +14,7 @@ const ChatRoomHeader = () => {
 
 const ChatRoomHeaderContainer = styled.div`
   position: fixed;
+  z-index: 10;
   top: 0;
   display: flex;
   align-items: center;

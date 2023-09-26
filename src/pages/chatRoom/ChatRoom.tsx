@@ -5,6 +5,10 @@ import styled from 'styled-components';
 import { ChatRoomBackgroundColor } from 'styles/global.style';
 
 const ChatRoom = () => {
+  document
+    .querySelector('meta[name="theme-color"]')
+    ?.setAttribute('content', '#93aad4');
+
   return (
     <ChatRoomContainer>
       <ChatRoomHeader />
