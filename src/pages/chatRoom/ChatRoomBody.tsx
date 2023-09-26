@@ -10,4 +10,5 @@ const ChatRoomBody = () => {
 const ChatRoomBodyContainer = styled.div`
   background: ${ChatRoomBackgroundColor};
 `;
+
 export default ChatRoomBody;

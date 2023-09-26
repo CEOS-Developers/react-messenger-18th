@@ -1,3 +1,4 @@
+import ButtonWithIcon from 'pages/common/ButtonWithIcon';
 import { ReactComponent as BackIcon } from 'static/images/back-arrow-icon.svg';
 import styled from 'styled-components';
 import { ChatRoomBackgroundColor } from 'styles/global.style';
@@ -5,7 +6,7 @@ import { ChatRoomBackgroundColor } from 'styles/global.style';
 const ChatRoomHeader = () => {
   return (
     <ChatRoomHeaderContainer>
-      <BackIcon />
+      <ButtonWithIcon children={<BackIcon />} />
       <UserNameDiv>배수연</UserNameDiv>
     </ChatRoomHeaderContainer>
   );
