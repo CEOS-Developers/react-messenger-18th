@@ -4,10 +4,13 @@ import styled from "styled-components";
 interface ProfileI {
   img: string;
   size: string;
+  onClick: () => void;
 }
 
-export default function Profile({ img, size }: ProfileI) {
-  return <ProfileWrapper img={img} size={size}></ProfileWrapper>;
+export default function Profile({ img, size, onClick }: ProfileI) {
+  return (
+    <ProfileWrapper img={img} size={size} onClick={onClick}></ProfileWrapper>
+  );
 }
 
 const ProfileWrapper = styled.div<ProfileI>`

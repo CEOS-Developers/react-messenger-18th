@@ -2,9 +2,9 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import PageHeader from "../components/header/PageHeader";
 import { ReactComponent as Arrow } from "../icons/arrow.svg";
-import { ReactComponent as AddFriend } from "../icons/addfriend.svg";
+import { ReactComponent as Edit } from "../icons/edit.svg";
 
-export default function FriendsList() {
+export default function MyProfile() {
   const navigate = useNavigate();
   const arrowIconClicked = () => {
     navigate(-1);
@@ -12,8 +12,8 @@ export default function FriendsList() {
   return (
     <PageHeader
       leftIcon={<Arrow onClick={arrowIconClicked} />}
-      title="친구"
-      rightIcon1={<AddFriend />}
+      title="프로필"
+      rightIcon1={<Edit />}
     />
   );
 }

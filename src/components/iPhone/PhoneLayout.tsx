@@ -8,7 +8,9 @@ export default function PhoneLayout() {
   return (
     <Container>
       <StatusBar />
-      <Outlet />
+      <PageWrapper>
+        <Outlet />
+      </PageWrapper>
       <HomeIndicator />
     </Container>
   );
@@ -19,4 +21,10 @@ const Container = styled.div`
   width: 37.5rem;
   height: 81.2rem;
   border: 1px solid black;
+`;
+
+const PageWrapper = styled.div`
+  ${(props) => props.theme.fontStyles.headLine1};
+  height: 73.7rem;
+  padding: 0 2rem;
 `;

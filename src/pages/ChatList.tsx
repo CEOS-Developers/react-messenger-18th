@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import PageHeader from "../components/header/PageHeader";
 import { ReactComponent as Friends } from "../icons/friends.svg";
 import { ReactComponent as Search } from "../icons/search.svg";
@@ -11,19 +10,16 @@ export default function ChatList() {
   const friendsIconClicked = () => {
     navigate("/friends-list");
   };
+  const profileClicked = () => {
+    navigate("/my-profile");
+  };
   return (
-    <ChatListWrapper>
-      <PageHeader
-        leftIcon={<Friends onClick={friendsIconClicked} />}
-        rightIcon1={<Search />}
-        rightIcon2={<Profile img="img/profile.jpg" size="2.4rem" />}
-      />
-    </ChatListWrapper>
+    <PageHeader
+      leftIcon={<Friends onClick={friendsIconClicked} />}
+      rightIcon1={<Search />}
+      rightIcon2={
+        <Profile img="img/profile.jpg" size="2.4rem" onClick={profileClicked} />
+      }
+    />
   );
 }
-
-const ChatListWrapper = styled.div`
-  ${(props) => props.theme.fontStyles.headLine1};
-  height: 73.7rem;
-  padding: 0 2rem;
-`;
