@@ -5,7 +5,13 @@ import { Flex } from "../atom/Flex";
 
 function ChatHeader() {
   return (
-    <Flex direction="column" gap="14" height="90px" justify="center">
+    <Flex
+      direction="column"
+      gap="14"
+      height="90px"
+      justify="center"
+      borderColor="offWhite"
+    >
       <StatusBar />
       <ChatNav />
     </Flex>

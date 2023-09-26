@@ -11,5 +11,9 @@ export const GlobalStyles = createGlobalStyle`
         font-family: "Pretendard";
         background-color: #F5F5F5;  
     }
+    input{
+        outline: none;
+        border: none;
+    }
 
 `;

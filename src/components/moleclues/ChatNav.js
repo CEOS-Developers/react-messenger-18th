@@ -10,7 +10,7 @@ function ChatNav() {
     <Flex gap="8" width="100%" height="30px" justify="center">
       <Icon src={backIcon}></Icon>
       <Flex width="247px">
-        <Text size="18px" lineHeight="30px" font="Pretendard" weight="600">
+        <Text size="18px" lineHeight="30px" font="Pretendard" weight="600" >
           정인영
         </Text>
       </Flex>

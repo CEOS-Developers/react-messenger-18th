@@ -6,7 +6,7 @@ const theme = {
     gray: "#ADB5BD",
     offWhite: "#EDEDED",
     chatBlue: "#002DE3",
-    chatBackground: "#002DE3",
+    chatBackground: "#F7F7FC",
   },
 };
 
