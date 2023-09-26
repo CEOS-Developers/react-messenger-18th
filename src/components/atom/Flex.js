@@ -19,6 +19,7 @@ export const Flex = ({
   borderColor = "none",
   margin = "0",
   self = "auto",
+  inputRef,
 }) => {
   return (
     <FlexBase
@@ -37,6 +38,8 @@ export const Flex = ({
       borderColor={borderColor}
       margin={margin}
       self={self}
+      ref={inputRef}
+      
     >
       {children}
     </FlexBase>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Flex } from "../atom/Flex";
 import ChatBubbleBlue from "../moleclues/ChatBubbleBlue";
 import ChatBubbleWhite from "../moleclues/ChatBubbleWhite";
@@ -9,6 +9,7 @@ import {
   user1MessageState,
   user2MesasgeState,
 } from "../../recoil/atom.ts";
+import dayjs from "dayjs";
 
 function ChatArea() {
   // 전역 변수 구독
@@ -26,8 +27,6 @@ function ChatArea() {
     return 0;
   });
 
-
-
   // 정렬된 메시지 리스트에 user 속성 추가
   const sortedMessagesWithUser = combinedMessages.map((message) => {
     const user = user1Message.find(
@@ -43,6 +42,15 @@ function ChatArea() {
     };
   });
 
+  const chatContainerRef = useRef(null);
+  useEffect(() => {
+    // 메시지가 추가될 때마다 스크롤을 아래로 이동
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop =
+        chatContainerRef.current.scrollHeight;
+    }
+  }, [sortedMessagesWithUser]);
+
   return (
     <Flex color="chatBackground" borderBottom="1px" borderColor="offWhite">
       <Flex
@@ -52,21 +60,38 @@ function ChatArea() {
         gap="22"
         overflow="scroll"
         margin="0px 16px 0px"
+        inputRef={chatContainerRef}
       >
         <Space height="25px" />
 
         {sortedMessagesWithUser.map((el) => {
           if (isUser1)
             return el.user === "User 1" ? (
-              <ChatBubbleBlue text={el.text} time={el.time} key={el.id} />
+              <ChatBubbleBlue
+                text={el.text}
+                time={dayjs(el.time).format("hh:mm a")}
+                key={el.id}
+              />
             ) : (
-              <ChatBubbleWhite text={el.text} time={el.time} key={el.id} />
+              <ChatBubbleWhite
+                text={el.text}
+                time={dayjs(el.time).format("hh:mm a")}
+                key={el.id}
+              />
             );
           else
             return el.user === "User 1" ? (
-              <ChatBubbleWhite text={el.text} time={el.time} key={el.id} />
+              <ChatBubbleWhite
+                text={el.text}
+                time={dayjs(el.time).format("hh:mm a")}
+                key={el.id}
+              />
             ) : (
-              <ChatBubbleBlue text={el.text} time={el.time} key={el.id} />
+              <ChatBubbleBlue
+                text={el.text}
+                time={dayjs(el.time).format("hh:mm a")}
+                key={el.id}
+              />
             );
         })}
 

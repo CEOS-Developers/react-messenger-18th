@@ -21,7 +21,7 @@ function ChatInput() {
     setInputMessage(e.target.value);
   };
   const getTime = () => {
-    const currentTime = dayjs().format("HH:mm:ss");
+    const currentTime = dayjs().format("YYYY-MM-DD HH:mm:ss");
     return currentTime;
   };
 
