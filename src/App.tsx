@@ -1,12 +1,15 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
+import PhoneLayout from "./components/iPhone/PhoneLayout";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route element={<PhoneLayout />}>
+          <Route path="/" element={<Home />} />
+        </Route>
       </Routes>
     </Router>
   );

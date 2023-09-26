@@ -22,6 +22,10 @@ const GlobalStyles = createGlobalStyle`
         line-height: 1;
         font-family: 'Noto Sans KR', sans-serif;
         background-color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
     }
     ol, ul{
         list-style: none;
