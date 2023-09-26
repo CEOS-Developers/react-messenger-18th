@@ -21,6 +21,7 @@ export const Flex = ({
   self = "auto",
   inputRef,
 }) => {
+  console.log(inputRef)
   return (
     <FlexBase
       height={height}

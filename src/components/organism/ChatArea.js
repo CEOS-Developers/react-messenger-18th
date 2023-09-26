@@ -10,6 +10,7 @@ import {
   user2MesasgeState,
 } from "../../recoil/atom.ts";
 import dayjs from "dayjs";
+import { sortMessagesByTime } from "../../hooks/sortMessageByTime";
 
 function ChatArea() {
   // 전역 변수 구독
@@ -18,14 +19,10 @@ function ChatArea() {
   const user2Message = useRecoilValue(user2MesasgeState);
 
   // user1Message와 user2Message를 합친 후 시간을 기준으로 정렬
-  console.log([...user1Message, ...user2Message]);
-  const combinedMessages = [...user1Message, ...user2Message].sort((a, b) => {
-    const timeA = a.time;
-    const timeB = b.time;
-    if (timeA < timeB) return -1;
-    if (timeA > timeB) return 1;
-    return 0;
-  });
+  const combinedMessages = sortMessagesByTime([
+    ...user1Message,
+    ...user2Message,
+  ]);
 
   // 정렬된 메시지 리스트에 user 속성 추가
   const sortedMessagesWithUser = combinedMessages.map((message) => {

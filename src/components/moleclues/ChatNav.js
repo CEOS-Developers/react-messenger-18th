@@ -10,7 +10,6 @@ import { isUser1State } from "../../recoil/atom.ts";
 function ChatNav() {
   const [isUser1, setIsUser1] = useRecoilState(isUser1State);
   const toggleUser = () => {
-    console.log("toggle!");
     setIsUser1(!isUser1);
   };
   return (
