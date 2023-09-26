@@ -4,18 +4,21 @@ import { GlobalStyles } from "./style/GloblalStyles";
 import { ThemeProvider } from "styled-components";
 import theme from "./style/theme";
 import { styled } from "styled-components";
+import { RecoilRoot } from "recoil";
 
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <GlobalStyles />
-        <ThemeProvider theme={theme}>
-          <AppContainer>
-            <Router />
-          </AppContainer>
-        </ThemeProvider>
-      </BrowserRouter>
+      <RecoilRoot>
+        <BrowserRouter>
+          <GlobalStyles />
+          <ThemeProvider theme={theme}>
+            <AppContainer>
+              <Router />
+            </AppContainer>
+          </ThemeProvider>
+        </BrowserRouter>
+      </RecoilRoot>
     </>
   );
 }

@@ -3,18 +3,24 @@ import { Flex } from "../atom/Flex";
 import ChatBubbleBlue from "../moleclues/ChatBubbleBlue";
 import ChatBubbleWhite from "../moleclues/ChatBubbleWhite";
 import { Space } from "../atom/Space";
+import { useRecoilValue } from "recoil";
+import {
+  isUser1State,
+  user1MessageState,
+  user2MesasgeState,
+} from "../../recoil/atom.ts";
 
 function ChatArea() {
-  const 로컬스토리지 = {
-    보낸사용자: [
-      ["13:03", "뉴진스의 하입보이요"],
-      ["13:50", "흥 웃기는 소리 하입보이 내가 전해"],
-    ],
-    받은사용자: [
-      "홍대가려면 어떻게 해야 해요?",
-      "당신은 심각한 뉴진스 중독입니다.",
-      "멤버 전원이 그룹이 추구하는 음악에 완벽히 걸맞는 음색과 음악적 기술을 가지고 있다고 평가받는다. 곡을 녹음할 때 가이드 보컬을 사용하지 않아 뉴진스만의 음악 스타일을 형성하는 데에 있어 보컬 또한 큰 기여를 하고 있으며, 멤버들이 가진 음색이 예쁘면서도  각자 다른 개성이 있어 각기 다른 스타일에도 잘 맞는 편이며 그 중에서도 팝이나 R&B 스타일에서 두각을 나타낸다.",
-    ],
+  const isUser1 = useRecoilValue(isUser1State);
+  const user1Message = useRecoilValue(user1MessageState);
+  const user2Message = useRecoilValue(user2MesasgeState);
+
+  // 로컬 스토리지에서 데이터꺼내오고
+  // 시간상의 순서로, 객체 리스트를 Recoil에 저장함
+  // 그리고 반복문에서는 객체 property에 따라서 랜더링 ChatArea
+
+  const getDataFromLocal = () => {
+    localStorage.getItem("");
   };
 
   return (

@@ -9,9 +9,13 @@ export const Input = ({
   weight = "600",
   lineHeight = "24px",
   fontSize = "14px",
+  onChange,
+  value,
+  onKeyDown,
 }) => {
   return (
     <InputBase
+      type="text"
       placeholder={placeholder}
       width={width}
       height={height}
@@ -20,6 +24,9 @@ export const Input = ({
       weight={weight}
       lineHeight={lineHeight}
       fontSize={fontSize}
+      value={value}
+      onChange={onChange}
+      onKeyDown={onKeyDown}
     ></InputBase>
   );
 };
