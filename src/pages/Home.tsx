@@ -2,17 +2,10 @@ import React from "react";
 import styled from "styled-components";
 
 export default function Home() {
-  return (
-    <A
-      style={{
-        fontSize: "5rem",
-      }}
-    >
-      Home
-    </A>
-  );
+  return <HomeWrapper>Home</HomeWrapper>;
 }
 
-const A = styled.div`
-  ${(props) => props.theme.fontStyles.headLine1}
+const HomeWrapper = styled.div`
+  ${(props) => props.theme.fontStyles.headLine1};
+  height: 73.7rem;
 `;
