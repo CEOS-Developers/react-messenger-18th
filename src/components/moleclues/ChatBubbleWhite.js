@@ -10,10 +10,10 @@ function ChatBubbleWhite({ text, time }) {
       direction="column"
       padding="10px"
       align="flex-start"
-      max-width="246px"
+      maxWidth="246px"
       self="flex-start"
     >
-      <Text weight="400" size="14px" lineHeight="21px" align="right">
+      <Text weight="400" size="14px" lineHeight="21px" align="left">
         {text}
       </Text>
       <Text
