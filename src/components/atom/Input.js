@@ -12,6 +12,7 @@ export const Input = ({
   onChange,
   value,
   onKeyDown,
+  inputRef,
 }) => {
   return (
     <InputBase
@@ -27,6 +28,7 @@ export const Input = ({
       value={value}
       onChange={onChange}
       onKeyDown={onKeyDown}
+      ref={inputRef}
     ></InputBase>
   );
 };

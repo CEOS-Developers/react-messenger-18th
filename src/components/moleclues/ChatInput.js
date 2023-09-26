@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Flex } from "../atom/Flex";
 import { Icon } from "../atom/Icon";
 import { Input } from "../atom/Input";
@@ -12,7 +12,7 @@ import {
   user2MesasgeState,
 } from "../../recoil/atom.ts";
 
-import { handleKeyDown } from "../../hooks/handleKeyDown"; 
+import { handleKeyDown } from "../../hooks/handleKeyDown";
 
 function ChatInput() {
   const [inputMessage, setInputMessage] = useState("");
@@ -37,6 +37,12 @@ function ChatInput() {
     );
   };
 
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
+
   return (
     <Flex width="375px" justify="center" height="56px">
       <Flex gap="12">
@@ -48,6 +54,7 @@ function ChatInput() {
           value={inputMessage}
           onKeyDown={onKeyDown}
           onChange={handleChange}
+          inputRef={inputRef}
         >
           <Text />
         </Input>

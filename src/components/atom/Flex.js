@@ -21,7 +21,6 @@ export const Flex = ({
   self = "auto",
   inputRef,
 }) => {
-  console.log(inputRef)
   return (
     <FlexBase
       height={height}
@@ -40,7 +39,6 @@ export const Flex = ({
       margin={margin}
       self={self}
       ref={inputRef}
-      
     >
       {children}
     </FlexBase>
