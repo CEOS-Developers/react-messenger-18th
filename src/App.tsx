@@ -1,14 +1,16 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
 import PhoneLayout from "./components/iPhone/PhoneLayout";
+import ChatList from "./pages/ChatList";
+import FriendsList from "./pages/FriendsList";
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route element={<PhoneLayout />}>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<ChatList />} />
+          <Route path="/friends-list" element={<FriendsList />} />
         </Route>
       </Routes>
     </Router>

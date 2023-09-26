@@ -33,6 +33,9 @@ const PageHeaderWrapper = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  svg {
+    cursor: pointer;
+  }
 `;
 
 const LeftIconContainer = styled.div`
@@ -49,5 +52,6 @@ const RightIconContainer = styled.div`
   display: flex;
   span {
     margin-left: 1.8rem;
+    cursor: pointer;
   }
 `;
