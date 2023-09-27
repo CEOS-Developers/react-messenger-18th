@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import PageHeader from "../components/header/PageHeader";
-import { ReactComponent as Arrow } from "../icons/arrow.svg";
+import { ReactComponent as Arrow } from "../icons/arrows/leftarrow.svg";
 import { ReactComponent as Edit } from "../icons/edit.svg";
 
 export default function MyProfile() {

@@ -3,7 +3,7 @@ import { ReactComponent as NetWork } from "../../icons/network.svg";
 import { ReactComponent as Wifi } from "../../icons/wifi.svg";
 import { ReactComponent as Battery } from "../../icons/battery.svg";
 import styled from "styled-components";
-import { getCurrentTime } from "../../hooks/getCurrentTime";
+import { getCurrentTime } from "../../utils/getCurrentTime";
 
 export default function StatusBar() {
   const [currentTime, setCurrentTime] = useState(getCurrentTime());

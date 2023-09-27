@@ -1,7 +1,7 @@
 import React, { ReactComponentElement, ReactNode } from "react";
 import styled from "styled-components";
 
-interface PageHeaderI {
+interface PageHeaderProps {
   leftIcon: ReactNode;
   title?: string;
   rightIcon1: ReactNode;
@@ -13,7 +13,7 @@ export default function PageHeader({
   title,
   rightIcon1,
   rightIcon2,
-}: PageHeaderI) {
+}: PageHeaderProps) {
   return (
     <PageHeaderWrapper>
       <LeftIconContainer>

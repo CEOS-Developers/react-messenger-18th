@@ -3,22 +3,25 @@ import PageHeader from "../components/header/PageHeader";
 import { ReactComponent as Friends } from "../icons/friends.svg";
 import { ReactComponent as Search } from "../icons/search.svg";
 import Profile from "../components/profile/Profile";
-import { useNavigate } from "react-router-dom";
+import { useNavigateOnClick } from "../customHooks/useNavigateOnClick";
 
 export default function ChatList() {
-  const navigate = useNavigate();
-  const friendsIconClicked = () => {
-    navigate("/friends-list");
-  };
-  const profileClicked = () => {
-    navigate("/my-profile");
-  };
+  const { onClick: navigateFriendsList } = useNavigateOnClick({
+    route: "/friends-list",
+  });
+  const { onClick: navigateMyProfile } = useNavigateOnClick({
+    route: "/my-profile",
+  });
   return (
     <PageHeader
-      leftIcon={<Friends onClick={friendsIconClicked} />}
+      leftIcon={<Friends onClick={navigateFriendsList} />}
       rightIcon1={<Search />}
       rightIcon2={
-        <Profile img="img/profile.jpg" size="2.4rem" onClick={profileClicked} />
+        <Profile
+          img="img/profile.jpg"
+          size="2.4rem"
+          onClick={navigateMyProfile}
+        />
       }
     />
   );
