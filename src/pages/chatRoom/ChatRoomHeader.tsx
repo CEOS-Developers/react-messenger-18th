@@ -44,7 +44,7 @@ const ChatRoomHeaderContainer = styled.div`
   align-items: center;
   height: 53px;
   width: 100%;
-  padding: 6px 0 18px 16px;
+  padding: 8px 0 14px 16px;
   background-color: ${ChatRoomBackgroundColor};
 `;
 
