@@ -33,6 +33,22 @@ const ChatRoom = () => {
   }, [id, setUser]);
 
   useEffect(() => {
+    if (user.id !== Number(id)) {
+      setMessages(
+        messages.map((message) => {
+          if (
+            message.fromUserId === Number(id) &&
+            message.toUserId === user.id &&
+            !message.isRead
+          )
+            return { ...message, isRead: true };
+          return message;
+        })
+      );
+    }
+  }, [id, messages, setMessages, user.id]);
+
+  useEffect(() => {
     document
       .querySelector('meta[name="theme-color"]')
       ?.setAttribute('content', '#93aad4');
@@ -61,7 +77,7 @@ const ChatRoom = () => {
             profileImage: null,
             text: message,
             time: new Date().toISOString(),
-            isRead: true,
+            isRead: false,
             likeCount: 0,
           };
           setMessages([...messages, newMessage]);
