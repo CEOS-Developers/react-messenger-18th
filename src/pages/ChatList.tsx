@@ -5,11 +5,14 @@ import { ReactComponent as Search } from "../icons/search.svg";
 import Profile from "../components/profile/Profile";
 import { useNavigateOnClick } from "../customHooks/useNavigateOnClick";
 import styled from "styled-components";
-import useChatListStateChange from "../customHooks/useChatListStateChange";
+import useChatListStateChange from "../customHooks/chatlist/useChatListStateChange";
 import { chatListBtnState, chatListState } from "../state/chatListState";
+import Divider from "../components/common/Divider";
+import { dividerState } from "../state/dividerState";
 
-interface ChatListStateProps {
+interface TextWrapperProps {
   isClicked: boolean;
+  addClass?: string | null;
 }
 
 export default function ChatList() {
@@ -33,24 +36,33 @@ export default function ChatList() {
           <SubHeaderTextWrapper
             key={btnState.text}
             isClicked={subHeaderState === btnState.state ? true : false}
+            addClass={
+              btnState.state === chatListState.GROUP
+                ? "margin-left:2rem;"
+                : null
+            }
           >
             <span onClick={() => changeState(btnState.state)}>
               {btnState.text}
             </span>
           </SubHeaderTextWrapper>
         ))}
+        <Divider
+          state={dividerState.LONGTHICK}
+          addClass="position:absolute; bottom:0;"
+        />
       </SubHeader>
     </>
   );
 }
 
 const SubHeader = styled.div`
-  padding: 0 2rem;
+  position: relative;
   height: 5rem;
   display: flex;
 `;
 
-const SubHeaderTextWrapper = styled.div<ChatListStateProps>`
+const SubHeaderTextWrapper = styled.div<TextWrapperProps>`
   span {
     color: ${(props) =>
       props.isClicked
@@ -62,7 +74,9 @@ const SubHeaderTextWrapper = styled.div<ChatListStateProps>`
   border-bottom: ${(props) =>
     props.isClicked ? `0.2rem solid ${props.theme.colors.mainColor}` : null};
   ${(props) => props.theme.fontStyles.body1};
+  z-index: 1;
   display: flex;
   align-items: center;
   padding: 1.2rem 1.6rem;
+  ${[(props) => props.addClass]}
 `;
