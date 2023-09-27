@@ -5,13 +5,13 @@ export const Text = ({
   weight = 500,
   color = "inherit",
   children,
-  variant,
   as = "span",
   spacing = "-0px",
   font = "Pretendard",
   cursor = "inherit",
   lineHeight = "120%",
   align = "center",
+  width = "fit-content",
   ...rest
 }) => {
   return (
@@ -19,9 +19,9 @@ export const Text = ({
       size={size}
       weight={weight}
       color={color}
-      variant={variant}
       spacing={spacing}
       font={font}
+      width={width}
       align={align}
       cursor={cursor}
       lineHeight={lineHeight}
@@ -32,17 +32,13 @@ export const Text = ({
   );
 };
 
-const StyledText = styled.span`
-  word-wrap: break-word;
+const StyledText = styled.div`
+  word-break: break-word;
   text-align: ${({ align }) => align};
   font-size: ${({ size }) => size};
   font-weight: ${({ weight }) => weight};
   color: ${({ color, theme }) => (color ? theme.colors[color] : color)};
-  overflow: ${({ isCut }) => (isCut ? "hidden" : "")};
-  text-overflow: ${({ isCut }) => (isCut ? "ellipsis" : "")};
-  display: ${({ isCut }) => (isCut ? "-webkit-box" : "")};
-  -webkit-line-clamp: ${({ isCut }) => (isCut ? 1 : "")};
-  -webkit-box-orient: ${({ isCut }) => (isCut ? "vertical" : "")};
+  width: ${({ width }) => width};
   letter-spacing: ${({ spacing }) => spacing};
   line-height: ${({ lineHeight }) => lineHeight};
   font-family: ${({ font }) => font};

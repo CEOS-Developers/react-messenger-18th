@@ -66,13 +66,13 @@ function ChatArea() {
             return el.user === "User 1" ? (
               <ChatBubbleBlue
                 text={el.text}
-                time={dayjs(el.time).format("hh:mm a")}
+                time={dayjs(el.time).format("h:mm a")}
                 key={el.id}
               />
             ) : (
               <ChatBubbleWhite
                 text={el.text}
-                time={dayjs(el.time).format("hh:mm a")}
+                time={dayjs(el.time).format("h:mm a")}
                 key={el.id}
               />
             );
@@ -80,13 +80,13 @@ function ChatArea() {
             return el.user === "User 1" ? (
               <ChatBubbleWhite
                 text={el.text}
-                time={dayjs(el.time).format("hh:mm a")}
+                time={dayjs(el.time).format("h:mm a")}
                 key={el.id}
               />
             ) : (
               <ChatBubbleBlue
                 text={el.text}
-                time={dayjs(el.time).format("hh:mm a")}
+                time={dayjs(el.time).format("h:mm a")}
                 key={el.id}
               />
             );

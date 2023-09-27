@@ -13,9 +13,11 @@ function ChatBubbleWhite({ text, time }) {
       maxWidth="266px"
       self="flex-start"
     >
-      <Text weight="400" size="14px" lineHeight="21px" align="left">
-        {text}
-      </Text>
+      <Flex self="flex-start">
+        <Text weight="400" size="14px" lineHeight="21px" align="left">
+          {text}
+        </Text>
+      </Flex>
       <Text
         font="Lato"
         weight="400"

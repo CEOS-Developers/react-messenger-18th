@@ -1,7 +1,7 @@
 import React from "react";
 import { Text } from "../atom/Text";
 import { Flex } from "../atom/Flex";
-function ChatBubbleBlue({text, time}) {
+function ChatBubbleBlue({ text, time }) {
   return (
     <Flex
       borderRadius="16px 16px 0px 16px"
