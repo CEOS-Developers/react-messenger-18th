@@ -3,12 +3,12 @@
     "id": 1,
     "name": "오대균",
     "profileImage": null,
-    "likedMessages": []
+    "likedMessages": [0, 4]
   },
   "user_2": {
     "id": 2,
     "name": "배수연",
     "profileImage": null,
-    "likedMessages": []
+    "likedMessages": [0, 7]
   }
 }
