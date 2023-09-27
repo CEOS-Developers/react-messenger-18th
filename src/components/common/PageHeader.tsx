@@ -22,7 +22,7 @@ export default function PageHeader({
       </LeftIconContainer>
       <RightIconContainer>
         {rightIcon1}
-        {rightIcon2 ? <span>{rightIcon2}</span> : null}
+        {rightIcon2 ? rightIcon2 : null}
       </RightIconContainer>
     </PageHeaderWrapper>
   );
@@ -51,8 +51,5 @@ const LeftIconContainer = styled.div`
 
 const RightIconContainer = styled.div`
   display: flex;
-  span {
-    margin-left: 1.8rem;
-    cursor: pointer;
-  }
+  align-items: center;
 `;

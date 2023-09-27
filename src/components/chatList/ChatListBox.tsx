@@ -7,6 +7,7 @@ interface ChatListBoxProps {
   mainText: string;
   subText: string;
   icon?: ReactNode;
+  onClick?: () => void;
 }
 
 export default function ChatListBox({
@@ -14,10 +15,11 @@ export default function ChatListBox({
   mainText,
   subText,
   icon,
+  onClick,
 }: ChatListBoxProps) {
   return (
-    <BoxWrapper>
-      <Profile img={img} size="5.6rem" />
+    <BoxWrapper onClick={onClick}>
+      <Profile $img={img} $size="5.6rem" />
       <TextBox>
         <MainText>
           <span>{mainText}</span>
@@ -34,6 +36,7 @@ export default function ChatListBox({
 const BoxWrapper = styled.div`
   padding: 1.2rem 0;
   display: flex;
+  cursor: pointer;
 `;
 
 const TextBox = styled.div`

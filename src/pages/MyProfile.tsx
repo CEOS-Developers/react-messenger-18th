@@ -1,17 +1,14 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import PageHeader from "../components/common/PageHeader";
-import { ReactComponent as Arrow } from "../icons/arrows/leftarrow.svg";
+import { ReactComponent as LeftArrow } from "../icons/arrows/leftarrow.svg";
 import { ReactComponent as Edit } from "../icons/edit.svg";
+import { useNavigateOnClick } from "../customHooks/useNavigateOnClick";
 
 export default function MyProfile() {
-  const navigate = useNavigate();
-  const arrowIconClicked = () => {
-    navigate(-1);
-  };
+  const { navigateBack } = useNavigateOnClick();
   return (
     <PageHeader
-      leftIcon={<Arrow onClick={arrowIconClicked} />}
+      leftIcon={<LeftArrow onClick={navigateBack} />}
       title="프로필"
       rightIcon1={<Edit />}
     />

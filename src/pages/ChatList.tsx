@@ -29,9 +29,10 @@ export default function ChatList() {
         rightIcon1={<Search />}
         rightIcon2={
           <Profile
-            img="img/profile.jpg"
-            size="2.4rem"
-            onClick={() => navigateTo("my-profile")}
+            $img="/img/profile.jpg"
+            $size="2.4rem"
+            onClick={() => navigateTo("/my-profile")}
+            $addClass="margin-left:1.2rem;"
           />
         }
       />
@@ -69,6 +70,7 @@ export default function ChatList() {
               mainText={chat.mainText}
               subText={chat.subText}
               icon={<Star color={theme.colors.mainColor} />}
+              onClick={() => navigateTo(`/chatroom/main/${chat.id}`)}
             />
           ))}
           <Divider state={dividerState.SHORT} $addClass="margin:0.8rem 0;" />
@@ -78,6 +80,15 @@ export default function ChatList() {
               img={chat.img}
               mainText={chat.mainText}
               subText={chat.subText}
+              onClick={() =>
+                navigateTo(`/chatroom/sub/${chat.id}`, {
+                  state: {
+                    chatRoomTitle: chat.mainText,
+                    img: chat.img,
+                    name: chat.mainText,
+                  },
+                })
+              }
             />
           ))}
         </MainChats>
