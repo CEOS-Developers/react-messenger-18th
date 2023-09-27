@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import { ChatRoomBackgroundColor } from 'styles/global.style';
 import { TMessage } from 'types';
 import { checkIsNextDay } from 'utils';
+import { useMessageStore } from 'stores/messageStore';
+import { useUserStore } from 'stores/userStore';
 
 interface ChatRoomBodyProps {
   messages: TMessage[];
@@ -12,9 +14,36 @@ interface ChatRoomBodyProps {
 }
 
 const ChatRoomBody = ({ messages, bodyRef }: ChatRoomBodyProps) => {
-  const { id } = useParams();
+  const { id }: { id?: string } = useParams();
 
   let before = '';
+
+  const setMessages = useMessageStore((state) => state.setMessages);
+  const user = useUserStore((state) => state.user);
+  const setUser = useUserStore((state) => state.setUser);
+  const handleDoubleClickMessage = (messageId: number) => {
+    const newMessages = [...messages];
+    let clickedIdx = -1;
+    newMessages.forEach((message, idx) => {
+      if (message.id === messageId) {
+        clickedIdx = idx;
+        return;
+      }
+    });
+
+    if (user.likedMessages.includes(messageId)) {
+      newMessages[clickedIdx].likeCount -= 1;
+      setMessages(newMessages);
+      setUser({
+        ...user,
+        likedMessages: user.likedMessages.filter((id) => id !== messageId),
+      });
+    } else {
+      newMessages[clickedIdx].likeCount += 1;
+      setMessages(newMessages);
+      setUser({ ...user, likedMessages: [...user.likedMessages, messageId] });
+    }
+  };
 
   useEffect(() => {
     if (bodyRef.current) {
@@ -33,6 +62,10 @@ const ChatRoomBody = ({ messages, bodyRef }: ChatRoomBodyProps) => {
             message={message}
             isOwnMessage={Number(id) === message.toUserId}
             isNextDay={isNextDay}
+            handleDoubleClickMessage={handleDoubleClickMessage.bind(
+              null,
+              message.id
+            )}
           />
         );
       })}

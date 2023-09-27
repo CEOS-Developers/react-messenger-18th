@@ -1,14 +1,14 @@
 {
-  "data": [
-    {
-      "id": 1,
-      "name": "오대균",
-      "profileImage": null
-    },
-    {
-      "id": 2,
-      "name": "배수연",
-      "profileImage": null
-    }
-  ]
+  "user_1": {
+    "id": 1,
+    "name": "오대균",
+    "profileImage": null,
+    "likedMessages": []
+  },
+  "user_2": {
+    "id": 2,
+    "name": "배수연",
+    "profileImage": null,
+    "likedMessages": []
+  }
 }

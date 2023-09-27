@@ -8,7 +8,10 @@ interface TMessageStore {
   setMessages: (messages: TMessage[]) => void;
 }
 
-const initialMessageState: TMessage[] = chatData.data;
+const storedMessages: string | null = localStorage.getItem('messages');
+const initialMessageState: TMessage[] = storedMessages
+  ? JSON.parse(storedMessages)
+  : chatData.data;
 
 export const useMessageStore = create(
   devtools<TMessageStore>((set) => ({

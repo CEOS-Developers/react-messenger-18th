@@ -9,12 +9,14 @@ interface EachMessageProps {
   message: TMessage;
   isOwnMessage: boolean;
   isNextDay: boolean;
+  handleDoubleClickMessage: () => void;
 }
 
 const EachMessage = ({
   message,
   isOwnMessage,
   isNextDay,
+  handleDoubleClickMessage,
 }: EachMessageProps) => {
   const orders = isOwnMessage ? [1, 0] : [0, 1];
 
@@ -38,7 +40,12 @@ const EachMessage = ({
           />
         )}
         <TextAndLikeOuter $order={orders[0]} $isOwnMessage={isOwnMessage}>
-          <MessageText $isOwnMessage={isOwnMessage}>{message.text}</MessageText>
+          <MessageText
+            $isOwnMessage={isOwnMessage}
+            onDoubleClick={handleDoubleClickMessage}
+          >
+            {message.text}
+          </MessageText>
           {message.likeCount > 0 && (
             <LikeContainer>
               <HeartIcon />

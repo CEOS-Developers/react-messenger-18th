@@ -13,4 +13,5 @@ export interface TUser {
   id: number;
   name: string;
   proifleImage?: string | null;
+  likedMessages: number[];
 }

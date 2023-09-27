@@ -7,8 +7,10 @@ interface TUserStore {
   user: TUser;
   setUser: (user: TUser) => void;
 }
-
-const initialUserState: TUser = userData.data[0];
+const storedUser: string | null = localStorage.getItem('user_1');
+const initialUserState: TUser = storedUser
+  ? JSON.parse(storedUser)
+  : userData.user_1;
 
 export const useUserStore = create(
   devtools<TUserStore>((set) => ({

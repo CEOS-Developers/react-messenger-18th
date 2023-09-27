@@ -5,26 +5,31 @@ import styled from 'styled-components';
 import { ChatRoomBackgroundColor } from 'styles/global.style';
 import userData from 'data/userData.json';
 import { useUserStore } from 'stores/userStore';
+import { TUser } from 'types';
 
 interface ChatRoomHeaderProps {
   headerRef: React.RefObject<HTMLDivElement>;
 }
 
+const typedUserData: {
+  [key: string]: TUser;
+} = userData;
+
 const ChatRoomHeader = ({ headerRef }: ChatRoomHeaderProps) => {
   const navigate = useNavigate();
-  const { id } = useParams();
-  const roomOwner = userData.data.find((user) => user.id === Number(id));
-  if (!roomOwner) navigate('/chat');
-
+  const { id }: { id?: string } = useParams();
   const user = useUserStore((state) => state.user);
-  const setUser = useUserStore((state) => state.setUser);
+
+  const storedUser = localStorage.getItem(`user_${id}`);
+  const roomOwner = storedUser
+    ? JSON.parse(storedUser)
+    : typedUserData[`user_${id}`];
 
   return (
     <ChatRoomHeaderContainer ref={headerRef}>
       <ButtonWithIcon children={<BackIcon />} />
       <UserNameDiv
         onClick={() => {
-          setUser(roomOwner!);
           navigate(`/chat/${user.id}`);
         }}
       >

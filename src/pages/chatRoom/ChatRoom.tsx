@@ -8,16 +8,29 @@ import { TMessage } from 'types';
 import { useParams } from 'react-router-dom';
 import { useMessageStore } from 'stores/messageStore';
 import { useUserStore } from 'stores/userStore';
+import userData from 'data/userData.json';
+import { TUser } from 'types';
+
+const typedUserData: {
+  [key: string]: TUser;
+} = userData;
 
 const ChatRoom = () => {
   const { id }: { id?: string } = useParams();
-  const { user } = useUserStore();
+  const user = useUserStore((state) => state.user);
+  const setUser = useUserStore((state) => state.setUser);
 
   const messages = useMessageStore((state) => state.messages);
   const setMessages = useMessageStore((state) => state.setMessages);
 
   const headerRef = useRef<HTMLDivElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const key = `user_${(Number(id) % 2) + 1}`;
+    const storedUser = localStorage.getItem(key);
+    setUser(storedUser ? JSON.parse(storedUser) : typedUserData[key]);
+  }, [id, setUser]);
 
   useEffect(() => {
     document
