@@ -26,5 +26,4 @@ const Container = styled.div`
 const PageWrapper = styled.div`
   ${(props) => props.theme.fontStyles.headLine1};
   height: 73.7rem;
-  padding: 0 2rem;
 `;

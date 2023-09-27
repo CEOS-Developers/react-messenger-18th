@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import PageHeader from "../components/header/PageHeader";
+import PageHeader from "../components/common/PageHeader";
 import { ReactComponent as Arrow } from "../icons/arrows/leftarrow.svg";
 import { ReactComponent as AddFriend } from "../icons/addfriend.svg";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import PageHeader from "../components/header/PageHeader";
+import PageHeader from "../components/common/PageHeader";
 import { ReactComponent as Friends } from "../icons/friends.svg";
 import { ReactComponent as Search } from "../icons/search.svg";
 import Profile from "../components/profile/Profile";
