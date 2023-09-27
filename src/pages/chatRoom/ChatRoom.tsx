@@ -1,23 +1,20 @@
 import ChatRoomBody from 'pages/chatRoom/ChatRoomBody';
 import ChatRoomFooter from 'pages/chatRoom/ChatRoomFooter';
 import ChatRoomHeader from 'pages/chatRoom/ChatRoomHeader';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { ChatRoomBackgroundColor } from 'styles/global.style';
-import chatData from 'data/chatData.json';
 import { TMessage } from 'types';
 import { useParams } from 'react-router-dom';
+import { useMessageStore } from 'stores/messageStore';
+import { useUserStore } from 'stores/userStore';
 
 const ChatRoom = () => {
   const { id }: { id?: string } = useParams();
+  const { user } = useUserStore();
 
-  const [messages, setMessages] = useState<TMessage[]>(
-    chatData.data.filter(
-      (message) =>
-        (message.fromUserId === 1 && message.toUserId === Number(id)) ||
-        (message.fromUserId === Number(id) && message.toUserId === 1)
-    )
-  );
+  const messages = useMessageStore((state) => state.messages);
+  const setMessages = useMessageStore((state) => state.setMessages);
 
   const headerRef = useRef<HTMLDivElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
@@ -31,22 +28,30 @@ const ChatRoom = () => {
   return (
     <ChatRoomContainer>
       <ChatRoomHeader headerRef={headerRef} />
-      <ChatRoomBody messages={messages} bodyRef={bodyRef} />
+      <ChatRoomBody
+        messages={messages.filter(
+          (message) =>
+            (message.fromUserId === user.id &&
+              message.toUserId === Number(id)) ||
+            (message.fromUserId === Number(id) && message.toUserId === user.id)
+        )}
+        bodyRef={bodyRef}
+      />
       <ChatRoomFooter
         bodyRef={bodyRef}
         headerRef={headerRef}
         sendMessage={(message: string) => {
           const newMessage: TMessage = {
-            id: message.length,
-            toUserId: 2,
-            fromUserId: 1,
+            id: messages.length,
+            toUserId: Number(id),
+            fromUserId: user.id,
             profileImage: null,
             text: message,
             time: new Date().toISOString(),
-            isRead: false,
+            isRead: true,
             likeCount: 0,
           };
-          setMessages((state) => [...state, newMessage]);
+          setMessages([...messages, newMessage]);
         }}
       />
     </ChatRoomContainer>

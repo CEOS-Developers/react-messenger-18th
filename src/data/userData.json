@@ -2,10 +2,12 @@
   "data": [
     {
       "id": 1,
+      "name": "오대균",
       "profileImage": null
     },
     {
       "id": 2,
+      "name": "배수연",
       "profileImage": null
     }
   ]

@@ -8,3 +8,9 @@ export interface TMessage {
   isRead: boolean;
   likeCount: number;
 }
+
+export interface TUser {
+  id: number;
+  name: string;
+  proifleImage?: string | null;
+}
