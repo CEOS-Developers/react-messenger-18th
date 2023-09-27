@@ -20,7 +20,7 @@ const ChatRoomBody = ({ messages, bodyRef }: ChatRoomBodyProps) => {
     if (bodyRef.current) {
       bodyRef.current.scrollTop = bodyRef.current?.scrollHeight;
     }
-  }, [bodyRef]);
+  }, [bodyRef, messages]);
 
   return (
     <ChatRoomBodyContainer ref={bodyRef}>
@@ -31,7 +31,7 @@ const ChatRoomBody = ({ messages, bodyRef }: ChatRoomBodyProps) => {
           <EachMessage
             key={`${message.id}${message.text}`}
             message={message}
-            isOwnMessage={Number(id) === message.fromUserId}
+            isOwnMessage={Number(id) === message.toUserId}
             isNextDay={isNextDay}
           />
         );

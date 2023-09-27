@@ -1,0 +1,84 @@
+{
+  "data": [
+    {
+      "id": 0,
+      "fromUserId": 1,
+      "toUserId": 2,
+      "profileImage": null,
+      "text": "국무위원은 국정에 관하여 대통령을 보좌하며, 국무회의의 구성원으로서",
+      "time": "2023-09-26T03:10:07.672Z",
+      "isRead": true,
+      "likeCount": 1
+    },
+    {
+      "id": 1,
+      "fromUserId": 2,
+      "toUserId": 1,
+      "profileImage": null,
+      "text": "국무위원은 국정에 관하여 대통령을 보좌하며, 국무회의의 구성원으로서",
+      "time": "2023-09-26T03:10:07.672Z",
+      "isRead": true,
+      "likeCount": 0
+    },
+    {
+      "id": 2,
+      "fromUserId": 1,
+      "toUserId": 2,
+      "profileImage": null,
+      "text": "국무위원은 국정에 관하여 대통령을 보좌하며, 국무회의의 구성원으로서",
+      "time": "2023-09-27T03:10:07.672Z",
+      "isRead": true,
+      "likeCount": 1
+    },
+    {
+      "id": 3,
+      "fromUserId": 1,
+      "toUserId": 2,
+      "profileImage": null,
+      "text": "국무위원은 국정에 관하여 대통령을 보좌하며, 국무회의의 구성원으로서",
+      "time": "2023-09-27T03:10:07.672Z",
+      "isRead": true,
+      "likeCount": 1
+    },
+    {
+      "id": 4,
+      "fromUserId": 1,
+      "toUserId": 2,
+      "profileImage": null,
+      "text": "국무위원은 국정에 관하여 대통령을 보좌하며, 국무회의의 구성원으로서",
+      "time": "2023-09-26T03:10:07.672Z",
+      "isRead": true,
+      "likeCount": 0
+    },
+    {
+      "id": 5,
+      "fromUserId": 2,
+      "toUserId": 1,
+      "profileImage": null,
+      "text": "국무위원은 국정에 관하여 대통령을 보좌하며, 국무회의의 구성원으로서",
+      "time": "2023-09-26T03:10:07.672Z",
+      "isRead": true,
+      "likeCount": 0
+    },
+    {
+      "id": 6,
+      "fromUserId": 1,
+      "toUserId": 2,
+      "profileImage": null,
+      "text": "국무위원은 국정에 관하여 대통령을 보좌하며, 국무회의의 구성원으로서",
+      "time": "2023-09-27T03:10:07.672Z",
+      "isRead": false,
+      "likeCount": 0
+    },
+    {
+      "id": 7,
+      "fromUserId": 2,
+      "toUserId": 1,
+      "profileImage": null,
+      "text": "국무위원은 국정에 관하여 대통령을 보좌하며, 국무회의의 구성원으로서",
+      "time": "2023-09-27T03:10:07.672Z",
+      "isRead": false,
+      "likeCount": 1
+    }
+  ]
+}
