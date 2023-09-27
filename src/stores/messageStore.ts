@@ -1,25 +1,31 @@
-import { createWithEqualityFn } from 'zustand/traditional';
-
 import { devtools } from 'zustand/middleware';
+import { immer } from 'zustand/middleware/immer';
 import { TMessage } from 'types';
 import chatData from 'data/chatData.json';
-import { shallow } from 'zustand/shallow';
+import { create } from 'zustand';
 
 interface TMessageStore {
   messages: TMessage[];
   setMessages: (messages: TMessage[]) => void;
+  toggleIsRead: (idx: number) => void;
 }
 
 const storedMessages: string | null = localStorage.getItem('messages');
+// localStorage에 data가 있으면 그것을 사용하고, 아니면 dummy 사용
 const initialMessageState: TMessage[] = storedMessages
   ? JSON.parse(storedMessages)
   : chatData.data;
 
-// 메시지 읽음 처리 로직이 계속해서 리렌더링 시키는 오류를 해결하기 위해 얕은 비교로 state update 판단하도록 함
-export const useMessageStore = createWithEqualityFn(
-  devtools<TMessageStore>((set) => ({
-    messages: initialMessageState,
-    setMessages: (newMessages: TMessage[]) => set({ messages: newMessages }),
-  })),
-  shallow
+export const useMessageStore = create(
+  devtools(
+    // immer을 통해 messages 내부의 객체 수정 시 불필요한 리렌더링 방지
+    immer<TMessageStore>((set) => ({
+      messages: initialMessageState,
+      toggleIsRead: (idx: number) =>
+        set((state) => {
+          state.messages[idx].isRead = !state.messages[idx].isRead;
+        }),
+      setMessages: (newMessages: TMessage[]) => set({ messages: newMessages }),
+    }))
+  )
 );

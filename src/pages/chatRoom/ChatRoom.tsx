@@ -1,54 +1,56 @@
-import ChatRoomBody from 'pages/chatRoom/ChatRoomBody';
-import ChatRoomFooter from 'pages/chatRoom/ChatRoomFooter';
-import ChatRoomHeader from 'pages/chatRoom/ChatRoomHeader';
 import { useEffect, useRef } from 'react';
-import styled from 'styled-components';
-import { ChatRoomBackgroundColor } from 'styles/global.style';
-import { TMessage } from 'types';
 import { useParams } from 'react-router-dom';
 import { useMessageStore } from 'stores/messageStore';
 import { useUserStore } from 'stores/userStore';
+import ChatRoomBody from 'pages/chatRoom/ChatRoomBody';
+import ChatRoomFooter from 'pages/chatRoom/ChatRoomFooter';
+import ChatRoomHeader from 'pages/chatRoom/ChatRoomHeader';
+import styled from 'styled-components';
+import { ChatRoomBackgroundColor } from 'styles/global.style';
 import userData from 'data/userData.json';
-import { TUser } from 'types';
+import { TUser, TMessage } from 'types';
 
 const typedUserData: {
   [key: string]: TUser;
 } = userData;
 
 const ChatRoom = () => {
-  const { id }: { id?: string } = useParams();
-  const user = useUserStore((state) => state.user);
+  const { id }: { id?: string } = useParams(); // 채팅의 대상
+  const user = useUserStore((state) => state.user); // 채팅앱의 주체
   const setUser = useUserStore((state) => state.setUser);
 
   const messages = useMessageStore((state) => state.messages);
+
   const setMessages = useMessageStore((state) => state.setMessages);
+  const toggleIsRead = useMessageStore((state) => state.toggleIsRead);
 
   const headerRef = useRef<HTMLDivElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
 
+  // week3에만 해당되는 기능, 접속된 채팅방에 따라 현재의 유저 정보를 변경시켜줌
   useEffect(() => {
-    const key = `user_${(Number(id) % 2) + 1}`;
+    const key = `user_${(Number(id) % 2) + 1}`; // 지금은 유저가 두 명으로 한정되어 있으니깐
     const storedUser = localStorage.getItem(key);
+    // localStorage에 데이터가 있으면 해당 데이터 사용, 아니면 dummy 사용
     setUser(storedUser ? JSON.parse(storedUser) : typedUserData[key]);
   }, [id, setUser]);
 
+  // 유저 페이지 전환될 때 메시지에에 대한 읽음처리하도록
   useEffect(() => {
     if (user.id !== Number(id)) {
-      setMessages(
-        messages.map((message) => {
-          if (
-            message.fromUserId === Number(id) &&
-            message.toUserId === user.id &&
-            !message.isRead
-          )
-            return { ...message, isRead: true };
-          return message;
-        })
-      );
+      messages.forEach((message, idx) => {
+        if (
+          message.fromUserId === Number(id) &&
+          message.toUserId === user.id &&
+          !message.isRead // 읽지 않은 메시지가 있으면 읽음표시 하도록
+        )
+          toggleIsRead(idx);
+      });
     }
-  }, [id, messages, setMessages, user.id]);
+  }, [id, messages, toggleIsRead, user.id]);
 
   useEffect(() => {
+    // 모바일로 접속시 페이지 최상단 부분 색상 적용
     document
       .querySelector('meta[name="theme-color"]')
       ?.setAttribute('content', '#93aad4');
@@ -87,11 +89,13 @@ const ChatRoom = () => {
   );
 };
 
+export default ChatRoom;
+
+// ############### 디자인 ###############
+
 const ChatRoomContainer = styled.div`
   height: 100%;
   background-color: ${ChatRoomBackgroundColor};
   display: flex;
   flex-direction: column;
 `;
-
-export default ChatRoom;

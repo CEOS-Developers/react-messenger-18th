@@ -1,10 +1,10 @@
-import ButtonWithIcon from 'pages/common/ButtonWithIcon';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useUserStore } from 'stores/userStore';
+import ButtonWithIcon from 'pages/common/ButtonWithIcon';
 import { ReactComponent as BackIcon } from 'static/images/back-arrow-icon.svg';
 import styled from 'styled-components';
 import { ChatRoomBackgroundColor } from 'styles/global.style';
 import userData from 'data/userData.json';
-import { useUserStore } from 'stores/userStore';
 import { TUser } from 'types';
 
 interface ChatRoomHeaderProps {
@@ -21,7 +21,7 @@ const ChatRoomHeader = ({ headerRef }: ChatRoomHeaderProps) => {
   const user = useUserStore((state) => state.user);
 
   const storedUser = localStorage.getItem(`user_${id}`);
-  const roomOwner = storedUser
+  const roomOwner = storedUser // 해당 방이 누구와의 대화방인지
     ? JSON.parse(storedUser)
     : typedUserData[`user_${id}`];
 
@@ -30,7 +30,7 @@ const ChatRoomHeader = ({ headerRef }: ChatRoomHeaderProps) => {
       <ButtonWithIcon children={<BackIcon />} />
       <UserNameDiv
         onClick={() => {
-          navigate(`/chat/${user.id}`);
+          navigate(`/chat/${user.id}`); // 유저 변경
         }}
       >
         {roomOwner!.name}
@@ -38,6 +38,10 @@ const ChatRoomHeader = ({ headerRef }: ChatRoomHeaderProps) => {
     </ChatRoomHeaderContainer>
   );
 };
+
+export default ChatRoomHeader;
+
+// ############### 디자인 ###############
 
 const ChatRoomHeaderContainer = styled.div`
   display: flex;
@@ -53,4 +57,3 @@ const UserNameDiv = styled.div`
   font-weight: 600;
   margin-left: 9px;
 `;
-export default ChatRoomHeader;

@@ -24,12 +24,14 @@ const ChatRoomFooter = ({
   const [isMenuSpread, setIsMenuSpread] = useState<boolean>(true);
   const [isInputFocused, setIsInputFocused] = useState<boolean>(false);
 
+  // textarea 높이 동적 조절
   const handleChangeContent = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setContent(e.target.value);
     e.target.style.height = '36px';
     e.target.style.height = e.target.scrollHeight + 'px';
   };
 
+  // footer 부분 이외 클릭시 textarea focus out
   const handleOnClickOutOfFooter = (e: React.MouseEvent | MouseEvent) => {
     if (
       headerRef.current?.contains(e.target as Node) ||
@@ -40,20 +42,24 @@ const ChatRoomFooter = ({
     }
   };
 
+  // submit handler
   const handleSubmitMessage = () => {
     if (content.trim()) {
       sendMessage(content);
       setContent('');
+      // focus 상태에서 전송을 누르면, 계속 focus 유지되도록
       if (isInputFocused) inputRef.current?.focus();
       if (inputRef.current) inputRef.current.style.height = '36px';
     }
   };
 
+  // 전체 화면에 클릭이벤트 적용
   useEffect(() => {
     document.addEventListener('click', handleOnClickOutOfFooter);
     return () =>
       document.removeEventListener('click', handleOnClickOutOfFooter);
   });
+
   return (
     <ChatRoomFooterContainer>
       <LeftSideButtonsOuter $isMenuSpread={isMenuSpread}>
@@ -76,7 +82,7 @@ const ChatRoomFooter = ({
         }}
         onKeyDown={(e) => {
           if (e.nativeEvent.isComposing) return; //key 조합 감지
-          // 모바일 환경이 아닐 때
+          // 모바일 환경이 아닐 때에는 enter로 전송, shift + enter로 줄바꿈
           if (!/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
             if (e.key === 'Enter' && e.shiftKey) return;
             else if (e.key === 'Enter') {
@@ -94,6 +100,10 @@ const ChatRoomFooter = ({
     </ChatRoomFooterContainer>
   );
 };
+
+export default ChatRoomFooter;
+
+// ############### 디자인 ###############
 
 const ChatRoomFooterContainer = styled.div`
   display: flex;
@@ -138,5 +148,3 @@ const ChatInput = styled.textarea.attrs({
   font-size: 14px;
   font-family: 'Pretendard Variable';
 `;
-
-export default ChatRoomFooter;

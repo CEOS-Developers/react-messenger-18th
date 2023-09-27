@@ -63,6 +63,10 @@ const EachMessage = ({
   );
 };
 
+export default EachMessage;
+
+// ############### 디자인 ###############
+
 const ChatRoomMyMessageColor = '#ACE49B';
 
 const EachMessageContainer = styled.div`
@@ -154,5 +158,3 @@ const DayDateContainer = styled.div`
   line-height: 120%;
   color: white;
 `;
-
-export default EachMessage;
