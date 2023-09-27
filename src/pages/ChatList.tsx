@@ -9,10 +9,14 @@ import useChatListStateChange from "../customHooks/chatlist/useChatListStateChan
 import { chatListBtnState, chatListState } from "../state/chatListState";
 import Divider from "../components/common/Divider";
 import { dividerState } from "../state/dividerState";
+import Star from "../icons/star/Star";
+import theme from "../styles/theme";
+import ChatListBox from "../components/chatList/ChatListBox";
+import { mainChat, subChat } from "../data/chatListData";
 
 interface TextWrapperProps {
-  isClicked: boolean;
-  addClass?: string | null;
+  $isClicked: boolean;
+  $addClass?: string | null;
 }
 
 export default function ChatList() {
@@ -35,8 +39,8 @@ export default function ChatList() {
         {chatListBtnState.map((btnState) => (
           <SubHeaderTextWrapper
             key={btnState.text}
-            isClicked={subHeaderState === btnState.state ? true : false}
-            addClass={
+            $isClicked={subHeaderState === btnState.state ? true : false}
+            $addClass={
               btnState.state === chatListState.GROUP
                 ? "margin-left:2rem;"
                 : null
@@ -49,9 +53,35 @@ export default function ChatList() {
         ))}
         <Divider
           state={dividerState.LONGTHICK}
-          addClass="position:absolute; bottom:0;"
+          $addClass="position:absolute; bottom:0;"
         />
       </SubHeader>
+      <ChatLists>
+        <MainChats>
+          <MainChatsHeader>
+            <Star color={theme.colors.gray3} />
+            <span>주요 채팅</span>
+          </MainChatsHeader>
+          {mainChat.map((chat) => (
+            <ChatListBox
+              key={chat.id}
+              img={chat.img}
+              mainText={chat.mainText}
+              subText={chat.subText}
+              icon={<Star color={theme.colors.mainColor} />}
+            />
+          ))}
+          <Divider state={dividerState.SHORT} $addClass="margin:0.8rem 0;" />
+          {subChat.map((chat) => (
+            <ChatListBox
+              key={chat.id}
+              img={chat.img}
+              mainText={chat.mainText}
+              subText={chat.subText}
+            />
+          ))}
+        </MainChats>
+      </ChatLists>
     </>
   );
 }
@@ -65,18 +95,35 @@ const SubHeader = styled.div`
 const SubHeaderTextWrapper = styled.div<TextWrapperProps>`
   span {
     color: ${(props) =>
-      props.isClicked
+      props.$isClicked
         ? props.theme.colors.mainColor
         : props.theme.colors.gray4};
     ${(props) => props.theme.fontStyles.body1}
     cursor: pointer;
   }
   border-bottom: ${(props) =>
-    props.isClicked ? `0.2rem solid ${props.theme.colors.mainColor}` : null};
+    props.$isClicked ? `0.2rem solid ${props.theme.colors.mainColor}` : null};
   ${(props) => props.theme.fontStyles.body1};
   z-index: 1;
   display: flex;
   align-items: center;
   padding: 1.2rem 1.6rem;
-  ${[(props) => props.addClass]}
+  ${[(props) => props.$addClass]}
+`;
+
+const ChatLists = styled.div`
+  padding: 0 2rem;
+`;
+
+const MainChats = styled.div``;
+
+const MainChatsHeader = styled.div`
+  height: 5.2rem;
+  display: flex;
+  align-items: center;
+  span {
+    color: ${(props) => props.theme.colors.gray2};
+    ${(props) => props.theme.fontStyles.body2};
+    margin-left: 0.4rem;
+  }
 `;

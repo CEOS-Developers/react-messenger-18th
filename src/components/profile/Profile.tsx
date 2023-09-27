@@ -4,7 +4,7 @@ import styled from "styled-components";
 interface ProfileProps {
   img: string;
   size: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export default function Profile({ img, size, onClick }: ProfileProps) {

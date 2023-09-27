@@ -4,11 +4,11 @@ import { dividerState } from "../../state/dividerState";
 
 interface DividerProps {
   state: string;
-  addClass?: string;
+  $addClass?: string;
 }
 
-export default function Divider({ state, addClass }: DividerProps) {
-  return <DividerWrapper state={state} addClass={addClass} />;
+export default function Divider({ state, $addClass }: DividerProps) {
+  return <DividerWrapper state={state} $addClass={$addClass} />;
 }
 
 const DividerWrapper = styled.div<DividerProps>`
@@ -17,5 +17,5 @@ const DividerWrapper = styled.div<DividerProps>`
   height: ${(props) =>
     props.state === dividerState.LONGTHICK ? "0.2rem" : "0.1rem"};
   background-color: ${(props) => props.theme.colors.gray6};
-  ${(props) => props.addClass}
+  ${(props) => props.$addClass}
 `;
