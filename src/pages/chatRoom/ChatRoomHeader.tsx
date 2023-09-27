@@ -3,9 +3,13 @@ import { ReactComponent as BackIcon } from 'static/images/back-arrow-icon.svg';
 import styled from 'styled-components';
 import { ChatRoomBackgroundColor } from 'styles/global.style';
 
-const ChatRoomHeader = () => {
+interface ChatRoomHeaderProps {
+  headerRef: React.RefObject<HTMLDivElement>;
+}
+
+const ChatRoomHeader = ({ headerRef }: ChatRoomHeaderProps) => {
   return (
-    <ChatRoomHeaderContainer>
+    <ChatRoomHeaderContainer ref={headerRef}>
       <ButtonWithIcon children={<BackIcon />} />
       <UserNameDiv>배수연</UserNameDiv>
     </ChatRoomHeaderContainer>

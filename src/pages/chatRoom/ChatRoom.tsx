@@ -1,7 +1,7 @@
 import ChatRoomBody from 'pages/chatRoom/ChatRoomBody';
 import ChatRoomFooter from 'pages/chatRoom/ChatRoomFooter';
 import ChatRoomHeader from 'pages/chatRoom/ChatRoomHeader';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { ChatRoomBackgroundColor } from 'styles/global.style';
 import { TMessage } from 'types';
@@ -90,6 +90,8 @@ const MESSAGES: TMessage[] = [
 ];
 
 const ChatRoom = () => {
+  const headerRef = useRef<HTMLDivElement>(null);
+  const bodyRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     document
       .querySelector('meta[name="theme-color"]')
@@ -98,9 +100,13 @@ const ChatRoom = () => {
 
   return (
     <ChatRoomContainer>
-      <ChatRoomHeader />
-      <ChatRoomBody messages={MESSAGES} />
-      <ChatRoomFooter />
+      <ChatRoomHeader headerRef={headerRef} />
+      <ChatRoomBody messages={MESSAGES} bodyRef={bodyRef} />
+      <ChatRoomFooter
+        bodyRef={bodyRef}
+        headerRef={headerRef}
+        sendMessage={(message: string) => {}}
+      />
     </ChatRoomContainer>
   );
 };

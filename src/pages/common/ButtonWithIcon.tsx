@@ -4,7 +4,7 @@ import styled from 'styled-components';
 interface ButtonWithIconProps {
   className?: string;
   children: ReactNode;
-  handleOnClickButton?: () => void;
+  handleOnClickButton?: (e?: React.MouseEvent | MouseEvent) => void;
 }
 const ButtonWithIcon = ({
   className,
@@ -25,10 +25,5 @@ const Button = styled.button`
   font-size: 0;
   line-height: 0;
   display: flex;
-  // svg,
-  // img {
-  //   width: 100%;
-  //   height: 100%;
-  // }
 `;
 export default ButtonWithIcon;

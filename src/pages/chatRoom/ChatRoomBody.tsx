@@ -1,5 +1,5 @@
 import EachMessage from 'pages/chatRoom/EachMessage';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { ChatRoomBackgroundColor } from 'styles/global.style';
@@ -8,20 +8,22 @@ import { checkIsNextDay } from 'utils';
 
 interface ChatRoomBodyProps {
   messages: TMessage[];
+  bodyRef: React.RefObject<HTMLDivElement>;
 }
-const ChatRoomBody = ({ messages }: ChatRoomBodyProps) => {
+
+const ChatRoomBody = ({ messages, bodyRef }: ChatRoomBodyProps) => {
   const { id } = useParams();
-  const roomBodyRef = useRef<HTMLDivElement>(null);
 
   let before = '';
+
   useEffect(() => {
-    if (roomBodyRef.current) {
-      roomBodyRef.current.scrollTop = roomBodyRef.current?.scrollHeight;
+    if (bodyRef.current) {
+      bodyRef.current.scrollTop = bodyRef.current?.scrollHeight;
     }
-  }, []);
+  }, [bodyRef]);
 
   return (
-    <ChatRoomBodyContainer ref={roomBodyRef}>
+    <ChatRoomBodyContainer ref={bodyRef}>
       {messages.map((message) => {
         const isNextDay = checkIsNextDay(before, message.time);
         before = message.time;
