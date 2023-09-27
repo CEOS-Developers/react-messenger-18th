@@ -53,7 +53,7 @@ const ChatRoomBody = ({ messages, bodyRef }: ChatRoomBodyProps) => {
     if (bodyRef.current) {
       bodyRef.current.scrollTop = bodyRef.current?.scrollHeight;
     }
-  }, [bodyRef, messages]);
+  }, [bodyRef, messages.length]);
 
   return (
     <ChatRoomBodyContainer ref={bodyRef}>
