@@ -12,6 +12,7 @@ export const Text = ({
   lineHeight = "120%",
   align = "center",
   width = "fit-content",
+  self = "auto",
   ...rest
 }) => {
   return (
@@ -25,6 +26,7 @@ export const Text = ({
       align={align}
       cursor={cursor}
       lineHeight={lineHeight}
+      self={self}
       {...rest}
     >
       {children}
@@ -43,4 +45,5 @@ const StyledText = styled.div`
   line-height: ${({ lineHeight }) => lineHeight};
   font-family: ${({ font }) => font};
   cursor: ${({ cursor }) => cursor};
+  align-self: ${({ self }) => self};
 `;

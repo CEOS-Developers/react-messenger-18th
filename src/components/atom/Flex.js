@@ -14,7 +14,6 @@ export const Flex = ({
   overflow = "visible",
   padding = "0",
   maxWidth = "none",
-  borderBottom = "0",
   borderRadius = "0",
   borderColor = "none",
   margin = "0",

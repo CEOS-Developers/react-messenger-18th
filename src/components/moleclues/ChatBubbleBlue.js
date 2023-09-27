@@ -19,6 +19,7 @@ function ChatBubbleBlue({ text, time }) {
         lineHeight="21px"
         color="white"
         align="left"
+        self="flex-start"
       >
         {text}
       </Text>
