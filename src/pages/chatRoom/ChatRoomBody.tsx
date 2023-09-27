@@ -31,20 +31,33 @@ const ChatRoomBody = ({ messages, bodyRef }: ChatRoomBodyProps) => {
     const clickedIdx = newMessages.findIndex(
       (message) => message.id === messageId
     );
-
-    if (user.likedMessages.includes(messageId)) {
-      // 현재 유저가 이미 좋아한 메시지라면 좋아요 취소
-      newMessages[clickedIdx].likeCount -= 1;
-      setMessages(newMessages);
-      setUser({
-        ...user,
-        likedMessages: user.likedMessages.filter((id) => id !== messageId),
-      });
-    } else {
-      // 이미 좋아요한 메시지가 아니라면 좋아요
-      newMessages[clickedIdx].likeCount += 1;
-      setMessages(newMessages);
-      setUser({ ...user, likedMessages: [...user.likedMessages, messageId] });
+    try {
+      // 혹시 localStorage에 저장된 data가 변경되는 상황을 대비
+      if (user.likedMessages.includes(messageId)) {
+        // 현재 유저가 이미 좋아한 메시지라면 좋아요 취소
+        newMessages[clickedIdx] = {
+          ...newMessages[clickedIdx],
+          likeCount: newMessages[clickedIdx].likeCount - 1,
+        };
+        setMessages(newMessages);
+        setUser({
+          ...user,
+          likedMessages: user.likedMessages.filter((id) => id !== messageId),
+        });
+      } else {
+        // 이미 좋아요한 메시지가 아니라면 좋아요
+        newMessages[clickedIdx] = {
+          ...newMessages[clickedIdx],
+          likeCount: newMessages[clickedIdx].likeCount + 1,
+        };
+        setMessages(newMessages);
+        setUser({ ...user, likedMessages: [...user.likedMessages, messageId] });
+      }
+    } catch {
+      localStorage.removeItem('user_1');
+      localStorage.removeItem('user_2');
+      localStorage.removeItem('messages');
+      window.location.reload();
     }
   };
 
