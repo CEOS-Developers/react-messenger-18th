@@ -36,7 +36,6 @@ const PageHeaderWrapper = styled.header`
   svg {
     cursor: pointer;
   }
-  background-color: blue;
   padding: 0 2rem;
 `;
 

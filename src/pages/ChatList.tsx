@@ -5,9 +5,16 @@ import { ReactComponent as Search } from "../icons/search.svg";
 import Profile from "../components/profile/Profile";
 import { useNavigateOnClick } from "../customHooks/useNavigateOnClick";
 import styled from "styled-components";
+import useChatListStateChange from "../customHooks/useChatListStateChange";
+import { chatListBtnState, chatListState } from "../state/chatListState";
+
+interface ChatListStateProps {
+  isClicked: boolean;
+}
 
 export default function ChatList() {
   const { navigateTo } = useNavigateOnClick();
+  const { changeState, subHeaderState } = useChatListStateChange();
   return (
     <>
       <PageHeader
@@ -22,12 +29,16 @@ export default function ChatList() {
         }
       />
       <SubHeader>
-        <SubHeaderTextWrapper>
-          <span>그룹</span>
-        </SubHeaderTextWrapper>
-        <SubHeaderTextWrapper>
-          <span>개인</span>
-        </SubHeaderTextWrapper>
+        {chatListBtnState.map((btnState) => (
+          <SubHeaderTextWrapper
+            key={btnState.text}
+            isClicked={subHeaderState === btnState.state ? true : false}
+          >
+            <span onClick={() => changeState(btnState.state)}>
+              {btnState.text}
+            </span>
+          </SubHeaderTextWrapper>
+        ))}
       </SubHeader>
     </>
   );
@@ -36,15 +47,21 @@ export default function ChatList() {
 const SubHeader = styled.div`
   padding: 0 2rem;
   height: 5rem;
-  background-color: wheat;
   display: flex;
 `;
 
-const SubHeaderTextWrapper = styled.div`
+const SubHeaderTextWrapper = styled.div<ChatListStateProps>`
   span {
-    color: ${(props) => props.theme.colors.mainColor};
+    color: ${(props) =>
+      props.isClicked
+        ? props.theme.colors.mainColor
+        : props.theme.colors.gray4};
     ${(props) => props.theme.fontStyles.body1}
+    cursor: pointer;
   }
+  border-bottom: ${(props) =>
+    props.isClicked ? `0.2rem solid ${props.theme.colors.mainColor}` : null};
+  ${(props) => props.theme.fontStyles.body1};
   display: flex;
   align-items: center;
   padding: 1.2rem 1.6rem;
