@@ -1,4 +1,4 @@
-const daySelector = ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
+const daySelector = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
 const monthSelector = [
   'Jan',
   'Feb',
@@ -22,7 +22,7 @@ export const convertTimeFormat = (date: string) => {
     hour -= 12;
     amPm = 'PM';
   }
-  return `${hour}:${dateObj.getMinutes()} ${amPm}`;
+  return `${hour}:${String(dateObj.getMinutes()).padStart(2, '0')} ${amPm}`;
 };
 
 export const convertDayDateFormat = (date: string) => {
