@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Profile from "../profile/Profile";
 import Bubble from "./Bubble";
+import { ChatRoomData } from "../../utils/accessStorage/getChatRoomData";
 
 interface ChatWrapperProps {
   img?: string;
@@ -11,6 +12,9 @@ interface ChatWrapperProps {
   doubleClicked: boolean;
   time: string;
   isUser: boolean;
+  index: number;
+  chatData: ChatRoomData[] | [];
+  setChatData: React.Dispatch<React.SetStateAction<ChatRoomData[] | []>>;
 }
 
 export default function ChatWrapper({
@@ -21,6 +25,9 @@ export default function ChatWrapper({
   doubleClicked,
   time,
   isUser,
+  index,
+  chatData,
+  setChatData,
 }: ChatWrapperProps) {
   return (
     <Wrapper $isUser={isUser}>
@@ -39,6 +46,9 @@ export default function ChatWrapper({
           doubleClicked={doubleClicked}
           time={time}
           isUser={isUser}
+          index={index}
+          chatData={chatData}
+          setChatData={setChatData}
         />
       </div>
     </Wrapper>

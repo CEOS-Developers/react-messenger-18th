@@ -6,6 +6,8 @@ interface ChatState {
     chatRoomTitle: string;
     img: string;
     name: string;
+    chatRoomState: string;
+    chatRoomId: number;
   };
 }
 

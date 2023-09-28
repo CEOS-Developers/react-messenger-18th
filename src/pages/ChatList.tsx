@@ -70,7 +70,17 @@ export default function ChatList() {
               mainText={chat.mainText}
               subText={chat.subText}
               icon={<Star color={theme.colors.mainColor} />}
-              onClick={() => navigateTo(`/chatroom/main/${chat.id}`)}
+              onClick={() =>
+                navigateTo(`/chatroom/main/${chat.id}`, {
+                  state: {
+                    chatRoomTitle: chat.mainText,
+                    img: chat.img,
+                    name: chat.mainText,
+                    chatRoomState: "main",
+                    chatRoomId: chat.id,
+                  },
+                })
+              }
             />
           ))}
           <Divider state={dividerState.SHORT} $addClass="margin:0.8rem 0;" />
@@ -86,6 +96,8 @@ export default function ChatList() {
                     chatRoomTitle: chat.mainText,
                     img: chat.img,
                     name: chat.mainText,
+                    chatRoomState: "sub",
+                    chatRoomId: chat.id,
                   },
                 })
               }

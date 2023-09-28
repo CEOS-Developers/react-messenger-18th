@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { ReactComponent as Like } from "../../icons/like.svg";
+import { ChatRoomData } from "../../utils/accessStorage/getChatRoomData";
 
 interface BubbleProps {
   chatText: string;
@@ -8,6 +9,9 @@ interface BubbleProps {
   doubleClicked: boolean;
   time: string;
   isUser: boolean;
+  index: number;
+  chatData: ChatRoomData[] | [];
+  setChatData: React.Dispatch<React.SetStateAction<ChatRoomData[] | []>>;
 }
 
 export default function Bubble({
@@ -16,9 +20,18 @@ export default function Bubble({
   doubleClicked,
   time,
   isUser,
+  index,
+  chatData,
+  setChatData,
 }: BubbleProps) {
+  const bubbleDoubleClicked = () => {
+    const copyChatData = [...chatData];
+    copyChatData[index - 3].doubleClicked =
+      !copyChatData[index - 3].doubleClicked;
+    setChatData(copyChatData);
+  };
   return (
-    <BubbleWrapper $isUser={isUser}>
+    <BubbleWrapper $isUser={isUser} onDoubleClick={bubbleDoubleClicked}>
       <BubbleText>
         <p>{chatText}</p>
       </BubbleText>
