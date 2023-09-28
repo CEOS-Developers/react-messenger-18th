@@ -22,6 +22,12 @@ const App: React.FC = () => {
 export default App;
 
 const GlobalStyle = createGlobalStyle`
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
    html, body, #root{
      height: 100%;
      margin: 0;
@@ -32,6 +38,7 @@ const Wrapper = styled.div`
   height: 100%;
   width: 0%;
   display: flex;
+  font-family: "Pretendard-Regular";
   justify-content: center;
   align-items: center;
   overflow: hidden;

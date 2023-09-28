@@ -38,6 +38,7 @@ const UserName = styled.div`
   margin: 8px;
   padding-right: 180px;
   width: 47px;
+  font-weight: 600;
 `;
 
 const Search = styled.img`
