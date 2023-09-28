@@ -1,4 +1,4 @@
-import React, { ReactComponentElement, ReactNode } from "react";
+import React, { ReactNode } from "react";
 import styled from "styled-components";
 
 interface PageHeaderProps {

@@ -4,12 +4,13 @@ import { useNavigateOnClick } from "../customHooks/useNavigateOnClick";
 import { ReactComponent as LeftArrow } from "../icons/arrows/leftarrow.svg";
 import { ReactComponent as Search } from "../icons/search.svg";
 import { ReactComponent as Box } from "../icons/box.svg";
+import { ReactComponent as Plus } from "../icons/plus.svg";
+import { ReactComponent as Send } from "../icons/send.svg";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import Divider from "../components/common/Divider";
 import { dividerState } from "../state/dividerState";
 import ChatWrapper from "../components/chatroom/ChatWrapper";
-import Bubble from "../components/chatroom/Bubble";
 
 export default function ChatRoom() {
   const { state } = useLocation();
@@ -48,6 +49,13 @@ export default function ChatRoom() {
           isUser={false}
         />
       </ChatContainer>
+      <ChatInputContainer>
+        <Plus />
+        <ChatInput />
+        <SendBtnWrapper>
+          <Send />
+        </SendBtnWrapper>
+      </ChatInputContainer>
     </>
   );
 }
@@ -57,4 +65,34 @@ const ChatContainer = styled.div`
   overflow: auto;
   padding: 2rem;
   background-color: ${(props) => props.theme.colors.gray7};
+`;
+
+const ChatInputContainer = styled.div`
+  height: 7.3rem;
+  padding: 1.2rem 2rem;
+  background-color: ${(props) => props.theme.colors.gray6};
+  display: flex;
+  align-items: center;
+`;
+
+const ChatInput = styled.input`
+  width: 25.5rem;
+  height: 4rem;
+  border-radius: 0.4rem;
+  border: none;
+  margin: 0 0.8rem;
+  background-color: ${(props) => props.theme.colors.white};
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+`;
+
+const SendBtnWrapper = styled.div`
+  width: 4rem;
+  height: 4rem;
+  background-color: ${(props) => props.theme.colors.gray5};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.4rem;
 `;

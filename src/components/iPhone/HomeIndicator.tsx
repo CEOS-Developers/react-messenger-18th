@@ -1,19 +1,24 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function HomeIndicator() {
+interface HomeIndicatorProps {
+  $bgColor: string | null;
+}
+
+export default function HomeIndicator({ $bgColor }: HomeIndicatorProps) {
   return (
-    <IndicatorWrapper>
+    <IndicatorWrapper $bgColor={$bgColor}>
       <BlackBar />
     </IndicatorWrapper>
   );
 }
 
-const IndicatorWrapper = styled.div`
+const IndicatorWrapper = styled.div<HomeIndicatorProps>`
   height: 2.1rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: ${(props) => props.$bgColor};
 `;
 
 const BlackBar = styled.div`

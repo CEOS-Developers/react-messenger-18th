@@ -1,17 +1,21 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { styled } from "styled-components";
 import StatusBar from "./StatusBar";
 import HomeIndicator from "./HomeIndicator";
+import theme from "../../styles/theme";
 
 export default function PhoneLayout() {
+  const location = useLocation();
+
+  const isChatRoom = location.pathname.startsWith("/chatroom");
   return (
     <Container>
       <StatusBar />
       <PageWrapper>
         <Outlet />
       </PageWrapper>
-      <HomeIndicator />
+      <HomeIndicator $bgColor={isChatRoom ? theme.colors.gray6 : null} />
     </Container>
   );
 }
