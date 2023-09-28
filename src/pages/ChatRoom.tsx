@@ -13,6 +13,7 @@ import { dividerState } from "../state/dividerState";
 import ChatWrapper from "../components/chatroom/ChatWrapper";
 import { getChatRoomData } from "../utils/accessStorage/getChatRoomData";
 import { setChatRoomData } from "../utils/accessStorage/setChatRoomData";
+import { useScrollToBottom } from "../customHooks/chatroom/useScrollToBottom";
 
 export default function ChatRoom() {
   const { state } = useLocation();
@@ -20,6 +21,7 @@ export default function ChatRoom() {
   const { navigateBack } = useNavigateOnClick();
   const [chatText, setChatText] = useState("");
   const [chatData, setChatData] = useState(getChatRoomData(STORAGE_KEY));
+  const { ref, scrollToBottom } = useScrollToBottom<HTMLDivElement>();
   const chatInputChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
     setChatText(event.target.value);
   };
@@ -37,6 +39,7 @@ export default function ChatRoom() {
   };
   useEffect(() => {
     setChatRoomData(STORAGE_KEY, chatData);
+    scrollToBottom();
   }, [STORAGE_KEY, chatData]);
   return (
     <>
@@ -47,7 +50,7 @@ export default function ChatRoom() {
         rightIcon2={<Box style={{ marginLeft: "1.2rem" }} />}
       />
       <Divider state={dividerState.LONGTHICK} />
-      <ChatContainer>
+      <ChatContainer ref={ref}>
         <ChatWrapper
           img={state.img}
           name={state.name}
