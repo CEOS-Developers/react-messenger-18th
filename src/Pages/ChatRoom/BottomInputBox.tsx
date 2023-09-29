@@ -7,6 +7,7 @@ type BottomInputBoxProps = {
 
 const BottomInputBox: React.FC<BottomInputBoxProps> = ({ onCreate }) => {
   const [message, setMessage] = useState("");
+  const [isHovered, setIsHovered] = useState(false);
 
   // input_box에 엔터키 입력시 함수
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -52,7 +53,19 @@ const BottomInputBox: React.FC<BottomInputBoxProps> = ({ onCreate }) => {
     <Wrapper>
       <AttachFileImage src={"/img/attach_file.png"} alt="attach_file" />
       {inputBoxWithSentiment}
-      <VectorImg src={"/img/Vector.png"} alt="vector" />
+      <InputBtn
+        onClick={handleSubmit}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <VectorImgContainer>
+          <img
+            src={isHovered ? "/img/vector_active.png" : "/img/Vector.png"}
+            alt="vector"
+            style={{ width: "20px", height: "20px" }}
+          />
+        </VectorImgContainer>
+      </InputBtn>
     </Wrapper>
   );
 };
@@ -64,8 +77,8 @@ const Wrapper = styled.div`
   bottom: 34px;
   display: flex;
   padding: 8px 16px;
-  justify-content: center;
   align-items: center;
+  width: 375px;
 `;
 
 const AttachFileImage = styled.img`
@@ -77,23 +90,38 @@ const InputBoxWrapper = styled.div`
   align-items: center;
 `;
 const InputBox = styled.input`
-  width: 263px;
+width: 243px;
   flex: 1;
   padding: 12px;
   border: none;
   outline: none;
   border-radius: 16px;
   background-color: #f2f1f8;
-  color: #a4a2b7;
   font-weight: 400;
+  color: rgba(51, 51, 58, 1); 
+  font-weight: 400;
+
+  ::placeholder {
+    color: #a4a2b7; 
+    font-weight: 400;
 `;
 
 const SentimentImage = styled.img`
   position: absolute;
-  right: 65px;
+  right: 100px;
   top: 27%;
 `;
-const VectorImg = styled.img`
-  margin: 4px;
+const VectorImgContainer = styled.div`
+  position: relative;
+`;
+
+const InputBtn = styled.button`
+  right: 47px;
+  justify-content: flex-end;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  cursor: pointer;
   padding: 4px;
+  position: absolute;
+  top: 25%;
 `;
