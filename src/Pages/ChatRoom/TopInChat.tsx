@@ -1,10 +1,17 @@
 import { styled } from "styled-components";
+import { useEffect } from "react";
 
-const TopInChat = () => {
+const TopInChat: React.FC<{
+  user: { [key: string]: { id: number; name: string } };
+}> = ({ user }) => {
+  useEffect(() => {
+    console.log("First User ID:", user.first_user.id);
+  }, []);
+
   return (
     <Wrapper>
       <ArrowBackImage src={"/img/arrow_back.png"} alt="arrow_back" />
-      <UserName>김지원</UserName>
+      <UserName>{user.first_user.name} </UserName>
       <RightItems>
         <Search src={"/img/search.png"} alt="search" />
         <Menu src={"/img/menu.png"} alt="menu" />

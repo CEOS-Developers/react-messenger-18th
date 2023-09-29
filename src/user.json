@@ -1,0 +1,11 @@
+{
+  "first_user": {
+    "id": 11,
+    "name": "최영재"
+  },
+
+  "second_user": {
+    "id": 22,
+    "name": "김지원"
+  }
+}
