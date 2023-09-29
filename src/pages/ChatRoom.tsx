@@ -14,6 +14,7 @@ import ChatWrapper from "../components/chatroom/ChatWrapper";
 import { getChatRoomData } from "../utils/accessStorage/getChatRoomData";
 import { setChatRoomData } from "../utils/accessStorage/setChatRoomData";
 import { useScrollToBottom } from "../customHooks/chatroom/useScrollToBottom";
+import { printChatTime } from "../utils/printChatTime";
 
 export default function ChatRoom() {
   const { state } = useLocation();
@@ -32,7 +33,7 @@ export default function ChatRoom() {
       {
         chatText,
         doubleClicked: false,
-        time: "오후 6:22",
+        time: printChatTime(),
         isUser: true,
       },
     ]);
