@@ -7,16 +7,14 @@ import { useSender } from "../assets/SenderContext";
 import back from "../assets/images/back.svg";
 import call from "../assets/images/phone.svg";
 import video from "../assets/images/video.svg";
-
+//profile
 import profile1 from "../assets/images/Profile1.svg";
 
-//profile
-
 function TopContainer() {
-  const { setSender } = useSender();
+  const { sender, setSender } = useSender();
 
   const handleUserInfoClick = () => {
-    setSender("other");
+    setSender(sender === "me" ? "other" : "me");
   };
   return (
     <>

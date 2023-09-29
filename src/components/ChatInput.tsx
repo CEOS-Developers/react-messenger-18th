@@ -54,7 +54,7 @@ function ChattingInput() {
         ))}
       </Container>
       <InputContainer onSubmit={handleSubmit}>
-        <InputDiv>
+        <InputDiv isFocused={isFocused}>
           <CameraIcon src={camera} />
           <InputBox
             type="text"
@@ -113,16 +113,17 @@ const CameraIcon = styled.img`
   margin: 0 4px;
 `;
 
-const InputDiv = styled.div`
+const InputDiv = styled.div<{ isFocused: boolean }>`
   display: flex;
   align-items: center;
-  width: 68%;
+  width: ${(props) => (props.isFocused ? "80%" : "68%")};
 `;
 
 const InputBox = styled.input`
   color: ${color.gray3};
   width: 100%;
   border: none;
+  outline: none;
 
   font-size: 13px;
   font-style: normal;
