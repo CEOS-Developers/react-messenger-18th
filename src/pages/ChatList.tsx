@@ -57,54 +57,56 @@ export default function ChatList() {
           $addClass="position:absolute; bottom:0;"
         />
       </SubHeader>
-      <ChatLists>
-        <MainChats>
-          <MainChatsHeader>
-            <Star color={theme.colors.gray3} />
-            <span>주요 채팅</span>
-          </MainChatsHeader>
-          {mainChat.map((chat) => (
-            <ChatListBox
-              key={chat.id}
-              img={chat.img}
-              mainText={chat.mainText}
-              subText={chat.subText}
-              icon={<Star color={theme.colors.mainColor} />}
-              onClick={() =>
-                navigateTo(`/chatroom/main/${chat.id}`, {
-                  state: {
-                    chatRoomTitle: chat.mainText,
-                    img: chat.img,
-                    name: chat.mainText,
-                    chatRoomState: "main",
-                    chatRoomId: chat.id,
-                  },
-                })
-              }
-            />
-          ))}
-          <Divider state={dividerState.SHORT} $addClass="margin:0.8rem 0;" />
-          {subChat.map((chat) => (
-            <ChatListBox
-              key={chat.id}
-              img={chat.img}
-              mainText={chat.mainText}
-              subText={chat.subText}
-              onClick={() =>
-                navigateTo(`/chatroom/sub/${chat.id}`, {
-                  state: {
-                    chatRoomTitle: chat.mainText,
-                    img: chat.img,
-                    name: chat.mainText,
-                    chatRoomState: "sub",
-                    chatRoomId: chat.id,
-                  },
-                })
-              }
-            />
-          ))}
-        </MainChats>
-      </ChatLists>
+      {subHeaderState === chatListState.GROUP && (
+        <ChatLists>
+          <MainChats>
+            <MainChatsHeader>
+              <Star color={theme.colors.gray3} />
+              <span>주요 채팅</span>
+            </MainChatsHeader>
+            {mainChat.map((chat) => (
+              <ChatListBox
+                key={chat.id}
+                img={chat.img}
+                mainText={chat.mainText}
+                subText={chat.subText}
+                icon={<Star color={theme.colors.mainColor} />}
+                onClick={() =>
+                  navigateTo(`/chatroom/main/${chat.id}`, {
+                    state: {
+                      chatRoomTitle: chat.mainText,
+                      img: chat.img,
+                      name: chat.mainText,
+                      chatRoomState: "main",
+                      chatRoomId: chat.id,
+                    },
+                  })
+                }
+              />
+            ))}
+            <Divider state={dividerState.SHORT} $addClass="margin:0.8rem 0;" />
+            {subChat.map((chat) => (
+              <ChatListBox
+                key={chat.id}
+                img={chat.img}
+                mainText={chat.mainText}
+                subText={chat.subText}
+                onClick={() =>
+                  navigateTo(`/chatroom/sub/${chat.id}`, {
+                    state: {
+                      chatRoomTitle: chat.mainText,
+                      img: chat.img,
+                      name: chat.mainText,
+                      chatRoomState: "sub",
+                      chatRoomId: chat.id,
+                    },
+                  })
+                }
+              />
+            ))}
+          </MainChats>
+        </ChatLists>
+      )}
     </>
   );
 }
