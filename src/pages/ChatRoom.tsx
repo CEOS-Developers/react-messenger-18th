@@ -6,7 +6,7 @@ import ChatBox from '../components/ChatBox';
 const ChatRoom = () => {
   return (
     <Wrapper>
-      <ChatBox text={'배고파요'} color={'purple'} hasTail={true} />
+      <ChatBox text={'배고파요'} hasTail={false} />
     </Wrapper>
   );
 };
