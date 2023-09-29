@@ -89,7 +89,11 @@ const ChatRoom: React.FC<UserInfo> = ({ id }) => {
             text={chatItem.chat}
             hasTail={false}
             isMe={chatItem.userId === userId}
-            time={chatItem.time}
+            time={
+              index === 0 || chatData[index - 1].time !== chatItem.time
+                ? chatItem.time
+                : ''
+            }
             isFirst={
               index === 0 || chatData[index - 1].userId !== chatItem.userId
             }
