@@ -140,6 +140,9 @@ const ChatContainer = styled.div`
   overflow: auto;
   padding: 2rem;
   background-color: ${(props) => props.theme.colors.gray7};
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const ChatInputContainer = styled.div`
