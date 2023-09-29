@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import theme from '../style/theme';
 import PlusIcon from '../static/PlusIcon';
@@ -9,12 +9,17 @@ import SendIcon from '../static/SendIcon'; // SendIcon import
 interface InputInfo {
   inputText: string;
   setInputText: (text: string) => void;
+  isInputFocused: boolean;
+  setInputFocused: (text: boolean) => void;
 }
 
-const ChatInputBar: React.FC<InputInfo> = ({ inputText, setInputText }) => {
+const ChatInputBar: React.FC<InputInfo> = ({
+  inputText,
+  setInputText,
+  isInputFocused,
+  setInputFocused,
+}) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
-
-  const [isInputFocused, setInputFocused] = useState(false);
 
   const handleInputFocus = () => {
     setInputFocused(true);
@@ -43,6 +48,14 @@ const ChatInputBar: React.FC<InputInfo> = ({ inputText, setInputText }) => {
     }
   };
 
+  const handleSubmitOnEnter = (
+    event: React.KeyboardEvent<HTMLInputElement>
+  ) => {
+    if (event.key === 'Enter') {
+      handleSubmit();
+    }
+  };
+
   return (
     <Wrapper>
       <PlusIcon />
@@ -51,6 +64,7 @@ const ChatInputBar: React.FC<InputInfo> = ({ inputText, setInputText }) => {
           ref={inputRef}
           onFocus={handleInputFocus}
           onBlur={handleInputBlur}
+          onKeyUp={handleSubmitOnEnter}
         />
         <SmileIcon />
         {isInputFocused ? (

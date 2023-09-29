@@ -15,8 +15,6 @@ const Wrapper = styled.div`
   height: 50.75rem;
   border-radius: 1rem;
   background: var(--white, #fff);
-
-  border: 1px solid black;
 `;
 
 export default App;
