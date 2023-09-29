@@ -12,6 +12,7 @@ interface BubbleProps {
   index?: number;
   chatData?: ChatRoomData[] | [];
   setChatData?: React.Dispatch<React.SetStateAction<ChatRoomData[] | []>>;
+  setShouldScrollToBottom?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function Bubble({
@@ -23,19 +24,21 @@ export default function Bubble({
   index,
   chatData,
   setChatData,
+  setShouldScrollToBottom,
 }: BubbleProps) {
   const bubbleDoubleClicked = () => {
     if (
       index !== undefined &&
       chatData !== undefined &&
-      setChatData !== undefined
+      setChatData !== undefined &&
+      setShouldScrollToBottom !== undefined
     ) {
       const copyChatData = [...chatData];
       copyChatData[index].doubleClicked = !copyChatData[index].doubleClicked;
       setChatData(copyChatData);
+      setShouldScrollToBottom(false);
       return;
     }
-    return;
   };
   return (
     <BubbleWrapper $isUser={isUser} onDoubleClick={bubbleDoubleClicked}>

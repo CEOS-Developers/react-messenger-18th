@@ -15,6 +15,7 @@ interface ChatWrapperProps {
   index?: number;
   chatData?: ChatRoomData[] | [];
   setChatData?: React.Dispatch<React.SetStateAction<ChatRoomData[] | []>>;
+  setShouldScrollToBottom?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function ChatWrapper({
@@ -28,6 +29,7 @@ export default function ChatWrapper({
   index,
   chatData,
   setChatData,
+  setShouldScrollToBottom,
 }: ChatWrapperProps) {
   return (
     <Wrapper $isUser={isUser}>
@@ -49,6 +51,7 @@ export default function ChatWrapper({
           index={index}
           chatData={chatData}
           setChatData={setChatData}
+          setShouldScrollToBottom={setShouldScrollToBottom}
         />
       </div>
     </Wrapper>

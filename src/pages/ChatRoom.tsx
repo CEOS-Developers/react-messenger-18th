@@ -46,6 +46,7 @@ export default function ChatRoom() {
   ];
   const { navigateBack } = useNavigateOnClick();
   const [chatText, setChatText] = useState("");
+  const [shouldScrollToBottom, setShouldScrollToBottom] = useState(true);
   const [chatData, setChatData] = useState(getChatRoomData(STORAGE_KEY));
   const { ref, scrollToBottom } = useScrollToBottom<HTMLDivElement>();
   const chatInputChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -53,6 +54,7 @@ export default function ChatRoom() {
   };
   const sendBtnClicked = () => {
     setChatText("");
+    setShouldScrollToBottom(true);
     setChatData((prev) => [
       ...prev,
       {
@@ -69,8 +71,10 @@ export default function ChatRoom() {
     }
   };
   useEffect(() => {
+    if (shouldScrollToBottom) {
+      scrollToBottom();
+    }
     setChatRoomData(STORAGE_KEY, chatData);
-    scrollToBottom();
   }, [STORAGE_KEY, chatData]);
   return (
     <>
@@ -106,6 +110,7 @@ export default function ChatRoom() {
               index={index}
               chatData={chatData}
               setChatData={setChatData}
+              setShouldScrollToBottom={setShouldScrollToBottom}
             />
           ))}
       </ChatContainer>
