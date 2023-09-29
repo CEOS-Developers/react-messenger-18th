@@ -58,7 +58,7 @@ export default function ChatRoom() {
     setChatData((prev) => [
       ...prev,
       {
-        chatText,
+        chatText: chatText.trim(),
         doubleClicked: false,
         time: printChatTime(),
         isUser: true,
