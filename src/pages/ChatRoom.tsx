@@ -19,12 +19,14 @@ import { defaultChatRoomData } from "../data/defaultChatRoomData";
 
 export default function ChatRoom() {
   const { state } = useLocation();
+  const USER_NAME = "김현민";
   const STORAGE_KEY = `chatroom${state.chatRoomState}${state.chatRoomId}`;
   const initialChatData = defaultChatRoomData(state);
   const { navigateBack } = useNavigateOnClick();
   const [chatText, setChatText] = useState("");
   const [shouldScrollToBottom, setShouldScrollToBottom] = useState(true);
   const [sendBtnState, setSendBtnState] = useState(false);
+  const [headerClicked, setHeaderClicked] = useState(false);
   const [chatData, setChatData] = useState(getChatRoomData(STORAGE_KEY));
   const { ref, scrollToBottom } = useScrollToBottom<HTMLDivElement>();
   const chatInputChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,6 +37,18 @@ export default function ChatRoom() {
       setSendBtnState(true);
     }
     setChatText(event.target.value);
+  };
+  const pageHeaderClicked = () => {
+    setHeaderClicked((prev) => !prev);
+    setChatData((prevChatData) => {
+      const updatedChatData = prevChatData.map((chatItem) => {
+        return {
+          ...chatItem,
+          isUser: !chatItem.isUser,
+        };
+      });
+      return updatedChatData;
+    });
   };
   const sendBtnClicked = () => {
     if (!sendBtnState) {
@@ -67,9 +81,10 @@ export default function ChatRoom() {
     <>
       <PageHeader
         leftIcon={<LeftArrow onClick={navigateBack} />}
-        title={state.chatRoomTitle}
+        title={!headerClicked ? state.chatRoomTitle : USER_NAME}
         rightIcon1={<Search />}
         rightIcon2={<Box style={{ marginLeft: "1.2rem" }} />}
+        onClick={pageHeaderClicked}
       />
       <Divider state={dividerState.LONGTHICK} />
       <ChatContainer ref={ref}>
@@ -90,6 +105,8 @@ export default function ChatRoom() {
           chatData.map((data, index) => (
             <ChatWrapper
               key={data.chatText + index}
+              img={!data.isUser ? state.img : undefined}
+              name={!data.isUser ? state.name : undefined}
               chatText={data.chatText}
               doubleClicked={data.doubleClicked}
               time={data.time}

@@ -6,6 +6,7 @@ interface PageHeaderProps {
   title?: string;
   rightIcon1: ReactNode;
   rightIcon2?: ReactNode;
+  onClick?: () => void;
 }
 
 export default function PageHeader({
@@ -13,9 +14,10 @@ export default function PageHeader({
   title,
   rightIcon1,
   rightIcon2,
+  onClick,
 }: PageHeaderProps) {
   return (
-    <PageHeaderWrapper>
+    <PageHeaderWrapper onClick={onClick}>
       <LeftIconContainer>
         {leftIcon}
         {title ? <span>{title}</span> : null}
