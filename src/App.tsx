@@ -5,6 +5,7 @@ import { ThemeProvider } from "styled-components";
 import theme from "./style/theme";
 import { styled } from "styled-components";
 import { RecoilRoot } from "recoil";
+import React from "react";
 
 function App() {
   return (

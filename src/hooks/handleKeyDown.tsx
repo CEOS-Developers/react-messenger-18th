@@ -1,16 +1,15 @@
-// handleKeyDown.js 
-import { useState } from "react";
+// handleKeyDown.js
 import { v4 as uuidv4 } from "uuid";
 import { getTime } from "./getTime";
 export function handleKeyDown(
-  event,
-  inputMessage,
-  isUser1,
-  setUser1Message,
-  user1Message,
-  setUser2Message,
-  user2Message,
-  setInputMessage
+  event: any,
+  inputMessage: string,
+  isUser1: boolean,
+  setUser1Message: any,
+  user1Message: any,
+  setUser2Message: any,
+  user2Message: any,
+  setInputMessage: any
 ) {
   // 한글 입력시 두 번 입력 방지
   if (event.nativeEvent.isComposing) {

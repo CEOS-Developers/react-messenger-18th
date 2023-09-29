@@ -4,13 +4,12 @@ import { Icon } from "../atom/Icon";
 import { Input } from "../atom/Input";
 import mediaAddIcon from "../../assets/images/미디어추가.svg";
 import voiceAddIcon from "../../assets/images/음성아이콘.svg";
-import { Text } from "../atom/Text";
 import { useRecoilState, useRecoilValue } from "recoil";
 import {
   isUser1State,
   user1MessageState,
   user2MesasgeState,
-} from "../../recoil/atom.ts";
+} from "../../recoil/atom";
 
 import { handleKeyDown } from "../../hooks/handleKeyDown";
 
@@ -20,11 +19,11 @@ function ChatInput() {
   const [user1Message, setUser1Message] = useRecoilState(user1MessageState);
   const [user2Message, setUser2Message] = useRecoilState(user2MesasgeState);
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputMessage(e.target.value);
   };
 
-  const onKeyDown = (event) => {
+  const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     handleKeyDown(
       event,
       inputMessage,
@@ -37,27 +36,27 @@ function ChatInput() {
     );
   };
 
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
-    inputRef.current.focus();
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
   }, []);
 
   return (
-    <Flex width="375px" justify="center" height="56px">
+    <Flex width="375px" justify="center" height="56px" align="center">
       <Flex gap="12">
         <Icon src={mediaAddIcon} />
         <Input
           width="279px"
-          bgColor="chatBackground"
+          bgcolor="chatBackground"
           color="gray"
           value={inputMessage}
           onKeyDown={onKeyDown}
           onChange={handleChange}
           inputRef={inputRef}
-        >
-          <Text />
-        </Input>
+        ></Input>
         <Icon src={voiceAddIcon} />
       </Flex>
     </Flex>

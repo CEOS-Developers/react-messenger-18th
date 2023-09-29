@@ -4,13 +4,14 @@ import { Space } from "../atom/Space";
 import { Text } from "../atom/Text";
 import statusIcon from "../../assets/images/상태바.svg";
 import { getTime } from "../../hooks/getTime";
+
 function StatusBar() {
   return (
     <>
-      <Flex justify="space-between" width="343px">
+      <Flex justify="space-between" width="343px" margin="0 auto">
         <Flex>
           <Space width="6px" />
-          <Text fontSize="15px" lineHeight="21px" font="Segoe" weight="500">
+          <Text size="15px" lineheight="21px" font="Segoe" weight="500">
             {getTime("HH:mm")}
           </Text>
           <Space width="6px" />

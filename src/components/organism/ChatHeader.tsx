@@ -10,7 +10,7 @@ function ChatHeader() {
       gap="14"
       height="90px"
       justify="center"
-      borderColor="offWhite"
+      bordercolor="offWhite"
     >
       <StatusBar />
       <ChatNav />

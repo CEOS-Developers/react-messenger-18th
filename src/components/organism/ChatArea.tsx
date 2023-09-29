@@ -8,15 +8,22 @@ import {
   isUser1State,
   user1MessageState,
   user2MesasgeState,
-} from "../../recoil/atom.ts";
+} from "../../recoil/atom";
 import dayjs from "dayjs";
 import { sortMessagesByTime } from "../../hooks/sortMessageByTime";
+
+export interface ChatMessage {
+  time: string;
+  id: string;
+  text: string;
+}
+type ChatMessages = ChatMessage[];
 
 function ChatArea() {
   // 전역 변수 구독
   const isUser1 = useRecoilValue(isUser1State);
-  const user1Message = useRecoilValue(user1MessageState);
-  const user2Message = useRecoilValue(user2MesasgeState);
+  const user1Message: ChatMessages = useRecoilValue(user1MessageState);
+  const user2Message: ChatMessages = useRecoilValue(user2MesasgeState);
 
   // user1Message와 user2Message를 합친 후 시간을 기준으로 정렬
   const combinedMessages = sortMessagesByTime([
@@ -39,7 +46,7 @@ function ChatArea() {
     };
   });
 
-  const chatContainerRef = useRef(null);
+  const chatContainerRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     // 메시지가 추가될 때마다 스크롤을 아래로 이동
     if (chatContainerRef.current) {
@@ -49,7 +56,7 @@ function ChatArea() {
   }, [sortedMessagesWithUser]);
 
   return (
-    <Flex color="chatBackground" borderBottom="1px" borderColor="offWhite">
+    <Flex color="chatBackground" bordercolor="offWhite">
       <Flex
         width="95%"
         height="639px"

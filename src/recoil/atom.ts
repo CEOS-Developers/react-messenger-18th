@@ -17,7 +17,7 @@ export const user1MessageState = atom({
     },
   ],
 });
-
+  
 export const user2MesasgeState = atom({
   key: "user2MessageState",
   default: [],

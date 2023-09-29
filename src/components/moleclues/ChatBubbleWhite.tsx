@@ -1,37 +1,36 @@
 import React from "react";
 import { Text } from "../atom/Text";
 import { Flex } from "../atom/Flex";
-function ChatBubbleWhite({ text, time }) {
+
+interface ChatBubbleWhiteProps {
+  text: string;
+  time: string;
+}
+
+function ChatBubbleWhite({ text, time }: ChatBubbleWhiteProps) {
   return (
     <Flex
-      borderRadius="16px 16px 16px 0px"
+      radius="16px 16px 16px 0px"
       gap="4"
       color="white"
       direction="column"
       padding="10px"
       align="flex-start"
-      maxWidth="266px"
+      maxwidth="266px"
       self="flex-start"
     >
       <Flex self="flex-start">
         <Text
           weight="400"
           size="14px"
-          lineHeight="21px"
+          lineheight="21px"
           align="left"
           self="flex-start"
         >
           {text}
         </Text>
       </Flex>
-      <Text
-        font="Lato"
-        weight="400"
-        size="10px"
-        lineHeight="16px"
-        color="gray"
-        type="div"
-      >
+      <Text font="Lato" weight="400" size="10px" lineheight="16px" color="gray">
         {time}
       </Text>
     </Flex>
