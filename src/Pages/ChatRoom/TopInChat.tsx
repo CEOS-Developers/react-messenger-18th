@@ -1,5 +1,4 @@
 import { styled } from "styled-components";
-import { useEffect } from "react";
 
 const TopInChat: React.FC<{
   currentUser: { id: number; name: string };

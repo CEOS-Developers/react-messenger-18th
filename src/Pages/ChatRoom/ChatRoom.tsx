@@ -2,9 +2,8 @@ import HomeBar from "HomeBar";
 import StatusBar from "StatusBar";
 import BottomInputBox from "./BottomInputBox";
 import TopInChat from "./TopInChat";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import InchatList from "./InchatList";
-import message from "message.json";
 import user from "user.json";
 import { styled } from "styled-components";
 

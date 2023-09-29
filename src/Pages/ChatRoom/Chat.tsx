@@ -56,6 +56,7 @@ const Content = styled.div<{ isCurrentUser: boolean }>`
   font-weight: 400;
   padding: 8px 12px;
   margin-top: 4px;
+  margin-left: 16px;
 `;
 
 const DateLeft = styled.div`
