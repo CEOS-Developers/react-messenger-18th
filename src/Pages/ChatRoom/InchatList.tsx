@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 import Chat from "./Chat";
 
 type InchatListProps = {
-  chat: Array<{ value: string; id: number; sender: boolean }>;
+  chat: Array<{ value: string; id: number; sender: boolean; date: string }>;
 };
 
 const InchatList: React.FC<InchatListProps> = ({ chat }) => {
@@ -10,7 +10,13 @@ const InchatList: React.FC<InchatListProps> = ({ chat }) => {
     <Wrapper>
       <Container>
         {chat.map((it) => (
-          <Chat value={it.value} id={it.id} sender={it.sender} key={it.id} />
+          <Chat
+            value={it.value}
+            id={it.id}
+            sender={it.sender}
+            date={it.date}
+            key={it.id}
+          />
         ))}
       </Container>
     </Wrapper>
@@ -18,7 +24,6 @@ const InchatList: React.FC<InchatListProps> = ({ chat }) => {
 };
 
 export default InchatList;
-
 const Wrapper = styled.div`
   height: 605px;
 `;
@@ -26,11 +31,16 @@ const Wrapper = styled.div`
 const Container = styled.div`
   position: fixed;
   width: 375px;
-  height: 100%;
+  height: 605px;
   overflow: auto;
   display: flex;
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
   align-items: flex-end;
   flex-direction: column;
   bottom: 90px;
+  > * {
+    &:first-child {
+      margin-top: auto !important;
+    }
+  }
 `;
