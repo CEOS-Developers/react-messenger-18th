@@ -17,10 +17,10 @@ export default function PageHeader({
   onClick,
 }: PageHeaderProps) {
   return (
-    <PageHeaderWrapper>
+    <PageHeaderWrapper onClick={onClick}>
       <LeftIconContainer>
         {leftIcon}
-        {title ? <span onClick={onClick}>{title}</span> : null}
+        {title ? <span>{title}</span> : null}
       </LeftIconContainer>
       <RightIconContainer>
         {rightIcon1}

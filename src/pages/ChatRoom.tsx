@@ -106,8 +106,20 @@ export default function ChatRoom() {
           chatData.map((data, index) => (
             <ChatWrapper
               key={data.chatText + index}
-              img={!data.isUser ? state.img : undefined}
-              name={!data.isUser ? state.name : undefined}
+              img={
+                !data.isUser
+                  ? headerClicked
+                    ? "/img/profile.jpg"
+                    : state.img
+                  : undefined
+              }
+              name={
+                !data.isUser
+                  ? headerClicked
+                    ? USER_NAME
+                    : state.name
+                  : undefined
+              }
               chatText={data.chatText}
               doubleClicked={data.doubleClicked}
               time={data.time}

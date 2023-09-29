@@ -5,7 +5,6 @@ export function useScrollToBottom<U extends HTMLElement>() {
   const scrollToBottom = () => {
     if (ref.current) {
       const { scrollHeight, clientHeight } = ref.current;
-      console.log(scrollHeight, clientHeight);
       ref.current.scrollTop = scrollHeight - clientHeight;
     }
   };

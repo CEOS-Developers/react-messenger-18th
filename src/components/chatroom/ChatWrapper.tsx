@@ -31,7 +31,6 @@ function ChatWrapper({
   setChatData,
   setShouldScrollToBottom,
 }: ChatWrapperProps) {
-  console.log("hi");
   return (
     <Wrapper $isUser={isUser}>
       {img ? (
