@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { color } from "../assets/styles/color";
+import { useSender } from "../assets/SenderContext";
 
 //components
 import ChattingItem from "./ChattingItem";
@@ -14,13 +15,20 @@ import camera from "../assets/images/camera.svg";
 import sendingbtn from "../assets/images/sendingbtn.svg";
 
 function ChattingInput() {
+  const { sender, setSender } = useSender();
   const [inputMessage, setInputMessage] = useState("");
-  const [messages, setMessages] = useState<string[]>([]);
+  const [messages, setMessages] = useState<{ text: string; sender: string }[]>(
+    []
+  );
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (inputMessage.trim() !== "") {
-      setMessages((prevMessages) => [...prevMessages, inputMessage]);
+      const newMessage = {
+        text: inputMessage,
+        sender: sender,
+      };
+      setMessages((prevMessages) => [...prevMessages, newMessage]);
       setInputMessage("");
     }
   };
@@ -36,10 +44,15 @@ function ChattingInput() {
   };
   return (
     <>
-      <Container>
+      <Container sender={sender}>
         {messages.map((message, index) => (
-          <ChattingItem key={index} message={message} />
+          <ChattingItem
+            key={index}
+            message={message.text}
+            sender={message.sender}
+          />
         ))}
+        <ChattingItem message="Hello!" sender="other" />
       </Container>
       <InputContainer onSubmit={handleSubmit}>
         <InputDiv>
@@ -71,14 +84,25 @@ function ChattingInput() {
 
 export default ChattingInput;
 
-const Container = styled.div`
+const Container = styled.div<{ sender: string }>`
   display: flex;
   flex-direction: column;
-  align-items: end;
 
   width: 375px;
   height: 630px;
   flex-shrink: 0;
+
+  /* ${(props) =>
+    props.sender === "me" &&
+    css`
+      align-items: flex-end; // 오른쪽 정렬
+    `}
+
+  ${(props) =>
+    props.sender !== "me" &&
+    css`
+      align-items: flex-start; // 왼쪽 정렬
+    `} */
 `;
 
 const InputContainer = styled.form`

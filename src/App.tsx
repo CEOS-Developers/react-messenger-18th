@@ -2,13 +2,14 @@ import React from "react";
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 import ChattingRoom from "./pages/ChattingRoom";
+import { SenderProvider } from "./assets/SenderContext";
 
 function App() {
   return (
-    <>
+    <SenderProvider>
       <GlobalStyle />
       <ChattingRoom />
-    </>
+    </SenderProvider>
   );
 }
 
