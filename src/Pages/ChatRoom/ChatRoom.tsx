@@ -34,7 +34,6 @@ const ChatRoom: React.FC = () => {
       date: time,
     };
     setChat([...chat, newItem]);
-    console.log(time);
   };
 
   return (

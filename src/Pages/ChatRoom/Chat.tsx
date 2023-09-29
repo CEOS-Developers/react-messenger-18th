@@ -1,21 +1,24 @@
+import React from "react";
 import { styled } from "styled-components";
 
-const Chat: React.FC<{
+type ChatProps = {
   value: string;
   id: number;
   sender: boolean;
   date: string;
-}> = ({ value, date }) => {
+  showDate: boolean;
+};
+
+const Chat: React.FC<ChatProps> = ({ value, date, showDate }) => {
   return (
     <div className="Chat">
       <ChatContainer>
-        <Date>{date}</Date>
+        {showDate && <Date>{date}</Date>}
         <Content>{value}</Content>
       </ChatContainer>
     </div>
   );
 };
-
 export default Chat;
 
 const ChatContainer = styled.div`

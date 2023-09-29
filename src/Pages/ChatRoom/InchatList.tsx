@@ -9,15 +9,21 @@ const InchatList: React.FC<InchatListProps> = ({ chat }) => {
   return (
     <Wrapper>
       <Container>
-        {chat.map((it) => (
-          <Chat
-            value={it.value}
-            id={it.id}
-            sender={it.sender}
-            date={it.date}
-            key={it.id}
-          />
-        ))}
+        <Container id="chat-container">
+          {chat.map((message, index) => (
+            <Chat
+              value={message.value}
+              id={message.id}
+              sender={message.sender}
+              date={message.date}
+              key={message.id}
+              showDate={
+                index === chat.length - 1 ||
+                message.date !== chat[index + 1].date
+              }
+            />
+          ))}
+        </Container>
       </Container>
     </Wrapper>
   );
