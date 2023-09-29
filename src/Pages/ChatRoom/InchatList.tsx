@@ -8,11 +8,11 @@ type InchatListProps = {
 const InchatList: React.FC<InchatListProps> = ({ chat }) => {
   return (
     <Wrapper>
-      <div>
+      <Container>
         {chat.map((it) => (
           <Chat value={it.value} id={it.id} sender={it.sender} key={it.id} />
         ))}
-      </div>
+      </Container>
     </Wrapper>
   );
 };
@@ -20,12 +20,17 @@ const InchatList: React.FC<InchatListProps> = ({ chat }) => {
 export default InchatList;
 
 const Wrapper = styled.div`
+  height: 605px;
+`;
+
+const Container = styled.div`
   position: fixed;
   width: 375px;
-
+  height: 100%;
+  overflow: auto;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   justify-content: flex-end;
+  align-items: flex-end;
+  flex-direction: column;
   bottom: 90px;
 `;

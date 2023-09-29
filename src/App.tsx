@@ -32,14 +32,17 @@ const GlobalStyle = createGlobalStyle`
      height: 100%;
      margin: 0;
      padding: 0;
-   }`;
+   }
+  
+  }
+   
+   `;
 
 const Wrapper = styled.div`
-  height: 100%;
-  width: 0%;
+  width: 375px;
+  height: 812px;
   display: flex;
   font-family: "Pretendard-Regular";
   justify-content: center;
   align-items: center;
-  overflow: hidden;
 `;

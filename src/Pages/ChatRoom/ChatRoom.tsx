@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import InchatList from "./InchatList";
 import message from "message.json";
 import user from "user.json";
+import { styled } from "styled-components";
 
 const ChatRoom: React.FC = () => {
   const [chat, setChat] = useState<
@@ -30,14 +31,17 @@ const ChatRoom: React.FC = () => {
   }, []);
 
   return (
-    <div className="ChatRoom">
+    <Container>
       <StatusBar />
       <TopInChat user={user} />
       <InchatList chat={chat} />
       <BottomInputBox onCreate={onCreate} />
       <HomeBar />
-    </div>
+    </Container>
   );
 };
 
 export default ChatRoom;
+const Container = styled.div`
+  height: 605px;
+`;

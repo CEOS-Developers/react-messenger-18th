@@ -20,6 +20,7 @@ const ChatContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  max-width: 216px;
 `;
 
 const Content = styled.div`
@@ -27,6 +28,7 @@ const Content = styled.div`
   outline: none;
   border-radius: 16px;
   background-color: #1263dc;
+
   color: rgba(242, 241, 248, 1);
   font-weight: 400;
   padding: 8px 12px;
