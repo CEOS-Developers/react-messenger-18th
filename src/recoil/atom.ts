@@ -5,6 +5,7 @@ export const isUser1State = atom({ key: "isUser1State", default: true });
 export const user1MessageState = atom({
   key: "user1MessageState",
   default: [],
+  // localStorage와 atom을 연동
   effects: [
     ({ setSelf, onSet }) => {
       const savedData = localStorage.getItem("user1Message");
@@ -21,6 +22,7 @@ export const user1MessageState = atom({
 export const user2MesasgeState = atom({
   key: "user2MessageState",
   default: [],
+  // localStorage와 atom을 연동
   effects: [
     ({ setSelf, onSet }) => {
       const savedData = localStorage.getItem("user2Message");

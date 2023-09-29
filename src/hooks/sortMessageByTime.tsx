@@ -1,4 +1,4 @@
-// sortMessagesByTime.js
+// 메시지들을 시간순에 따라 정렬
 export function sortMessagesByTime(messages) {
   return messages.sort((a, b) => {
     const timeA = a.time;

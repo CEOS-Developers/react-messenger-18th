@@ -1,4 +1,4 @@
-import React,{ChangeEvent} from "react";
+import React, { ChangeEvent } from "react";
 import styled from "styled-components";
 
 interface TextProps {
@@ -6,7 +6,6 @@ interface TextProps {
   weight?: string;
   color?: string;
   children: React.ReactNode;
-  as?: string;
   spacing?: string;
   font?: string;
   cursor?: string;
@@ -36,7 +35,6 @@ export const Text: React.FC<TextProps> = ({
   weight = "inherit",
   color = "inherit",
   children,
-  as = "span",
   spacing = "-0px",
   font = "Pretendard",
   cursor = "inherit",
@@ -48,7 +46,6 @@ export const Text: React.FC<TextProps> = ({
 }: TextProps) => {
   return (
     <StyledText
-      as={as}
       size={size}
       weight={weight}
       color={color}

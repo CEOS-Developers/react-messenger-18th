@@ -1,5 +1,3 @@
-
-
 const theme = {
   // 사용할 색깔 모음
   colors: {
