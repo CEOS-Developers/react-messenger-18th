@@ -18,7 +18,7 @@ interface ChatWrapperProps {
   setShouldScrollToBottom?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function ChatWrapper({
+function ChatWrapper({
   img,
   name,
   chatText,
@@ -31,6 +31,7 @@ export default function ChatWrapper({
   setChatData,
   setShouldScrollToBottom,
 }: ChatWrapperProps) {
+  console.log("hi");
   return (
     <Wrapper $isUser={isUser}>
       {img ? (
@@ -68,3 +69,5 @@ const ChatterName = styled.div`
     ${(props) => props.theme.fontStyles.body1}
   }
 `;
+
+export default React.memo(ChatWrapper);
