@@ -18,8 +18,12 @@ import sendingbtn from "../assets/images/sendingbtn.svg";
 function ChattingInput() {
   const { sender, setSender } = useSender();
   const [inputMessage, setInputMessage] = useState("");
-  const [messages, setMessages] =
-    useState<{ text: string; sender: string }[]>(chatData);
+  const [messages, setMessages] = useState<{ text: string; sender: string }[]>(
+    () => {
+      const storedMessages = localStorage.getItem("chatMessages");
+      return storedMessages ? JSON.parse(storedMessages) : chatData;
+    }
+  );
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,6 +36,10 @@ function ChattingInput() {
       setInputMessage("");
     }
   };
+
+  useEffect(() => {
+    localStorage.setItem("chatMessages", JSON.stringify(messages));
+  }, [messages]);
 
   //전송버튼 팝업
   const [isFocused, setIsFocused] = useState(false);
@@ -126,15 +134,20 @@ const InputDiv = styled.div<{ isFocused: boolean }>`
 `;
 
 const InputBox = styled.input`
-  color: ${color.gray3};
+  color: ${color.black};
   width: 100%;
   border: none;
   outline: none;
 
+  font-family: "Pretendard-Regular";
   font-size: 13px;
   font-style: normal;
   font-weight: 400;
   line-height: 130%;
+
+  &::placeholder {
+    color: ${color.gray3};
+  }
 `;
 
 const IconDiv = styled.div`

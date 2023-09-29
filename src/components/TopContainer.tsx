@@ -8,8 +8,6 @@ import userData from "../assets/data/userdata.json";
 import back from "../assets/images/back.svg";
 import call from "../assets/images/phone.svg";
 import video from "../assets/images/video.svg";
-//profile
-import profile1 from "../assets/images/Profile1.svg";
 
 function TopContainer() {
   const { sender, setSender } = useSender();
