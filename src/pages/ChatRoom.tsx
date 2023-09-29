@@ -39,7 +39,7 @@ export default function ChatRoom() {
     ]);
   };
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.keyCode === 13) {
+    if (event.key === "Enter") {
       sendBtnClicked();
     }
   };
