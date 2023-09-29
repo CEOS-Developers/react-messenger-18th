@@ -42,7 +42,7 @@ export default function Bubble({
   };
   return (
     <BubbleWrapper $isUser={isUser} onDoubleClick={bubbleDoubleClicked}>
-      <BubbleText>
+      <BubbleText $isUser={isUser}>
         <p>{chatText}</p>
       </BubbleText>
       {file ? (
@@ -90,8 +90,10 @@ const BubbleWrapper = styled.div<{ $isUser: boolean }>`
   }
 `;
 
-const BubbleText = styled.div`
+const BubbleText = styled.div<{ $isUser: boolean }>`
   margin-bottom: 0.8rem;
+  display: flex;
+  justify-content: ${(props) => (props.$isUser ? "flex-end" : null)};
 `;
 
 const BubbleFile = styled.div`
