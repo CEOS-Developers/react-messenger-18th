@@ -82,34 +82,32 @@ export default function ChatRoom() {
       />
       <Divider state={dividerState.LONGTHICK} />
       <ChatContainer ref={ref}>
-        {initialChatData
-          ? initialChatData.map((data, index) => (
-              <ChatWrapper
-                key={data.chatText + index}
-                img={data.img}
-                name={data.name}
-                file={data.file}
-                chatText={data.chatText}
-                doubleClicked={data.doubleClicked}
-                time={data.time}
-                isUser={data.isUser}
-              />
-            ))
-          : null}
-        {chatData
-          ? chatData.map((data, index) => (
-              <ChatWrapper
-                key={data.chatText + index}
-                chatText={data.chatText}
-                doubleClicked={data.doubleClicked}
-                time={data.time}
-                isUser={data.isUser}
-                index={index}
-                chatData={chatData}
-                setChatData={setChatData}
-              />
-            ))
-          : null}
+        {initialChatData &&
+          initialChatData.map((data, index) => (
+            <ChatWrapper
+              key={data.chatText + index}
+              img={data.img}
+              name={data.name}
+              file={data.file}
+              chatText={data.chatText}
+              doubleClicked={data.doubleClicked}
+              time={data.time}
+              isUser={data.isUser}
+            />
+          ))}
+        {chatData &&
+          chatData.map((data, index) => (
+            <ChatWrapper
+              key={data.chatText + index}
+              chatText={data.chatText}
+              doubleClicked={data.doubleClicked}
+              time={data.time}
+              isUser={data.isUser}
+              index={index}
+              chatData={chatData}
+              setChatData={setChatData}
+            />
+          ))}
       </ChatContainer>
       <ChatInputContainer>
         <Plus />

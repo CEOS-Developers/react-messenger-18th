@@ -25,11 +25,17 @@ export default function Bubble({
   setChatData,
 }: BubbleProps) {
   const bubbleDoubleClicked = () => {
-    if (index && chatData && setChatData) {
+    if (
+      index !== undefined &&
+      chatData !== undefined &&
+      setChatData !== undefined
+    ) {
       const copyChatData = [...chatData];
       copyChatData[index].doubleClicked = !copyChatData[index].doubleClicked;
       setChatData(copyChatData);
+      return;
     }
+    return;
   };
   return (
     <BubbleWrapper $isUser={isUser} onDoubleClick={bubbleDoubleClicked}>
