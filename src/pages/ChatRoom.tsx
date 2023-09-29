@@ -37,6 +37,11 @@ export default function ChatRoom() {
       },
     ]);
   };
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.keyCode === 13) {
+      sendBtnClicked();
+    }
+  };
   useEffect(() => {
     setChatRoomData(STORAGE_KEY, chatData);
     scrollToBottom();
@@ -104,6 +109,7 @@ export default function ChatRoom() {
           placeholder="입력하세요"
           onChange={chatInputChanged}
           value={chatText}
+          onKeyDown={handleKeyPress}
         />
         <SendBtnWrapper $active={chatText !== ""} onClick={sendBtnClicked}>
           <Send />

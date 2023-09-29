@@ -28,6 +28,7 @@ const ProfileWrapper = styled.div<ProfileProps>`
   background-image: url(${(props) => props.$img});
   background-size: cover;
   border-radius: 50%;
+  cursor: pointer;
   width: ${(props) => props.$size};
   height: ${(props) => props.$size};
   ${(props) => props.$addClass}
