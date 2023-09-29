@@ -106,7 +106,7 @@ const InputBox = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 18rem;
+  width: 17rem;
   height: 2.25rem;
   border-radius: 1rem;
   border: 0.24px solid ${theme.colors.g4};

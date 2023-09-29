@@ -44,7 +44,10 @@ const ChatBox: React.FC<ChatBoxProps> = ({
       )}
       {!isMe && isFirst && (
         <YourBox>
-          <ProfileSmallIcon />
+          <div style={{ width: '36px' }}>
+            <ProfileSmallIcon />
+          </div>
+
           <div>
             <UserName>{user}</UserName>
             <YourChat style={{ borderRadius: '0rem 0.75rem 0.75rem 0.75rem' }}>
@@ -93,12 +96,11 @@ const YourBox = styled.div`
 
   font-size: ${theme.fonts.body2};
 `;
-
 const YourChat = styled.div`
   ${commonStyles}
   border-radius: 0.75rem;
   background-color: ${theme.colors.g2};
-
+  overflow: hidden;
   display: inline-block;
 `;
 
@@ -112,16 +114,6 @@ const MyChat = styled.div`
 
 const Wrapper = styled.div`
   margin: 10px;
-`;
-
-const ChatWrapperTail = styled.div`
-  ${commonStyles}
-  border-radius: 0rem 0.75rem 0.75rem 0.75rem;
-`;
-
-const ChatWrapper = styled.div`
-  ${commonStyles}
-  border-radius: 0.75rem;
 `;
 
 export default ChatBox;
