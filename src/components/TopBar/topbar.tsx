@@ -6,15 +6,15 @@ const TopBar = () => {
   return (
     <TopBarContainer>
       <StatusBar />
-      {/* <ChatTitle /> */}
     </TopBarContainer>
   );
 };
 
 const TopBarContainer = styled.div`
   width: 23.4375rem;
-  height: 6.5625rem;
+  height: 2.75rem;
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;

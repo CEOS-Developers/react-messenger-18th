@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import cameraIcon from "../../assets/images/Camera.svg";
-import bottomBar from "../../assets/images/LightBottomBar.svg";
 import appStoreIcon from "../../assets/images/App-Store.svg";
 import dictationIcon from "../../assets/images/Dictation.svg";
+
+//채팅 입력받는 component
 
 interface ChatInputProps {
   onSend: (message: string) => void;
@@ -12,14 +13,14 @@ interface ChatInputProps {
 const ChatInput: React.FC<ChatInputProps> = ({ onSend }) => {
   const [inputValue, setInputValue] = useState<string>("");
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
-  };
-
   const handleInputEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      onSend(inputValue);
+      if (inputValue.trim() !== "") {
+        // 입력값이 공백인 경우 예외 처리
+        onSend(inputValue);
+      }
+      // 입력값 초기화
       setInputValue("");
     }
   };
@@ -28,15 +29,17 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSend }) => {
     <BottomBarContainer>
       <Camera src={cameraIcon} alt="camera Icon" />
       <AppStore src={appStoreIcon} alt="camera Icon" />
-      <Input
-        placeholder="Send Messages..."
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        // onChange={handleInputChange}
-        onKeyDown={handleInputEnter}
-      />
-      <Dictation src={dictationIcon} alt="dictation Icon" />
-      {/* <BottomBarIcon src={bottomBar} alt="bottom bar Icon" /> */}
+      <InputContainer>
+        <Input
+          autoFocus
+          placeholder="Send Messages..."
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          onKeyPress={handleInputEnter}
+          //한글 입력의 경우: 마지막 단어가 input으로 들어가는 에러 방지하기 위해
+        />
+        <Dictation src={dictationIcon} alt="dictation icon" />
+      </InputContainer>
     </BottomBarContainer>
   );
 };
@@ -46,7 +49,7 @@ const BottomBarContainer = styled.div`
   align-items: center;
   gap: 1.38rem;
   position: relative;
-  width: 22.3125rem;
+  width: 100%;
   height: 2.5rem;
   margin-bottom: 0.81rem;
 `;
@@ -62,21 +65,11 @@ const AppStore = styled.img`
   height: 1.58331rem;
 `;
 
-const BottomBarIcon = styled.img`
-  width: 23.4375rem;
-  height: 2.125rem;
-  position: absolute;
-  bottom: 0;
-`;
-
-const Dictation = styled.img`
-  width: 1.6875rem;
-  height: 1.6875rem;
-`;
-
 const Input = styled.input`
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
+  margin-right: 1.03rem;
+  height: 2.125rem;
   border: 1px solid var(--gray-3);
   outline: none;
   padding-left: 0.84rem;
@@ -86,6 +79,19 @@ const Input = styled.input`
   &:focus {
     box-shadow: none;
   }
+`;
+
+const InputContainer = styled.span`
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+`;
+
+const Dictation = styled.img`
+  width: 1.6875rem;
+  height: 1.6875rem;
+  position: absolute; //input fiield 안에 위치
+  right: 1.25rem;
 `;
 
 export default ChatInput;

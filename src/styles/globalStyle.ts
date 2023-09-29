@@ -23,7 +23,8 @@ const GlobalStyle = createGlobalStyle`
         justify-content: center;
         width: 23.4375rem;
         height: 50.75rem;
-        border: solid var(--gray-1);
+        border-radius:1.5rem;
+        border: solid var(--gray-1); //나중에 없애도됨
     }
 `;
 

@@ -22,7 +22,7 @@ const StatusBarContainer = styled.div`
   height: 2.75rem;
   /* width: 100vw;
   height: 5vh; */
-  position: fixed;
+  position: relative;
 `;
 const TimeIcon = styled.img`
   width: 3.375rem;
