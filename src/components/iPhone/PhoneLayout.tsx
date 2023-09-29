@@ -23,7 +23,7 @@ export default function PhoneLayout() {
 const Container = styled.div`
   position: relative;
   width: 37.5rem;
-  height: 81.2rem;
+  height: 81.4rem;
   border: 1px solid black;
 `;
 

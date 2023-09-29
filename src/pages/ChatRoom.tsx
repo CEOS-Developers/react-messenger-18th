@@ -73,6 +73,7 @@ export default function ChatRoom() {
   };
   useEffect(() => {
     if (shouldScrollToBottom) {
+      setSendBtnState(false);
       scrollToBottom();
     }
     setChatRoomData(STORAGE_KEY, chatData);
