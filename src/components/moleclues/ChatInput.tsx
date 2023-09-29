@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { Flex } from "../atom/Flex";
 import { Icon } from "../atom/Icon";
 import { Input } from "../atom/Input";
-import mediaAddIcon from "../../assets/images/미디어추가.svg";
-import voiceAddIcon from "../../assets/images/음성아이콘.svg";
+import mediaAddIcon from "../../assets/images/mediaAddIcon.svg";
+import voiceAddIcon from "../../assets/images/voiceAddIcon.svg";
 import { useRecoilState, useRecoilValue } from "recoil";
 import {
   isUser1State,

@@ -2,7 +2,7 @@ import React from "react";
 import { Flex } from "../atom/Flex";
 import { Space } from "../atom/Space";
 import { Text } from "../atom/Text";
-import statusIcon from "../../assets/images/상태바.svg";
+import statusIcon from "../../assets/images/statusIcon.svg";
 import { getTime } from "../../hooks/getTime";
 
 function StatusBar() {

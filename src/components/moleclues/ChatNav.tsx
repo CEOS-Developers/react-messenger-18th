@@ -2,9 +2,9 @@ import React from "react";
 import { Flex } from "../atom/Flex";
 import { Icon } from "../atom/Icon";
 import { Text } from "../atom/Text";
-import chatAddIcon from "../../assets/images/채팅추가.svg";
-import searchIcon from "../../assets/images/검색.svg";
-import backIcon from "../../assets/images/뒤로가기.svg";
+import chatAddIcon from "../../assets/images/chatAddIcon.svg";
+import searchIcon from "../../assets/images/serachIcon.svg";
+import backIcon from "../../assets/images/backIcon.svg";
 import { useRecoilState } from "recoil";
 import { isUser1State } from "../../recoil/atom";
 function ChatNav() {
