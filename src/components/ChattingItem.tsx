@@ -7,15 +7,22 @@ import userData from "../assets/data/userdata.json";
 interface ChattingItemProps {
   message: string;
   sender: string;
+  isLastItem: boolean;
 }
 
-function ChattingItem({ message, sender }: ChattingItemProps) {
+function ChattingItem({ message, sender, isLastItem }: ChattingItemProps) {
   const { sender: contextSender } = useSender();
   const isMe = sender === contextSender;
   const currentUser = userData[sender === "me" ? "other" : "me"];
   return (
     <ChattingItemContainer sender={sender} isMe={isMe}>
-      {isMe ? <></> : <UserImg src={currentUser.profileImage} />}
+      {isMe ? (
+        <></>
+      ) : isLastItem ? (
+        <UserImg src={currentUser.profileImage} />
+      ) : (
+        <NoneImg />
+      )}
       <ChattingItemContent isMe={isMe}>{message}</ChattingItemContent>
     </ChattingItemContainer>
   );
@@ -35,7 +42,7 @@ const ChattingItemContent = styled.div<{ isMe: boolean }>`
   align-items: center;
   gap: 10px;
   max-width: 70%;
-  margin: 4px 0;
+  margin: 4px 12px;
 
   border-radius: 20px;
   background: ${(props) => (props.isMe ? color.gray1 : color.white)};
@@ -55,5 +62,13 @@ const UserImg = styled.img`
   justify-content: center;
   align-items: center;
 
-  margin: 0 12px 4px 15px;
+  margin: 0 0 4px 15px;
+`;
+
+const NoneImg = styled.div`
+  display: flex;
+  width: 26px;
+  height: 26px;
+
+  margin: 0 0 4px 15px;
 `;

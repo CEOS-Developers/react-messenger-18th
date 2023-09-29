@@ -5,13 +5,36 @@ import styled from "styled-components";
 import TopContainer from "../components/TopContainer";
 import ChatInput from "../components/ChatInput";
 
+//bar
+import bars from "../assets/images/bars.svg";
+import status from "../assets/images/status.svg";
+
 function ChattingRoom() {
   return (
-    <div>
+    <Container>
+      <StatusBar src={status} />
       <TopContainer />
       <ChatInput />
-    </div>
+      <Bar src={bars} />
+    </Container>
   );
 }
 
 export default ChattingRoom;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+`;
+
+const StatusBar = styled.img`
+  width: 375px;
+  height: 44px;
+`;
+
+const Bar = styled.img`
+  width: 375px;
+  height: 34px;
+`;

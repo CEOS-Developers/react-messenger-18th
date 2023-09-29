@@ -58,6 +58,11 @@ function ChattingInput() {
             key={index}
             message={message.text}
             sender={message.sender}
+            isLastItem={
+              index === messages.length - 1 ||
+              (index < messages.length - 1 &&
+                message.sender !== messages[index + 1].sender)
+            }
           />
         ))}
       </Container>
