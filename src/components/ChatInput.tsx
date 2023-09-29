@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
 import { color } from "../assets/styles/color";
 import { useSender } from "../assets/SenderContext";
+import chatData from "../assets/data/chattingdata.json";
 
 //components
 import ChattingItem from "./ChattingItem";
@@ -17,9 +18,8 @@ import sendingbtn from "../assets/images/sendingbtn.svg";
 function ChattingInput() {
   const { sender, setSender } = useSender();
   const [inputMessage, setInputMessage] = useState("");
-  const [messages, setMessages] = useState<{ text: string; sender: string }[]>(
-    []
-  );
+  const [messages, setMessages] =
+    useState<{ text: string; sender: string }[]>(chatData);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -52,7 +52,6 @@ function ChattingInput() {
             sender={message.sender}
           />
         ))}
-        <ChattingItem message="Hello!" sender="other" />
       </Container>
       <InputContainer onSubmit={handleSubmit}>
         <InputDiv>
@@ -91,18 +90,6 @@ const Container = styled.div<{ sender: string }>`
   width: 375px;
   height: 630px;
   flex-shrink: 0;
-
-  /* ${(props) =>
-    props.sender === "me" &&
-    css`
-      align-items: flex-end; // 오른쪽 정렬
-    `}
-
-  ${(props) =>
-    props.sender !== "me" &&
-    css`
-      align-items: flex-start; // 왼쪽 정렬
-    `} */
 `;
 
 const InputContainer = styled.form`

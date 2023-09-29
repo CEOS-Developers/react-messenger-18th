@@ -1,0 +1,5 @@
+[
+  { "text": "안녕하세요!", "sender": "me" },
+  { "text": "안녕하세요! 반가워요!", "sender": "other" },
+  { "text": "어떻게 지내세요?", "sender": "me" }
+]
