@@ -4,7 +4,7 @@ import { styled } from "styled-components";
 type ChatProps = {
   value: string;
   id: number;
-  sender: boolean;
+  sender: string;
   date: string;
   showDate: boolean;
 };

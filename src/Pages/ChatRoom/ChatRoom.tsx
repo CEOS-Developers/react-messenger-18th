@@ -10,9 +10,9 @@ import { styled } from "styled-components";
 
 const ChatRoom: React.FC = () => {
   const [chat, setChat] = useState<
-    Array<{ value: string; id: number; sender: boolean; date: string }>
+    Array<{ value: string; id: number; sender: string; date: string }>
   >([]);
-  const [currentUserId, setCurrentUserId] = useState<number>(11);
+  const [currentUser, setCurrentUser] = useState(user.users[0]);
 
   const onCreate = (data: string) => {
     const randomId = Math.floor(Math.random() * 1000); // 0에서 999 사이의 랜덤 정수
@@ -30,16 +30,24 @@ const ChatRoom: React.FC = () => {
     const newItem = {
       value: data,
       id: randomId,
-      sender: false,
+      sender: currentUser.name,
       date: time,
     };
     setChat([...chat, newItem]);
   };
 
+  const changeUser = (targetId: number) => {
+    if (targetId === 0) {
+      setCurrentUser(user.users[1]);
+    } else {
+      setCurrentUser(user.users[0]);
+    }
+  };
+
   return (
     <Container>
       <StatusBar />
-      <TopInChat user={user} />
+      <TopInChat currentUser={currentUser} changeUser={changeUser} />
       <InchatList chat={chat} />
       <BottomInputBox onCreate={onCreate} />
       <HomeBar />

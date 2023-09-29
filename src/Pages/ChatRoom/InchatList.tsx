@@ -3,7 +3,7 @@ import Chat from "./Chat";
 import React, { useEffect, useRef } from "react";
 
 type InchatListProps = {
-  chat: Array<{ value: string; id: number; sender: boolean; date: string }>;
+  chat: Array<{ value: string; id: number; sender: string; date: string }>;
 };
 
 const InchatList: React.FC<InchatListProps> = ({ chat }) => {

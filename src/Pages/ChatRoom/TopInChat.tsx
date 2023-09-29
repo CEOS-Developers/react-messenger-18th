@@ -2,16 +2,19 @@ import { styled } from "styled-components";
 import { useEffect } from "react";
 
 const TopInChat: React.FC<{
-  user: { [key: string]: { id: number; name: string } };
-}> = ({ user }) => {
-  useEffect(() => {
-    console.log("First User ID:", user.first_user.id);
-  }, []);
-
+  currentUser: { id: number; name: string };
+  changeUser: (targetId: number) => void;
+}> = ({ currentUser, changeUser }) => {
   return (
     <Wrapper>
       <ArrowBackImage src={"/img/arrow_back.png"} alt="arrow_back" />
-      <UserName>{user.first_user.name} </UserName>
+      <UserName
+        onClick={() => {
+          changeUser(currentUser.id);
+        }}
+      >
+        {currentUser.name}{" "}
+      </UserName>
       <RightItems>
         <Search src={"/img/search.png"} alt="search" />
         <Menu src={"/img/menu.png"} alt="menu" />
