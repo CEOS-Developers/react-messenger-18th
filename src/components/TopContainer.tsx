@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { color } from "../assets/styles/color";
+import { useSender } from "../assets/SenderContext";
 
 //img
 import back from "../assets/images/back.svg";
@@ -12,10 +13,15 @@ import profile1 from "../assets/images/Profile1.svg";
 //profile
 
 function TopContainer() {
+  const { setSender } = useSender();
+
+  const handleUserInfoClick = () => {
+    setSender("other");
+  };
   return (
     <>
       <Container>
-        <Box>
+        <Box onClick={handleUserInfoClick}>
           <Icon src={back} />
           <UserInfo>
             <Profile src={profile1} />
@@ -50,6 +56,7 @@ const Container = styled.div`
 const Box = styled.div`
   display: flex;
   align-items: center;
+  cursor: pointer;
 `;
 
 const UserInfo = styled.div`

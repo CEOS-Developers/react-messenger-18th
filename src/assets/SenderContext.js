@@ -3,7 +3,7 @@ import React, { createContext, useContext, useState } from "react";
 const SenderContext = createContext();
 
 export function SenderProvider({ children }) {
-  const [sender, setSender] = useState("me"); // 기본값은 "me"
+  const [sender, setSender] = useState("me");
 
   return (
     <SenderContext.Provider value={{ sender, setSender }}>
