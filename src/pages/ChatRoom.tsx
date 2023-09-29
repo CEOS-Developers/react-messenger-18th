@@ -15,35 +15,12 @@ import { getChatRoomData } from "../utils/accessStorage/getChatRoomData";
 import { setChatRoomData } from "../utils/accessStorage/setChatRoomData";
 import { useScrollToBottom } from "../customHooks/chatroom/useScrollToBottom";
 import { printChatTime } from "../utils/printChatTime";
+import { defaultChatRoomData } from "../data/defaultChatRoomData";
 
 export default function ChatRoom() {
   const { state } = useLocation();
   const STORAGE_KEY = `chatroom${state.chatRoomState}${state.chatRoomId}`;
-  const initialChatData = [
-    {
-      img: state.img,
-      name: state.name,
-      chatText: "이 내용 확인해주세요!",
-      file: "디자인파일_최종.png",
-      doubleClicked: true,
-      time: "오후 3:32",
-      isUser: false,
-    },
-    {
-      chatText: "네 확인했습니다!",
-      doubleClicked: true,
-      time: "오후 3:32",
-      isUser: true,
-    },
-    {
-      img: state.img,
-      name: state.name,
-      chatText: "넵 감사합니다~",
-      doubleClicked: true,
-      time: "오후 3:33",
-      isUser: false,
-    },
-  ];
+  const initialChatData = defaultChatRoomData(state);
   const { navigateBack } = useNavigateOnClick();
   const [chatText, setChatText] = useState("");
   const [shouldScrollToBottom, setShouldScrollToBottom] = useState(true);
