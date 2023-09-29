@@ -34,6 +34,7 @@ const ChatRoom: React.FC = () => {
       date: time,
     };
     setChat([...chat, newItem]);
+    console.log(newItem);
   };
 
   const changeUser = (targetId: number) => {
@@ -48,7 +49,7 @@ const ChatRoom: React.FC = () => {
     <Container>
       <StatusBar />
       <TopInChat currentUser={currentUser} changeUser={changeUser} />
-      <InchatList chat={chat} />
+      <InchatList currentUser={currentUser} chat={chat} />
       <BottomInputBox onCreate={onCreate} />
       <HomeBar />
     </Container>

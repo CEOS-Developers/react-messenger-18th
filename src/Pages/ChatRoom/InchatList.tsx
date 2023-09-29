@@ -3,10 +3,11 @@ import Chat from "./Chat";
 import React, { useEffect, useRef } from "react";
 
 type InchatListProps = {
+  currentUser: { id: number; name: string };
   chat: Array<{ value: string; id: number; sender: string; date: string }>;
 };
 
-const InchatList: React.FC<InchatListProps> = ({ chat }) => {
+const InchatList: React.FC<InchatListProps> = ({ currentUser, chat }) => {
   const chatListRef = useRef<HTMLDivElement>(null);
 
   // chat 배열이 업데이트될 때 스크롤을 맨 아래로 이동
@@ -29,6 +30,7 @@ const InchatList: React.FC<InchatListProps> = ({ chat }) => {
             showDate={
               index === chat.length - 1 || message.date !== chat[index + 1].date
             }
+            currentUser={currentUser}
           />
         ))}
       </Container>
