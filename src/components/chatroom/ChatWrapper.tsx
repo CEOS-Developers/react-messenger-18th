@@ -12,9 +12,9 @@ interface ChatWrapperProps {
   doubleClicked: boolean;
   time: string;
   isUser: boolean;
-  index: number;
-  chatData: ChatRoomData[] | [];
-  setChatData: React.Dispatch<React.SetStateAction<ChatRoomData[] | []>>;
+  index?: number;
+  chatData?: ChatRoomData[] | [];
+  setChatData?: React.Dispatch<React.SetStateAction<ChatRoomData[] | []>>;
 }
 
 export default function ChatWrapper({

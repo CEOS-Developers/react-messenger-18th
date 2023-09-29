@@ -9,9 +9,9 @@ interface BubbleProps {
   doubleClicked: boolean;
   time: string;
   isUser: boolean;
-  index: number;
-  chatData: ChatRoomData[] | [];
-  setChatData: React.Dispatch<React.SetStateAction<ChatRoomData[] | []>>;
+  index?: number;
+  chatData?: ChatRoomData[] | [];
+  setChatData?: React.Dispatch<React.SetStateAction<ChatRoomData[] | []>>;
 }
 
 export default function Bubble({
@@ -25,10 +25,11 @@ export default function Bubble({
   setChatData,
 }: BubbleProps) {
   const bubbleDoubleClicked = () => {
-    const copyChatData = [...chatData];
-    copyChatData[index - 3].doubleClicked =
-      !copyChatData[index - 3].doubleClicked;
-    setChatData(copyChatData);
+    if (index && chatData && setChatData) {
+      const copyChatData = [...chatData];
+      copyChatData[index].doubleClicked = !copyChatData[index].doubleClicked;
+      setChatData(copyChatData);
+    }
   };
   return (
     <BubbleWrapper $isUser={isUser} onDoubleClick={bubbleDoubleClicked}>

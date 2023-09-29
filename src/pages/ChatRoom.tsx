@@ -19,6 +19,31 @@ import { printChatTime } from "../utils/printChatTime";
 export default function ChatRoom() {
   const { state } = useLocation();
   const STORAGE_KEY = `chatroom${state.chatRoomState}${state.chatRoomId}`;
+  const initialChatData = [
+    {
+      img: state.img,
+      name: state.name,
+      chatText: "이 내용 확인해주세요!",
+      file: "디자인파일_최종.png",
+      doubleClicked: true,
+      time: "오후 3:32",
+      isUser: false,
+    },
+    {
+      chatText: "네 확인했습니다!",
+      doubleClicked: true,
+      time: "오후 3:32",
+      isUser: true,
+    },
+    {
+      img: state.img,
+      name: state.name,
+      chatText: "넵 감사합니다~",
+      doubleClicked: true,
+      time: "오후 3:33",
+      isUser: false,
+    },
+  ];
   const { navigateBack } = useNavigateOnClick();
   const [chatText, setChatText] = useState("");
   const [chatData, setChatData] = useState(getChatRoomData(STORAGE_KEY));
@@ -57,38 +82,20 @@ export default function ChatRoom() {
       />
       <Divider state={dividerState.LONGTHICK} />
       <ChatContainer ref={ref}>
-        <ChatWrapper
-          img={state.img}
-          name={state.name}
-          chatText="이 내용 확인해주세요!"
-          file="디자인파일_최종.png"
-          doubleClicked={true}
-          time="오후 3:32"
-          isUser={false}
-          index={0}
-          chatData={chatData}
-          setChatData={setChatData}
-        />
-        <ChatWrapper
-          chatText="네 확인했습니다!"
-          doubleClicked={true}
-          time="오후 3:32"
-          isUser={true}
-          index={1}
-          chatData={chatData}
-          setChatData={setChatData}
-        />
-        <ChatWrapper
-          img={state.img}
-          name={state.name}
-          chatText="넵 감사합니다~"
-          doubleClicked={true}
-          time="오후 3:33"
-          isUser={false}
-          index={2}
-          chatData={chatData}
-          setChatData={setChatData}
-        />
+        {initialChatData
+          ? initialChatData.map((data, index) => (
+              <ChatWrapper
+                key={data.chatText + index}
+                img={data.img}
+                name={data.name}
+                file={data.file}
+                chatText={data.chatText}
+                doubleClicked={data.doubleClicked}
+                time={data.time}
+                isUser={data.isUser}
+              />
+            ))
+          : null}
         {chatData
           ? chatData.map((data, index) => (
               <ChatWrapper
@@ -97,7 +104,7 @@ export default function ChatRoom() {
                 doubleClicked={data.doubleClicked}
                 time={data.time}
                 isUser={data.isUser}
-                index={index + 3}
+                index={index}
                 chatData={chatData}
                 setChatData={setChatData}
               />

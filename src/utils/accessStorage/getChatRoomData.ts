@@ -1,4 +1,7 @@
 export interface ChatRoomData {
+  img?: string;
+  name?: string;
+  file?: string;
   chatText: string;
   doubleClicked: boolean;
   time: string;
