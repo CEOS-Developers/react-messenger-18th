@@ -21,7 +21,7 @@
         "id": 3,
         "sender": "신동현",
         "content": "동대문 들렀다가 집 감",
-        "showIcon": false
+        "showIcon": true
     },
     {
         "id": 4,
@@ -39,7 +39,7 @@
         "id": 6,
         "sender": "이예진",
         "content": "한 시간 넘게 걸리지 않아?",
-        "showIcon": false
+        "showIcon": true
     },
     {
         "id": 7,
@@ -57,7 +57,7 @@
         "id": 9,
         "sender": "신동현",
         "content": "짐이 많아서 힘든 겨",
-        "showIcon": false
+        "showIcon": true
     },
     {
         "id": 10,
@@ -69,7 +69,7 @@
         "id": 11,
         "sender": "이예진",
         "content": "심심하면 영통하자",
-        "showIcon": false
+        "showIcon": true
     },
     {
         "id": 12,

@@ -28,6 +28,19 @@ function Chat() {
   const [messageId, setMessageId] = useState<number>(savedMessageId);
   const [nowUser, setNowUser] = useState(userData.users[0]);
 
+  const updateMessagesWithShowIcon = (messages: Message[]) => {
+    const updatedMessages = [...messages];
+
+    for (let i = 1; i < updatedMessages.length; i++) {
+      if (updatedMessages[i - 1].sender !== updatedMessages[i].sender) {
+        // 이전 메시지랑 sender가 다른경우 showIcon을 true로 설정
+        updatedMessages[i - 1].showIcon = true;
+      }
+    }
+
+    return updatedMessages;
+  };
+
   const handleSendMessage = (content: string) => {
     const newMessage: Message = {
       id: messageId,
@@ -35,8 +48,11 @@ function Chat() {
       content,
       showIcon: false,
     };
+
     const updatedMessages = [...messages, newMessage];
-    setMessages(updatedMessages);
+    const messagesWithShowIcon = updateMessagesWithShowIcon(updatedMessages);
+
+    setMessages(messagesWithShowIcon);
     // 다음 메시지를 위해 messageId 업데이트
     setMessageId(messageId + 1);
     // 로컬 스토리지에 채팅 데이터 저장
@@ -50,19 +66,6 @@ function Chat() {
         ? userData.users[1]
         : userData.users[0]
     );
-
-    // 채팅 데이터를 불러온 후 showIcon을 변경하고 다시 저장
-
-    // const updatedMessages = messages.map((message) => {
-    //   if (message.sender !== nowUser.name) {
-    //     // 현재 사용자가 아닌 경우 showIcon을 true로 설정
-    //     return { ...message, showIcon: true };
-    //   }
-    //   return message;
-    // });
-
-    // 로컬 스토리지에 채팅 데이터 저장
-    // localStorage.setItem("chatMessages", JSON.stringify(updatedMessages));
   };
 
   const partner =
@@ -71,13 +74,15 @@ function Chat() {
       : userData.users[0];
 
   const messageContainers = messages.map((message: Message) => {
+    const isCurrentUser = message.sender === nowUser.name;
+
     return (
       <Message
         key={message.id}
         sender={message.sender}
         content={message.content}
         nowUser={nowUser.name}
-        showIcon={message.showIcon}
+        showIcon={message.showIcon && !isCurrentUser}
       />
     );
   });

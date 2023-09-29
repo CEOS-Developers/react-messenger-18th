@@ -14,7 +14,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSend }) => {
   const [inputValue, setInputValue] = useState<string>("");
 
   const handleInputEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       if (inputValue.trim() !== "") {
         // 입력값이 공백인 경우 예외 처리
@@ -36,6 +36,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSend }) => {
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           onKeyPress={handleInputEnter}
+
           //한글 입력의 경우: 마지막 단어가 input으로 들어가는 에러 방지하기 위해
         />
         <Dictation src={dictationIcon} alt="dictation icon" />
@@ -67,7 +68,6 @@ const AppStore = styled.img`
 
 const Input = styled.input`
   width: 100%;
-  /* height: 100%; */
   margin-right: 1.03rem;
   height: 2.125rem;
   border: 1px solid var(--gray-3);
@@ -75,7 +75,7 @@ const Input = styled.input`
   padding-left: 0.84rem;
   border-radius: 1.875rem;
   resize: none;
-
+  word-break: break-all;
   &:focus {
     box-shadow: none;
   }
