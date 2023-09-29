@@ -67,10 +67,6 @@ const ChatRoom: React.FC<UserInfo> = ({ id }) => {
         }
       });
     }
-
-    // if (isInputFocused && bodyRef.current) {
-    //   bodyRef.current.scrollTop = bodyRef.current.scrollHeight;
-    // }
   }, [inputText]);
 
   useEffect(() => {

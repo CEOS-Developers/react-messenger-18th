@@ -73,7 +73,7 @@ const MyChat = styled.div`
 `;
 
 const Wrapper = styled.div`
-  margin: 3px;
+  margin: 10px;
 `;
 
 const ChatWrapperTail = styled.div`
