@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled, { css } from "styled-components";
 import { color } from "../assets/styles/color";
 import { useSender } from "../assets/SenderContext";
@@ -25,6 +25,8 @@ function ChattingInput() {
     }
   );
 
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (inputMessage.trim() !== "") {
@@ -32,12 +34,18 @@ function ChattingInput() {
         text: inputMessage,
         sender: sender,
       };
+      if (containerRef.current) {
+        containerRef.current.scrollTop = containerRef.current.scrollHeight;
+      }
       setMessages((prevMessages) => [...prevMessages, newMessage]);
       setInputMessage("");
     }
   };
 
   useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.scrollTop = containerRef.current.scrollHeight;
+    }
     localStorage.setItem("chatMessages", JSON.stringify(messages));
   }, [messages]);
 
@@ -52,7 +60,7 @@ function ChattingInput() {
   };
   return (
     <>
-      <Container sender={sender}>
+      <Container ref={containerRef} sender={sender}>
         {messages.map((message, index) => (
           <ChattingItem
             key={index}
@@ -79,7 +87,7 @@ function ChattingInput() {
           />
         </InputDiv>
         {isFocused ? (
-          <SendButton type="submit">
+          <SendButton>
             <SendBtnIcon src={sendingbtn} />
           </SendButton>
         ) : (
@@ -135,7 +143,7 @@ const CameraIcon = styled.img`
 const InputDiv = styled.div<{ isFocused: boolean }>`
   display: flex;
   align-items: center;
-  width: ${(props) => (props.isFocused ? "80%" : "68%")};
+  width: ${(props) => (props.isFocused ? "100%" : "68%")};
 `;
 
 const InputBox = styled.input`
