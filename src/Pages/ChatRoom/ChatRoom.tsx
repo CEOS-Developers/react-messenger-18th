@@ -57,6 +57,4 @@ const ChatRoom: React.FC = () => {
 };
 
 export default ChatRoom;
-const Container = styled.div`
-  height: 605px;
-`;
+const Container = styled.div``;

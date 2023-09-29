@@ -42,7 +42,6 @@ const Wrapper = styled.div`
   width: 375px;
   height: 812px;
   display: flex;
+  flex-direction: column;
   font-family: "Pretendard-Regular";
-  justify-content: center;
-  align-items: center;
 `;
