@@ -58,7 +58,7 @@ const MessageItem = styled.div<{
   text-align: ${({ sender, nowUser }) =>
     sender === nowUser ? "right" : "left"};
   margin-left: ${(msg) =>
-    !msg.showIcon && msg.sender !== msg.nowUser ? "3.75rem" : "0.69rem"};
+    !msg.showIcon && msg.sender !== msg.nowUser ? "3.75rem" : "0rem"};
   // showIcon가 false인 경우 margin-left를 한방에 설정
   font-size: 0.9375rem;
   font-weight: 400;
