@@ -1,34 +1,69 @@
 import React from 'react';
 import styled from 'styled-components';
 import theme from '../style/theme';
+import ProfileSmallIcon from '../static/ProfileSmallIcon';
 
 // 채팅 박스의 입력 프로퍼티를 정의하는 인터페이스
 interface ChatBoxProps {
   isMe: boolean;
+  isFirst: boolean;
   text: string;
   hasTail: boolean;
   time: string;
+  user: string;
 }
 
 // ChatBoxProps를 사용하여 채팅 박스 컴포넌트를 정의
-const ChatBox: React.FC<ChatBoxProps> = ({ text, hasTail, isMe, time }) => {
+const ChatBox: React.FC<ChatBoxProps> = ({
+  text,
+  hasTail,
+  isMe,
+  time,
+  isFirst,
+  user,
+}) => {
   return (
     <Wrapper>
       {isMe && (
         <MyBox>
           <Time>{time}</Time>
-          <MyChat>{text}</MyChat>
+          <MyChat
+            style={
+              isFirst ? { borderRadius: '0.75rem  0rem 0.75rem 0.75rem' } : {}
+            }
+          >
+            {text}
+          </MyChat>
         </MyBox>
       )}
-      {!isMe && (
+      {!isMe && !isFirst && (
         <YourBox>
-          <YourChat>{text}</YourChat>
+          <YourChat style={{ marginLeft: '45px' }}>{text}</YourChat>
+          <Time>{time}</Time>
+        </YourBox>
+      )}
+      {!isMe && isFirst && (
+        <YourBox>
+          <ProfileSmallIcon />
+          <div>
+            <UserName>{user}</UserName>
+            <YourChat style={{ borderRadius: '0rem 0.75rem 0.75rem 0.75rem' }}>
+              {text}
+            </YourChat>
+          </div>
+
           <Time>{time}</Time>
         </YourBox>
       )}
     </Wrapper>
   );
 };
+
+const UserName = styled.div`
+  font-size: ${theme.fonts.caption1};
+  padding-bottom: 5px;
+  padding-top: 2px;
+`;
 
 const Time = styled.div`
   display: flex;
@@ -54,6 +89,9 @@ const MyBox = styled.div`
 const YourBox = styled.div`
   display: flex;
   justify-content: flex-start;
+  gap: 10px;
+
+  font-size: ${theme.fonts.body2};
 `;
 
 const YourChat = styled.div`

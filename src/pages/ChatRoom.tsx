@@ -84,12 +84,16 @@ const ChatRoom: React.FC<UserInfo> = ({ id }) => {
     <Wrapper>
       <Header text={userIdArr[userId]} onClick={handleHeaderClick} />
       <Body ref={bodyRef}>
-        {chatData.map((chatItem) => (
+        {chatData.map((chatItem, index) => (
           <ChatBox
             text={chatItem.chat}
             hasTail={false}
             isMe={chatItem.userId === userId}
             time={chatItem.time}
+            isFirst={
+              index === 0 || chatData[index - 1].userId !== chatItem.userId
+            }
+            user={userIdArr[chatItem.userId]}
           />
         ))}
       </Body>
