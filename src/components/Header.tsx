@@ -5,9 +5,14 @@ import SearchIcon from '../static/SearchIcon';
 import HamburgerIcon from '../static/HamburgerIcon';
 import BackIcon from '../static/BackIcon';
 
-const Header = ({ text = 'default' }) => {
+interface HeaderProps {
+  text: string;
+  onClick?: () => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ text, onClick }) => {
   return (
-    <Wrapper>
+    <Wrapper onClick={onClick}>
       <BackIcon />
       {text}
       <IconList>
@@ -28,6 +33,10 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0.625rem;
+
+  margin-top: 15px;
+
+  cursor: pointer;
 `;
 
 export default Header;

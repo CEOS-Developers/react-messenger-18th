@@ -5,7 +5,7 @@ import styled from 'styled-components';
 function App() {
   return (
     <Wrapper>
-      <ChatRoom />
+      <ChatRoom id={0} />
     </Wrapper>
   );
 }
