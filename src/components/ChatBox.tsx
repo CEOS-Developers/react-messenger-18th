@@ -7,25 +7,37 @@ interface ChatBoxProps {
   isMe: boolean;
   text: string;
   hasTail: boolean;
+  time: string;
 }
 
 // ChatBoxProps를 사용하여 채팅 박스 컴포넌트를 정의
-const ChatBox: React.FC<ChatBoxProps> = ({ text, hasTail, isMe }) => {
+const ChatBox: React.FC<ChatBoxProps> = ({ text, hasTail, isMe, time }) => {
   return (
     <Wrapper>
       {isMe && (
         <MyBox>
+          <Time>{time}</Time>
           <MyChat>{text}</MyChat>
         </MyBox>
       )}
       {!isMe && (
         <YourBox>
           <YourChat>{text}</YourChat>
+          <Time>{time}</Time>
         </YourBox>
       )}
     </Wrapper>
   );
 };
+
+const Time = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  font-size: ${theme.fonts.caption2};
+  color: ${theme.colors.g5};
+  padding: 5px;
+`;
 
 const commonStyles = `
   padding: 0.5rem 0.75rem;
@@ -39,7 +51,10 @@ const MyBox = styled.div`
   justify-content: flex-end;
 `;
 
-const YourBox = styled.div``;
+const YourBox = styled.div`
+  display: flex;
+  justify-content: flex-start;
+`;
 
 const YourChat = styled.div`
   ${commonStyles}

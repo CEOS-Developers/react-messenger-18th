@@ -16,10 +16,10 @@ const ChatRoom: React.FC<UserInfo> = ({ id }) => {
   const [userId, setUserId] = useState(id);
   const [inputText, setInputText] = useState('');
 
-  const [chatData, setChatData] = useState([
-    { userId: 0, isLike: false, chat: '시장에 가면~' },
-    { userId: 1, isLike: false, chat: '시장에 가면~ 오렌지도 있고' },
-  ]);
+  const initialData = JSON.parse(
+    localStorage.getItem('chatData') || '[]'
+  ) as any[];
+  const [chatData, setChatData] = useState<any[]>(initialData);
 
   const handleHeaderClick = () => {
     // id를 0과 1 사이에서 토글
@@ -34,27 +34,55 @@ const ChatRoom: React.FC<UserInfo> = ({ id }) => {
     const day = String(now.getDate()).padStart(2, '0');
     const hours = String(now.getHours()).padStart(2, '0');
     const minutes = String(now.getMinutes()).padStart(2, '0');
-    return `${year}-${month}-${day} ${hours}:${minutes}`;
+    return `${hours}:${minutes}`;
   };
 
   //inputText변동시 chatData추가
   useEffect(() => {
-    const currentDate = new Date();
-    setChatData((prevChatData) => [
-      ...prevChatData,
-      { userId: userId, isLike: false, chat: inputText, date: currentDate },
-    ]);
-
-    console.log(chatData);
+    const currentDate = getCurrentDate();
+    if (inputText.trim() !== '') {
+      setChatData((prevChatData) => {
+        if (prevChatData) {
+          return [
+            ...prevChatData,
+            {
+              userId: userId,
+              isLike: false,
+              chat: inputText,
+              time: currentDate,
+            },
+          ];
+        } else {
+          return [
+            {
+              userId: userId,
+              isLike: false,
+              chat: inputText,
+              time: currentDate,
+            },
+          ];
+        }
+      });
+    }
   }, [inputText]);
+
+  // chatData가 업데이트될 때마다 로컬 스토리지에 저장
+  useEffect(() => {
+    localStorage.setItem('chatData', JSON.stringify(chatData));
+  }, [chatData]);
 
   return (
     <Wrapper>
       <Header text={userIdArr[userId]} onClick={handleHeaderClick} />
 
-      <ChatBox text={'배고파요'} hasTail={false} isMe={true} />
-      <ChatBox text={'저도요'} hasTail={false} isMe={false} />
-      <ChatBox text={'흐엉'} hasTail={false} isMe={false} />
+      {chatData.map((chatItem) => (
+        <ChatBox
+          text={chatItem.chat}
+          hasTail={false}
+          isMe={chatItem.userId === userId}
+          time={chatItem.time}
+        />
+      ))}
 
       <ChatInputBar inputText={inputText} setInputText={setInputText} />
     </Wrapper>
