@@ -11,6 +11,7 @@ import {
 } from "../../recoil/atom";
 import dayjs from "dayjs";
 import { sortMessagesByTime } from "../../hooks/sortMessageByTime";
+import DummyList from "../../assets/DummyList";
 
 export interface ChatMessage {
   time: string;
@@ -68,6 +69,7 @@ function ChatArea() {
       >
         <Space height="25px" />
 
+        <DummyList/>
         {sortedMessagesWithUser.map((el) => {
           if (isUser1)
             return el.user === "User 1" ? (
