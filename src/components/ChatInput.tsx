@@ -90,6 +90,12 @@ const Container = styled.div<{ sender: string }>`
   width: 375px;
   height: 630px;
   flex-shrink: 0;
+
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const InputContainer = styled.form`

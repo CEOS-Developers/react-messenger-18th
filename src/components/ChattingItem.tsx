@@ -31,7 +31,7 @@ const ChattingItemContent = styled.div<{ isMe: boolean }>`
   align-items: center;
   gap: 10px;
   max-width: 70%;
-  margin-bottom: 8px;
+  margin: 4px 0;
 
   border-radius: 20px;
   background: ${(props) => (props.isMe ? color.gray1 : color.white)};

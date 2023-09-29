@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { color } from "../assets/styles/color";
 import { useSender } from "../assets/SenderContext";
+import userData from "../assets/data/userdata.json";
 
 //img
 import back from "../assets/images/back.svg";
@@ -12,6 +13,7 @@ import profile1 from "../assets/images/Profile1.svg";
 
 function TopContainer() {
   const { sender, setSender } = useSender();
+  const currentUser = userData[sender === "me" ? "other" : "me"];
 
   const handleUserInfoClick = () => {
     setSender(sender === "me" ? "other" : "me");
@@ -22,10 +24,10 @@ function TopContainer() {
         <Box onClick={handleUserInfoClick}>
           <Icon src={back} />
           <UserInfo>
-            <Profile src={profile1} />
+            <Profile src={currentUser.profileImage} />
             <div>
-              <UserName>Yoem</UserName>
-              <UserID>hi.yeomm</UserID>
+              <UserName>{currentUser.userName}</UserName>
+              <UserID>{currentUser.userID}</UserID>
             </div>
           </UserInfo>
         </Box>
@@ -49,6 +51,7 @@ const Container = styled.div`
   height: 48px;
   flex-shrink: 0;
   padding: 0 8px;
+  border-bottom: 1px solid ${color.gray1};
 `;
 
 const Box = styled.div`
@@ -65,6 +68,7 @@ const Profile = styled.img`
   display: flex;
   width: 36px;
   height: 36px;
+  border-radius: 50%;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
