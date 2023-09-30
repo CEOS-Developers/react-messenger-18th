@@ -52,6 +52,8 @@ const BottomBarContainer = styled.div`
   position: relative;
   width: 100%;
   height: 2.5rem;
+  position: fixed;
+  bottom: 2.125rem;
   margin-bottom: 0.81rem;
 `;
 
@@ -85,6 +87,7 @@ const InputContainer = styled.span`
   display: flex;
   align-items: center;
   flex-grow: 1;
+  width: 100%;
 `;
 
 const Dictation = styled.img`

@@ -65,6 +65,7 @@ const MessageItem = styled.div<{
   line-height: normal;
   box-sizing: border-box;
   word-break: break-all;
+  white-space: keep-all; //들여쓰기
 `;
 
 const UserIconShow = styled.img`

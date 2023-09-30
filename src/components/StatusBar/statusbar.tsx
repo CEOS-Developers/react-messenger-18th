@@ -18,15 +18,18 @@ const StatusBar = () => {
 };
 
 const StatusBarContainer = styled.div`
-  width: 23.4375rem;
+  width: 100%;
   height: 2.75rem;
-  /* width: 100vw;
-  height: 5vh; */
   position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 const TimeIcon = styled.img`
   width: 3.375rem;
-  padding: 0.69rem 0 1.31rem 0.81rem;
+  height: 1.3125rem;
+  padding-bottom: 0.17rem;
+  margin-left: 0.2rem;
   right: 16.33rem;
 `;
 
@@ -41,16 +44,16 @@ const WifiIcon = styled.img`
 const BatteryIcon = styled.img`
   width: 1.5205rem;
   height: 0.70831rem;
+  margin-right: 1.12rem;
 `;
 
 const StatusBarRight = styled.div`
-  position: absolute;
   display: inline-flex;
   align-items: center;
   gap: 0.31rem;
   left: 18.37rem;
   right: 0.9rem;
-  top: 1.08rem;
-  bottom: 0.96rem;
+  /* top: 1.08rem;
+  bottom: 0.96rem; */
 `;
 export default StatusBar;

@@ -91,13 +91,19 @@ function Chat() {
     <div className="pageWrapper">
       <ChatContainer>
         <TopBar />
+
         <ChatTitle
           chatName={partner.name}
           chatID={partner.instagram}
           changeUser={changeUser}
         />
-        <MessageList>{messageContainers}</MessageList>
+
+        <MessageContainer>
+          <MessageList>{messageContainers}</MessageList>
+        </MessageContainer>
+
         <ChatInput onSend={handleSendMessage} />
+
         <BottomBarIcon src={bottomBar} alt="bottom bar Icon" />
       </ChatContainer>
     </div>
@@ -108,14 +114,33 @@ const ChatContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: space-between; */
-  /* margin-bottom: 1.31rem; */
+  position: absolute;
+  border-radius: 1.5rem;
+  height: 100vh;
+  width: 100vw;
+  border: solid var(--gray-1);
   position: relative;
+`;
+
+const MessageContainer = styled.div`
+  flex: 1;
+  overflow-y: auto;
+  width: 100%;
+  height: 100%;
+
+  padding: 2.75rem 0; //Topbar랑 안겹치게
+  margin-bottom: 2.5rem; //아래 부분이랑 안겹치게
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const BottomBarIcon = styled.img`
   width: 100%;
   height: 2.125rem;
+  margin-bottom: 0;
+  bottom: 0;
+  position: fixed;
 `;
 
 export default Chat;

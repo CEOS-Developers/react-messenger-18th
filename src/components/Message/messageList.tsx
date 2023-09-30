@@ -26,7 +26,8 @@ const MessageList: React.FC<MessageListProps> = ({ children }) => {
 const MessageListContainer = styled.div`
   overflow-y: auto;
   width: 100%;
-  height: 39.33rem;
+  max-height: 100%;
+  flex: 1;
   scrollbar-width: none;
 `;
 

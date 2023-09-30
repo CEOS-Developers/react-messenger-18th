@@ -19,12 +19,10 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding:0;
         display: flex;
-        /* align-items: center; */
         justify-content: center;
-        width: 23.4375rem;
-        height: 50.75rem;
-        border-radius:1.5rem;
-        border: solid var(--gray-1); //나중에 없애도됨
+        height:100vh;
+        width:100vw;
+
     }
 `;
 
