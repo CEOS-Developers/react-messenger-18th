@@ -27,10 +27,9 @@ const StatusBarContainer = styled.div`
 `;
 const TimeIcon = styled.img`
   width: 3.375rem;
-  height: 1.3125rem;
-  padding-bottom: 0.17rem;
-  margin-left: 0.2rem;
-  right: 16.33rem;
+  height: 2.3125rem;
+  padding-bottom: 0.6rem;
+  margin-left: 0.4rem;
 `;
 
 const CellularIcon = styled.img`

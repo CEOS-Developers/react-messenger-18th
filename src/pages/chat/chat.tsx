@@ -9,6 +9,7 @@ import MessageList from "../../components/Message/messageList";
 import Message from "../../components/Message/message";
 import "../../styles/colors.css";
 import bottomBar from "../../assets/images/LightBottomBar.svg";
+import StatusBar from "../../components/StatusBar/statusbar";
 
 interface Message {
   id: number;
@@ -90,8 +91,7 @@ function Chat() {
   return (
     <div className="pageWrapper">
       <ChatContainer>
-        <TopBar />
-
+        <StatusBar />
         <ChatTitle
           chatName={partner.name}
           chatID={partner.instagram}
@@ -119,7 +119,6 @@ const ChatContainer = styled.div`
   height: 100vh;
   width: 100vw;
   border: solid var(--gray-1);
-  position: relative;
 `;
 
 const MessageContainer = styled.div`
@@ -138,7 +137,6 @@ const BottomBarIcon = styled.img`
   width: 100%;
   height: 2.125rem;
   margin-bottom: 0;
-  bottom: 0;
   position: relative;
 `;
 

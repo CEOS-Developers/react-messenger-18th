@@ -52,7 +52,7 @@ const BottomBarContainer = styled.div`
   position: relative;
   width: 100%;
   height: 2.5rem;
-  margin-bottom: 0.81rem;
+  /* margin-bottom: 0.81rem; */
 `;
 
 const Camera = styled.img`
