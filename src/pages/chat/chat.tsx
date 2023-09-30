@@ -127,9 +127,8 @@ const MessageContainer = styled.div`
   overflow-y: auto;
   width: 100%;
   height: 100%;
-
-  padding: 2.75rem 0; //Topbar랑 안겹치게
-  margin-bottom: 2.5rem; //아래 부분이랑 안겹치게
+  /* padding: 2.75rem 0; //Topbar랑 안겹치게
+  margin-bottom: 2.5rem; //아래 부분이랑 안겹치게 */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -140,7 +139,7 @@ const BottomBarIcon = styled.img`
   height: 2.125rem;
   margin-bottom: 0;
   bottom: 0;
-  position: fixed;
+  position: relative;
 `;
 
 export default Chat;

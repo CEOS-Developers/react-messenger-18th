@@ -29,8 +29,7 @@ const ChatTitle: React.FC<ChatHeaderProps> = ({
 const ChatTitleContainer = styled.div`
   display: flex;
   align-items: center;
-  position: fixed;
-  top: 2.75rem;
+  position: relative;
   width: 100%;
   height: 2.5rem;
   padding-bottom: 0.7rem;

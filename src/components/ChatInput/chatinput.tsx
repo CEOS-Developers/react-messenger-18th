@@ -52,8 +52,6 @@ const BottomBarContainer = styled.div`
   position: relative;
   width: 100%;
   height: 2.5rem;
-  position: fixed;
-  bottom: 2.125rem;
   margin-bottom: 0.81rem;
 `;
 
