@@ -13,7 +13,7 @@ function ChatNav() {
     setIsUser1(!isUser1);
   };
   return (
-    <Flex gap="8" height="30px" justify="center">
+    <Flex gap="8" height="30px" justify="center" align="center">
       <Icon src={backIcon}></Icon>
       <Flex width="247px">
         <Text

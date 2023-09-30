@@ -45,7 +45,7 @@ function ChatInput() {
   }, []);
 
   return (
-    <Flex width="375px" justify="center" height="56px" align="center">
+    <Flex width="375px" justify="center" height="56px">
       <Flex gap="12" align="center">
         <Icon src={mediaAddIcon} />
         <Input
