@@ -30,10 +30,10 @@ export default function ChatRoom() {
   const [chatData, setChatData] = useState(getChatRoomData(STORAGE_KEY));
   const { ref, scrollToBottom } = useScrollToBottom<HTMLDivElement>();
   const chatInputChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.value === "") {
+    if (event.target.value.trim() === "") {
       setSendBtnState(false);
     }
-    if (event.target.value !== "") {
+    if (event.target.value.trim() !== "") {
       setSendBtnState(true);
     }
     setChatText(event.target.value);
