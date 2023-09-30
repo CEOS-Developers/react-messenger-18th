@@ -20,6 +20,7 @@ const ChatRoomFooter = ({
   sendMessage,
 }: ChatRoomFooterProps) => {
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  const hiddenInputRef = useRef<HTMLInputElement>(null);
   const [content, setContent] = useState<string>('');
   const [isMenuSpread, setIsMenuSpread] = useState<boolean>(true);
   const [isInputFocused, setIsInputFocused] = useState<boolean>(false);
@@ -48,7 +49,12 @@ const ChatRoomFooter = ({
       sendMessage(content);
       setContent('');
       // focus 상태에서 전송을 누르면, 계속 focus 유지되도록
-      if (isInputFocused) inputRef.current?.focus();
+      if (isInputFocused) {
+        // hiddenInput에 focus를 옮기고, 다시 input으로 옮기는 방식을 사용하여
+        // ios 환경에서 한글(받침없는 글자) 입력시 buffer가 남아있는 문제를 해결했음
+        hiddenInputRef.current?.focus();
+        inputRef.current?.focus();
+      }
       if (inputRef.current) inputRef.current.style.height = '36px';
     }
   };
@@ -93,6 +99,7 @@ const ChatRoomFooter = ({
         }}
         value={content}
       />
+      <HiddenInput ref={hiddenInputRef} />
       <RightSideButton
         children={content ? <SendIcon /> : <MicIcon />}
         handleOnClickButton={handleSubmitMessage}
@@ -147,4 +154,13 @@ const ChatInput = styled.textarea.attrs({
   resize: none;
   font-size: 14px;
   font-family: 'Pretendard Variable';
+`;
+
+const HiddenInput = styled.input`
+  position: absolute;
+  border: 0;
+  background-color: transparent;
+  pointer-events: none;
+  width: 0;
+  height: 0;
 `;
