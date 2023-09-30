@@ -49,7 +49,7 @@ const Container = styled.div`
   height: 48px;
   flex-shrink: 0;
   padding: 0 8px;
-  border-bottom: 1px solid ${color.gray1};
+  border-bottom: 1px solid ${color.grey1};
 `;
 
 const Box = styled.div`
@@ -83,7 +83,7 @@ const UserName = styled.div`
 `;
 
 const UserID = styled.div`
-  color: ${color.gray3};
+  color: ${color.grey3};
 
   font-size: 13px;
   font-style: normal;

@@ -130,7 +130,7 @@ const InputContainer = styled.form`
 
   border-radius: 20px;
   padding-right: 2px;
-  border: 1px solid ${color.gray2};
+  border: 1px solid ${color.grey2};
 `;
 
 const CameraIcon = styled.img`
@@ -159,7 +159,7 @@ const InputBox = styled.input`
   line-height: 130%;
 
   &::placeholder {
-    color: ${color.gray3};
+    color: ${color.grey3};
   }
 `;
 

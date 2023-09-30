@@ -45,12 +45,12 @@ const ChattingItemContent = styled.div<{ isMe: boolean }>`
   margin: 4px 12px;
 
   border-radius: 20px;
-  background: ${(props) => (props.isMe ? color.gray1 : color.white)};
+  background: ${(props) => (props.isMe ? color.grey1 : color.white)};
 
   ${(props) =>
     !props.isMe &&
     css`
-      border: 1px solid ${color.gray2};
+      border: 1px solid ${color.grey2};
     `}
 `;
 
