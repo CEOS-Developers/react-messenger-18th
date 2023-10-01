@@ -14,10 +14,10 @@ const ChatTitle: React.FC<ChatHeaderProps> = ({
   changeUser,
 }) => {
   return (
-    <ChatTitleContainer onClick={changeUser}>
+    <ChatTitleContainer>
       <ArrowIcon src={arrowIcon} alt="arrow Icon" />
-      <UserIcon src={userIcon} alt="user Icon" />
-      <UserSection>
+      <UserIcon onClick={changeUser} src={userIcon} alt="user Icon" />
+      <UserSection onClick={changeUser}>
         <UserName>{chatName}</UserName>
         <InstagramID>{chatID}</InstagramID>
       </UserSection>
@@ -39,6 +39,9 @@ const UserSection = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 const UserName = styled.div`
   color: var(--black);
@@ -64,6 +67,9 @@ const UserIcon = styled.img`
   width: 2.06244rem;
   height: 2.06238rem;
   margin-right: 0.64rem;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 const Facetime = styled.img`
   margin-right: 1.12rem;

@@ -93,6 +93,9 @@ const Input = styled.textarea`
 
     align-items: center;
   }
+  &:hover {
+    cursor: pointer;
+  }
   padding-right: 2rem; //input 길어질때 방지 하기 위해
 `;
 
