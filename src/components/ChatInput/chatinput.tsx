@@ -13,7 +13,8 @@ interface ChatInputProps {
 const ChatInput: React.FC<ChatInputProps> = ({ onSend }) => {
   const [inputValue, setInputValue] = useState<string>("");
 
-  const handleInputEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  //여러줄 입력 위해 input=> textarea로 변경
+  const handleInputEnter = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       if (inputValue.trim() !== "") {
@@ -22,6 +23,10 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSend }) => {
       }
       // 입력값 초기화
       setInputValue("");
+    }
+    if (e.key === "Enter" && e.shiftKey) {
+      e.preventDefault();
+      setInputValue((prev) => prev + "\n");
     }
   };
 
@@ -66,8 +71,10 @@ const AppStore = styled.img`
   height: 1.58331rem;
 `;
 
-const Input = styled.input`
+const Input = styled.textarea`
   width: 100%;
+  font-family: "SF Pro Text";
+  font-size: 0.9375rem;
   margin-right: 1.03rem;
   height: 2.125rem;
   border: 1px solid var(--gray-3);
@@ -76,9 +83,17 @@ const Input = styled.input`
   border-radius: 1.875rem;
   resize: none;
   word-break: break-all;
+  overflow-y: auto; //스크롤바
+  padding-top: 0.5rem;
   &:focus {
     box-shadow: none;
   }
+  &::placeholder {
+    display: flex;
+
+    align-items: center;
+  }
+  padding-right: 2rem; //input 길어질때 방지 하기 위해
 `;
 
 const InputContainer = styled.span`

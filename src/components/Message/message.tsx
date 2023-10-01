@@ -55,17 +55,17 @@ const MessageItem = styled.div<{
     sender === nowUser ? "var(--blue)" : "rgba(118, 118, 128, 0.12)"};
   color: ${({ sender, nowUser }) =>
     sender === nowUser ? "#FFFFFF" : "#000000"};
-  text-align: ${({ sender, nowUser }) =>
-    sender === nowUser ? "right" : "left"};
-  margin-left: ${(msg) =>
-    !msg.showIcon && msg.sender !== msg.nowUser ? "3.75rem" : "0rem"};
   // showIcon가 false인 경우 margin-left를 한방에 설정
+  margin-left: ${(msg) =>
+    !msg.showIcon && msg.sender !== msg.nowUser ? "3.75rem" : "0"};
+  max-width: 90%; // 데이터가 길어질 경우
+
   font-size: 0.9375rem;
   font-weight: 400;
   line-height: normal;
   box-sizing: border-box;
   word-break: break-all;
-  white-space: keep-all; //들여쓰기
+  white-space: pre-line; //띄어쓰기도 인식할 수 있게
 `;
 
 const UserIconShow = styled.img`

@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import TopBar from "../../components/TopBar/topbar";
 import ChatInput from "../../components/ChatInput/chatinput";
 import userData from "../../assets/datas/userdata.json";
 import chatData from "../../assets/datas/chatdata.json";
@@ -22,25 +21,10 @@ function Chat() {
   const savedChats = JSON.parse(
     localStorage.getItem("chatMessages") || JSON.stringify(chatData)
   );
-  const savedMessageId = JSON.parse(
-    localStorage.getItem("currMessageId") || JSON.stringify(chatData.length)
-  );
+
   const [messages, setMessages] = useState<Message[]>(savedChats);
-  const [messageId, setMessageId] = useState<number>(savedMessageId);
+  const [messageId, setMessageId] = useState<number>(chatData.length);
   const [nowUser, setNowUser] = useState(userData.users[0]);
-
-  const updateMessagesWithShowIcon = (messages: Message[]) => {
-    const updatedMessages = [...messages];
-
-    for (let i = 1; i < updatedMessages.length; i++) {
-      if (updatedMessages[i - 1].sender !== updatedMessages[i].sender) {
-        // 이전 메시지랑 sender가 다른경우 showIcon을 true로 설정
-        updatedMessages[i - 1].showIcon = true;
-      }
-    }
-
-    return updatedMessages;
-  };
 
   const handleSendMessage = (content: string) => {
     const newMessage: Message = {
@@ -50,14 +34,20 @@ function Chat() {
       showIcon: false,
     };
 
-    const updatedMessages = [...messages, newMessage];
-    const messagesWithShowIcon = updateMessagesWithShowIcon(updatedMessages);
+    // 메세지가 추가됐을 때 가장 마지막 index의 메세지와 비교하여 showIcon 업데이트
+    if (
+      messages.length > 0 &&
+      messages[messages.length - 1].sender !== nowUser.name
+    ) {
+      messages[messages.length - 1].showIcon = true;
+    }
 
-    setMessages(messagesWithShowIcon);
+    const updatedMessages = [...messages, newMessage];
+    setMessages(updatedMessages);
+
     // 다음 메시지를 위해 messageId 업데이트
     setMessageId(messageId + 1);
     // 로컬 스토리지에 채팅 데이터 저장
-    localStorage.setItem("currMessageId", messageId.toString());
     localStorage.setItem("chatMessages", JSON.stringify(updatedMessages));
   };
 
@@ -67,6 +57,23 @@ function Chat() {
         ? userData.users[1]
         : userData.users[0]
     );
+
+    //사용자 바뀌면, 마지막 상대방 메시지 showIcon 처리해주는 부분
+    setMessages((prev) => {
+      const lastMessageIndex = prev.length - 1;
+      //userChange 동시에 여러번 누르면 아이콘 동시에 뜨는것 방지하기 위해
+      if (lastMessageIndex >= 1) {
+        if (
+          prev[lastMessageIndex - 1].sender === prev[lastMessageIndex].sender &&
+          prev[lastMessageIndex - 1].showIcon
+        ) {
+          prev[lastMessageIndex - 1].showIcon = false;
+        }
+        prev[lastMessageIndex].showIcon = true;
+      }
+
+      return [...prev];
+    });
   };
 
   const partner =
@@ -74,7 +81,7 @@ function Chat() {
       ? userData.users[1]
       : userData.users[0];
 
-  const messageContainers = messages.map((message: Message) => {
+  const messageContainers = messages.map((message: Message, index) => {
     const isCurrentUser = message.sender === nowUser.name;
 
     return (
@@ -127,7 +134,7 @@ const MessageContainer = styled.div`
   width: 100%;
   height: 100%;
   /* padding: 2.75rem 0; //Topbar랑 안겹치게
-  margin-bottom: 2.5rem; //아래 부분이랑 안겹치게 */
+    margin-bottom: 2.5rem; //아래 부분이랑 안겹치게 */
   display: flex;
   flex-direction: column;
   align-items: center;
