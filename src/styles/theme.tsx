@@ -14,7 +14,7 @@ const theme = {
   },
   fontStyles: {
     headLine1: `
-      font-family: Pretendard;
+      font-family: "Pretendard Variable", sans-serif;
       font-size: 2rem;
       font-weight: 600;
       line-height: 3rem;
@@ -22,7 +22,7 @@ const theme = {
       text-align: left;
     `,
     headLine2: `
-      font-family: Pretendard;
+      font-family: "Pretendard Variable", sans-serif;
       font-size: 1.8rem;
       font-weight: 600;
       line-height: 2.7rem;
@@ -30,7 +30,7 @@ const theme = {
       text-align: left;
     `,
     body1: `
-      font-family: Pretendard;
+      font-family: "Pretendard Variable", sans-serif;
       font-size: 1.6rem;
       font-weight: 600;
       line-height: 2.4rem;
@@ -38,7 +38,7 @@ const theme = {
       text-align: left;
     `,
     body2: `
-      font-family: Pretendard;
+      font-family: "Pretendard Variable", sans-serif;
       font-size: 1.6rem;
       font-weight: 400;
       line-height: 2.4rem;
@@ -46,7 +46,7 @@ const theme = {
       text-align: left;
     `,
     body3: `
-      font-family: Pretendard;
+      font-family: "Pretendard Variable", sans-serif;
       font-size: 1.4rem;
       font-weight: 400;
       line-height: 2.1rem;
@@ -54,7 +54,7 @@ const theme = {
       text-align: left;
     `,
     body4: `
-      font-family: Pretendard;
+      font-family: "Pretendard Variable", sans-serif;
       font-size: 1.2rem;
       font-weight: 500;
       line-height: 1.8rem;
