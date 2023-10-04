@@ -149,6 +149,8 @@ const MainChatsHeader = styled.div`
   span {
     color: ${(props) => props.theme.colors.gray2};
     ${(props) => props.theme.fontStyles.body2};
+    font-size: 1.4rem;
+    font-weight: 500;
     margin-left: 0.4rem;
   }
 `;
