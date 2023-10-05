@@ -56,5 +56,6 @@ const SubText = styled.div`
   span {
     ${(props) => props.theme.fontStyles.body2};
     color: ${(props) => props.theme.colors.gray1};
+    font-size: 1.4rem;
   }
 `;
