@@ -134,7 +134,7 @@ export default function ChatRoom() {
       <ChatInputContainer>
         <Plus />
         <ChatInput
-          placeholder="입력하세요"
+          placeholder="채팅을 입력해주세요"
           onChange={chatInputChanged}
           value={chatText}
           onKeyDown={handleKeyPress}
@@ -175,6 +175,7 @@ const ChatInput = styled.input`
   display: flex;
   align-items: center;
   padding: 0 1rem;
+  ${(props) => props.theme.fontStyles.body3}
 `;
 
 const SendBtnWrapper = styled.div<{ $active: boolean }>`
