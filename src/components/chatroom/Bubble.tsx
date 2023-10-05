@@ -103,7 +103,8 @@ const BubbleFile = styled.div`
   margin-bottom: 0.8rem;
   p {
     color: ${(props) => props.theme.colors.gray2};
-    ${(props) => props.theme.fontStyles.body2}
+    ${(props) => props.theme.fontStyles.body2};
+    font-size: 1.4rem;
   }
 `;
 
