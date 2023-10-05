@@ -66,18 +66,19 @@ export default function Bubble({
 
 const BubbleWrapper = styled.div<{ $isUser: boolean }>`
   padding: 0.8rem 1.6rem;
-  background-color: ${(props) => props.theme.colors.white};
+  background-color: red;
   margin-left: ${(props) => (!props.$isUser ? "1.2rem" : null)};
   margin-right: ${(props) => (props.$isUser ? "1.2rem" : null)};
   margin-bottom: 1.4rem;
+  border-radius: 0.4rem;
   position: relative;
   &::after {
     content: "";
     position: absolute;
     border-style: solid;
     border-width: ${(props) =>
-      !props.$isUser ? "1rem 1.2rem 1rem 0" : "1rem 0 1rem 1.2rem"};
-    border-color: transparent ${(props) => props.theme.colors.white};
+      !props.$isUser ? "0 1.4rem 1.4rem 0" : "0 0 1.4rem 1.4rem"};
+    border-color: transparent red;
     display: block;
     width: 0;
     z-index: 1;
@@ -103,8 +104,8 @@ const BubbleFile = styled.div`
   margin-bottom: 0.8rem;
   p {
     color: ${(props) => props.theme.colors.gray2};
-    ${(props) => props.theme.fontStyles.body2};
-    font-size: 1.4rem;
+    ${(props) => props.theme.fontStyles.body2}
+    font-size:1.4rem
   }
 `;
 
