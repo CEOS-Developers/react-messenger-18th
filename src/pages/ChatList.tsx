@@ -61,7 +61,7 @@ export default function ChatList() {
         <ChatLists>
           <MainChats>
             <MainChatsHeader>
-              <Star color={theme.colors.gray3} />
+              <Star color={theme.colors.gray3} size="2rem" />
               <span>주요 채팅</span>
             </MainChatsHeader>
             {mainChat.map((chat) => (
@@ -70,7 +70,13 @@ export default function ChatList() {
                 img={chat.img}
                 mainText={chat.mainText}
                 subText={chat.subText}
-                icon={<Star color={theme.colors.mainColor} />}
+                icon={
+                  <Star
+                    color={theme.colors.mainColor}
+                    size="2.4rem"
+                    addStyle={{ marginBottom: "0.2rem" }}
+                  />
+                }
                 onClick={() =>
                   navigateTo(`/chatroom/main/${chat.id}`, {
                     state: {
