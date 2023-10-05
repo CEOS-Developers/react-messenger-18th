@@ -66,7 +66,7 @@ export default function Bubble({
 
 const BubbleWrapper = styled.div<{ $isUser: boolean }>`
   padding: 0.8rem 1.6rem;
-  background-color: red;
+  background-color: ${(props) => props.theme.colors.white};
   margin-left: ${(props) => (!props.$isUser ? "1.2rem" : null)};
   margin-right: ${(props) => (props.$isUser ? "1.2rem" : null)};
   margin-bottom: 1.4rem;
@@ -78,7 +78,7 @@ const BubbleWrapper = styled.div<{ $isUser: boolean }>`
     border-style: solid;
     border-width: ${(props) =>
       !props.$isUser ? "0 1.4rem 1.4rem 0" : "0 0 1.4rem 1.4rem"};
-    border-color: transparent red;
+    border-color: transparent ${(props) => props.theme.colors.white};
     display: block;
     width: 0;
     z-index: 1;
