@@ -1,16 +1,9 @@
-import React from "react";
-import ChatHeader from "../organism/ChatHeader";
-import ChatArea from "../organism/ChatArea";
-import ChatMessageInput from "../organism/ChatMessageInput";
+import React from 'react'
 
 function ChatTemplate() {
   return (
-    <>
-      <ChatHeader />
-      <ChatArea />
-      <ChatMessageInput />
-    </>
-  );
+    <div>ChatTemplate</div>
+  )
 }
 
-export default ChatTemplate;
+export default ChatTemplate

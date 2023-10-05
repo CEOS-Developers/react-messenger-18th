@@ -1,12 +1,9 @@
-import React from "react";
-import ChatTemplate from "../components/template/ChatTemplate";
+import React from 'react'
 
 function Chat() {
   return (
-    <>
-      <ChatTemplate />
-    </>
-  );
+    <div>Chat</div>
+  )
 }
 
-export default Chat;
+export default Chat

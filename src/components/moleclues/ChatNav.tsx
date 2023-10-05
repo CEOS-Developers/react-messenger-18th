@@ -7,6 +7,7 @@ import searchIcon from "../../assets/images/serachIcon.svg";
 import backIcon from "../../assets/images/backIcon.svg";
 import { useRecoilState } from "recoil";
 import { isUser1State } from "../../recoil/atom";
+
 function ChatNav() {
   const [isUser1, setIsUser1] = useRecoilState(isUser1State);
   const toggleUser = () => {
