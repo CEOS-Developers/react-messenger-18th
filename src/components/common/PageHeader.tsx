@@ -48,6 +48,7 @@ const LeftIconContainer = styled.div`
   span {
     margin-left: 1.8rem;
     ${(props) => props.theme.fontStyles.headLine1}
+    font-size:1.8rem;
   }
 `;
 
