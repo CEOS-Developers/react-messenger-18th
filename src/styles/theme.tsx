@@ -13,6 +13,14 @@ const theme = {
     black: "#121212",
   },
   fontStyles: {
+    headLine0: `
+      font-family: "Pretendard Variable", sans-serif;
+      font-size: 2.4rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 160%; 
+      letter-spacing: -0.6px;
+    `,
     headLine1: `
       font-family: "Pretendard Variable", sans-serif;
       font-size: 2rem;
