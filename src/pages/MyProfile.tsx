@@ -47,6 +47,7 @@ const ProfileInfoWrapper = styled.div`
   align-items: center;
   height: 35.1rem;
   padding: 0 2rem;
+  border-radius: 0px 0px 1.6rem 1.6rem;
   background-color: ${(props) => props.theme.colors.gray7};
 `;
 
