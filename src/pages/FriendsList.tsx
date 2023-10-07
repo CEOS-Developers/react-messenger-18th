@@ -7,6 +7,7 @@ import styled from "styled-components";
 import SearchBar from "../components/friendList/SearchBar";
 import Divider from "../components/common/Divider";
 import { dividerState } from "../state/dividerState";
+import MajorHeader from "../components/friendList/MajorHeader";
 
 export default function FriendsList() {
   const navigate = useNavigate();
