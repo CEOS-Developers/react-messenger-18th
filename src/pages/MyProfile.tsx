@@ -7,7 +7,9 @@ import { ReactComponent as Mail } from "../icons/mail.svg";
 import { useNavigateOnClick } from "../customHooks/useNavigateOnClick";
 import styled from "styled-components";
 import ChipButton from "../components/profile/ChipButton";
-import ContactUserBtn from "../components/profile/ContactUserBtn";
+import ContactUserBtn from "../components/profile/ContactUserButton";
+import { profileLinkState } from "../state/profileLinkState";
+import LinkButton from "../components/profile/LinkButton";
 
 export default function MyProfile() {
   const { navigateBack } = useNavigateOnClick();
@@ -37,6 +39,16 @@ export default function MyProfile() {
           <ContactUserBtn icon={<Mail />} text="ren6294@naver.com" />
         </ContactUserWrapper>
       </ProfileInfoWrapper>
+      <DirectAccessWrapper>
+        <DirectAccessText>
+          <span>바로가기</span>
+        </DirectAccessText>
+        <DirectAccessLink>
+          {profileLinkState.map((link) => (
+            <LinkButton key={link.text} icon={<link.icon />} text={link.text} />
+          ))}
+        </DirectAccessLink>
+      </DirectAccessWrapper>
     </>
   );
 }
@@ -82,4 +94,23 @@ const UserName = styled.div`
   span {
     ${(props) => props.theme.fontStyles.headLine0}
   }
+`;
+
+const DirectAccessWrapper = styled.div`
+  margin-top: 3.12rem;
+  height: 11.2rem;
+  padding: 0 2rem;
+`;
+
+const DirectAccessText = styled.div`
+  height: 2.1rem;
+  span {
+    ${(props) => props.theme.fontStyles.body2};
+    font-weight: 500;
+  }
+`;
+
+const DirectAccessLink = styled.div`
+  margin-top: 1.2rem;
+  display: flex;
 `;
