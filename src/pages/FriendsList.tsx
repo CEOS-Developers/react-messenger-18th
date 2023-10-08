@@ -8,6 +8,7 @@ import SearchBar from "../components/friendList/SearchBar";
 import Divider from "../components/common/Divider";
 import { dividerState } from "../state/dividerState";
 import MajorHeader from "../components/friendList/MajorHeader";
+import PersonalInfo from "../components/friendList/PersonalInfo";
 
 export default function FriendsList() {
   const navigate = useNavigate();
@@ -25,6 +26,11 @@ export default function FriendsList() {
         <SearchBar />
       </SearchBarWrapper>
       <Divider state={dividerState.LONGTHICK} />
+      <FriendsListContainer>
+        <DesignerListContainer>
+          <MajorHeader people={3} />
+        </DesignerListContainer>
+      </FriendsListContainer>
     </>
   );
 }
@@ -33,4 +39,12 @@ const SearchBarWrapper = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 1.2rem;
+`;
+
+const FriendsListContainer = styled.div`
+  padding: 2rem;
+`;
+
+const DesignerListContainer = styled.div`
+  height: 30.6rem;
 `;
