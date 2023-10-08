@@ -9,6 +9,7 @@ import Divider from "../components/common/Divider";
 import { dividerState } from "../state/dividerState";
 import MajorHeader from "../components/friendList/MajorHeader";
 import PersonalInfo from "../components/friendList/PersonalInfo";
+import { designerListState } from "../state/designerListState";
 
 export default function FriendsList() {
   const navigate = useNavigate();
@@ -29,6 +30,15 @@ export default function FriendsList() {
       <FriendsListContainer>
         <DesignerListContainer>
           <MajorHeader people={3} />
+          {designerListState.map((designerList, index) => (
+            <PersonalInfo
+              key={designerList.name + index}
+              img={designerList.img}
+              name={designerList.name}
+              message={designerList.message}
+              group={designerList.group}
+            />
+          ))}
         </DesignerListContainer>
       </FriendsListContainer>
     </>
