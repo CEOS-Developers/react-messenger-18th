@@ -1,8 +1,15 @@
 import React from 'react'
+import HomeHeader from '../organism/HomeHeader'
+import ChatList from '../organism/chat/ChatList'
+import HomeFooter from '../organism/HomeFooter'
 
 function ChatTemplate() {
   return (
-    <div>ChatTemplate</div>
+    <>
+     <HomeHeader title="채팅"/>
+     <ChatList/>
+     <HomeFooter/>
+    </>
   )
 }
 
