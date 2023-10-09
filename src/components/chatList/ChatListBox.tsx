@@ -50,6 +50,7 @@ const MainText = styled.div`
   }
   display: flex;
   align-items: center;
+  margin: 0.3rem 0 0.2rem 0;
 `;
 
 const SubText = styled.div`
@@ -58,4 +59,7 @@ const SubText = styled.div`
     color: ${(props) => props.theme.colors.gray1};
     font-size: 1.4rem;
   }
+  display: flex;
+  align-items: center;
+  margin-top: -0.3rem;
 `;
