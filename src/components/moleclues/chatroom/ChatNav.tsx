@@ -1,12 +1,12 @@
 import React from "react";
-import { Flex } from "../atom/Flex";
-import { Icon } from "../atom/Icon";
-import { Text } from "../atom/Text";
-import chatAddIcon from "../../assets/images/chatAddIcon.svg";
-import searchIcon from "../../assets/images/serachIcon.svg";
-import backIcon from "../../assets/images/backIcon.svg";
+import { Flex } from "../../atom/Flex";
+import { Icon } from "../../atom/Icon";
+import { Text } from "../../atom/Text";
+import chatAddIcon from "../../../assets/images/chatAddIcon.svg";
+import searchIcon from "../../../assets/images/serachIcon.svg";
+import backIcon from "../../../assets/images/backIcon.svg";
 import { useRecoilState } from "recoil";
-import { isUser1State } from "../../recoil/atom";
+import { isUser1State } from "../../../recoil/atom";
 
 function ChatNav() {
   const [isUser1, setIsUser1] = useRecoilState(isUser1State);

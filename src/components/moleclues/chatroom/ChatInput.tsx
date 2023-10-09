@@ -1,17 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Flex } from "../atom/Flex";
-import { Icon } from "../atom/Icon";
-import { Input } from "../atom/Input";
-import mediaAddIcon from "../../assets/images/mediaAddIcon.svg";
-import voiceAddIcon from "../../assets/images/voiceAddIcon.svg";
+import { Flex } from "../../atom/Flex";
+import { Icon } from "../../atom/Icon";
+import { Input } from "../../atom/Input";
+import mediaAddIcon from "../../../assets/images/mediaAddIcon.svg";
+import voiceAddIcon from "../../../assets/images/voiceAddIcon.svg";
 import { useRecoilState, useRecoilValue } from "recoil";
 import {
   isUser1State,
   user1MessageState,
   user2MesasgeState,
-} from "../../recoil/atom";
+} from "../../../recoil/atom";
 
-import { handleKeyDown } from "../../hooks/handleKeyDown";
+import { handleKeyDown } from "../../../hooks/handleKeyDown";
 
 function ChatInput() {
   const [inputMessage, setInputMessage] = useState("");

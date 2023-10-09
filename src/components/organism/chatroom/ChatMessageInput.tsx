@@ -1,7 +1,7 @@
 import React from "react";
-import ChatInput from "../moleclues/ChatInput";
-import BottomLine from "../moleclues/BottomLine";
-import { Space } from "../atom/Space";
+import ChatInput from "../../moleclues/chatroom/ChatInput";
+import BottomLine from "../../moleclues/BottomLine";
+import { Space } from "../../atom/Space";
 
 function ChatMessageInput() {
   return (

@@ -1,17 +1,16 @@
 import React, { useEffect, useRef } from "react";
-import { Flex } from "../atom/Flex";
-import ChatBubbleBlue from "../moleclues/ChatBubbleBlue";
-import ChatBubbleWhite from "../moleclues/ChatBubbleWhite";
-import { Space } from "../atom/Space";
+import { Flex } from "../../atom/Flex";
+import ChatBubbleBlue from "../../moleclues/chatroom/ChatBubbleBlue";
+import ChatBubbleWhite from "../../moleclues/chatroom/ChatBubbleWhite";
+import { Space } from "../../atom/Space";
 import { useRecoilValue } from "recoil";
 import {
   isUser1State,
   user1MessageState,
   user2MesasgeState,
-} from "../../recoil/atom";
+} from "../../../recoil/atom";
 import dayjs from "dayjs";
-import { sortMessagesByTime } from "../../hooks/sortMessageByTime";
-import DummyList from "../../assets/DummyList";
+import { sortMessagesByTime } from "../../../hooks/sortMessageByTime";
 
 export interface ChatMessage {
   time: string;
@@ -69,7 +68,6 @@ function ChatArea() {
       >
         <Space height="25px" />
 
-        <DummyList/>
         {sortedMessagesWithUser.map((el) => {
           if (isUser1)
             return el.user === "User 1" ? (

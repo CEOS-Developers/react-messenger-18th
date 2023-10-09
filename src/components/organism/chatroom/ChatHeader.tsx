@@ -1,7 +1,7 @@
 import React from "react";
-import StatusBar from "../moleclues/StatusBar";
-import ChatNav from "../moleclues/ChatNav";
-import { Flex } from "../atom/Flex";
+import StatusBar from "../../moleclues/StatusBar";
+import ChatNav from "../../moleclues/chatroom/ChatNav";
+import { Flex } from "../../atom/Flex";
 
 function ChatHeader() {
   return (

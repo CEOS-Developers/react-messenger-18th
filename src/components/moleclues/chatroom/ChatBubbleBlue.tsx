@@ -1,6 +1,6 @@
 import React from "react";
-import { Text } from "../atom/Text";
-import { Flex } from "../atom/Flex";
+import { Text } from "../../atom/Text";
+import { Flex } from "../../atom/Flex";
 
 interface ChatBubbleBlueProps {
   text: string;
