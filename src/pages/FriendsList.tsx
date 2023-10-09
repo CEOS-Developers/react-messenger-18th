@@ -9,7 +9,10 @@ import Divider from "../components/common/Divider";
 import { dividerState } from "../state/dividerState";
 import MajorHeader from "../components/friendList/MajorHeader";
 import PersonalInfo from "../components/friendList/PersonalInfo";
-import { designerListState } from "../state/designerListState";
+import {
+  designerListState,
+  developerListState,
+} from "../state/friendListState";
 
 export default function FriendsList() {
   const navigate = useNavigate();
@@ -29,7 +32,7 @@ export default function FriendsList() {
       <Divider state={dividerState.LONGTHICK} />
       <FriendsListContainer>
         <DesignerListContainer>
-          <MajorHeader people={3} />
+          <MajorHeader people={3} majorIn="Designer" />
           {designerListState.map((designerList, index) => (
             <PersonalInfo
               key={designerList.name + index}
@@ -37,10 +40,24 @@ export default function FriendsList() {
               name={designerList.name}
               message={designerList.message}
               group={designerList.group}
+              major={designerList.majorIn}
             />
           ))}
         </DesignerListContainer>
         <Divider state={dividerState.SHORT} />
+        <DeveloperListContainer>
+          <MajorHeader people={2} majorIn="Frontend" />
+          {developerListState.map((developerList, index) => (
+            <PersonalInfo
+              key={developerList.name + index}
+              img={developerList.img}
+              name={developerList.name}
+              message={developerList.message}
+              group={developerList.group}
+              major={developerList.majorIn}
+            />
+          ))}
+        </DeveloperListContainer>
       </FriendsListContainer>
     </>
   );
@@ -53,9 +70,14 @@ const SearchBarWrapper = styled.div`
 `;
 
 const FriendsListContainer = styled.div`
-  padding: 2rem;
+  padding: 0 2rem;
 `;
 
 const DesignerListContainer = styled.div`
   margin-bottom: 0.8rem;
+  padding-top: 2rem;
+`;
+
+const DeveloperListContainer = styled.div`
+  padding-top: 2rem;
 `;

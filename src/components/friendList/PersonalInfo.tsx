@@ -3,12 +3,14 @@ import styled from "styled-components";
 import RoleButton from "./RoleButton";
 import { ReactComponent as Group } from "../../icons/group.svg";
 import { ReactComponent as RightIcon } from "../../icons/arrows/rightarrow.svg";
+import { majorState } from "../../state/majorState";
 
 interface PersonalInfoProps {
   img: string;
   name: string;
   message: string;
   group: string;
+  major: string;
 }
 
 export default function PersonalInfo({
@@ -16,6 +18,7 @@ export default function PersonalInfo({
   name,
   message,
   group,
+  major,
 }: PersonalInfoProps) {
   return (
     <InfoWrapper>
@@ -26,7 +29,15 @@ export default function PersonalInfo({
         <NameAndMessage>
           <UserName>
             <span>{name}</span>
-            <RoleButton text="D" />
+            <RoleButton
+              text={
+                major === majorState.DESIGNER
+                  ? "D"
+                  : major === majorState.FRONTEND
+                  ? "F"
+                  : ""
+              }
+            />
           </UserName>
           <Message>
             <p>{message}</p>

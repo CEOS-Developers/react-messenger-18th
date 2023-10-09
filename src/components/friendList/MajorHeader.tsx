@@ -5,13 +5,14 @@ import { ReactComponent as TopArrow } from "../../icons/arrows/toparrow.svg";
 
 interface MajorHeaderProps {
   people: number;
+  majorIn: string;
 }
 
-export default function MajorHeader({ people }: MajorHeaderProps) {
+export default function MajorHeader({ people, majorIn }: MajorHeaderProps) {
   return (
     <MajorHeaderWrapper>
       <MajorInfo>
-        <ChipButton text="Designer" />
+        <ChipButton text={majorIn} />
         <CountText>
           <span>{people}명</span>
         </CountText>
