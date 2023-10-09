@@ -46,7 +46,7 @@ const LeftIconContainer = styled.div`
   display: flex;
   align-items: center;
   span {
-    margin-left: 1.8rem;
+    margin-left: 0.8rem;
     ${(props) => props.theme.fontStyles.headLine1}
     font-size:1.8rem;
   }
