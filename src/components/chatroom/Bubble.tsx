@@ -80,6 +80,8 @@ const BubbleWrapper = styled.div<{ $isUser: boolean }>`
     border-width: ${(props) =>
       !props.$isUser ? "0 1.4rem 1.4rem 0" : "0 0 1.4rem 1.4rem"};
     border-color: transparent ${(props) => props.theme.colors.white};
+    border-radius: ${(props) =>
+      !props.$isUser ? "0.4rem 0 0 0" : "0 0.4rem 0 0"};
     display: block;
     width: 0;
     z-index: 1;
