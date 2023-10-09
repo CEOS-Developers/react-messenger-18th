@@ -134,5 +134,7 @@ const Time = styled.div`
   span {
     color: ${(props) => props.theme.colors.gray3};
     ${(props) => props.theme.fontStyles.body3}
+    font-size:1.2rem;
+    line-height: 1.8rem;
   }
 `;
