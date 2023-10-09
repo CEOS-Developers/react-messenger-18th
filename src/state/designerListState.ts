@@ -3,7 +3,7 @@ export const designerListState = [
     img: "/img/profile.jpg",
     name: "김현민",
     message: "세오스 화이팅!",
-    group: "CEOS 18기 로컬모드",
+    group: "CEOS 18기 로컬무드",
   },
   {
     img: "/img/profile.jpg",

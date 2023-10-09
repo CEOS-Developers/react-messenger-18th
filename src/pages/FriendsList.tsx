@@ -40,6 +40,7 @@ export default function FriendsList() {
             />
           ))}
         </DesignerListContainer>
+        <Divider state={dividerState.SHORT} />
       </FriendsListContainer>
     </>
   );
@@ -56,5 +57,5 @@ const FriendsListContainer = styled.div`
 `;
 
 const DesignerListContainer = styled.div`
-  height: 30.6rem;
+  margin-bottom: 0.8rem;
 `;

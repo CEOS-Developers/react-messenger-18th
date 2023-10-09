@@ -25,6 +25,7 @@ const MajorHeaderWrapper = styled.div`
   width: 100%;
   height: 2.5rem;
   display: flex;
+  margin-bottom: 1.2rem;
   justify-content: space-between;
 `;
 
