@@ -34,7 +34,6 @@ const MessageContainer = styled.div<{ sender: string; nowUser: string }>`
   display: flex;
   align-items: center;
   margin: 0.44rem 0;
-  gap: 0.44rem;
   max-width: 100%;
   flex-direction: ${(props) =>
     props.sender === props.nowUser ? "row-reverse" : "row"};
@@ -59,7 +58,6 @@ const MessageItem = styled.div<{
   margin-left: ${(msg) =>
     !msg.showIcon && msg.sender !== msg.nowUser ? "3.75rem" : "0"};
   max-width: 90%; // 데이터가 길어질 경우
-
   font-size: 0.9375rem;
   font-weight: 400;
   line-height: normal;
@@ -69,7 +67,7 @@ const MessageItem = styled.div<{
 `;
 
 const UserIconShow = styled.img`
-  width: 2.06244rem;
+  width: 2.75rem;
   height: 2.06238rem;
   margin-left: 1rem;
 `;
