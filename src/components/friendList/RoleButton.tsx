@@ -17,8 +17,8 @@ const ButtonWrapper = styled.div`
   width: 1.8rem;
   height: 1.8rem;
   border-radius: 50%;
-  padding: 0 0.5rem;
   display: flex;
+  justify-content: center;
   align-items: center;
   background-color: ${(props) => props.theme.colors.mainColor};
   span {

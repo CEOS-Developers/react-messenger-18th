@@ -81,7 +81,7 @@ const NameAndMessage = styled.div`
 const UserName = styled.div`
   display: flex;
   align-items: center;
-  span {
+  & > span {
     ${(props) => props.theme.fontStyles.body1};
     margin-right: 0.4rem;
   }
