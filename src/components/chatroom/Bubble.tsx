@@ -72,6 +72,7 @@ const BubbleWrapper = styled.div<{ $isUser: boolean }>`
   margin-bottom: 1.4rem;
   border-radius: 0.4rem;
   position: relative;
+  max-width: 27.1rem;
   &::after {
     content: "";
     position: absolute;
