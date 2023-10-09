@@ -86,15 +86,16 @@ const BubbleWrapper = styled.div<{ $isUser: boolean }>`
     right: ${(props) => (props.$isUser ? "-1.2rem" : null)};
     top: 0;
   }
-  p {
-    ${(props) => props.theme.fontStyles.body1}
-  }
 `;
 
 const BubbleText = styled.div<{ $isUser: boolean }>`
   margin-bottom: 0.8rem;
   display: flex;
   justify-content: ${(props) => (props.$isUser ? "flex-end" : null)};
+  p {
+    ${(props) => props.theme.fontStyles.body1};
+    font-weight: 500;
+  }
 `;
 
 const BubbleFile = styled.div`
