@@ -90,7 +90,10 @@ export default function ChatList() {
                 }
               />
             ))}
-            <Divider state={dividerState.SHORT} $addClass="margin:0.8rem 0;" />
+            <Divider
+              state={dividerState.SHORT}
+              $addClass={`margin:0.8rem 0; background-color:${theme.colors.gray5}`}
+            />
             {subChat.map((chat) => (
               <ChatListBox
                 key={chat.id}

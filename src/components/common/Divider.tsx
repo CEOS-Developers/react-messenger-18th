@@ -13,7 +13,7 @@ export default function Divider({ state, $addClass }: DividerProps) {
 
 const DividerWrapper = styled.div<DividerProps>`
   width: ${(props) =>
-    props.state === dividerState.SHORT ? "33.5rem" : "37.5rem"};
+    props.state === dividerState.SHORT ? "33.5rem" : "37.3rem"};
   height: ${(props) =>
     props.state === dividerState.LONGTHICK ? "0.2rem" : "0.1rem"};
   background-color: ${(props) => props.theme.colors.gray6};
