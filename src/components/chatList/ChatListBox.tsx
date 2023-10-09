@@ -40,7 +40,7 @@ const BoxWrapper = styled.div`
 `;
 
 const TextBox = styled.div`
-  margin-left: 0.8rem;
+  margin-left: 1.2rem;
 `;
 
 const MainText = styled.div`
