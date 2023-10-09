@@ -49,6 +49,7 @@ const LeftIconContainer = styled.div`
     margin-left: 0.8rem;
     ${(props) => props.theme.fontStyles.headLine1}
     font-size:1.8rem;
+    color: rgba(79, 79, 79, 1);
   }
 `;
 
