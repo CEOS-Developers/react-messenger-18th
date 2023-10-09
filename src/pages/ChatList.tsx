@@ -149,9 +149,9 @@ const ChatLists = styled.div`
 const MainChats = styled.div``;
 
 const MainChatsHeader = styled.div`
-  height: 5.2rem;
   display: flex;
   align-items: center;
+  margin: 2rem 0rem 0.8rem 0;
   span {
     color: ${(props) => props.theme.colors.gray2};
     ${(props) => props.theme.fontStyles.body2};
