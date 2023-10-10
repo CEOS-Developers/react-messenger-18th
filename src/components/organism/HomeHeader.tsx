@@ -3,14 +3,14 @@ import StatusBar from "../moleclues/StatusBar";
 import HomeNav from "../moleclues/HomeNav";
 import { Flex } from "../atom/Flex";
 
-function HomeHeader({ title }) {
+function HomeHeader({ title, isBorder }) {
   return (
     <Flex
       direction="column"
       gap="14"
       height="90px"
       justify="center"
-      bordercolor="offWhite"
+      bordercolor={`${isBorder ? "offwhite" : "none"}`}
     >
       <StatusBar />
       <HomeNav title={title} />

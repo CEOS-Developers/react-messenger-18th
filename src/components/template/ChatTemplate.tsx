@@ -6,7 +6,7 @@ import HomeFooter from '../organism/HomeFooter'
 function ChatTemplate() {
   return (
     <>
-     <HomeHeader title="채팅"/>
+     <HomeHeader title="채팅" isBorder={true}/>
      <ChatList/>
      <HomeFooter/>
     </>

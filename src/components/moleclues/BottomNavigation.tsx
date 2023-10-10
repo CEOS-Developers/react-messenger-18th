@@ -6,7 +6,7 @@ import messageIcon from "../../assets/images/messageIcon.svg";
 import horizontalIcon from "../../assets/images/horizontalIcon.svg";
 function BottomNavigation() {
   return (
-    <Flex justify="space-between" width="343px" margin="0 auto">
+    <Flex justify="space-between" width="343px" margin="12px auto 0px">
       <Flex width="58px" height="44px" justify="center" align="center">
         <Icon src={groupIcon} style={{ width: "32px", height: "32px" }} />
       </Flex>

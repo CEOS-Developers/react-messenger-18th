@@ -27,10 +27,10 @@ function App() {
 const AppContainer = styled.div`
   width: 375px;
   height: 812px;
-  border-radius: 24px;
   margin: 0 auto;
   border-radius: 24px;
   background-color: ${theme.colors.white};
+  overflow: hidden;
 `;
 
 export default App;

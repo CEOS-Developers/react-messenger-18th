@@ -18,6 +18,7 @@ interface FlexProps {
   bordercolor?: string;
   margin?: string;
   self?: string;
+  shadow?: string;
   inputRef?: RefObject<HTMLDivElement>;
 }
 
@@ -40,6 +41,7 @@ const FlexBase = styled.div<FlexProps>`
   border-bottom: ${({ bordercolor, theme }) =>
     bordercolor ? "1px solid " + theme.colors[bordercolor] : "none"};
   margin: ${({ margin }) => margin};
+  box-shadow: ${({shadow})=>shadow};
 `;
 
 export const Flex: React.FC<FlexProps> = ({
