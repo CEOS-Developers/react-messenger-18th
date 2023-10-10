@@ -19,6 +19,9 @@ interface FlexProps {
   margin?: string;
   self?: string;
   shadow?: string;
+  grow?: string;
+  position?: string;
+  bottom?: string;
   inputRef?: RefObject<HTMLDivElement>;
 }
 
@@ -41,7 +44,10 @@ const FlexBase = styled.div<FlexProps>`
   border-bottom: ${({ bordercolor, theme }) =>
     bordercolor ? "1px solid " + theme.colors[bordercolor] : "none"};
   margin: ${({ margin }) => margin};
-  box-shadow: ${({shadow})=>shadow};
+  box-shadow: ${({ shadow }) => shadow};
+  flex-grow: ${({ grow }) => grow};
+  position: ${({ position }) => position};
+  bottom: ${({ bottom }) => bottom};
 `;
 
 export const Flex: React.FC<FlexProps> = ({

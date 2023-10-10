@@ -8,7 +8,7 @@ import { getTime } from "../../hooks/getTime";
 function StatusBar() {
   return (
     <>
-      <Flex justify="space-between" width="343px" margin="0 auto">
+      <Flex justify="space-between" width="327px" margin="0 auto">
         <Flex>
           <Space width="6px" />
           <Text size="15px" lineheight="21px" font="Segoe" weight="500">

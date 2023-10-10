@@ -31,6 +31,7 @@ const AppContainer = styled.div`
   border-radius: 24px;
   background-color: ${theme.colors.white};
   overflow: hidden;
+  position: relative;
 `;
 
 export default App;

@@ -1,11 +1,11 @@
-import React from 'react'
-
+import React from "react";
+import ProfileTemplate from "../components/template/ProfileTemplate";
 function Profile() {
   return (
-    <div>
-        
-    </div>
-  )
+    <>
+      <ProfileTemplate />
+    </>
+  );
 }
 
-export default Profile
+export default Profile;
