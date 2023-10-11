@@ -43,5 +43,6 @@ const InputWrapper = styled.input`
   border-radius: 0.4rem;
   padding: 0.6rem 1.6rem;
   padding-left: 4.4rem;
-  ${(props) => props.theme.fontStyles.body2}
+  ${(props) => props.theme.fontStyles.body2};
+  font-size: 1.4rem;
 `;
