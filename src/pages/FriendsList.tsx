@@ -9,10 +9,7 @@ import Divider from "../components/common/Divider";
 import { dividerState } from "../state/dividerState";
 import MajorHeader from "../components/friendList/MajorHeader";
 import PersonalInfo from "../components/friendList/PersonalInfo";
-import {
-  designerListState,
-  developerListState,
-} from "../state/friendListState";
+import { designerListData, developerListData } from "../data/friendListData";
 
 export default function FriendsList() {
   const navigate = useNavigate();
@@ -33,28 +30,28 @@ export default function FriendsList() {
       <FriendsListContainer>
         <DesignerListContainer>
           <MajorHeader people={3} majorIn="Designer" />
-          {designerListState.map((designerList, index) => (
+          {designerListData.map((designerData, index) => (
             <PersonalInfo
-              key={designerList.name + index}
-              img={designerList.img}
-              name={designerList.name}
-              message={designerList.message}
-              group={designerList.group}
-              major={designerList.majorIn}
+              key={designerData.name + index}
+              img={designerData.img}
+              name={designerData.name}
+              message={designerData.message}
+              group={designerData.group}
+              major={designerData.majorIn}
             />
           ))}
         </DesignerListContainer>
         <Divider state={dividerState.SHORT} />
         <DeveloperListContainer>
           <MajorHeader people={2} majorIn="Frontend" />
-          {developerListState.map((developerList, index) => (
+          {developerListData.map((developerData, index) => (
             <PersonalInfo
-              key={developerList.name + index}
-              img={developerList.img}
-              name={developerList.name}
-              message={developerList.message}
-              group={developerList.group}
-              major={developerList.majorIn}
+              key={developerData.name + index}
+              img={developerData.img}
+              name={developerData.name}
+              message={developerData.message}
+              group={developerData.group}
+              major={developerData.majorIn}
             />
           ))}
         </DeveloperListContainer>

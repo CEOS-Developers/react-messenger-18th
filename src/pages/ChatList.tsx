@@ -68,8 +68,8 @@ export default function ChatList() {
               <ChatListBox
                 key={chat.id}
                 img={chat.img}
-                mainText={chat.mainText}
-                subText={chat.subText}
+                mainText={chat.name}
+                subText={chat.message}
                 icon={
                   <Star
                     color={theme.colors.mainColor}
@@ -80,9 +80,9 @@ export default function ChatList() {
                 onClick={() =>
                   navigateTo(`/chatroom/main/${chat.id}`, {
                     state: {
-                      chatRoomTitle: chat.mainText,
+                      chatRoomTitle: chat.name,
                       img: chat.img,
-                      name: chat.mainText,
+                      name: chat.name,
                       chatRoomState: "main",
                       chatRoomId: chat.id,
                     },
@@ -98,14 +98,14 @@ export default function ChatList() {
               <ChatListBox
                 key={chat.id}
                 img={chat.img}
-                mainText={chat.mainText}
-                subText={chat.subText}
+                mainText={chat.name}
+                subText={chat.message}
                 onClick={() =>
                   navigateTo(`/chatroom/sub/${chat.id}`, {
                     state: {
-                      chatRoomTitle: chat.mainText,
+                      chatRoomTitle: chat.name,
                       img: chat.img,
-                      name: chat.mainText,
+                      name: chat.name,
                       chatRoomState: "sub",
                       chatRoomId: chat.id,
                     },

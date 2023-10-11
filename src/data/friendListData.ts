@@ -1,6 +1,6 @@
-import { majorState } from "./majorState";
+import { majorState } from "../state/majorState";
 
-export const designerListState = [
+export const designerListData = [
   {
     img: "/img/default.jpg",
     name: "전윤수",
@@ -24,7 +24,7 @@ export const designerListState = [
   },
 ];
 
-export const developerListState = [
+export const developerListData = [
   {
     img: "/img/profile.jpg",
     name: "김현민",
