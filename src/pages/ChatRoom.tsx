@@ -180,7 +180,8 @@ const ChatInput = styled.input`
   display: flex;
   align-items: center;
   padding: 0 1rem;
-  ${(props) => props.theme.fontStyles.body3}
+  ${(props) => props.theme.fontStyles.body3};
+  font-size: 1.6rem;
 `;
 
 const SendBtnWrapper = styled.div<{ $active: boolean }>`
