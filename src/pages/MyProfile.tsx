@@ -27,7 +27,7 @@ export default function MyProfile() {
             <UserName>
               <span>김현민</span>
             </UserName>
-            <ChipButton text="Developer" />
+            <ChipButton text="Frontend" />
           </MainProfileText>
         </MainProfile>
         <ContactUserWrapper>
@@ -80,11 +80,9 @@ const ProfilePhoto = styled.div`
 const MainProfileText = styled.div`
   margin-top: 1.2rem;
   height: 7rem;
-`;
-
-const ContactUserWrapper = styled.div`
-  margin-top: 3.2rem;
   display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const UserName = styled.div`
@@ -94,6 +92,11 @@ const UserName = styled.div`
   span {
     ${(props) => props.theme.fontStyles.headLine0}
   }
+`;
+
+const ContactUserWrapper = styled.div`
+  margin-top: 3.2rem;
+  display: flex;
 `;
 
 const DirectAccessWrapper = styled.div`

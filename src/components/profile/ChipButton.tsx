@@ -18,17 +18,18 @@ export default function ChipButton({ text }: ChipButtonProps) {
 }
 
 const ButtonWrapper = styled.button`
-  width: 100%;
+  width: 10rem;
   height: 2.8rem;
-  padding: 0.2rem 0.8rem;
-  background-color: ${(props) => props.theme.colors.mainColorLight};
+  padding: 0.2rem 0.4rem 0.2rem 0.8rem;
+  border-radius: 0.4rem;
+  background-color: ${(props) => props.theme.colors.mainColor};
 `;
 
 const FieldText = styled.div`
   display: flex;
   justify-content: center;
   span {
-    color: ${(props) => props.theme.colors.mainColor};
+    color: ${(props) => props.theme.colors.white};
     ${(props) => props.theme.fontStyles.body1};
     font-weight: 500;
   }
