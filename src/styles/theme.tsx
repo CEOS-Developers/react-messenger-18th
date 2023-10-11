@@ -53,6 +53,14 @@ const theme = {
       letter-spacing: -0.025em;
       text-align: left;
     `,
+    body2_medium: `
+      font-family: "Pretendard Variable", sans-serif;
+      font-size: 1.4rem;
+      font-weight: 500;
+      line-height: 2.4rem;
+      letter-spacing: -0.025em;
+      text-align: left;
+    `,
     body3: `
       font-family: "Pretendard Variable", sans-serif;
       font-size: 1.4rem;

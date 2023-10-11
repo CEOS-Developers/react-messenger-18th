@@ -108,8 +108,8 @@ const DirectAccessWrapper = styled.div`
 const DirectAccessText = styled.div`
   height: 2.1rem;
   span {
-    ${(props) => props.theme.fontStyles.body2};
-    font-weight: 500;
+    color: ${(props) => props.theme.colors.gray2};
+    ${(props) => props.theme.fontStyles.body2_medium};
   }
 `;
 
