@@ -29,16 +29,15 @@ export default function ChatList() {
   const { changeState, subHeaderState } = useChatListStateChange();
   const [searchText, setSearchText] = useState("");
   const [showSearchBar, setShowSearchBar] = useState(false);
-  const searchIconClicked = () => {
-    setShowSearchBar((prev) => !prev);
-  };
   const searchedMainChat = searchByName<ChatListBoxProps>(mainChat, searchText);
   const searchedSubChat = searchByName<ChatListBoxProps>(subChat, searchText);
   return (
     <>
       <PageHeader
         leftIcon={<Friends onClick={() => navigate("/friends-list")} />}
-        rightIcon1={<Search onClick={searchIconClicked} />}
+        rightIcon1={
+          <Search onClick={() => setShowSearchBar((prev) => !prev)} />
+        }
         rightIcon2={
           <Profile
             $img="/img/profile.jpg"

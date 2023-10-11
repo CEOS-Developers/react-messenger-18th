@@ -23,9 +23,6 @@ export default function FriendsList() {
   };
   const [searchText, setSearchText] = useState("");
   const [showSearchBar, setShowSearchBar] = useState(false);
-  const searchIconClicked = () => {
-    setShowSearchBar((prev) => !prev);
-  };
   const searchedDesignerList = searchByName<PersonalInfoProps>(
     designerListData,
     searchText
@@ -39,7 +36,9 @@ export default function FriendsList() {
       <PageHeader
         leftIcon={<Arrow onClick={arrowIconClicked} />}
         title="친구"
-        rightIcon1={<Search onClick={searchIconClicked} />}
+        rightIcon1={
+          <Search onClick={() => setShowSearchBar((prev) => !prev)} />
+        }
         rightIcon2={<AddFriend style={{ marginLeft: "1.2rem" }} />}
       />
       {showSearchBar ? (
