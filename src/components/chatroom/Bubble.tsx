@@ -97,7 +97,7 @@ const BubbleText = styled.div<{ $isUser: boolean }>`
   justify-content: ${(props) => (props.$isUser ? "flex-end" : null)};
   p {
     ${(props) => props.theme.fontStyles.body1};
-    font-weight: 500;
+    font-weight: 400;
   }
 `;
 

@@ -110,10 +110,7 @@ export default function ChatList() {
               />
             ))}
             {searchedMainChat.length > 0 && searchedSubChat.length > 0 ? (
-              <Divider
-                state={dividerState.SHORT}
-                $addClass={`margin:0.8rem 0; background-color:${theme.colors.gray5}`}
-              />
+              <Divider state={dividerState.SHORT} />
             ) : null}
             {searchedSubChat.map((chat) => (
               <ChatListBox
