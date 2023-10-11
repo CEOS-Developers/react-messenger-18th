@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PageHeader from "../components/common/PageHeader";
 import { ReactComponent as Arrow } from "../icons/arrows/leftarrow.svg";
@@ -8,14 +8,18 @@ import SearchBar from "../components/friendList/SearchBar";
 import Divider from "../components/common/Divider";
 import { dividerState } from "../state/dividerState";
 import MajorHeader from "../components/friendList/MajorHeader";
-import PersonalInfo from "../components/friendList/PersonalInfo";
+import PersonalInfo, {
+  PersonalInfoProps,
+} from "../components/friendList/PersonalInfo";
 import { designerListData, developerListData } from "../data/friendListData";
+import { searchByName } from "../customHooks/searchByName";
 
 export default function FriendsList() {
   const navigate = useNavigate();
   const arrowIconClicked = () => {
     navigate(-1);
   };
+  const [searchText, setSearchText] = useState("");
   return (
     <>
       <PageHeader
@@ -24,7 +28,7 @@ export default function FriendsList() {
         rightIcon1={<AddFriend />}
       />
       <SearchBarWrapper>
-        <SearchBar />
+        <SearchBar search={[searchText, setSearchText]} />
       </SearchBarWrapper>
       <Divider state={dividerState.LONGTHICK} />
       <FriendsListContainer>
@@ -37,7 +41,7 @@ export default function FriendsList() {
               name={designerData.name}
               message={designerData.message}
               group={designerData.group}
-              major={designerData.majorIn}
+              majorIn={designerData.majorIn}
             />
           ))}
         </DesignerListContainer>
@@ -51,7 +55,7 @@ export default function FriendsList() {
               name={developerData.name}
               message={developerData.message}
               group={developerData.group}
-              major={developerData.majorIn}
+              majorIn={developerData.majorIn}
             />
           ))}
         </DeveloperListContainer>

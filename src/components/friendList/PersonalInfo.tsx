@@ -5,12 +5,12 @@ import { ReactComponent as Group } from "../../icons/group.svg";
 import { ReactComponent as RightIcon } from "../../icons/arrows/rightarrow.svg";
 import { majorState } from "../../state/majorState";
 
-interface PersonalInfoProps {
+export interface PersonalInfoProps {
   img: string;
   name: string;
   message: string;
   group: string;
-  major: string;
+  majorIn: string;
 }
 
 export default function PersonalInfo({
@@ -18,7 +18,7 @@ export default function PersonalInfo({
   name,
   message,
   group,
-  major,
+  majorIn,
 }: PersonalInfoProps) {
   return (
     <InfoWrapper>
@@ -31,9 +31,9 @@ export default function PersonalInfo({
             <span>{name}</span>
             <RoleButton
               text={
-                major === majorState.DESIGNER
+                majorIn === majorState.DESIGNER
                   ? "D"
-                  : major === majorState.FRONTEND
+                  : majorIn === majorState.FRONTEND
                   ? "F"
                   : ""
               }
