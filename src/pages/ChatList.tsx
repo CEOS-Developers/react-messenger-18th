@@ -11,10 +11,13 @@ import Divider from "../components/common/Divider";
 import { dividerState } from "../state/dividerState";
 import Star from "../icons/star/Star";
 import theme from "../styles/theme";
-import ChatListBox from "../components/chatList/ChatListBox";
+import ChatListBox, {
+  ChatListBoxProps,
+} from "../components/chatList/ChatListBox";
 import { mainChat, subChat } from "../data/chatListData";
 import SearchBar from "../components/friendList/SearchBar";
 import { SearchBarWrapper } from "./FriendsList";
+import { searchByName } from "../customHooks/searchByName";
 
 interface TextWrapperProps {
   $isClicked: boolean;
@@ -29,6 +32,8 @@ export default function ChatList() {
   const searchIconClicked = () => {
     setShowSearchBar((prev) => !prev);
   };
+  const searchedMainChat = searchByName<ChatListBoxProps>(mainChat, searchText);
+  const searchedSubChat = searchByName<ChatListBoxProps>(subChat, searchText);
   return (
     <>
       <PageHeader
@@ -72,16 +77,18 @@ export default function ChatList() {
       {subHeaderState === chatListState.GROUP && (
         <ChatLists>
           <MainChats>
-            <MainChatsHeader>
-              <Star color={theme.colors.gray3} size="2rem" />
-              <span>주요 채팅</span>
-            </MainChatsHeader>
-            {mainChat.map((chat) => (
+            {searchedMainChat.length > 0 ? (
+              <MainChatsHeader>
+                <Star color={theme.colors.gray3} size="2rem" />
+                <span>주요 채팅</span>
+              </MainChatsHeader>
+            ) : null}
+            {searchedMainChat.map((chat) => (
               <ChatListBox
                 key={chat.id}
                 img={chat.img}
-                mainText={chat.name}
-                subText={chat.message}
+                name={chat.name}
+                message={chat.message}
                 icon={
                   <Star
                     color={theme.colors.mainColor}
@@ -102,16 +109,18 @@ export default function ChatList() {
                 }
               />
             ))}
-            <Divider
-              state={dividerState.SHORT}
-              $addClass={`margin:0.8rem 0; background-color:${theme.colors.gray5}`}
-            />
-            {subChat.map((chat) => (
+            {searchedMainChat.length > 0 && searchedSubChat.length > 0 ? (
+              <Divider
+                state={dividerState.SHORT}
+                $addClass={`margin:0.8rem 0; background-color:${theme.colors.gray5}`}
+              />
+            ) : null}
+            {searchedSubChat.map((chat) => (
               <ChatListBox
                 key={chat.id}
                 img={chat.img}
-                mainText={chat.name}
-                subText={chat.message}
+                name={chat.name}
+                message={chat.message}
                 onClick={() =>
                   navigateTo(`/chatroom/sub/${chat.id}`, {
                     state: {

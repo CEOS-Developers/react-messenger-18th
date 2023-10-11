@@ -2,31 +2,32 @@ import React, { ReactNode } from "react";
 import styled from "styled-components";
 import Profile from "../profile/Profile";
 
-interface ChatListBoxProps {
+export interface ChatListBoxProps {
+  id: number;
   img: string;
-  mainText: string;
-  subText: string;
+  name: string;
+  message: string;
   icon?: ReactNode;
   onClick?: () => void;
 }
 
 export default function ChatListBox({
   img,
-  mainText,
-  subText,
+  name,
+  message,
   icon,
   onClick,
-}: ChatListBoxProps) {
+}: Omit<ChatListBoxProps, "id">) {
   return (
     <BoxWrapper onClick={onClick}>
       <Profile $img={img} $size="5.6rem" />
       <TextBox>
         <MainText>
-          <span>{mainText}</span>
+          <span>{name}</span>
           {icon}
         </MainText>
         <SubText>
-          <span>{subText}</span>
+          <span>{message}</span>
         </SubText>
       </TextBox>
     </BoxWrapper>
