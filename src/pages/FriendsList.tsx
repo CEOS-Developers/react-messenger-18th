@@ -14,6 +14,7 @@ import PersonalInfo, {
 } from "../components/friendList/PersonalInfo";
 import { designerListData, developerListData } from "../data/friendListData";
 import { searchByName } from "../customHooks/searchByName";
+import theme from "../styles/theme";
 
 export default function FriendsList() {
   const navigate = useNavigate();
@@ -64,7 +65,10 @@ export default function FriendsList() {
             />
           ))}
         </DesignerListContainer>
-        <Divider state={dividerState.SHORT} />
+        <Divider
+          state={dividerState.SHORT}
+          $addClass={`background-color:${theme.colors.gray5}`}
+        />
         <DeveloperListContainer>
           <MajorHeader
             people={searchedDeveloperList.length}
