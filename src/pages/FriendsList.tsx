@@ -86,7 +86,7 @@ export default function FriendsList() {
   );
 }
 
-const SearchBarWrapper = styled.div`
+export const SearchBarWrapper = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 1.2rem;

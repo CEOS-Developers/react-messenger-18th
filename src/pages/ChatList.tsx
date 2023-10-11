@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PageHeader from "../components/common/PageHeader";
 import { ReactComponent as Friends } from "../icons/friends.svg";
 import { ReactComponent as Search } from "../icons/search.svg";
@@ -13,6 +13,8 @@ import Star from "../icons/star/Star";
 import theme from "../styles/theme";
 import ChatListBox from "../components/chatList/ChatListBox";
 import { mainChat, subChat } from "../data/chatListData";
+import SearchBar from "../components/friendList/SearchBar";
+import { SearchBarWrapper } from "./FriendsList";
 
 interface TextWrapperProps {
   $isClicked: boolean;
@@ -22,11 +24,16 @@ interface TextWrapperProps {
 export default function ChatList() {
   const { navigateTo } = useNavigateOnClick();
   const { changeState, subHeaderState } = useChatListStateChange();
+  const [searchText, setSearchText] = useState("");
+  const [showSearchBar, setShowSearchBar] = useState(false);
+  const searchIconClicked = () => {
+    setShowSearchBar((prev) => !prev);
+  };
   return (
     <>
       <PageHeader
         leftIcon={<Friends onClick={() => navigateTo("/friends-list")} />}
-        rightIcon1={<Search />}
+        rightIcon1={<Search onClick={searchIconClicked} />}
         rightIcon2={
           <Profile
             $img="/img/profile.jpg"
@@ -36,6 +43,11 @@ export default function ChatList() {
           />
         }
       />
+      {showSearchBar ? (
+        <SearchBarWrapper>
+          <SearchBar search={[searchText, setSearchText]} />
+        </SearchBarWrapper>
+      ) : null}
       <SubHeader>
         {chatListBtnState.map((btnState) => (
           <SubHeaderTextWrapper
