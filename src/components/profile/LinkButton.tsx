@@ -23,7 +23,7 @@ const LinkBtnWrapper = styled.button`
 `;
 
 const MediaName = styled.div`
-  margin-top: 1.2rem;
+  margin-top: 0.4rem;
   span {
     ${(props) => props.theme.fontStyles.body2}
   }
