@@ -116,6 +116,7 @@ const BubbleFile = styled.div`
 const BottomText = styled.div`
   display: flex;
   justify-content: flex-end;
+  height: 2.4rem;
 `;
 
 const LikeIcon = styled.div`
@@ -131,6 +132,8 @@ const LikeIcon = styled.div`
 `;
 
 const Time = styled.div`
+  display: flex;
+  align-items: center;
   span {
     color: ${(props) => props.theme.colors.gray3};
     ${(props) => props.theme.fontStyles.body3}
