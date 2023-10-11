@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PageHeader from "../components/common/PageHeader";
 import { ReactComponent as Arrow } from "../icons/arrows/leftarrow.svg";
+import { ReactComponent as Search } from "../icons/search.svg";
 import { ReactComponent as AddFriend } from "../icons/addfriend.svg";
 import styled from "styled-components";
 import SearchBar from "../components/friendList/SearchBar";
@@ -20,6 +21,10 @@ export default function FriendsList() {
     navigate(-1);
   };
   const [searchText, setSearchText] = useState("");
+  const [showSearchBar, setShowSearchBar] = useState(false);
+  const searchIconClicked = () => {
+    setShowSearchBar((prev) => !prev);
+  };
   const searchedDesignerList = searchByName<PersonalInfoProps>(
     designerListData,
     searchText
@@ -33,11 +38,14 @@ export default function FriendsList() {
       <PageHeader
         leftIcon={<Arrow onClick={arrowIconClicked} />}
         title="친구"
-        rightIcon1={<AddFriend />}
+        rightIcon1={<Search onClick={searchIconClicked} />}
+        rightIcon2={<AddFriend style={{ marginLeft: "1.2rem" }} />}
       />
-      <SearchBarWrapper>
-        <SearchBar search={[searchText, setSearchText]} />
-      </SearchBarWrapper>
+      {showSearchBar ? (
+        <SearchBarWrapper>
+          <SearchBar search={[searchText, setSearchText]} />
+        </SearchBarWrapper>
+      ) : null}
       <Divider state={dividerState.LONGTHICK} />
       <FriendsListContainer>
         <DesignerListContainer>
