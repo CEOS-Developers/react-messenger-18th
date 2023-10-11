@@ -18,9 +18,6 @@ import theme from "../styles/theme";
 
 export default function FriendsList() {
   const navigate = useNavigate();
-  const arrowIconClicked = () => {
-    navigate(-1);
-  };
   const [searchText, setSearchText] = useState("");
   const [showSearchBar, setShowSearchBar] = useState(false);
   const searchedDesignerList = searchByName<PersonalInfoProps>(
@@ -34,7 +31,7 @@ export default function FriendsList() {
   return (
     <>
       <PageHeader
-        leftIcon={<Arrow onClick={arrowIconClicked} />}
+        leftIcon={<Arrow onClick={() => navigate(-1)} />}
         title="친구"
         rightIcon1={
           <Search onClick={() => setShowSearchBar((prev) => !prev)} />
