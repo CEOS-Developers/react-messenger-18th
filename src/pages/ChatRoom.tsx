@@ -16,6 +16,7 @@ import { setChatRoomData } from "../utils/accessStorage/setChatRoomData";
 import { useScrollToBottom } from "../customHooks/chatroom/useScrollToBottom";
 import { printChatTime } from "../utils/printChatTime";
 import { defaultChatRoomData } from "../data/defaultChatRoomData";
+import theme from "../styles/theme";
 
 export default function ChatRoom() {
   const { state } = useLocation();
@@ -131,6 +132,10 @@ export default function ChatRoom() {
             />
           ))}
       </ChatContainer>
+      <Divider
+        state={dividerState.LONGTHIN}
+        $addClass={`background-color:${theme.colors.gray5}`}
+      />
       <ChatInputContainer>
         <Plus />
         <ChatInput
