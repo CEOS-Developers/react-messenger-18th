@@ -4,19 +4,19 @@ import { ReactComponent as LeftArrow } from "../icons/arrows/leftarrow.svg";
 import { ReactComponent as Edit } from "../icons/edit.svg";
 import { ReactComponent as Phone } from "../icons/phone.svg";
 import { ReactComponent as Mail } from "../icons/mail.svg";
-import { useNavigateOnClick } from "../customHooks/useNavigateOnClick";
 import styled from "styled-components";
 import ChipButton from "../components/profile/ChipButton";
 import ContactUserBtn from "../components/profile/ContactUserButton";
 import { profileLinkState } from "../state/profileLinkState";
 import LinkButton from "../components/profile/LinkButton";
+import { useNavigate } from "react-router-dom";
 
 export default function MyProfile() {
-  const { navigateBack } = useNavigateOnClick();
+  const navigate = useNavigate();
   return (
     <>
       <PageHeader
-        leftIcon={<LeftArrow onClick={navigateBack} />}
+        leftIcon={<LeftArrow onClick={() => navigate(-1)} />}
         title="프로필"
         rightIcon1={<Edit />}
       />

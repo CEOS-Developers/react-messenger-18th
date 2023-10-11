@@ -3,7 +3,6 @@ import PageHeader from "../components/common/PageHeader";
 import { ReactComponent as Friends } from "../icons/friends.svg";
 import { ReactComponent as Search } from "../icons/search.svg";
 import Profile from "../components/profile/Profile";
-import { useNavigateOnClick } from "../customHooks/useNavigateOnClick";
 import styled from "styled-components";
 import useChatListStateChange from "../customHooks/chatlist/useChatListStateChange";
 import { chatListBtnState, chatListState } from "../state/chatListState";
@@ -18,6 +17,7 @@ import { mainChat, subChat } from "../data/chatListData";
 import SearchBar from "../components/friendList/SearchBar";
 import { SearchBarWrapper } from "./FriendsList";
 import { searchByName } from "../customHooks/searchByName";
+import { useNavigate } from "react-router-dom";
 
 interface TextWrapperProps {
   $isClicked: boolean;
@@ -25,7 +25,7 @@ interface TextWrapperProps {
 }
 
 export default function ChatList() {
-  const { navigateTo } = useNavigateOnClick();
+  const navigate = useNavigate();
   const { changeState, subHeaderState } = useChatListStateChange();
   const [searchText, setSearchText] = useState("");
   const [showSearchBar, setShowSearchBar] = useState(false);
@@ -37,13 +37,13 @@ export default function ChatList() {
   return (
     <>
       <PageHeader
-        leftIcon={<Friends onClick={() => navigateTo("/friends-list")} />}
+        leftIcon={<Friends onClick={() => navigate("/friends-list")} />}
         rightIcon1={<Search onClick={searchIconClicked} />}
         rightIcon2={
           <Profile
             $img="/img/profile.jpg"
             $size="2.4rem"
-            onClick={() => navigateTo("/my-profile")}
+            onClick={() => navigate("/my-profile")}
             $addClass="margin-left:1.2rem;"
           />
         }
@@ -97,7 +97,7 @@ export default function ChatList() {
                   />
                 }
                 onClick={() =>
-                  navigateTo(`/chatroom/main/${chat.id}`, {
+                  navigate(`/chatroom/main/${chat.id}`, {
                     state: {
                       chatRoomTitle: chat.name,
                       img: chat.img,
@@ -119,7 +119,7 @@ export default function ChatList() {
                 name={chat.name}
                 message={chat.message}
                 onClick={() =>
-                  navigateTo(`/chatroom/sub/${chat.id}`, {
+                  navigate(`/chatroom/sub/${chat.id}`, {
                     state: {
                       chatRoomTitle: chat.name,
                       img: chat.img,

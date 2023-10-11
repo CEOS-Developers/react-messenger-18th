@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import PageHeader from "../components/common/PageHeader";
-import { useNavigateOnClick } from "../customHooks/useNavigateOnClick";
 import { ReactComponent as LeftArrow } from "../icons/arrows/leftarrow.svg";
 import { ReactComponent as Search } from "../icons/search.svg";
 import { ReactComponent as Box } from "../icons/box.svg";
 import { ReactComponent as Plus } from "../icons/plus.svg";
 import { ReactComponent as Send } from "../icons/send.svg";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Divider from "../components/common/Divider";
 import { dividerState } from "../state/dividerState";
@@ -20,10 +19,10 @@ import theme from "../styles/theme";
 
 export default function ChatRoom() {
   const { state } = useLocation();
+  const navigate = useNavigate();
   const USER_NAME = "김현민";
   const STORAGE_KEY = `chatroom${state.chatRoomState}${state.chatRoomId}`;
   const initialChatData = defaultChatRoomData(state);
-  const { navigateBack } = useNavigateOnClick();
   const [chatText, setChatText] = useState("");
   const [shouldScrollToBottom, setShouldScrollToBottom] = useState(true);
   const [sendBtnState, setSendBtnState] = useState(false);
@@ -82,7 +81,7 @@ export default function ChatRoom() {
   return (
     <>
       <PageHeader
-        leftIcon={<LeftArrow onClick={navigateBack} />}
+        leftIcon={<LeftArrow onClick={() => navigate(-1)} />}
         title={!headerClicked ? state.chatRoomTitle : USER_NAME}
         rightIcon1={<Search />}
         rightIcon2={<Box style={{ marginLeft: "1.2rem" }} />}
