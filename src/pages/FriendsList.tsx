@@ -20,6 +20,14 @@ export default function FriendsList() {
     navigate(-1);
   };
   const [searchText, setSearchText] = useState("");
+  const searchedDesignerList = searchByName<PersonalInfoProps>(
+    designerListData,
+    searchText
+  );
+  const searchedDeveloperList = searchByName<PersonalInfoProps>(
+    developerListData,
+    searchText
+  );
   return (
     <>
       <PageHeader
@@ -34,46 +42,36 @@ export default function FriendsList() {
       <FriendsListContainer>
         <DesignerListContainer>
           <MajorHeader
-            people={
-              searchByName<PersonalInfoProps>(designerListData, searchText)
-                .length
-            }
+            people={searchedDesignerList.length}
             majorIn="Designer"
           />
-          {searchByName<PersonalInfoProps>(designerListData, searchText).map(
-            (designerData, index) => (
-              <PersonalInfo
-                key={designerData.name + index}
-                img={designerData.img}
-                name={designerData.name}
-                message={designerData.message}
-                group={designerData.group}
-                majorIn={designerData.majorIn}
-              />
-            )
-          )}
+          {searchedDesignerList.map((designerData, index) => (
+            <PersonalInfo
+              key={designerData.name + index}
+              img={designerData.img}
+              name={designerData.name}
+              message={designerData.message}
+              group={designerData.group}
+              majorIn={designerData.majorIn}
+            />
+          ))}
         </DesignerListContainer>
         <Divider state={dividerState.SHORT} />
         <DeveloperListContainer>
           <MajorHeader
-            people={
-              searchByName<PersonalInfoProps>(developerListData, searchText)
-                .length
-            }
+            people={searchedDeveloperList.length}
             majorIn="Frontend"
           />
-          {searchByName<PersonalInfoProps>(developerListData, searchText).map(
-            (developerData, index) => (
-              <PersonalInfo
-                key={developerData.name + index}
-                img={developerData.img}
-                name={developerData.name}
-                message={developerData.message}
-                group={developerData.group}
-                majorIn={developerData.majorIn}
-              />
-            )
-          )}
+          {searchedDeveloperList.map((developerData, index) => (
+            <PersonalInfo
+              key={developerData.name + index}
+              img={developerData.img}
+              name={developerData.name}
+              message={developerData.message}
+              group={developerData.group}
+              majorIn={developerData.majorIn}
+            />
+          ))}
         </DeveloperListContainer>
       </FriendsListContainer>
     </>
