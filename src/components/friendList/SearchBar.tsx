@@ -1,15 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 import { ReactComponent as Search } from "../../icons/search.svg";
+import { debounce } from "lodash";
 
 interface searchProps {
   search: [string, React.Dispatch<React.SetStateAction<string>>];
 }
 
 export default function SearchBar({ search }: searchProps) {
-  const searchBarChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
-    search[1](event.target.value.trim());
-  };
+  const searchBarChanged = debounce(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      search[1](e.target.value);
+    },
+    500
+  );
   return (
     <SearchContainer>
       <span>
@@ -18,7 +22,6 @@ export default function SearchBar({ search }: searchProps) {
       <InputWrapper
         placeholder="이름을 검색해보세요."
         onChange={searchBarChanged}
-        value={search[0]}
       />
     </SearchContainer>
   );
