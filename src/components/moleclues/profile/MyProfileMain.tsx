@@ -21,7 +21,7 @@ function ProfileItem() {
           <Icon src={personIcon} alt="프로필 아이콘" />
         </Flex>
         <Flex direction="column" grow="1">
-          <Text lineheight="24px" size="14px">
+          <Text lineheight="24px" size="14px" weight="700">
             정인영
           </Text>
           <Space height="2px"></Space>
