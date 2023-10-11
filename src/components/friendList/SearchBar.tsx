@@ -10,7 +10,7 @@ interface searchProps {
 export default function SearchBar({ search }: searchProps) {
   const searchBarChanged = debounce(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      search[1](e.target.value);
+      search[1](e.target.value.trim());
     },
     500
   );
