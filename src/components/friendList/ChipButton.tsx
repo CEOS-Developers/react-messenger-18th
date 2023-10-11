@@ -24,6 +24,7 @@ const ChipBtnWrapper = styled.div`
   border-radius: 0.2rem;
   span {
     ${(props) => props.theme.fontStyles.body2};
+    font-size: 1.4rem;
     font-weight: 500;
   }
 `;
