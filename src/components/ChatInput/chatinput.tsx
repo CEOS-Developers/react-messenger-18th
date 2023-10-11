@@ -3,7 +3,7 @@ import styled from "styled-components";
 import cameraIcon from "../../assets/images/Camera.svg";
 import appStoreIcon from "../../assets/images/App-Store.svg";
 import dictationIcon from "../../assets/images/Dictation.svg";
-
+import sendIcon from "../../assets/images/sendMessage.svg";
 //채팅 입력받는 component
 
 interface ChatInputProps {
@@ -12,6 +12,7 @@ interface ChatInputProps {
 
 const ChatInput: React.FC<ChatInputProps> = ({ onSend }) => {
   const [inputValue, setInputValue] = useState<string>("");
+  const [isInputFocused, setIsInputFocused] = useState<boolean>(false);
 
   //여러줄 입력 위해 input=> textarea로 변경
   const handleInputEnter = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -22,6 +23,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSend }) => {
         onSend(inputValue);
       }
       // 입력값 초기화
+      setIsInputFocused(false);
       setInputValue("");
     }
     if (e.key === "Enter" && e.shiftKey) {
@@ -30,21 +32,46 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSend }) => {
     }
   };
 
+  const handleSendClick = () => {
+    if (inputValue.trim() !== "") {
+      console.log("inputValue");
+      onSend(inputValue);
+    }
+    setInputValue("");
+  };
+
+  const imageClick = () => {
+    console.log("Click");
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setInputValue(e.target.value);
+    setIsInputFocused(e.target.value !== ""); // isInputFocused true로 설정
+  };
+
   return (
     <BottomBarContainer>
-      <Camera src={cameraIcon} alt="camera Icon" />
-      <AppStore src={appStoreIcon} alt="camera Icon" />
+      {!isInputFocused && <Camera src={cameraIcon} alt="camera Icon" />}
+      {!isInputFocused && <AppStore src={appStoreIcon} alt="camera Icon" />}
+
       <InputContainer>
         <Input
           autoFocus
           placeholder="Send Messages..."
           value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
+          onChange={handleInputChange}
           onKeyPress={handleInputEnter}
-
           //한글 입력의 경우: 마지막 단어가 input으로 들어가는 에러 방지하기 위해
+          onFocus={() => setIsInputFocused(true)}
+          onBlur={() => setIsInputFocused(false)}
+          required
         />
-        <Dictation src={dictationIcon} alt="dictation icon" />
+        {isInputFocused ? (
+          //handleSendClick 작동??
+          <Send src={sendIcon} alt="send icon" onClick={handleSendClick} />
+        ) : (
+          <Dictation src={dictationIcon} alt="dictation icon" />
+        )}
       </InputContainer>
     </BottomBarContainer>
   );
@@ -57,13 +84,14 @@ const BottomBarContainer = styled.div`
   position: relative;
   width: 100%;
   height: 2.5rem;
+  margin-left: 1.38rem;
   /* margin-bottom: 0.81rem; */
 `;
 
 const Camera = styled.img`
   width: 1.92713rem;
   height: 1.51313rem;
-  margin-left: 1.06rem;
+  /* margin-left: 1.06rem; */
 `;
 
 const AppStore = styled.img`
@@ -93,9 +121,7 @@ const Input = styled.textarea`
 
     align-items: center;
   }
-  &:hover {
-    cursor: pointer;
-  }
+
   padding-right: 2rem; //input 길어질때 방지 하기 위해
 `;
 
@@ -103,7 +129,7 @@ const InputContainer = styled.span`
   display: flex;
   align-items: center;
   flex-grow: 1;
-  width: 100%;
+  width: 90%;
 `;
 
 const Dictation = styled.img`
@@ -111,6 +137,16 @@ const Dictation = styled.img`
   height: 1.6875rem;
   position: absolute; //input fiield 안에 위치
   right: 1.25rem;
+`;
+
+const Send = styled.img`
+  width: 1.6875rem;
+  height: 1.6875rem;
+  position: absolute; //input fiield 안에 위치
+  right: 1.25rem;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export default ChatInput;
