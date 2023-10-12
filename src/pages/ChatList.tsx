@@ -16,7 +16,7 @@ import ChatListBox, {
 import { mainChat, subChat } from "../data/chatListData";
 import SearchBar from "../components/friendList/SearchBar";
 import { SearchBarWrapper } from "./FriendsList";
-import { searchByName } from "../customHooks/searchByName";
+import { searchByName } from "../customHooks/useSearchByName";
 import { useNavigate } from "react-router-dom";
 
 interface TextWrapperProps {
@@ -111,7 +111,7 @@ export default function ChatList() {
             {searchedMainChat.length > 0 && searchedSubChat.length > 0 ? (
               <Divider
                 state={dividerState.SHORT}
-                $addClass={`background-color:${theme.colors.gray5}`}
+                $addClass={`background-color:${theme.colors.gray5}; margin:0.8rem 0;`}
               />
             ) : null}
             {searchedSubChat.map((chat) => (
