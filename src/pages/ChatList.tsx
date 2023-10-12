@@ -52,7 +52,11 @@ export default function ChatList() {
           <SearchBar search={[searchText, setSearchText]} />
         </SearchBarWrapper>
       ) : null}
-      <SubHeader>
+      <SubHeader
+        $onlySubChat={
+          searchedMainChat.length === 0 && searchedSubChat.length > 0
+        }
+      >
         {chatListBtnState.map((btnState) => (
           <SubHeaderTextWrapper
             key={btnState.text}
@@ -140,10 +144,11 @@ export default function ChatList() {
   );
 }
 
-const SubHeader = styled.div`
+const SubHeader = styled.div<{ $onlySubChat: boolean }>`
   position: relative;
   height: 5rem;
   display: flex;
+  margin-bottom: ${(props) => (props.$onlySubChat ? "0.4rem" : null)};
 `;
 
 const SubHeaderTextWrapper = styled.div<TextWrapperProps>`
