@@ -45,42 +45,48 @@ export default function FriendsList() {
       ) : null}
       <Divider state={dividerState.LONGTHICK} />
       <FriendsListContainer>
-        <DesignerListContainer>
-          <MajorHeader
-            people={searchedDesignerList.length}
-            majorIn="Designer"
-          />
-          {searchedDesignerList.map((designerData, index) => (
-            <PersonalInfo
-              key={designerData.name + index}
-              img={designerData.img}
-              name={designerData.name}
-              message={designerData.message}
-              group={designerData.group}
-              majorIn={designerData.majorIn}
+        {searchedDesignerList.length > 0 ? (
+          <DesignerListContainer>
+            <MajorHeader
+              people={searchedDesignerList.length}
+              majorIn="Designer"
             />
-          ))}
-        </DesignerListContainer>
-        <Divider
-          state={dividerState.SHORT}
-          $addClass={`background-color:${theme.colors.gray5}`}
-        />
-        <DeveloperListContainer>
-          <MajorHeader
-            people={searchedDeveloperList.length}
-            majorIn="Frontend"
+            {searchedDesignerList.map((designerData, index) => (
+              <PersonalInfo
+                key={designerData.name + index}
+                img={designerData.img}
+                name={designerData.name}
+                message={designerData.message}
+                group={designerData.group}
+                majorIn={designerData.majorIn}
+              />
+            ))}
+          </DesignerListContainer>
+        ) : null}
+        {searchedDesignerList.length > 0 && searchedDeveloperList.length > 0 ? (
+          <Divider
+            state={dividerState.SHORT}
+            $addClass={`background-color:${theme.colors.gray5}`}
           />
-          {searchedDeveloperList.map((developerData, index) => (
-            <PersonalInfo
-              key={developerData.name + index}
-              img={developerData.img}
-              name={developerData.name}
-              message={developerData.message}
-              group={developerData.group}
-              majorIn={developerData.majorIn}
+        ) : null}
+        {searchedDeveloperList.length > 0 ? (
+          <DeveloperListContainer>
+            <MajorHeader
+              people={searchedDeveloperList.length}
+              majorIn="Frontend"
             />
-          ))}
-        </DeveloperListContainer>
+            {searchedDeveloperList.map((developerData, index) => (
+              <PersonalInfo
+                key={developerData.name + index}
+                img={developerData.img}
+                name={developerData.name}
+                message={developerData.message}
+                group={developerData.group}
+                majorIn={developerData.majorIn}
+              />
+            ))}
+          </DeveloperListContainer>
+        ) : null}
       </FriendsListContainer>
     </>
   );
