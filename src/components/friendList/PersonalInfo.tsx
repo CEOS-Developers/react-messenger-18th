@@ -72,6 +72,7 @@ const ProfilePhoto = styled.div<{ $img: string }>`
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
+  border: 0.8px solid ${(props) => props.theme.colors.gray5};
   background-image: url(${(props) => props.$img});
   background-size: cover;
 `;

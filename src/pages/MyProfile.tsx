@@ -11,6 +11,7 @@ import { profileLinkState } from "../state/profileLinkState";
 import LinkButton from "../components/profile/LinkButton";
 import { useNavigate } from "react-router-dom";
 import theme from "../styles/theme";
+import Profile from "../components/profile/Profile";
 
 export default function MyProfile() {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ export default function MyProfile() {
       />
       <ProfileInfoWrapper>
         <MainProfile>
-          <ProfilePhoto />
+          <Profile $img="/img/profile.jpg" $size="14rem" />
           <MainProfileText>
             <UserName>
               <span>김현민</span>
@@ -70,13 +71,6 @@ const MainProfile = styled.div`
   height: 22.2rem;
   display: flex;
   flex-direction: column;
-`;
-
-const ProfilePhoto = styled.div`
-  height: 14rem;
-  border-radius: 50%;
-  background-image: url("/img/profile.jpg");
-  background-size: cover;
 `;
 
 const MainProfileText = styled.div`

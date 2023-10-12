@@ -29,6 +29,7 @@ const ProfileWrapper = styled.div<ProfileProps>`
   background-size: cover;
   border-radius: 50%;
   cursor: pointer;
+  border: 0.8px solid ${(props) => props.theme.colors.gray5};
   width: ${(props) => props.$size};
   height: ${(props) => props.$size};
   ${(props) => props.$addClass}
