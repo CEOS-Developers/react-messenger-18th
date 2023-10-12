@@ -42,6 +42,10 @@ const StatusBarWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: ${(props) =>
+    window.location.pathname === "/my-profile"
+      ? props.theme.colors.gray7
+      : null};
 `;
 
 const Time = styled.div`
