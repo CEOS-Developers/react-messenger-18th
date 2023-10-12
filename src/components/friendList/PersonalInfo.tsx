@@ -100,7 +100,8 @@ const UserName = styled.div`
 
 const Message = styled.div`
   p {
-    ${(props) => props.theme.fontStyles.body2}
+    ${(props) => props.theme.fontStyles.body2};
+    font-size: 1.4rem;
   }
 `;
 
