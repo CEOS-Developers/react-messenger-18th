@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { ReactComponent as Like } from "../../icons/like.svg";
+import { ReactComponent as Like } from "../../icons/heart.svg";
 import { ChatRoomData } from "../../utils/accessStorage/getChatRoomData";
 
 interface BubbleProps {
@@ -54,6 +54,7 @@ export default function Bubble({
         {doubleClicked ? (
           <LikeIcon>
             <Like />
+            <span>1</span>
           </LikeIcon>
         ) : null}
         <Time>
@@ -116,19 +117,26 @@ const BubbleFile = styled.div`
 const BottomText = styled.div`
   display: flex;
   justify-content: flex-end;
-  height: 2.4rem;
+  height: 2rem;
 `;
 
 const LikeIcon = styled.div`
-  background-color: ${(props) => props.theme.colors.mainColor};
+  background-color: ${(props) => props.theme.colors.mainColorLight};
   border-radius: 5.4rem;
-  padding: 0.4rem 0.8rem;
-  width: 3.2rem;
-  height: 2.4rem;
+  padding: 0.2rem 0.6rem;
+  width: 3.5rem;
+  height: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-right: 0.8rem;
+  span {
+    margin-left: 0.2rem;
+    ${(props) => props.theme.fontStyles.body4};
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: ${(props) => props.theme.colors.mainColor};
+  }
 `;
 
 const Time = styled.div`
