@@ -10,6 +10,7 @@ import ContactUserBtn from "../components/profile/ContactUserButton";
 import { profileLinkState } from "../state/profileLinkState";
 import LinkButton from "../components/profile/LinkButton";
 import { useNavigate } from "react-router-dom";
+import theme from "../styles/theme";
 
 export default function MyProfile() {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ export default function MyProfile() {
         leftIcon={<LeftArrow onClick={() => navigate(-1)} />}
         title="프로필"
         rightIcon1={<Edit />}
+        addClass={`background-color:${theme.colors.gray7}`}
       />
       <ProfileInfoWrapper>
         <MainProfile>

@@ -6,6 +6,7 @@ interface PageHeaderProps {
   title?: string;
   rightIcon1: ReactNode;
   rightIcon2?: ReactNode;
+  addClass?: string;
   onClick?: () => void;
 }
 
@@ -14,10 +15,11 @@ export default function PageHeader({
   title,
   rightIcon1,
   rightIcon2,
+  addClass,
   onClick,
 }: PageHeaderProps) {
   return (
-    <PageHeaderWrapper>
+    <PageHeaderWrapper $addClass={addClass}>
       <LeftIconContainer>
         {leftIcon}
         {title ? <span onClick={onClick}>{title}</span> : null}
@@ -30,7 +32,7 @@ export default function PageHeader({
   );
 }
 
-const PageHeaderWrapper = styled.header`
+const PageHeaderWrapper = styled.header<{ $addClass?: string }>`
   height: 6rem;
   display: flex;
   justify-content: space-between;
@@ -39,6 +41,7 @@ const PageHeaderWrapper = styled.header`
     cursor: pointer;
   }
   padding: 0 2rem;
+  ${(props) => props.$addClass}
 `;
 
 const LeftIconContainer = styled.div`
