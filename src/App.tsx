@@ -10,6 +10,7 @@ import ChatList from "./pages/ChatList";
 import FriendsList from "./pages/FriendsList";
 import MyProfile from "./pages/MyProfile";
 import ChatRoom from "./pages/ChatRoom";
+import { chatRoomState } from "./state/chatRoomState";
 
 function App() {
   return (
@@ -19,8 +20,18 @@ function App() {
           <Route path="/" element={<ChatList />} />
           <Route path="/friends-list" element={<FriendsList />} />
           <Route path="/my-profile" element={<MyProfile />} />
-          <Route path="/chatroom/main/:id" element={<ChatRoom />} />
-          <Route path="/chatroom/sub/:id" element={<ChatRoom />} />
+          <Route
+            path={`/chatroom/${chatRoomState.MAIN}/:id`}
+            element={<ChatRoom />}
+          />
+          <Route
+            path={`/chatroom/${chatRoomState.SUB}/:id`}
+            element={<ChatRoom />}
+          />
+          <Route
+            path={`/chatroom/${chatRoomState.FRIEND}/:id`}
+            element={<ChatRoom />}
+          />
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
       </Routes>

@@ -18,6 +18,7 @@ import SearchBar from "../components/friendList/SearchBar";
 import { SearchBarWrapper } from "./FriendsList";
 import { searchByName } from "../customHooks/useSearchByName";
 import { useNavigate } from "react-router-dom";
+import { chatRoomState } from "../state/chatRoomState";
 
 interface TextWrapperProps {
   $isClicked: boolean;
@@ -100,12 +101,12 @@ export default function ChatList() {
                   />
                 }
                 onClick={() =>
-                  navigate(`/chatroom/main/${chat.id}`, {
+                  navigate(`/chatroom/${chatRoomState.MAIN}/${chat.id}`, {
                     state: {
                       chatRoomTitle: chat.name,
                       img: chat.img,
                       name: chat.name,
-                      chatRoomState: "main",
+                      chatRoomState: chatRoomState.MAIN,
                       chatRoomId: chat.id,
                     },
                   })
@@ -125,12 +126,12 @@ export default function ChatList() {
                 name={chat.name}
                 message={chat.message}
                 onClick={() =>
-                  navigate(`/chatroom/sub/${chat.id}`, {
+                  navigate(`/chatroom/${chatRoomState.SUB}/${chat.id}`, {
                     state: {
                       chatRoomTitle: chat.name,
                       img: chat.img,
                       name: chat.name,
-                      chatRoomState: "sub",
+                      chatRoomState: chatRoomState.SUB,
                       chatRoomId: chat.id,
                     },
                   })

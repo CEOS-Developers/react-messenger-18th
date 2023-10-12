@@ -28,7 +28,7 @@ export const defaultChatRoomData = (state: State): ChatData[] => {
     },
     {
       chatText: "네 확인했습니다!",
-      doubleClicked: true,
+      doubleClicked: false,
       time: "오후 3:32",
       isUser: true,
     },

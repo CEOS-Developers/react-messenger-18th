@@ -4,8 +4,11 @@ import RoleButton from "./RoleButton";
 import { ReactComponent as Group } from "../../icons/group.svg";
 import { ReactComponent as RightIcon } from "../../icons/arrows/rightarrow.svg";
 import { majorState } from "../../state/majorState";
+import { useNavigate } from "react-router-dom";
+import { chatRoomState } from "../../state/chatRoomState";
 
 export interface PersonalInfoProps {
+  id: number;
   img: string;
   name: string;
   message: string;
@@ -14,19 +17,33 @@ export interface PersonalInfoProps {
 }
 
 export default function PersonalInfo({
+  id,
   img,
   name,
   message,
   group,
   majorIn,
 }: PersonalInfoProps) {
+  const navigate = useNavigate();
   return (
     <InfoWrapper>
       <ProfileContainer>
         <ProfilePhoto $img={img}></ProfilePhoto>
       </ProfileContainer>
       <ProfileInfoText>
-        <NameAndMessage>
+        <NameAndMessage
+          onClick={() =>
+            navigate(`/chatroom/${chatRoomState.FRIEND}/${id}`, {
+              state: {
+                chatRoomTitle: name,
+                img,
+                name,
+                chatRoomState: chatRoomState.FRIEND,
+                chatRoomId: id,
+              },
+            })
+          }
+        >
           <UserName>
             <span>{name}</span>
             <RoleButton
@@ -88,6 +105,7 @@ const NameAndMessage = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.8rem;
+  cursor: pointer;
 `;
 
 const UserName = styled.div`

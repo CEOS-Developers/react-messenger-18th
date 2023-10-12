@@ -54,6 +54,7 @@ export default function FriendsList() {
             {searchedDesignerList.map((designerData, index) => (
               <PersonalInfo
                 key={designerData.name + index}
+                id={designerData.id}
                 img={designerData.img}
                 name={designerData.name}
                 message={designerData.message}
@@ -78,6 +79,7 @@ export default function FriendsList() {
             {searchedDeveloperList.map((developerData, index) => (
               <PersonalInfo
                 key={developerData.name + index}
+                id={developerData.id}
                 img={developerData.img}
                 name={developerData.name}
                 message={developerData.message}
