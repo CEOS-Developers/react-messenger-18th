@@ -13,7 +13,7 @@ import ChatWrapper from "../components/chatroom/ChatWrapper";
 import { getChatRoomData } from "../utils/accessStorage/getChatRoomData";
 import { setChatRoomData } from "../utils/accessStorage/setChatRoomData";
 import { useScrollToBottom } from "../customHooks/chatroom/useScrollToBottom";
-import { printChatTime } from "../utils/printChatTime";
+import { printChatTime } from "../utils/time/printChatTime";
 import { defaultChatRoomData } from "../data/defaultChatRoomData";
 import theme from "../styles/theme";
 

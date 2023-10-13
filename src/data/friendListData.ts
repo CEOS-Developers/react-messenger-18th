@@ -30,8 +30,8 @@ export const designerListData = [
 export const developerListData = [
   {
     id: 0,
-    img: "/img/profile.jpg",
-    name: "김현민",
+    img: "/img/default.jpg",
+    name: "김진호",
     message: "프론트 화이팅~!!",
     group: "기업적디자인스튜디오(1)",
     majorIn: majorState.FRONTEND,

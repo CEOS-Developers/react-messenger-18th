@@ -16,7 +16,7 @@ import ChatListBox, {
 import { mainChat, subChat } from "../data/chatListData";
 import SearchBar from "../components/friendList/SearchBar";
 import { SearchBarWrapper } from "./FriendsList";
-import { searchByName } from "../customHooks/useSearchByName";
+import { searchByName } from "../utils/search/searchByName";
 import { useNavigate } from "react-router-dom";
 import { chatRoomState } from "../state/chatRoomState";
 
@@ -104,8 +104,8 @@ export default function ChatList() {
                   navigate(`/chatroom/${chatRoomState.MAIN}/${chat.id}`, {
                     state: {
                       chatRoomTitle: chat.name,
-                      img: chat.img,
-                      name: chat.name,
+                      img: "/img/default.jpg",
+                      name: "전윤수",
                       chatRoomState: chatRoomState.MAIN,
                       chatRoomId: chat.id,
                     },
@@ -129,8 +129,8 @@ export default function ChatList() {
                   navigate(`/chatroom/${chatRoomState.SUB}/${chat.id}`, {
                     state: {
                       chatRoomTitle: chat.name,
-                      img: chat.img,
-                      name: chat.name,
+                      img: "/img/default.jpg",
+                      name: "전윤수",
                       chatRoomState: chatRoomState.SUB,
                       chatRoomId: chat.id,
                     },

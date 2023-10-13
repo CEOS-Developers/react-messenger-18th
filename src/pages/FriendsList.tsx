@@ -13,7 +13,7 @@ import PersonalInfo, {
   PersonalInfoProps,
 } from "../components/friendList/PersonalInfo";
 import { designerListData, developerListData } from "../data/friendListData";
-import { searchByName } from "../customHooks/useSearchByName";
+import { searchByName } from "../utils/search/searchByName";
 import theme from "../styles/theme";
 
 export default function FriendsList() {
