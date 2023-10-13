@@ -4,7 +4,7 @@ import Profile from "../profile/Profile";
 import Bubble from "./Bubble";
 import { ChatRoomData } from "../../utils/accessStorage/getChatRoomData";
 
-interface ChatWrapperProps {
+export interface ChatWrapperProps {
   img?: string;
   name?: string;
   chatText: string;

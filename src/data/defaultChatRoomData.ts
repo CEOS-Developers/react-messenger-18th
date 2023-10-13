@@ -1,13 +1,13 @@
 import { ChatRoomData } from "../utils/accessStorage/getChatRoomData";
 
-interface State {
+interface StateProps {
   chatRoomState: string;
   chatRoomId: string;
   img?: string;
   name?: string;
 }
 
-export const defaultChatRoomData = (state: State) => {
+export const defaultChatRoomData = (state: StateProps) => {
   const initialChatData: ChatRoomData[] = [
     {
       img: state.img,

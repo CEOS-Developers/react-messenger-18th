@@ -1,19 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { ReactComponent as Like } from "../../icons/heart.svg";
-import { ChatRoomData } from "../../utils/accessStorage/getChatRoomData";
-
-interface BubbleProps {
-  chatText: string;
-  file?: string;
-  doubleClicked: boolean;
-  time: string;
-  isUser: boolean;
-  index?: number;
-  chatData?: ChatRoomData[] | [];
-  setChatData?: React.Dispatch<React.SetStateAction<ChatRoomData[] | []>>;
-  setShouldScrollToBottom?: React.Dispatch<React.SetStateAction<boolean>>;
-}
+import { ChatWrapperProps } from "./ChatWrapper";
 
 export default function Bubble({
   chatText,
@@ -25,7 +13,7 @@ export default function Bubble({
   chatData,
   setChatData,
   setShouldScrollToBottom,
-}: BubbleProps) {
+}: Partial<ChatWrapperProps> & { isUser: boolean }) {
   const bubbleDoubleClicked = () => {
     if (
       index !== undefined &&
