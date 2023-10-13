@@ -12,8 +12,12 @@ export interface PersonalInfoProps {
   img: string;
   name: string;
   message: string;
-  group: string;
   majorIn: string;
+  group: {
+    id: number;
+    name: string;
+    state: string;
+  };
 }
 
 export default function PersonalInfo({
@@ -21,8 +25,8 @@ export default function PersonalInfo({
   img,
   name,
   message,
-  group,
   majorIn,
+  group,
 }: PersonalInfoProps) {
   const navigate = useNavigate();
   return (
@@ -60,10 +64,22 @@ export default function PersonalInfo({
             <p>{message}</p>
           </Message>
         </NameAndMessage>
-        <GroupInfoWrapper>
+        <GroupInfoWrapper
+          onClick={() =>
+            navigate(`/chatroom/${group.state}/${group.id}`, {
+              state: {
+                chatRoomTitle: group.name,
+                img: "/img/default.jpg",
+                name: "전윤수",
+                chatRoomState: group.state,
+                chatRoomId: group.id,
+              },
+            })
+          }
+        >
           <GroupText>
             <Group />
-            <span>{group}</span>
+            <span>{group.name}</span>
           </GroupText>
           <RightIcon />
         </GroupInfoWrapper>
@@ -144,6 +160,7 @@ const GroupInfoWrapper = styled.div`
   align-items: center;
   background-color: ${(props) => props.theme.colors.mainColorLight};
   border-radius: 0.4rem;
+  cursor: pointer;
   span {
     margin-left: 0.4rem;
   }
