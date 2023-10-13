@@ -16,7 +16,7 @@ export const designerListData = [
   },
   {
     id: 1,
-    img: "/img/default.jpg",
+    img: "/img/nightview.jpg",
     name: "최윤서",
     message: "디자인 화이팅~!!",
     majorIn: majorState.DESIGNER,
@@ -28,7 +28,7 @@ export const designerListData = [
   },
   {
     id: 2,
-    img: "/img/default.jpg",
+    img: "/img/wolf.jpg",
     name: "이다인",
     message: "상태메세지",
     majorIn: majorState.DESIGNER,
@@ -43,7 +43,7 @@ export const designerListData = [
 export const developerListData = [
   {
     id: 0,
-    img: "/img/default.jpg",
+    img: "/img/tottenham.jpg",
     name: "김진호",
     message: "프론트 화이팅~!!",
     majorIn: majorState.FRONTEND,
@@ -55,7 +55,7 @@ export const developerListData = [
   },
   {
     id: 1,
-    img: "/img/default.jpg",
+    img: "/img/beer.jpg",
     name: "김지원",
     message: "상태메세지",
     majorIn: majorState.FRONTEND,
