@@ -1,12 +1,4 @@
-interface ChatData {
-  img?: string;
-  name?: string;
-  chatText: string;
-  file?: string;
-  doubleClicked: boolean;
-  time: string;
-  isUser: boolean;
-}
+import { ChatRoomData } from "../utils/accessStorage/getChatRoomData";
 
 interface State {
   chatRoomState: string;
@@ -15,8 +7,8 @@ interface State {
   name?: string;
 }
 
-export const defaultChatRoomData = (state: State): ChatData[] => {
-  const initialChatData: ChatData[] = [
+export const defaultChatRoomData = (state: State) => {
+  const initialChatData: ChatRoomData[] = [
     {
       img: state.img,
       name: state.name,
