@@ -22,12 +22,14 @@ export default function ChatRoom() {
   const navigate = useNavigate();
   const USER_NAME = "김현민";
   const STORAGE_KEY = `chatroom${state.chatRoomState}${state.chatRoomId}`;
-  const initialChatData = defaultChatRoomData(state);
   const [chatText, setChatText] = useState("");
   const [shouldScrollToBottom, setShouldScrollToBottom] = useState(true);
   const [sendBtnState, setSendBtnState] = useState(false);
   const [headerClicked, setHeaderClicked] = useState(false);
-  const [chatData, setChatData] = useState(getChatRoomData(STORAGE_KEY));
+  const [chatData, setChatData] = useState([
+    ...defaultChatRoomData(state),
+    ...getChatRoomData(STORAGE_KEY),
+  ]);
   const { ref, scrollToBottom } = useScrollToBottom<HTMLDivElement>();
   const chatInputChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.value.trim() === "") {
@@ -76,7 +78,7 @@ export default function ChatRoom() {
       setSendBtnState(false);
       scrollToBottom();
     }
-    setChatRoomData(STORAGE_KEY, chatData);
+    setChatRoomData(STORAGE_KEY, chatData.slice(3));
   }, [STORAGE_KEY, chatData]);
   return (
     <>
@@ -89,19 +91,6 @@ export default function ChatRoom() {
       />
       <Divider state={dividerState.LONGTHICK} />
       <ChatContainer ref={ref}>
-        {initialChatData &&
-          initialChatData.map((data, index) => (
-            <ChatWrapper
-              key={data.chatText + index}
-              img={data.img}
-              name={data.name}
-              file={data.file}
-              chatText={data.chatText}
-              doubleClicked={data.doubleClicked}
-              time={data.time}
-              isUser={data.isUser}
-            />
-          ))}
         {chatData &&
           chatData.map((data, index) => (
             <ChatWrapper
