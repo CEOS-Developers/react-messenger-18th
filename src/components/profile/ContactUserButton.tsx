@@ -1,17 +1,13 @@
 import React, { ReactNode } from "react";
 import styled from "styled-components";
 
-interface ContactBtnProps {
+export interface ButtonProps {
   icon: ReactNode;
   text: string;
   addClass?: string;
 }
 
-export default function ContactUserBtn({
-  icon,
-  text,
-  addClass,
-}: ContactBtnProps) {
+export default function ContactUserBtn({ icon, text, addClass }: ButtonProps) {
   return (
     <ContactBtnWrapper $addClass={addClass}>
       <IconWrapper>

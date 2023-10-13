@@ -1,11 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import { ButtonProps } from "../profile/ContactUserButton";
 
-interface RoleButtonProps {
-  text: string;
-}
-
-export default function RoleButton({ text }: RoleButtonProps) {
+export default function RoleButton({ text }: Partial<ButtonProps>) {
   return (
     <ButtonWrapper>
       <span>{text}</span>

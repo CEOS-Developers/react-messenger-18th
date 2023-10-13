@@ -1,12 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { ReactComponent as BottomArrow } from "../../icons/arrows/bottomarrow.svg";
+import { ButtonProps } from "./ContactUserButton";
 
-interface ChipButtonProps {
-  text: string;
-}
-
-export default function ChipButton({ text }: ChipButtonProps) {
+export default function ChipButton({ text }: Partial<ButtonProps>) {
   return (
     <ButtonWrapper>
       <FieldText>

@@ -1,12 +1,8 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import styled from "styled-components";
+import { ButtonProps } from "./ContactUserButton";
 
-interface LinkBtnProps {
-  icon: ReactNode;
-  text: string;
-}
-
-export default function LinkButton({ icon, text }: LinkBtnProps) {
+export default function LinkButton({ icon, text }: ButtonProps) {
   return (
     <LinkBtnWrapper>
       <div>{icon}</div>
