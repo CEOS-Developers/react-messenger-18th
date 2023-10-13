@@ -32,7 +32,20 @@ export default function PersonalInfo({
   return (
     <InfoWrapper>
       <ProfileContainer>
-        <ProfilePhoto $img={img}></ProfilePhoto>
+        <ProfilePhoto
+          $img={img}
+          onClick={() =>
+            navigate(`/chatroom/${chatRoomState.FRIEND}/${id}`, {
+              state: {
+                chatRoomTitle: name,
+                img,
+                name,
+                chatRoomState: chatRoomState.FRIEND,
+                chatRoomId: id,
+              },
+            })
+          }
+        ></ProfilePhoto>
       </ProfileContainer>
       <ProfileInfoText>
         <NameAndMessage
@@ -108,6 +121,7 @@ const ProfilePhoto = styled.div<{ $img: string }>`
   border: 0.8px solid ${(props) => props.theme.colors.gray5};
   background-image: url(${(props) => props.$img});
   background-size: cover;
+  cursor: pointer;
 `;
 
 const ProfileInfoText = styled.div`
