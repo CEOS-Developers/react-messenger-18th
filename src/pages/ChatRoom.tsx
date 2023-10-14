@@ -109,6 +109,7 @@ export default function ChatRoom() {
                     : state.name
                   : undefined
               }
+              file={data.file}
               chatText={data.chatText}
               doubleClicked={data.doubleClicked}
               time={data.time}

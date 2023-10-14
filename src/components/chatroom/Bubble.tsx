@@ -29,27 +29,42 @@ export default function Bubble({
     }
   };
   return (
-    <BubbleWrapper $isUser={isUser} onDoubleClick={bubbleDoubleClicked}>
-      <BubbleText $isUser={isUser}>
-        <p>{chatText}</p>
-      </BubbleText>
-      {file ? (
-        <BubbleFile>
-          <p>{file}</p>
-        </BubbleFile>
-      ) : null}
-      <BottomText>
-        {doubleClicked ? (
-          <LikeIcon>
-            <Like />
-            <span>1</span>
-          </LikeIcon>
+    <>
+      <BubbleWrapper $isUser={isUser} onDoubleClick={bubbleDoubleClicked}>
+        <BubbleText $isUser={isUser} $file={file}>
+          <p>{chatText}</p>
+        </BubbleText>
+        {file ? (
+          <BubbleFile>
+            <p>{file}</p>
+          </BubbleFile>
         ) : null}
-        <Time>
-          <span>{time}</span>
-        </Time>
+      </BubbleWrapper>
+      <BottomText $isUser={isUser}>
+        {!isUser ? (
+          <Time>
+            <span>{time}</span>
+            {doubleClicked ? (
+              <LikeIcon $isUser={isUser}>
+                <Like />
+                <span>1</span>
+              </LikeIcon>
+            ) : null}
+          </Time>
+        ) : null}
+        {isUser ? (
+          <Time>
+            {doubleClicked ? (
+              <LikeIcon $isUser={isUser}>
+                <Like />
+                <span>1</span>
+              </LikeIcon>
+            ) : null}
+            <span>{time}</span>
+          </Time>
+        ) : null}
       </BottomText>
-    </BubbleWrapper>
+    </>
   );
 }
 
@@ -58,7 +73,7 @@ const BubbleWrapper = styled.div<{ $isUser: boolean }>`
   background-color: ${(props) => props.theme.colors.white};
   margin-left: ${(props) => (!props.$isUser ? "1.2rem" : null)};
   margin-right: ${(props) => (props.$isUser ? "1.2rem" : null)};
-  margin-bottom: 1.4rem;
+  margin-bottom: 0.4rem;
   border-radius: 0.4rem;
   position: relative;
   max-width: 27.1rem;
@@ -80,10 +95,10 @@ const BubbleWrapper = styled.div<{ $isUser: boolean }>`
   }
 `;
 
-const BubbleText = styled.div<{ $isUser: boolean }>`
-  margin-bottom: 0.8rem;
+const BubbleText = styled.div<{ $isUser: boolean; $file?: string }>`
   display: flex;
   justify-content: ${(props) => (props.$isUser ? "flex-end" : null)};
+  margin-bottom: ${(props) => (props.$file ? "0.8rem" : null)};
   p {
     ${(props) => props.theme.fontStyles.body1};
     font-weight: 400;
@@ -102,13 +117,19 @@ const BubbleFile = styled.div`
   }
 `;
 
-const BottomText = styled.div`
+const BottomText = styled.div<{ $isUser: boolean }>`
   display: flex;
-  justify-content: flex-end;
+  justify-content: ${(props) => (props.$isUser ? "flex-end" : "flex-start")};
   height: 2rem;
+  margin-bottom: 1.2rem;
+  margin-left: ${(props) => (!props.$isUser ? "1.2rem" : null)};
+  margin-right: ${(props) => (props.$isUser ? "1.2rem" : null)};
 `;
 
-const LikeIcon = styled.div`
+const LikeIcon = styled.div<{ $isUser: boolean }>`
+  position: absolute;
+  left: ${(props) => (props.$isUser ? "-4.3rem" : null)};
+  right: ${(props) => (!props.$isUser ? "-4.3rem" : null)};
   background-color: ${(props) => props.theme.colors.mainColorLight};
   border-radius: 5.4rem;
   padding: 0.2rem 0.6rem;
@@ -117,7 +138,8 @@ const LikeIcon = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 0.8rem;
+  margin-right: ${(props) => (props.$isUser ? "0.8rem" : null)};
+  margin-left: ${(props) => (!props.$isUser ? "0.8rem" : null)};
   span {
     margin-left: 0.2rem;
     ${(props) => props.theme.fontStyles.body4};
@@ -128,6 +150,7 @@ const LikeIcon = styled.div`
 `;
 
 const Time = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   span {
