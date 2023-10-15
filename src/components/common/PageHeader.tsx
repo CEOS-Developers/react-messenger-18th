@@ -24,8 +24,12 @@ export default function PageHeader({
     <PageHeaderWrapper $addClass={addClass}>
       <LeftIconContainer>
         {leftIcon}
-        {title ? <span onClick={onClick}>{title}</span> : null}
-        {people ? <span>{people}</span> : null}
+        {title ? (
+          <ChatInfo onClick={onClick}>
+            <span>{title}</span>
+            <span>{people}</span>
+          </ChatInfo>
+        ) : null}
       </LeftIconContainer>
       <RightIconContainer>
         {rightIcon1}
@@ -48,19 +52,23 @@ const PageHeaderWrapper = styled.header<{ $addClass?: string }>`
 `;
 
 const LeftIconContainer = styled.div`
-  height: 100%;
   display: flex;
   align-items: center;
-  span:nth-child(2) {
+`;
+
+const ChatInfo = styled.div`
+  display: flex;
+  align-items: center;
+  span:first-child {
     margin-left: 0.8rem;
-    ${(props) => props.theme.fontStyles.headLine1}
-    font-size:1.8rem;
+    ${(props) => props.theme.fontStyles.headLine1};
+    font-size: 1.8rem;
     color: ${(props) => props.theme.colors.gray2};
   }
   span:last-child {
     margin-left: 0.4rem;
-    ${(props) => props.theme.fontStyles.headLine1}
-    font-size:1.8rem;
+    ${(props) => props.theme.fontStyles.headLine1};
+    font-size: 1.8rem;
     color: ${(props) => props.theme.colors.gray4};
   }
 `;
