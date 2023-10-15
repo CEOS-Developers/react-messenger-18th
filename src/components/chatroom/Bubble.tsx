@@ -71,12 +71,10 @@ export default function Bubble({
 const BubbleWrapper = styled.div<{ $isUser: boolean }>`
   padding: 0.8rem 1.6rem;
   background-color: ${(props) => props.theme.colors.white};
-  margin-left: ${(props) => (!props.$isUser ? "1.2rem" : null)};
-  margin-right: ${(props) => (props.$isUser ? "1.2rem" : null)};
   margin-bottom: 0.4rem;
   border-radius: 0.4rem;
   position: relative;
-  max-width: 27.1rem;
+  max-width: 29.5rem;
   &::after {
     content: "";
     position: absolute;
@@ -122,8 +120,6 @@ const BottomText = styled.div<{ $isUser: boolean }>`
   justify-content: ${(props) => (props.$isUser ? "flex-end" : "flex-start")};
   height: 2rem;
   margin-bottom: 1.2rem;
-  margin-left: ${(props) => (!props.$isUser ? "1.2rem" : null)};
-  margin-right: ${(props) => (props.$isUser ? "1.2rem" : null)};
 `;
 
 const LikeIcon = styled.div<{ $isUser: boolean }>`
