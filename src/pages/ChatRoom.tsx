@@ -85,6 +85,7 @@ export default function ChatRoom() {
       <PageHeader
         leftIcon={<LeftArrow onClick={() => navigate(-1)} />}
         title={!headerClicked ? state.chatRoomTitle : USER_NAME}
+        people={state.people}
         rightIcon1={<Search />}
         rightIcon2={<Box style={{ marginLeft: "1.2rem" }} />}
         onClick={pageHeaderClicked}

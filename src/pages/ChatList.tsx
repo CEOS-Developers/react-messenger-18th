@@ -11,7 +11,7 @@ import { dividerState } from "../state/dividerState";
 import Star from "../icons/star/Star";
 import theme from "../styles/theme";
 import ChatListBox, {
-  ChatListBoxProps,
+  GroupChatDataProps,
 } from "../components/chatList/ChatListBox";
 import { mainChat, subChat } from "../data/chatListData";
 import SearchBar from "../components/friendList/SearchBar";
@@ -30,8 +30,11 @@ export default function ChatList() {
   const { changeState, subHeaderState } = useChatListStateChange();
   const [searchText, setSearchText] = useState("");
   const [showSearchBar, setShowSearchBar] = useState(false);
-  const searchedMainChat = searchByName<ChatListBoxProps>(mainChat, searchText);
-  const searchedSubChat = searchByName<ChatListBoxProps>(subChat, searchText);
+  const searchedMainChat = searchByName<GroupChatDataProps>(
+    mainChat,
+    searchText
+  );
+  const searchedSubChat = searchByName<GroupChatDataProps>(subChat, searchText);
   return (
     <>
       <PageHeader
@@ -105,6 +108,7 @@ export default function ChatList() {
                     state: {
                       chatRoomTitle: chat.name,
                       img: "/img/default.jpg",
+                      people: chat.people,
                       name: "전윤수",
                       chatRoomState: chatRoomState.MAIN,
                       chatRoomId: chat.id,
@@ -130,6 +134,7 @@ export default function ChatList() {
                     state: {
                       chatRoomTitle: chat.name,
                       img: "/img/default.jpg",
+                      people: chat.people,
                       name: "전윤수",
                       chatRoomState: chatRoomState.SUB,
                       chatRoomId: chat.id,

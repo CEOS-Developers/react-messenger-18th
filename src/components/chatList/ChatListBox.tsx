@@ -2,10 +2,11 @@ import React, { ReactNode } from "react";
 import styled from "styled-components";
 import Profile from "../profile/Profile";
 
-export interface ChatListBoxProps {
+export interface GroupChatDataProps {
   id: number;
   img: string;
   name: string;
+  people: number;
   message: string;
   icon?: ReactNode;
   onClick?: () => void;
@@ -17,7 +18,7 @@ export default function ChatListBox({
   message,
   icon,
   onClick,
-}: Omit<ChatListBoxProps, "id">) {
+}: Partial<GroupChatDataProps> & { img: string }) {
   return (
     <BoxWrapper onClick={onClick}>
       <Profile $img={img} $size="5.6rem" />
