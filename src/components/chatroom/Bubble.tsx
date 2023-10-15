@@ -82,15 +82,15 @@ const BubbleWrapper = styled.div<{ $isUser: boolean }>`
     position: absolute;
     border-style: solid;
     border-width: ${(props) =>
-      !props.$isUser ? "0 1.4rem 1.4rem 0" : "0 0 1.4rem 1.4rem"};
+      !props.$isUser ? "0 1rem 1rem 0" : "0 0 1rem 1rem"};
     border-color: transparent ${(props) => props.theme.colors.white};
     border-radius: ${(props) =>
       !props.$isUser ? "0.4rem 0 0 0" : "0 0.4rem 0 0"};
     display: block;
     width: 0;
     z-index: 1;
-    left: ${(props) => (!props.$isUser ? "-1.2rem" : null)};
-    right: ${(props) => (props.$isUser ? "-1.2rem" : null)};
+    left: ${(props) => (!props.$isUser ? "-0.8rem" : null)};
+    right: ${(props) => (props.$isUser ? "-0.8rem" : null)};
     top: 0;
   }
 `;
