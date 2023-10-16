@@ -13,11 +13,7 @@ export default function Bubble({
   chatData,
   setChatData,
   setShouldScrollToBottom,
-}: Partial<ChatWrapperProps> & {
-  isUser: boolean;
-  time: string | null;
-  doubleClicked: boolean;
-}) {
+}: Omit<ChatWrapperProps, "img" | "name">) {
   const bubbleDoubleClicked = () => {
     if (
       index !== undefined &&
