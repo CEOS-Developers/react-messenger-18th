@@ -18,7 +18,7 @@ export default function GroupChatListBox({
   message,
   icon,
   onClick,
-}: Partial<GroupChatDataProps> & { img: string }) {
+}: Omit<GroupChatDataProps, "id" | "people">) {
   return (
     <BoxWrapper onClick={onClick}>
       <Profile $img={img} $size="5.6rem" />
