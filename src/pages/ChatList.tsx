@@ -10,15 +10,14 @@ import Divider from "../components/common/Divider";
 import { dividerState } from "../state/dividerState";
 import Star from "../icons/star/Star";
 import theme from "../styles/theme";
-import GroupChatListBox, {
-  GroupChatDataProps,
-} from "../components/chatList/GroupChatListBox";
+import GroupChatListBox from "../components/chatList/GroupChatListBox";
 import { mainChat, subChat } from "../data/chatListData";
 import SearchBar from "../components/friendList/SearchBar";
 import { SearchBarWrapper } from "./FriendsList";
 import { searchByName } from "../utils/search/searchByName";
 import { useNavigate } from "react-router-dom";
 import { chatRoomState } from "../state/chatRoomState";
+import { GroupChatDataProps } from "../props/chatData/groupChatDataProps";
 
 interface TextWrapperProps {
   $isClicked: boolean;

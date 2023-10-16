@@ -1,16 +1,7 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import styled from "styled-components";
 import Profile from "../profile/Profile";
-
-export interface GroupChatDataProps {
-  id: number;
-  img: string;
-  name: string;
-  people: number;
-  message: string;
-  icon?: ReactNode;
-  onClick?: () => void;
-}
+import { GroupChatDataProps } from "../../props/chatData/groupChatDataProps";
 
 export default function GroupChatListBox({
   img,
