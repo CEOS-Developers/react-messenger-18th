@@ -19,6 +19,7 @@ const ChatRoomHeader = ({ headerRef }: ChatRoomHeaderProps) => {
   const navigate = useNavigate();
   const { id }: { id?: string } = useParams();
   const user = useUserStore((state) => state.user);
+  const setUser = useUserStore((state) => state.setUser);
 
   const storedUser = localStorage.getItem(`user_${id}`);
   const roomOwner = storedUser // 해당 방이 누구와의 대화방인지
@@ -27,7 +28,13 @@ const ChatRoomHeader = ({ headerRef }: ChatRoomHeaderProps) => {
 
   return (
     <ChatRoomHeaderContainer ref={headerRef}>
-      <ButtonWithIcon children={<BackIcon />} />
+      <ButtonWithIcon
+        children={<BackIcon />}
+        handleOnClickButton={() => {
+          navigate('/chat');
+          setUser(typedUserData['user_1']);
+        }}
+      />
       <UserNameDiv
         onClick={() => {
           navigate(`/chat/${user.id}`); // 유저 변경
