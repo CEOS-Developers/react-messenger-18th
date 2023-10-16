@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { ReactComponent as NetWork } from "../../icons/statusbar/network.svg";
 import { ReactComponent as Wifi } from "../../icons//statusbar/wifi.svg";
 import { ReactComponent as Battery } from "../../icons/statusbar/battery.svg";

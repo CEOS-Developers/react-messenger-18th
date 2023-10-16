@@ -10,9 +10,9 @@ import Divider from "../components/common/Divider";
 import { dividerState } from "../state/dividerState";
 import Star from "../icons/star/Star";
 import theme from "../styles/theme";
-import ChatListBox, {
+import GroupChatListBox, {
   GroupChatDataProps,
-} from "../components/chatList/ChatListBox";
+} from "../components/chatList/GroupChatListBox";
 import { mainChat, subChat } from "../data/chatListData";
 import SearchBar from "../components/friendList/SearchBar";
 import { SearchBarWrapper } from "./FriendsList";
@@ -91,7 +91,7 @@ export default function ChatList() {
               </MainChatsHeader>
             ) : null}
             {searchedMainChat.map((chat) => (
-              <ChatListBox
+              <GroupChatListBox
                 key={chat.id}
                 img={chat.img}
                 name={chat.name}
@@ -124,7 +124,7 @@ export default function ChatList() {
               />
             ) : null}
             {searchedSubChat.map((chat) => (
-              <ChatListBox
+              <GroupChatListBox
                 key={chat.id}
                 img={chat.img}
                 name={chat.name}

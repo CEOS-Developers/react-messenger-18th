@@ -12,7 +12,7 @@ export interface GroupChatDataProps {
   onClick?: () => void;
 }
 
-export default function ChatListBox({
+export default function GroupChatListBox({
   img,
   name,
   message,
