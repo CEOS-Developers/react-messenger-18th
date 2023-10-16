@@ -25,7 +25,6 @@ const NavBarButtonContainer = styled.button`
     width: 24px;
     height: 24px;
   }
-  display: inline-block;
   display: flex;
   flex-direction: column;
   align-items: center;

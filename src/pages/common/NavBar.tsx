@@ -5,19 +5,29 @@ import { ReactComponent as ChatOnIcon } from 'static/images/chat-on-icon.svg';
 import { ReactComponent as ChatOffIcon } from 'static/images/chat-off-icon.svg';
 import { ReactComponent as CallOffIcon } from 'static/images/call-off-icon.svg';
 import NavBarButton from 'pages/common/NavBarButton';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const NavBar = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   return (
     <NavBarContainer>
       <NavBarButton
-        children={<HomeOnIcon />}
+        children={location.pathname === '/' ? <HomeOnIcon /> : <HomeOffIcon />}
         buttonName="Home"
-        handleOnClickButton={() => {}}
+        handleOnClickButton={() => {
+          navigate('/');
+        }}
       />
       <NavBarButton
-        children={<ChatOffIcon />}
+        children={
+          location.pathname === '/chat' ? <ChatOnIcon /> : <ChatOffIcon />
+        }
         buttonName="Chat"
-        handleOnClickButton={() => {}}
+        handleOnClickButton={() => {
+          navigate('/chat');
+        }}
       />
       <NavBarButton
         children={<CallOffIcon />}
