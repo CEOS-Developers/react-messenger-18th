@@ -7,10 +7,11 @@ interface TUserStore {
   user: TUser;
   setUser: (user: TUser) => void;
 }
-const storedUser: string | null = localStorage.getItem('user_1');
-const initialUserState: TUser = storedUser // default로 설정되는 유저는 user_1
-  ? JSON.parse(storedUser)
-  : userData.user_1;
+
+const user: string | null = localStorage.getItem('user');
+const initialUserState: TUser = user // default로 설정되는 유저는 user_1
+  ? JSON.parse(user)
+  : userData.data[0];
 
 export const useUserStore = create(
   devtools<TUserStore>((set) => ({

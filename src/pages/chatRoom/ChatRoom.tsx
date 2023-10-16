@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useMessageStore } from 'stores/messageStore';
 import { useUserStore } from 'stores/userStore';
 import ChatRoomBody from 'pages/chatRoom/ChatRoomBody';
@@ -10,9 +10,7 @@ import userData from 'data/userData.json';
 import { TUser, TMessage } from 'types';
 import { ChatRoomBackgroundColor } from 'styles/global.style';
 
-const typedUserData: {
-  [key: string]: TUser;
-} = userData;
+const typedUserData: TUser[] = userData.data;
 
 const ChatRoom = () => {
   const { id }: { id?: string } = useParams(); // 채팅의 대상
@@ -24,16 +22,24 @@ const ChatRoom = () => {
   const setMessages = useMessageStore((state) => state.setMessages);
   const toggleIsRead = useMessageStore((state) => state.toggleIsRead);
 
+  const navigate = useNavigate();
+
   const headerRef = useRef<HTMLDivElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
 
-  // week3에만 해당되는 기능, 접속된 채팅방에 따라 현재의 유저 정보를 변경시켜줌
   useEffect(() => {
-    const key = `user_${(Number(id) % 2) + 1}`; // 지금은 유저가 두 명으로 한정되어 있으니깐
-    const storedUser = localStorage.getItem(key);
-    // localStorage에 데이터가 있으면 해당 데이터 사용, 아니면 dummy 사용
-    setUser(storedUser ? JSON.parse(storedUser) : typedUserData[key]);
-  }, [id, setUser]);
+    if (user.id === Number(id)) {
+      navigate('/chat');
+    }
+  }, [id, navigate, user.id]);
+
+  // week3에만 해당되는 기능, 접속된 채팅방에 따라 현재의 유저 정보를 변경시켜줌
+  // useEffect(() => {
+  //   const key = `user_${(Number(id) % 2) + 1}`; // 지금은 유저가 두 명으로 한정되어 있으니깐
+  //   const storedUser = localStorage.getItem(key);
+  //   // localStorage에 데이터가 있으면 해당 데이터 사용, 아니면 dummy 사용
+  //   setUser(storedUser ? JSON.parse(storedUser) : typedUserData[key]);
+  // }, [id, setUser]);
 
   // 유저 페이지 전환될 때 메시지에에 대한 읽음처리하도록
   useEffect(() => {

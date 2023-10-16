@@ -10,20 +10,19 @@ interface ChatRoomHeaderProps {
   headerRef: React.RefObject<HTMLDivElement>;
 }
 
-const typedUserData: {
-  [key: string]: TUser;
-} = userData;
+const typedUserData: TUser[] = userData.data;
 
 const ChatRoomHeader = ({ headerRef }: ChatRoomHeaderProps) => {
   const navigate = useNavigate();
   const { id }: { id?: string } = useParams();
   const user = useUserStore((state) => state.user);
+  console.log(user);
   const setUser = useUserStore((state) => state.setUser);
 
   const storedUser = localStorage.getItem(`user_${id}`);
   const roomOwner = storedUser // 해당 방이 누구와의 대화방인지
     ? JSON.parse(storedUser)
-    : typedUserData[`user_${id}`];
+    : typedUserData.find((user) => user.id === Number(id));
 
   return (
     <ChatRoomHeaderContainer ref={headerRef}>
@@ -31,11 +30,12 @@ const ChatRoomHeader = ({ headerRef }: ChatRoomHeaderProps) => {
         children={<BackIcon />}
         handleOnClickButton={() => {
           navigate('/chat');
-          setUser(typedUserData['user_1']);
+          // setUser(typedUserData['user_1']);
         }}
       />
       <UserNameDiv
         onClick={() => {
+          setUser(roomOwner);
           navigate(`/chat/${user.id}`); // 유저 변경
         }}
       >

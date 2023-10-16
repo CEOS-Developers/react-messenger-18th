@@ -17,6 +17,7 @@ function App() {
   }, [messages]);
 
   useEffect(() => {
+    localStorage.setItem(`user`, JSON.stringify(user));
     localStorage.setItem(`user_${user.id}`, JSON.stringify(user));
   }, [user]);
 
