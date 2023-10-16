@@ -149,7 +149,7 @@ const ChatInput = styled.textarea.attrs({
   border: none;
   border-radius: 16px;
   background: #f5f5f5;
-  padding: 9px 8px;
+  padding: 9px 17px;
   flex: 1;
   resize: none;
   font-size: 14px;
