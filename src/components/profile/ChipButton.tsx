@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { ReactComponent as BottomArrow } from "../../icons/arrows/bottomarrow.svg";
 import { ButtonProps } from "../../props/button/buttonProps";
 
-export default function ChipButton({ text }: Pick<ButtonProps, "text">) {
+export default function ChipButton({ text }: Partial<ButtonProps>) {
   return (
     <ButtonWrapper>
       <FieldText>

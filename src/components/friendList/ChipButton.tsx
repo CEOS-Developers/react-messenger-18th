@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { ButtonProps } from "../../props/button/buttonProps";
 
-export default function ChipButton({ text }: Pick<ButtonProps, "text">) {
+export default function ChipButton({ text }: Partial<ButtonProps>) {
   return (
     <ChipBtnWrapper>
       <span>{text}</span>

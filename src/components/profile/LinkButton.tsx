@@ -2,10 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { ButtonProps } from "../../props/button/buttonProps";
 
-export default function LinkButton({
-  icon,
-  text,
-}: Omit<ButtonProps, "addClass">) {
+export default function LinkButton({ icon, text }: Partial<ButtonProps>) {
   return (
     <LinkBtnWrapper>
       <div>{icon}</div>
