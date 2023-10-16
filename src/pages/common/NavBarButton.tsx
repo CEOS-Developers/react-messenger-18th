@@ -21,14 +21,22 @@ const NavBarButton = ({
 };
 
 const NavBarButtonContainer = styled.button`
-  width: fit-content;
-  height: fit-content;
+  svg {
+    width: 24px;
+    height: 24px;
+  }
   display: inline-block;
-  font-size: 0;
-  line-height: 0;
   display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
-const ButtonName = styled.div``;
+const ButtonName = styled.div`
+  color: black;
+  height: 18px;
+  font-size: 12px;
+  font-wieght: 300;
+  line-height: 120%;
+`;
 
 export default NavBarButton;

@@ -15,13 +15,13 @@ const NavBar = () => {
         handleOnClickButton={() => {}}
       />
       <NavBarButton
-        children={<HomeOnIcon />}
-        buttonName="Home"
+        children={<ChatOffIcon />}
+        buttonName="Chat"
         handleOnClickButton={() => {}}
       />
       <NavBarButton
-        children={<HomeOnIcon />}
-        buttonName="Home"
+        children={<CallOffIcon />}
+        buttonName="Call"
         handleOnClickButton={() => {}}
       />
     </NavBarContainer>
@@ -30,6 +30,11 @@ const NavBar = () => {
 
 const NavBarContainer = styled.div`
   display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 80px;
+  padding: 24px 52px 0 52px;
+  background-color: white;
 `;
 
 export default NavBar;

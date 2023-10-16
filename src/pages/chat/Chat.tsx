@@ -1,5 +1,12 @@
+import styled from 'styled-components';
+
 const Chat = () => {
-  return <div>Chat</div>;
+  return <ChatContainer>chat</ChatContainer>;
 };
+
+const ChatContainer = styled.div`
+  flex-grow: 1;
+  width: 100%;
+`;
 
 export default Chat;
