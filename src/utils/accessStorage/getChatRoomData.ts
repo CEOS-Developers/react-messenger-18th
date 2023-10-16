@@ -4,7 +4,7 @@ export interface ChatRoomData {
   chatText: string;
   file?: string;
   doubleClicked: boolean;
-  time: string;
+  time: string | null;
   isUser: boolean;
 }
 
@@ -15,5 +15,5 @@ export const getChatRoomData = (key: string): ChatRoomData[] | [] => {
     return [];
   }
 
-  return JSON.parse(storedData) || [];
+  return JSON.parse(storedData);
 };

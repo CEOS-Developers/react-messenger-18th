@@ -10,7 +10,7 @@ export interface ChatWrapperProps {
   chatText: string;
   file?: string;
   doubleClicked: boolean;
-  time: string;
+  time: string | null;
   isUser: boolean;
   index?: number;
   chatData?: ChatRoomData[] | [];

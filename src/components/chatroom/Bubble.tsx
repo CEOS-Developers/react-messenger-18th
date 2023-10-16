@@ -13,7 +13,11 @@ export default function Bubble({
   chatData,
   setChatData,
   setShouldScrollToBottom,
-}: Partial<ChatWrapperProps> & { isUser: boolean }) {
+}: Partial<ChatWrapperProps> & {
+  isUser: boolean;
+  time: string | null;
+  doubleClicked: boolean;
+}) {
   const bubbleDoubleClicked = () => {
     if (
       index !== undefined &&
@@ -40,7 +44,7 @@ export default function Bubble({
           </BubbleFile>
         ) : null}
       </BubbleWrapper>
-      <BottomText $isUser={isUser}>
+      <BottomText $isUser={isUser} $time={time} $doubleClicked={doubleClicked}>
         {!isUser ? (
           <Time>
             <span>{time}</span>
@@ -115,11 +119,16 @@ const BubbleFile = styled.div`
   }
 `;
 
-const BottomText = styled.div<{ $isUser: boolean }>`
+const BottomText = styled.div<{
+  $isUser: boolean;
+  $time: string | null;
+  $doubleClicked: boolean;
+}>`
   display: flex;
   justify-content: ${(props) => (props.$isUser ? "flex-end" : "flex-start")};
-  height: 2rem;
-  margin-bottom: 1.2rem;
+  height: ${(props) => (props.$time || props.$doubleClicked ? "2rem" : null)};
+  margin-bottom: ${(props) =>
+    props.$time || props.$doubleClicked ? "1.2rem" : 0};
 `;
 
 const LikeIcon = styled.div<{ $isUser: boolean }>`

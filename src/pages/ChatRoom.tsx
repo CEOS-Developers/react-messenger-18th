@@ -16,12 +16,15 @@ import { useScrollToBottom } from "../customHooks/chatroom/useScrollToBottom";
 import { printChatTime } from "../utils/time/printChatTime";
 import { defaultChatRoomData } from "../data/defaultChatRoomData";
 import theme from "../styles/theme";
+import { getChatRecentTime } from "../utils/accessStorage/getChatRecentTime";
+import { setChatRecentTime } from "../utils/accessStorage/setChatRecentTime";
 
 export default function ChatRoom() {
   const { state } = useLocation();
   const navigate = useNavigate();
   const USER_NAME = "김현민";
   const STORAGE_KEY = `chatroom${state.chatRoomState}${state.chatRoomId}`;
+  const CHAT_TIME_KEY = `chatroom${state.chatRoomState}${state.chatRoomId}time`;
   const [chatText, setChatText] = useState("");
   const [shouldScrollToBottom, setShouldScrollToBottom] = useState(true);
   const [sendBtnState, setSendBtnState] = useState(false);
@@ -56,17 +59,23 @@ export default function ChatRoom() {
     if (!sendBtnState) {
       return;
     }
+    setChatRecentTime(CHAT_TIME_KEY, printChatTime());
     setChatText("");
     setShouldScrollToBottom(true);
-    setChatData((prev) => [
-      ...prev,
-      {
-        chatText: chatText.trim(),
-        doubleClicked: false,
-        time: printChatTime(),
-        isUser: true,
-      },
-    ]);
+    setChatData((prev) => {
+      if (prev[prev.length - 1].time === printChatTime()) {
+        prev[prev.length - 1].time = null;
+      }
+      return [
+        ...prev,
+        {
+          chatText: chatText.trim(),
+          doubleClicked: false,
+          time: printChatTime(),
+          isUser: true,
+        },
+      ];
+    });
   };
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
