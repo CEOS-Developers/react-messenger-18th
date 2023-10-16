@@ -32,10 +32,10 @@ const NavBarButtonContainer = styled.button`
 
 const ButtonName = styled.div`
   color: black;
-  height: 18px;
   font-size: 12px;
-  font-wieght: 300;
+  font-weight: 300;
   line-height: 120%;
+  font-style: normal;
 `;
 
 export default NavBarButton;

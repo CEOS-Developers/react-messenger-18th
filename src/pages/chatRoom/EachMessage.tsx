@@ -67,8 +67,6 @@ export default EachMessage;
 
 // ############### 디자인 ###############
 
-const ChatRoomMyMessageColor = '#ACE49B';
-
 const EachMessageContainer = styled.div`
   margin-bottom: 8px;
 `;
@@ -100,7 +98,7 @@ const TextAndLikeOuter = styled.div<{ $order: number; $isOwnMessage: boolean }>`
 const MessageText = styled.div<{ $isOwnMessage: boolean }>`
   border-radius: 16px;
   background-color: ${(props) =>
-    props.$isOwnMessage ? ChatRoomMyMessageColor : 'white'};
+    props.$isOwnMessage ? 'var(--Green)' : 'white'};
   padding: 8px 12px;
   font-size: 14px;
   line-height: 160%;
@@ -116,7 +114,7 @@ const MessageExtraInfo = styled.div<{ $order: number; $isLiked: boolean }>`
   font-size: 10px;
   font-weight: 300;
   line-height: 160%;
-  color: #5a5a5a;
+  color: var(--Gray-3);
   display: flex;
   flex-direction: column;
   align-items: end;
@@ -129,7 +127,7 @@ const LikeContainer = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 16px;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: var(--gray-30);
   margin: 6px 0 2px 0;
   svg {
     margin-right: 3px;
@@ -152,7 +150,7 @@ const DayDateContainer = styled.div`
 
   height: 20px;
   border-radius: 16px;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: var(--gray-30);
   font-size: 12px;
   font-weight: 300;
   line-height: 120%;

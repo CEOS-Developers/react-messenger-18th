@@ -44,7 +44,7 @@ const NavBarContainer = styled.div`
   width: 100%;
   height: 80px;
   padding: 24px 52px 0 52px;
-  background-color: white;
+  background-color: var(--Background-White);
 `;
 
 export default NavBar;

@@ -6,9 +6,9 @@ import ChatRoomBody from 'pages/chatRoom/ChatRoomBody';
 import ChatRoomFooter from 'pages/chatRoom/ChatRoomFooter';
 import ChatRoomHeader from 'pages/chatRoom/ChatRoomHeader';
 import styled from 'styled-components';
-import { ChatRoomBackgroundColor } from 'styles/global.style';
 import userData from 'data/userData.json';
 import { TUser, TMessage } from 'types';
+import { ChatRoomBackgroundColor } from 'styles/global.style';
 
 const typedUserData: {
   [key: string]: TUser;
@@ -53,7 +53,7 @@ const ChatRoom = () => {
     // 모바일로 접속시 페이지 최상단 부분 색상 적용
     document
       .querySelector('meta[name="theme-color"]')
-      ?.setAttribute('content', '#93aad4');
+      ?.setAttribute('content', ChatRoomBackgroundColor);
   }, []);
 
   return (
@@ -95,7 +95,7 @@ export default ChatRoom;
 
 const ChatRoomContainer = styled.div`
   height: 100%;
-  background-color: ${ChatRoomBackgroundColor};
+  background-color: var(--Blue);
   display: flex;
   flex-direction: column;
 `;

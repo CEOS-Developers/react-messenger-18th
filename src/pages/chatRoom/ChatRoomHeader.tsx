@@ -3,7 +3,6 @@ import { useUserStore } from 'stores/userStore';
 import ButtonWithIcon from 'pages/common/ButtonWithIcon';
 import { ReactComponent as BackIcon } from 'static/images/back-arrow-icon.svg';
 import styled from 'styled-components';
-import { ChatRoomBackgroundColor } from 'styles/global.style';
 import userData from 'data/userData.json';
 import { TUser } from 'types';
 
@@ -56,7 +55,7 @@ const ChatRoomHeaderContainer = styled.div`
   height: 53px;
   width: 100%;
   padding: 8px 0 14px 16px;
-  background-color: ${ChatRoomBackgroundColor};
+  background-color: var(--Blue);
 `;
 
 const UserNameDiv = styled.div`
