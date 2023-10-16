@@ -20,11 +20,11 @@ export default function Profile({
       $size={$size}
       $addClass={$addClass}
       onClick={onClick}
-    ></ProfileWrapper>
+    />
   );
 }
 
-const ProfileWrapper = styled.div<ProfileProps>`
+const ProfileWrapper = styled.div<Omit<ProfileProps, "onClick">>`
   background-image: url(${(props) => props.$img});
   background-size: cover;
   border-radius: 50%;
