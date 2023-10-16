@@ -15,3 +15,11 @@ export interface TUser {
   proifleImage?: string | null;
   likedMessages: number[];
 }
+
+export interface TChatRoomInfo {
+  id: number;
+  profileImage?: string | null;
+  userName: string;
+  message: string;
+  time: string;
+}

@@ -1,21 +1,35 @@
 import styled from 'styled-components';
 import { ReactComponent as DefaultProfileIcon } from 'static/images/default-profile-icon.svg';
+import { TChatRoomInfo } from 'types';
+import { useNavigate } from 'react-router-dom';
+import { convertTimeFormatForChatRoom } from 'utils';
 
-const ChatListElement = () => {
+interface ChatListElementProps {
+  chatRoomInfo: TChatRoomInfo;
+}
+const ChatListElement = ({ chatRoomInfo }: ChatListElementProps) => {
+  const navigate = useNavigate();
+
   return (
-    <ChatListElementContainer>
+    <ChatListElementContainer
+      onClick={() => {
+        navigate(`./${chatRoomInfo.id}`);
+      }}
+    >
       <ProfileImageConatiner>
-        <DefaultProfileIcon />
-        {/* <img
-          src="https://todayslunch-bucket.s3.ap-northeast-2.amazonaws.com/judge_restaurant/2023/09/06/32d24779-cdb9-4c2e-a203-f2d66b009196_blob"
-          alt=""
-        /> */}
+        {chatRoomInfo.profileImage ? (
+          <img src={chatRoomInfo.profileImage} alt="profile" />
+        ) : (
+          <DefaultProfileIcon />
+        )}
       </ProfileImageConatiner>
       <ChatRoomInfo>
-        <div className="username">배수연</div>
-        <div className="thumb-message">날 집에 보내줘</div>
+        <div className="username">{chatRoomInfo.userName}</div>
+        <div className="thumb-message">{chatRoomInfo.message}</div>
       </ChatRoomInfo>
-      <ChatRoomDate>8/31</ChatRoomDate>
+      <ChatRoomDate>
+        {convertTimeFormatForChatRoom(chatRoomInfo.time)}
+      </ChatRoomDate>
     </ChatListElementContainer>
   );
 };
