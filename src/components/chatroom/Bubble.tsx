@@ -79,6 +79,7 @@ const BubbleWrapper = styled.div<{ $isUser: boolean }>`
   border-radius: 0.4rem;
   position: relative;
   max-width: 29.5rem;
+  word-break: break-all;
   &::after {
     content: "";
     position: absolute;
