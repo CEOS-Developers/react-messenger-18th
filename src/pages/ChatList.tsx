@@ -17,7 +17,7 @@ import { SearchBarWrapper } from "./FriendsList";
 import { searchByName } from "../utils/search/searchByName";
 import { useNavigate } from "react-router-dom";
 import { chatRoomState } from "../state/chatRoomState";
-import { GroupChatDataProps } from "../props/chatData/groupChatDataProps";
+import { GroupChatDataProps } from "../commonprops/chatData/groupChatDataProps";
 
 interface TextWrapperProps {
   $isClicked: boolean;

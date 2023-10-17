@@ -16,7 +16,6 @@ import { useScrollToBottom } from "../customHooks/chatroom/useScrollToBottom";
 import { printChatTime } from "../utils/time/printChatTime";
 import { defaultChatRoomData } from "../data/defaultChatRoomData";
 import theme from "../styles/theme";
-import { getChatRecentTime } from "../utils/accessStorage/getChatRecentTime";
 import { setChatRecentTime } from "../utils/accessStorage/setChatRecentTime";
 
 export default function ChatRoom() {

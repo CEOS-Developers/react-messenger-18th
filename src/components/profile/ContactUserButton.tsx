@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import styled from "styled-components";
-import { ButtonProps } from "../../props/button/buttonProps";
+import { ButtonProps } from "../../commonprops/button/buttonProps";
 
 export default function ContactUserBtn({ icon, text, addClass }: ButtonProps) {
   return (

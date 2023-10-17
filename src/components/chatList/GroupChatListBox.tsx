@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Profile from "../profile/Profile";
-import { GroupChatDataProps } from "../../props/chatData/groupChatDataProps";
+import { GroupChatDataProps } from "../../commonprops/chatData/groupChatDataProps";
 
 export default function GroupChatListBox({
   img,
