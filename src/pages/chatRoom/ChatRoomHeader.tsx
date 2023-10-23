@@ -16,7 +16,6 @@ const ChatRoomHeader = ({ headerRef }: ChatRoomHeaderProps) => {
   const navigate = useNavigate();
   const { id }: { id?: string } = useParams();
   const user = useUserStore((state) => state.user);
-  console.log(user);
   const setUser = useUserStore((state) => state.setUser);
 
   const storedUser = localStorage.getItem(`user_${id}`);
