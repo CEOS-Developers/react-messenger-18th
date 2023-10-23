@@ -2,11 +2,22 @@ import Services from 'pages/home/Services';
 import UserProfile from 'pages/home/UserProfile';
 import styled from 'styled-components';
 import { ReactComponent as SearchIcon } from 'static/images/search-icon.svg';
+import { useState } from 'react';
 
 const HomeHeader = () => {
+  const [isStatusMessageSpread, setIsStatusMessageSpread] =
+    useState<boolean>(false);
   return (
-    <HomeHeaderContainer>
-      <UserProfile />
+    <HomeHeaderContainer $isStatusMessageSpread={isStatusMessageSpread}>
+      <UserProfile
+        isStatusMessageSpread={isStatusMessageSpread}
+        spreadStatusMessage={() => {
+          setIsStatusMessageSpread(true);
+        }}
+        foldStatusMessage={() => {
+          setIsStatusMessageSpread(false);
+        }}
+      />
       <UserListSearchInputContainer>
         <SearchIcon />
         <UserListSearchInput placeholder="Search" />
@@ -16,8 +27,11 @@ const HomeHeader = () => {
   );
 };
 
-const HomeHeaderContainer = styled.div`
+const HomeHeaderContainer = styled.div<{
+  $isStatusMessageSpread: boolean;
+}>`
   margin-top: 26px;
+  margin-top: ${(props) => (props.$isStatusMessageSpread ? '102px' : '26px')};
 `;
 
 const UserListSearchInputContainer = styled.div`

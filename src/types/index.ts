@@ -13,6 +13,7 @@ export interface TUser {
   id: number;
   name: string;
   proifleImage?: string | null;
+  statusMessage: string | null;
   likedMessages: number[];
 }
 

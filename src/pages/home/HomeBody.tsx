@@ -11,6 +11,15 @@ const HomeBody = () => {
       <div className="friend-list">
         <FriendListElement />
         <FriendListElement />
+        <FriendListElement />
+        <FriendListElement />
+        <FriendListElement />
+        <FriendListElement />
+        <FriendListElement />
+        <FriendListElement />
+        <FriendListElement />
+        <FriendListElement />
+        <FriendListElement />
       </div>
     </HomeBodyContainer>
   );

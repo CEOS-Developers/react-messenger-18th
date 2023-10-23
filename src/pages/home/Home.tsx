@@ -12,7 +12,8 @@ const Home = () => {
 };
 
 const HomeContainer = styled.div`
-  flex-grow: 1;
+  flex: 1;
+  overflow-y: auto;
   width: 100%;
   background-color: var(--Background-White);
   // padding: 0 12px;

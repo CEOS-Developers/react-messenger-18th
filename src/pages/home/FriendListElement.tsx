@@ -19,6 +19,7 @@ const FriendListElementContainer = styled.button`
   margin-bottom: 8px;
   .username {
     color: black;
+    font-size: 14px;
   }
 `;
 
