@@ -89,6 +89,16 @@
       "time": "2023-09-27T10:43:07.672Z",
       "isRead": true,
       "likeCount": 0
+    },
+    {
+      "id": 9,
+      "fromUserId": 1,
+      "toUserId": 3,
+      "profileImage": null,
+      "text": "세오스야 안녕",
+      "time": "2023-10-04T03:31:07.672Z",
+      "isRead": true,
+      "likeCount": 0
     }
   ]
 }

@@ -12,7 +12,7 @@ export interface TMessage {
 export interface TUser {
   id: number;
   name: string;
-  proifleImage?: string | null;
+  profileImage?: string | null;
   statusMessage: string | null;
   likedMessages: number[];
 }

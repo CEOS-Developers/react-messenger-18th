@@ -7,6 +7,7 @@ import { useState } from 'react';
 const HomeHeader = () => {
   const [isStatusMessageSpread, setIsStatusMessageSpread] =
     useState<boolean>(false);
+
   return (
     <HomeHeaderContainer $isStatusMessageSpread={isStatusMessageSpread}>
       <UserProfile

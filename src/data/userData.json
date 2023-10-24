@@ -13,6 +13,13 @@
       "profileImage": null,
       "statusMessage": "짧은 상태메시지",
       "likedMessages": [0, 7]
+    },
+    {
+      "id": 3,
+      "name": "세오스",
+      "profileImage": null,
+      "statusMessage": "안녕하세요 세오스입니다. 저는 세오스입니다.",
+      "likedMessages": []
     }
   ]
 }

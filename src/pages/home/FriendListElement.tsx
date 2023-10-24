@@ -1,13 +1,22 @@
 import styled from 'styled-components';
 import { ReactComponent as DefaultProfileIcon } from 'static/images/default-profile-icon.svg';
+import { TUser } from 'types';
 
-const FriendListElement = () => {
+interface FriendListElementProps {
+  user: TUser;
+}
+
+const FriendListElement = ({ user }: FriendListElementProps) => {
   return (
     <FriendListElementContainer>
       <ProfileImageConatiner>
-        <DefaultProfileIcon />
+        {user.profileImage ? (
+          <img src={user.profileImage} alt="profile" />
+        ) : (
+          <DefaultProfileIcon />
+        )}
       </ProfileImageConatiner>
-      <div className="username">배수연</div>
+      <div className="username">{user.name}</div>
     </FriendListElementContainer>
   );
 };

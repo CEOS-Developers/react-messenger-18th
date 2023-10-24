@@ -3,6 +3,7 @@ import { ReactComponent as DefaultProfileIcon } from 'static/images/default-prof
 import { ReactComponent as MoreOnIcon } from 'static/images/more-on-icon.svg';
 import { ReactComponent as MoreOffIcon } from 'static/images/more-off-icon.svg';
 import ButtonWithIcon from 'pages/common/ButtonWithIcon';
+import { useUserStore } from 'stores/userStore';
 
 interface UserProfileProps {
   isStatusMessageSpread: boolean;
@@ -14,16 +15,15 @@ const UserProfile = ({
   spreadStatusMessage,
   foldStatusMessage,
 }: UserProfileProps) => {
-  const message =
-    '상테메시지상테메시지상테메시지상테메시지상테메시지상테메시지상테메시지상테메시지상테메시지상테메시지상테메시지상테메시지상테메시지상테메시지';
+  const user = useUserStore((state) => state.user);
 
   return (
     <UserProfileContainer $isStatusMessageSpread={isStatusMessageSpread}>
       <div className="profile-body">
         <div className="profile-info">
-          <div className="username">배수연</div>
+          <div className="username">{user.name}</div>
           <StatusMessage $isStatusMessageSpread={isStatusMessageSpread}>
-            <div className="message">{message}</div>
+            <div className="message">{user.statusMessage}</div>
             <ButtonWithIcon
               children={
                 isStatusMessageSpread ? (
@@ -36,7 +36,11 @@ const UserProfile = ({
           </StatusMessage>
         </div>
         <ProfileImageConatiner>
-          <DefaultProfileIcon />
+          {user.profileImage ? (
+            <img src={user.profileImage} alt="profile" />
+          ) : (
+            <DefaultProfileIcon />
+          )}
         </ProfileImageConatiner>
       </div>
     </UserProfileContainer>
