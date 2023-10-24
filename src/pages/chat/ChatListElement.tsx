@@ -37,10 +37,11 @@ const ChatListElement = ({ chatRoomInfo }: ChatListElementProps) => {
 const ChatListElementContainer = styled.button`
   text-align: start;
   width: 100%;
-  height: 56px;
+  // height: 56px;
   padding: 6px 20px 6px 14.4px;
   margin-bottom: 8px;
   display: flex;
+  align-items: center;
 `;
 
 const ProfileImageConatiner = styled.div`
@@ -60,31 +61,41 @@ const ProfileImageConatiner = styled.div`
 `;
 
 const ChatRoomInfo = styled.div`
-  padding-top: 3px;
-  flex-grow: 1;
+  // padding-top: 3px;
+  flex: 1;
   .username {
     height: 19px;
     color: var(--Gray-3);
     font-size: 14px;
     font-weight: 600;
     line-height: 160%;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
   }
   .thumb-message {
-    height: 21px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: pre-wrap;
+    word-break: break-all;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+
     color: var(--Gray-2);
     font-size: 14px;
     font-weight: 400;
-    line-height: 160%;
+    // line-height: 160%;
   }
 `;
 
 const ChatRoomDate = styled.div`
+  align-self: start;
   padding-top: 4px;
+  margin-right: 4px;
   color: var(--Gray-2);
   font-size: 12px;
   font-weight: 300;
   line-height: 120%;
+  white-space: nowrap;
 `;
 
 export default ChatListElement;
