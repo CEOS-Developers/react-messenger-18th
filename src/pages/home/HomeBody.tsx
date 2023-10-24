@@ -12,6 +12,13 @@ const HomeBody = () => {
       storedUserData[i] = JSON.parse(data);
     }
   }
+
+  // 사전순 정렬
+  storedUserData.sort((a, b) => {
+    if (a.name < b.name) return -1;
+    else return 1;
+  });
+
   return (
     <HomeBodyContainer>
       <div className="title-outer">

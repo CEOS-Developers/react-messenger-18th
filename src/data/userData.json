@@ -29,6 +29,56 @@
       "github": "https://github.com/CEOS-Developers",
       "behance": null,
       "instagram": "https://www.instagram.com/ceos.sinchon/"
+    },
+    {
+      "id": 4,
+      "name": "일론머스크",
+      "profileImage": null,
+      "statusMessage": "안녕하세요. 저는 자동차를 사랑하는 남자 일론 머스크입니다.",
+      "likedMessages": [],
+      "github": null,
+      "behance": null,
+      "instagram": null
+    },
+    {
+      "id": 5,
+      "name": "오소균",
+      "profileImage": null,
+      "statusMessage": "끼잉",
+      "likedMessages": [],
+      "github": null,
+      "behance": null,
+      "instagram": null
+    },
+    {
+      "id": 6,
+      "name": "고등어",
+      "profileImage": null,
+      "statusMessage": "지금부터는 엑스트라에요.",
+      "likedMessages": [],
+      "github": null,
+      "behance": null,
+      "instagram": null
+    },
+    {
+      "id": 7,
+      "name": "tiger",
+      "profileImage": null,
+      "statusMessage": "지금부터는 엑스트라에요.",
+      "likedMessages": [],
+      "github": null,
+      "behance": null,
+      "instagram": null
+    },
+    {
+      "id": 8,
+      "name": "용",
+      "profileImage": null,
+      "statusMessage": "지금부터는 엑스트라에요.",
+      "likedMessages": [],
+      "github": null,
+      "behance": null,
+      "instagram": null
     }
   ]
 }
