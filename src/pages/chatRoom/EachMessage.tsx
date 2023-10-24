@@ -6,7 +6,7 @@ import { ReactComponent as DefaultProfileIcon } from 'static/images/default-prof
 import { convertDayDateFormat, convertTimeFormat } from 'utils';
 
 interface EachMessageProps {
-  message: TMessage;
+  message: TMessage & { profileImage?: string };
   isOwnMessage: boolean;
   isNextDay: boolean;
   handleDoubleClickMessage: () => void;

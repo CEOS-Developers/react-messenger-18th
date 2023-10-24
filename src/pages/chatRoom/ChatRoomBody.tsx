@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import { ChatRoomBackgroundColor } from 'styles/global.style';
 import { TMessage } from 'types';
 import { checkIsNextDay } from 'utils';
+import userData from 'data/userData.json';
 
 interface ChatRoomBodyProps {
   // dummy에 타입 적용
@@ -21,6 +22,10 @@ const ChatRoomBody = ({ messages, bodyRef }: ChatRoomBodyProps) => {
 
   const user = useUserStore((state) => state.user);
   const setUser = useUserStore((state) => state.setUser);
+
+  const opponent = localStorage.getItem(`user_${id}`)
+    ? JSON.parse(localStorage.getItem(`user_${id}`)!)
+    : userData.data.find((e) => e.id === Number(id));
 
   let before = '';
 
@@ -76,7 +81,13 @@ const ChatRoomBody = ({ messages, bodyRef }: ChatRoomBodyProps) => {
         return (
           <EachMessage
             key={`${message.id}${message.text}`}
-            message={message}
+            message={
+              Number(id) === message.toUserId
+                ? message
+                : Object.assign(message, {
+                    profileImage: opponent.profileImage,
+                  })
+            }
             isOwnMessage={Number(id) === message.toUserId}
             isNextDay={isNextDay}
             handleDoubleClickMessage={handleDoubleClickMessage.bind(

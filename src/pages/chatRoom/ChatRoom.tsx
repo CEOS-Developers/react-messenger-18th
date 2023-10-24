@@ -62,7 +62,6 @@ const ChatRoom = () => {
             id: messages.length,
             toUserId: Number(id),
             fromUserId: user.id,
-            profileImage: null,
             text: message,
             time: new Date().toISOString(),
             isRead: false,
