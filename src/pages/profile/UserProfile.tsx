@@ -43,6 +43,7 @@ const UserProfileContainer = styled.div`
   .status-message {
     text-align: center;
     padding-bottom: 12px;
+    white-space: pre-wrap;
     width: 100%;
     margin-top: 4px;
     color: var(--Gray-2);

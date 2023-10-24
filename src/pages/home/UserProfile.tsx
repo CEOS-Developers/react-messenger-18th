@@ -106,7 +106,13 @@ const StatusMessage = styled.div<{
     ${(props) =>
       props.$isStatusMessageSpread
         ? ''
-        : 'text-overflow: ellipsis; white-space: nowrap; overflow: hidden;'};
+        : `text-overflow: ellipsis;
+           overflow: hidden;
+           white-space: pre-wrap;
+           word-break: break-all;
+           display: -webkit-box;
+           -webkit-line-clamp: 1;
+           -webkit-box-orient: vertical;`};
   }
 `;
 
