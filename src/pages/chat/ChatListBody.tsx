@@ -5,7 +5,11 @@ import styled from 'styled-components';
 import { getLastMessages } from 'utils';
 import userData from 'data/userData.json';
 
-const ChatListBody = () => {
+interface ChatListBodyProps {
+  query: string;
+}
+
+const ChatListBody = ({ query }: ChatListBodyProps) => {
   const user = useUserStore((state) => state.user);
   const messages = useMessageStore((state) => state.messages);
   const lastMessages = getLastMessages(user.id, messages);
@@ -20,7 +24,8 @@ const ChatListBody = () => {
         const opponentUser = userData.data.find(
           (userToCheck) => userToCheck.id === opponentId
         )!;
-
+        if (!opponentUser.name.toLowerCase().includes(query.toLowerCase()))
+          return null;
         return (
           <ChatListElement
             key={`${message.time}${message.id}`}

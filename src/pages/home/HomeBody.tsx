@@ -3,9 +3,16 @@ import styled from 'styled-components';
 import userData from 'data/userData.json';
 import { useUserStore } from 'stores/userStore';
 
-const HomeBody = () => {
+interface HomeBodyProps {
+  query: string;
+}
+
+const HomeBody = ({ query }: HomeBodyProps) => {
   const user = useUserStore((state) => state.user);
-  const storedUserData = userData.data.filter((e) => e.id !== user.id);
+  const storedUserData = userData.data.filter(
+    (e) =>
+      e.id !== user.id && e.name.toLowerCase().includes(query.toLowerCase())
+  );
   for (let i = 0; i < storedUserData.length; i += 1) {
     const data = localStorage.getItem(`user_${storedUserData[i].id}`);
     if (data) {

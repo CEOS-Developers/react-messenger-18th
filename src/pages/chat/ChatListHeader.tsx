@@ -4,7 +4,12 @@ import { ReactComponent as StartChatIcon } from 'static/images/start-chat-icon.s
 import { ReactComponent as MoreIcon } from 'static/images/more-icon.svg';
 import { ReactComponent as SearchIcon } from 'static/images/search-icon.svg';
 
-const ChatListHeader = () => {
+interface ChatListHeaderProps {
+  query: string;
+  setQuery: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const ChatListHeader = ({ query, setQuery }: ChatListHeaderProps) => {
   return (
     <ChatListHeaderContainer>
       <ChatListHeaderTop>
@@ -14,7 +19,13 @@ const ChatListHeader = () => {
       </ChatListHeaderTop>
       <ChatListSearchInputContainer>
         <SearchIcon />
-        <ChatListSearchInput placeholder="Search" />
+        <ChatListSearchInput
+          placeholder="Search"
+          value={query}
+          onChange={(e) => {
+            setQuery(e.target.value);
+          }}
+        />
       </ChatListSearchInputContainer>
     </ChatListHeaderContainer>
   );

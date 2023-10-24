@@ -4,7 +4,12 @@ import styled from 'styled-components';
 import { ReactComponent as SearchIcon } from 'static/images/search-icon.svg';
 import { useState } from 'react';
 
-const HomeHeader = () => {
+interface HomeHeaderProps {
+  query: string;
+  setQuery: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const HomeHeader = ({ query, setQuery }: HomeHeaderProps) => {
   const [isStatusMessageSpread, setIsStatusMessageSpread] =
     useState<boolean>(false);
 
@@ -21,7 +26,13 @@ const HomeHeader = () => {
       />
       <UserListSearchInputContainer>
         <SearchIcon />
-        <UserListSearchInput placeholder="Search" />
+        <UserListSearchInput
+          placeholder="Search"
+          value={query}
+          onChange={(e) => {
+            setQuery(e.target.value);
+          }}
+        />
       </UserListSearchInputContainer>
       <Services />
     </HomeHeaderContainer>
