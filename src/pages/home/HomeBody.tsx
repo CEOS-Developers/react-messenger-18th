@@ -2,6 +2,7 @@ import FriendListElement from 'pages/home/FriendListElement';
 import styled from 'styled-components';
 import userData from 'data/userData.json';
 import { useUserStore } from 'stores/userStore';
+import { include } from 'utils/search';
 
 interface HomeBodyProps {
   query: string;
@@ -10,8 +11,7 @@ interface HomeBodyProps {
 const HomeBody = ({ query }: HomeBodyProps) => {
   const user = useUserStore((state) => state.user);
   const storedUserData = userData.data.filter(
-    (e) =>
-      e.id !== user.id && e.name.toLowerCase().includes(query.toLowerCase())
+    (e) => e.id !== user.id && include(e.name, query)
   );
   for (let i = 0; i < storedUserData.length; i += 1) {
     const data = localStorage.getItem(`user_${storedUserData[i].id}`);
