@@ -11,14 +11,17 @@ export interface TMessage {
 export interface TUser {
   id: number;
   name: string;
-  profileImage?: string | null;
+  profileImage: string | null;
   statusMessage: string | null;
   likedMessages: number[];
+  github: string | null;
+  behance: string | null;
+  instagram: string | null;
 }
 
 export interface TChatRoomInfo {
   id: number;
-  profileImage?: string | null;
+  profileImage: string | null;
   userName: string;
   message: string;
   time: string;

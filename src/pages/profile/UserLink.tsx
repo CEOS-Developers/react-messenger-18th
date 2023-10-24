@@ -5,10 +5,11 @@ import styled from 'styled-components';
 interface UserLinkProps {
   children: ReactNode;
   linkName: string;
+  href: string | null;
 }
-const UserLink = ({ children, linkName }: UserLinkProps) => {
+const UserLink = ({ children, linkName, href }: UserLinkProps) => {
   return (
-    <UserLinkContainer>
+    <UserLinkContainer href={href || ''}>
       {children}
       <div className="link-name">{linkName}</div>
       <RightArrowIcon />
@@ -16,9 +17,10 @@ const UserLink = ({ children, linkName }: UserLinkProps) => {
   );
 };
 
-const UserLinkContainer = styled.li`
+const UserLinkContainer = styled.a`
   display: flex;
   align-items: center;
+  text-decoration: none;
   width: 100%;
   height: 40px;
   padding: 0 28px 0 32px;
@@ -31,7 +33,7 @@ const UserLinkContainer = styled.li`
   .link-name {
     flex: 1;
     color: black;
-    // font-family: Pretendard Variable;
+    font-family: Pretendard Variable;
     font-size: 12px;
     font-weight: 300;
     line-height: 120%;

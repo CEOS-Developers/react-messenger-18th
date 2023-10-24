@@ -6,15 +6,41 @@ import ButtonWithIcon from 'pages/common/ButtonWithIcon';
 import { ReactComponent as InstagramIcon } from 'static/images/instagram-icon.svg';
 import { ReactComponent as GithubIcon } from 'static/images/github-icon.svg';
 import { ReactComponent as BehanceIcon } from 'static/images/behance-icon.svg';
+import { useNavigate } from 'react-router-dom';
+import { useUserStore } from 'stores/userStore';
 
 const Profile = () => {
+  const user = useUserStore((state) => state.user);
+
+  const navigate = useNavigate();
   return (
     <ProfileContainer>
-      <BackButton children={<BackIcon />} />
-      <UserProfile />
-      <UserLink children={<InstagramIcon />} linkName="Instagram" />
-      <UserLink children={<GithubIcon />} linkName="Github" />
-      <UserLink children={<BehanceIcon />} linkName="Behance" />
+      <BackButton
+        children={<BackIcon />}
+        handleOnClickButton={() => {
+          navigate('/');
+        }}
+      />
+      <UserProfile
+        username={user.name}
+        profileImage={user.profileImage}
+        statusMessage={user.statusMessage}
+      />
+      <UserLink
+        children={<InstagramIcon />}
+        linkName="Instagram"
+        href={user.instagram}
+      />
+      <UserLink
+        children={<GithubIcon />}
+        linkName="Github"
+        href={user.github}
+      />
+      <UserLink
+        children={<BehanceIcon />}
+        linkName="Behance"
+        href={user.behance}
+      />
     </ProfileContainer>
   );
 };

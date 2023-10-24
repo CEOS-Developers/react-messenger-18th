@@ -1,14 +1,28 @@
 import styled from 'styled-components';
 import { ReactComponent as DefaultProfileIcon } from 'static/images/default-profile-icon.svg';
 
-const UserProfile = () => {
+interface UserProfileProps {
+  username: string;
+  profileImage: string | null;
+  statusMessage: string | null;
+}
+
+const UserProfile = ({
+  username,
+  profileImage,
+  statusMessage,
+}: UserProfileProps) => {
   return (
     <UserProfileContainer>
       <ProfileImageConatiner>
-        <DefaultProfileIcon />
+        {profileImage ? (
+          <img src={profileImage} alt="profile" />
+        ) : (
+          <DefaultProfileIcon />
+        )}
       </ProfileImageConatiner>
-      <div className="username">배수연</div>
-      <div className="status-message">상태메시지</div>
+      <div className="username">{username}</div>
+      <div className="status-message">{statusMessage}</div>
     </UserProfileContainer>
   );
 };
