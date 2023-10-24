@@ -59,9 +59,7 @@ const ChatRoomBody = ({ messages, bodyRef }: ChatRoomBodyProps) => {
         setUser({ ...user, likedMessages: [...user.likedMessages, messageId] });
       }
     } catch {
-      localStorage.removeItem('user_1');
-      localStorage.removeItem('user_2');
-      localStorage.removeItem('messages');
+      localStorage.clear();
       window.location.reload();
     }
   };
@@ -84,9 +82,7 @@ const ChatRoomBody = ({ messages, bodyRef }: ChatRoomBodyProps) => {
             message={
               Number(id) === message.toUserId
                 ? message
-                : Object.assign(message, {
-                    profileImage: opponent.profileImage,
-                  })
+                : { ...message, profileImage: opponent.profileImage }
             }
             isOwnMessage={Number(id) === message.toUserId}
             isNextDay={isNextDay}

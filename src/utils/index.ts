@@ -38,13 +38,13 @@ export const convertTimeFormatForChatRoom = (date: string) => {
     new Date().getMonth() === dateObj.getMonth() &&
     new Date().getDate() === dateObj.getDate()
   ) {
-    let hour = Math.floor(dateObj.getHours() / 12);
-    const amFlag = dateObj.getHours() / 12 < 1;
+    let hour = dateObj.getHours() % 12;
+    const amFlag = dateObj.getHours() < 12;
     if (hour === 0) {
       hour = 12;
     }
 
-    converted = `${amFlag ? '오전' : '오후'} ${hour}:${dateObj.getDate()}`;
+    converted = `${amFlag ? '오전' : '오후'} ${hour}:${dateObj.getMinutes()}`;
     return converted;
   }
   if (new Date().getFullYear() > dateObj.getFullYear()) {
