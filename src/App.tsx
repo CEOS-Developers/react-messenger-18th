@@ -14,6 +14,15 @@ function App() {
   const user = useUserStore((state) => state.user);
   const location = useLocation();
 
+  // localStorage에 저장되어 있는 데이터 버전이 일치하지 않을 때 초기화
+  useEffect(() => {
+    const storedVersion = localStorage.getItem('version');
+    if (!storedVersion || storedVersion < process.env.REACT_APP_VERSION!) {
+      localStorage.setItem('version', process.env.REACT_APP_VERSION!);
+      return;
+    }
+  }, []);
+
   useEffect(() => {
     localStorage.setItem('messages', JSON.stringify(messages));
   }, [messages]);

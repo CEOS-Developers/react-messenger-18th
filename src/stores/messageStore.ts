@@ -11,10 +11,14 @@ interface TMessageStore {
 }
 
 const storedMessages: string | null = localStorage.getItem('messages');
+const storedVersion = localStorage.getItem('version');
 // localStorage에 data가 있으면 그것을 사용하고, 아니면 dummy 사용
-const initialMessageState: TMessage[] = storedMessages
-  ? JSON.parse(storedMessages)
-  : chatData.data;
+const initialMessageState: TMessage[] =
+  storedMessages &&
+  storedVersion &&
+  storedVersion === process.env.REACT_APP_VERSION
+    ? JSON.parse(storedMessages)
+    : chatData.data;
 
 export const useMessageStore = create(
   devtools(

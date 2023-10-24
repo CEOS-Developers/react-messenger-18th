@@ -9,9 +9,11 @@ interface TUserStore {
 }
 
 const user: string | null = localStorage.getItem('user');
-const initialUserState: TUser = user // default로 설정되는 유저는 user_1
-  ? JSON.parse(user)
-  : userData.data[0];
+const storedVersion = localStorage.getItem('version');
+const initialUserState: TUser =
+  user && storedVersion && storedVersion === process.env.REACT_APP_VERSION
+    ? JSON.parse(user)
+    : userData.data[0]; // default로 설정되는 유저는 user_1
 
 export const useUserStore = create(
   devtools<TUserStore>((set) => ({
