@@ -4,6 +4,7 @@ import { ReactComponent as MoreOnIcon } from 'static/images/more-on-icon.svg';
 import { ReactComponent as MoreOffIcon } from 'static/images/more-off-icon.svg';
 import ButtonWithIcon from 'pages/common/ButtonWithIcon';
 import { useUserStore } from 'stores/userStore';
+import { useNavigate } from 'react-router-dom';
 
 interface UserProfileProps {
   isStatusMessageSpread: boolean;
@@ -16,9 +17,14 @@ const UserProfile = ({
   foldStatusMessage,
 }: UserProfileProps) => {
   const user = useUserStore((state) => state.user);
-
+  const navigate = useNavigate();
   return (
-    <UserProfileContainer $isStatusMessageSpread={isStatusMessageSpread}>
+    <UserProfileContainer
+      $isStatusMessageSpread={isStatusMessageSpread}
+      onClick={() => {
+        navigate('/profile');
+      }}
+    >
       <div className="profile-body">
         <div className="profile-info">
           <div className="username">{user.name}</div>
@@ -27,9 +33,19 @@ const UserProfile = ({
             <ButtonWithIcon
               children={
                 isStatusMessageSpread ? (
-                  <MoreOnIcon onClick={foldStatusMessage} />
+                  <MoreOnIcon
+                    onClick={(e) => {
+                      foldStatusMessage();
+                      e.stopPropagation();
+                    }}
+                  />
                 ) : (
-                  <MoreOffIcon onClick={spreadStatusMessage} />
+                  <MoreOffIcon
+                    onClick={(e) => {
+                      spreadStatusMessage();
+                      e.stopPropagation();
+                    }}
+                  />
                 )
               }
             />
