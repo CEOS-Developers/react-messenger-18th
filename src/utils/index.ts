@@ -59,13 +59,13 @@ export const convertTimeFormatForChatRoom = (date: string) => {
   return converted;
 };
 
-export const convertDayDateFormat = (date: string) => {
-  const dateObj = new Date(date);
+export const convertDayDateFormat = (originalDate: string) => {
+  const dateObj = new Date(originalDate);
   const day = daySelector[dateObj.getDay()];
   const month = monthSelector[dateObj.getMonth()];
-  const year = dateObj.getFullYear();
+  const date = dateObj.getDate();
 
-  return `${day}, ${month} ${year}`;
+  return `${day}, ${month} ${date}`;
 };
 
 export const checkIsNextDay = (date1: string, date2: string) => {
