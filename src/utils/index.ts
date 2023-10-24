@@ -44,7 +44,9 @@ export const convertTimeFormatForChatRoom = (date: string) => {
       hour = 12;
     }
 
-    converted = `${amFlag ? '오전' : '오후'} ${hour}:${dateObj.getMinutes()}`;
+    converted = `${amFlag ? '오전' : '오후'} ${hour}:${String(
+      dateObj.getMinutes()
+    ).padStart(2, '0')}`;
     return converted;
   }
   if (new Date().getFullYear() > dateObj.getFullYear()) {
