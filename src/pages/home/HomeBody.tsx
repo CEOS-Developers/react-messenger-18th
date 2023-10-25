@@ -43,7 +43,7 @@ const HomeBody = ({ query }: HomeBodyProps) => {
 
 const HomeBodyContainer = styled.div`
   margin-top: 17px;
-  padding: 0 12px;
+  padding: 0 12px 80px 12px;
   .title-outer {
     display: flex;
     margin-bottom: 4px;

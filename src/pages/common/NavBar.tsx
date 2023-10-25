@@ -39,6 +39,8 @@ const NavBar = () => {
 };
 
 const NavBarContainer = styled.div`
+  position: fixed;
+  bottom: 0;
   display: flex;
   justify-content: space-between;
   width: 100%;

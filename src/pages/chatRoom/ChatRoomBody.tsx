@@ -103,7 +103,7 @@ export default ChatRoomBody;
 
 const ChatRoomBodyContainer = styled.div`
   background-color: ${ChatRoomBackgroundColor};
-  padding: 0 8px;
+  padding: 0 8px 56px 8px;
   flex-grow: 1;
   max-height: 100%;
   overflow-y: auto;

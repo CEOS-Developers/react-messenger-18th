@@ -113,6 +113,8 @@ export default ChatRoomFooter;
 // ############### 디자인 ###############
 
 const ChatRoomFooterContainer = styled.div`
+  position: fixed;
+  bottom: 0;
   display: flex;
   align-items: end;
   background-color: white;
