@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 import { ReactComponent as DefaultProfileIcon } from 'static/images/default-profile-icon.svg';
+import { ReactComponent as CameraIcon } from 'static/images/camera-icon.svg';
+import { useUserStore } from 'stores/userStore';
+import { CompressImage } from 'utils/fileCompression';
 
 interface UserProfileProps {
   username: string;
@@ -12,15 +15,44 @@ const UserProfile = ({
   profileImage,
   statusMessage,
 }: UserProfileProps) => {
+  const user = useUserStore((state) => state.user);
+  const setUser = useUserStore((state) => state.setUser);
   return (
     <UserProfileContainer>
-      <ProfileImageConatiner>
-        {profileImage ? (
-          <img src={profileImage} alt="profile" />
-        ) : (
-          <DefaultProfileIcon />
-        )}
-      </ProfileImageConatiner>
+      <div className="profile-image-outer">
+        <ProfileImageConatiner>
+          {profileImage ? (
+            <img src={profileImage} alt="profile" />
+          ) : (
+            <DefaultProfileIcon />
+          )}
+        </ProfileImageConatiner>
+        <ProfileImageChangeButton>
+          <CameraIcon />
+          <input
+            type="file"
+            accept="image/* .heic .heif"
+            onChange={async (e) => {
+              if (e.target.files && e.target.files.length) {
+                const compressedFile = await CompressImage(e.target.files[0]);
+                if (compressedFile) {
+                  const reader = new FileReader();
+                  reader.readAsDataURL(compressedFile);
+                  reader.onloadend = () => {
+                    if (reader.result) {
+                      setUser({
+                        ...user,
+                        profileImage: reader.result.toString(),
+                      });
+                    }
+                  };
+                }
+              }
+            }}
+          />
+        </ProfileImageChangeButton>
+      </div>
+
       <div className="username">{username}</div>
       <div className="status-message">{statusMessage}</div>
     </UserProfileContainer>
@@ -34,6 +66,9 @@ const UserProfileContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  .profile-image-outer {
+    position: relative;
+  }
   .username {
     margin-top: 20px;
     font-size: 20px;
@@ -61,12 +96,35 @@ const ProfileImageConatiner = styled.div`
   align-items: center;
   border-radius: 50%;
   overflow: hidden;
-  margin-top: 9px;
-  margin-right: 4px;
+  //   margin-top: 9px;
+  //   margin-right: 4px;
   img,
   svg {
     width: 108px;
     height: 108px;
   }
 `;
+
+const ProfileImageChangeButton = styled.label`
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background-color: rgb(255, 255, 255, 1);
+  border-radius: 50%;
+  z-index: 100;
+  border: 1px solid black;
+  height: 22px;
+  width: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+  input {
+    display: none;
+  }
+`;
+
 export default UserProfile;

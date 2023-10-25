@@ -22,9 +22,10 @@ const ChatListBody = ({ query }: ChatListBodyProps) => {
           user.id === message.fromUserId
             ? message.toUserId
             : message.fromUserId;
-        const opponentUser = userData.data.find(
-          (userToCheck) => userToCheck.id === opponentId
-        )!;
+        const storedOpponent = localStorage.getItem(`user_${opponentId}`);
+        const opponentUser = storedOpponent
+          ? JSON.parse(storedOpponent)
+          : userData.data.find((userToCheck) => userToCheck.id === opponentId)!;
 
         if (!include(opponentUser.name, query)) return null;
         return (
