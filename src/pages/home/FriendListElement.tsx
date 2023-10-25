@@ -4,11 +4,15 @@ import { TUser } from 'types';
 
 interface FriendListElementProps {
   user: TUser;
+  handleDoubleClickUser: () => void;
 }
 
-const FriendListElement = ({ user }: FriendListElementProps) => {
+const FriendListElement = ({
+  user,
+  handleDoubleClickUser,
+}: FriendListElementProps) => {
   return (
-    <FriendListElementContainer>
+    <FriendListElementContainer onDoubleClick={handleDoubleClickUser}>
       <ProfileImageConatiner>
         {user.profileImage ? (
           <img src={user.profileImage} alt="profile" />
@@ -23,6 +27,7 @@ const FriendListElement = ({ user }: FriendListElementProps) => {
 
 const FriendListElementContainer = styled.button`
   display: flex;
+  width: 100%;
   align-items: center;
   padding: 8px 0;
   margin-bottom: 8px;

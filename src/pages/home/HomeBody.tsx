@@ -10,6 +10,8 @@ interface HomeBodyProps {
 
 const HomeBody = ({ query }: HomeBodyProps) => {
   const user = useUserStore((state) => state.user);
+  const setUser = useUserStore((state) => state.setUser);
+
   const storedUserData = userData.data.filter(
     (e) => e.id !== user.id && include(e.name, query)
   );
@@ -34,7 +36,13 @@ const HomeBody = ({ query }: HomeBodyProps) => {
       </div>
       <div className="friend-list">
         {storedUserData.map((e) => (
-          <FriendListElement key={`${e.id}${e.statusMessage}`} user={e} />
+          <FriendListElement
+            key={`${e.id}${e.statusMessage}`}
+            user={e}
+            handleDoubleClickUser={() => {
+              setUser(e);
+            }}
+          />
         ))}
       </div>
     </HomeBodyContainer>

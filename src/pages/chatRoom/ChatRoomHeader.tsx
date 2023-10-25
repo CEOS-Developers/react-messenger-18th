@@ -1,5 +1,4 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import { useUserStore } from 'stores/userStore';
 import ButtonWithIcon from 'pages/common/ButtonWithIcon';
 import { ReactComponent as BackIcon } from 'static/images/back-arrow-icon.svg';
 import styled from 'styled-components';
@@ -15,8 +14,6 @@ const typedUserData: TUser[] = userData.data;
 const ChatRoomHeader = ({ headerRef }: ChatRoomHeaderProps) => {
   const navigate = useNavigate();
   const { id }: { id?: string } = useParams();
-  const user = useUserStore((state) => state.user);
-  const setUser = useUserStore((state) => state.setUser);
 
   const storedUser = localStorage.getItem(`user_${id}`);
   const roomOwner = storedUser // 해당 방이 누구와의 대화방인지
@@ -29,17 +26,9 @@ const ChatRoomHeader = ({ headerRef }: ChatRoomHeaderProps) => {
         children={<BackIcon />}
         handleOnClickButton={() => {
           navigate('/chat');
-          // setUser(typedUserData['user_1']);
         }}
       />
-      <UserNameDiv
-        onClick={() => {
-          setUser(roomOwner);
-          navigate(`/chat/${user.id}`); // 유저 변경
-        }}
-      >
-        {roomOwner!.name}
-      </UserNameDiv>
+      <UserNameDiv>{roomOwner!.name}</UserNameDiv>
     </ChatRoomHeaderContainer>
   );
 };
