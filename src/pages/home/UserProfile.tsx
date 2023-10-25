@@ -102,7 +102,7 @@ const StatusMessage = styled.div<{
     margin-right: 8px;
     font-size: 14px;
     line-height: 160%;
-    width: 250px;
+    flex: 1;
     ${(props) =>
       props.$isStatusMessageSpread
         ? ''
@@ -113,6 +113,9 @@ const StatusMessage = styled.div<{
            display: -webkit-box;
            -webkit-line-clamp: 1;
            -webkit-box-orient: vertical;`};
+  }
+  button {
+    margin-right: 17px;
   }
 `;
 
