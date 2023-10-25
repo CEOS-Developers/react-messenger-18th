@@ -3,6 +3,7 @@ import UserProfile from 'pages/home/UserProfile';
 import styled from 'styled-components';
 import { ReactComponent as SearchIcon } from 'static/images/search-icon.svg';
 import { useState } from 'react';
+import SearchBar from 'pages/common/SearchBar';
 
 interface HomeHeaderProps {
   query: string;
@@ -13,6 +14,12 @@ const HomeHeader = ({ query, setQuery }: HomeHeaderProps) => {
   const [isStatusMessageSpread, setIsStatusMessageSpread] =
     useState<boolean>(false);
 
+  <SearchBar
+    query={query}
+    handleOnChange={(e) => {
+      setQuery(e.target.value);
+    }}
+  />;
   return (
     <HomeHeaderContainer $isStatusMessageSpread={isStatusMessageSpread}>
       <UserProfile
@@ -24,16 +31,13 @@ const HomeHeader = ({ query, setQuery }: HomeHeaderProps) => {
           setIsStatusMessageSpread(false);
         }}
       />
-      <UserListSearchInputContainer>
-        <SearchIcon />
-        <UserListSearchInput
-          placeholder="Search"
-          value={query}
-          onChange={(e) => {
-            setQuery(e.target.value);
-          }}
-        />
-      </UserListSearchInputContainer>
+      <StyledSearchBar
+        query={query}
+        handleOnChange={(e) => {
+          setQuery(e.target.value);
+        }}
+        customStyle="margin: 0 12px;"
+      />
       <Services />
     </HomeHeaderContainer>
   );
@@ -46,28 +50,8 @@ const HomeHeaderContainer = styled.div<{
   margin-top: ${(props) => (props.$isStatusMessageSpread ? '102px' : '26px')};
 `;
 
-const UserListSearchInputContainer = styled.div`
-  height: 32px;
-  border-radius: 4px;
-  background: var(--Gray-1);
-  display: flex;
-  align-items: center;
+const StyledSearchBar = styled(SearchBar)`
   margin: 0 12px;
-  padding: 0 12px;
 `;
 
-const UserListSearchInput = styled.input`
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 300;
-  line-height: 120%;
-  color: var(--Gray-2);
-  border: none;
-  background: transparent;
-  margin-left: 10px;
-
-  &::placeholder {
-    color: var(--Gray-2);
-  }
-`;
 export default HomeHeader;

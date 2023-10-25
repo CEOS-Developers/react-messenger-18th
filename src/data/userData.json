@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "오대균",
-      "profileImage": "https://todayslunch-bucket.s3.ap-northeast-2.amazonaws.com/judge_restaurant/2023/09/06/5e07fb00-a532-4c1f-a79f-f6b618d274ca_blob",
+      "profileImage": null,
       "statusMessage": "긴 상태메시지 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
       "likedMessages": [0, 4],
       "github": "https://github.com/oooppq/",

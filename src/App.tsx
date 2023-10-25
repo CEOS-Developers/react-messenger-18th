@@ -6,6 +6,7 @@ import Home from 'pages/home/Home';
 import Profile from 'pages/profile/Profile';
 import ChatList from 'pages/chat/ChatList';
 import ChatRoom from 'pages/chatRoom/ChatRoom';
+import NewChat from 'pages/newChat/NewChat';
 import Layout from 'pages/common/Layout';
 import { BackgroundColor, ChatRoomBackgroundColor } from 'styles/global.style';
 
@@ -52,6 +53,7 @@ function App() {
       </Route>
       <Route path="profile" element={<Profile />} />
       <Route path="/chat/:id" element={<ChatRoom />} />
+      <Route path="/new-chat" element={<NewChat />} />
     </Routes>
   );
 }
