@@ -53,7 +53,7 @@ export const convertTimeFormatForChatRoom = (date: string) => {
     converted = converted.concat(`${dateObj.getFullYear()}`);
   }
   converted = converted.concat(
-    `${dateObj.getMonth() + 1}/${dateObj.getDate()}`
+    `${dateObj.getMonth() + 1}/${String(dateObj.getDate()).padStart(2, '0')}`
   );
 
   return converted;
