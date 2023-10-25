@@ -22,11 +22,12 @@ const ChatRoomHeader = ({ headerRef }: ChatRoomHeaderProps) => {
 
   return (
     <ChatRoomHeaderContainer ref={headerRef}>
-      <BackButton
+      <ButtonWithIcon
         children={<BackIcon />}
         handleClickButton={() => {
           navigate('/chat');
         }}
+        size={28}
       />
       <UserNameDiv>{roomOwner!.name}</UserNameDiv>
     </ChatRoomHeaderContainer>
@@ -46,10 +47,6 @@ const ChatRoomHeaderContainer = styled.div`
   background-color: var(--Blue);
 `;
 
-const BackButton = styled(ButtonWithIcon)`
-  height: 28px;
-  width: 28px;
-`;
 const UserNameDiv = styled.div`
   font-size: 18px;
   font-weight: 600;

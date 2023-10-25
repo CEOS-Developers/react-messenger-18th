@@ -15,11 +15,12 @@ const Profile = () => {
   const navigate = useNavigate();
   return (
     <ProfileContainer>
-      <BackButton
+      <ButtonWithIcon
         children={<BackIcon />}
         handleClickButton={() => {
           navigate('/');
         }}
+        size={28}
       />
       <UserProfile
         username={user.name}
@@ -52,8 +53,4 @@ const ProfileContainer = styled.div`
   background-color: var(--Background-White);
 `;
 
-const BackButton = styled(ButtonWithIcon)`
-  width: 28px;
-  height: 28px;
-`;
 export default Profile;

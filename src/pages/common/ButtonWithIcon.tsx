@@ -5,29 +5,32 @@ interface ButtonWithIconProps {
   className?: string;
   children: ReactNode;
   handleClickButton?: (e?: React.MouseEvent | MouseEvent) => void;
+  size?: number;
 }
 const ButtonWithIcon = ({
   className,
   children,
   handleClickButton,
+  size,
 }: ButtonWithIconProps) => {
   return (
-    <Button className={className} onClick={handleClickButton}>
+    <Button className={className} onClick={handleClickButton} $size={size}>
       {children}
     </Button>
   );
 };
 
-const Button = styled.button`
-  // width: fit-content;
-  // height: fit-content;
+const Button = styled.button<{ $size: number | undefined }>`
+  width: ${(props) => props.$size}px;
+  height: ${(props) => props.$size}px;
   display: inline-block;
   font-size: 0;
   line-height: 0;
   display: flex;
-  svg {
-    width: 100%;
-    height: 100%;
+  svg,
+  img {
+    width: ${(props) => props.$size}px;
+    height: ${(props) => props.$size}px;
   }
 `;
 export default ButtonWithIcon;

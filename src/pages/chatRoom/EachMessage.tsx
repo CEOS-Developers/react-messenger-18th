@@ -37,6 +37,7 @@ const EachMessage = ({
                 <DefaultProfileIcon />
               )
             }
+            size={36}
           />
         )}
         <TextAndLikeOuter $order={orders[0]} $isOwnMessage={isOwnMessage}>
@@ -77,15 +78,9 @@ const MessageBody = styled.div<{ $isOwnMessage: boolean }>`
 `;
 
 const MessageProfileImage = styled(ButtonWithIcon)`
-  width: 36px;
-  height: 36px;
   margin-right: 11px;
   border-radius: 50%;
   overflow: hidden;
-  img {
-    width: 100%;
-    height: 100%;
-  }
 `;
 
 const TextAndLikeOuter = styled.div<{ $order: number; $isOwnMessage: boolean }>`

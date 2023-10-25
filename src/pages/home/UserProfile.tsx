@@ -30,7 +30,7 @@ const UserProfile = ({
           <div className="username">{user.name}</div>
           <StatusMessage $isStatusMessageSpread={isStatusMessageSpread}>
             <div className="message">{user.statusMessage}</div>
-            <MoreButton
+            <ButtonWithIcon
               children={
                 isStatusMessageSpread ? (
                   <MoreOnIcon
@@ -48,6 +48,7 @@ const UserProfile = ({
                   />
                 )
               }
+              size={28}
             />
           </StatusMessage>
         </div>
@@ -117,11 +118,6 @@ const StatusMessage = styled.div<{
   button {
     margin-right: 17px;
   }
-`;
-
-const MoreButton = styled(ButtonWithIcon)`
-  height: 28px;
-  width: 28px;
 `;
 
 const ProfileImageConatiner = styled.div`

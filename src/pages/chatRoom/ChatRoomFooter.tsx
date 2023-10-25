@@ -74,9 +74,10 @@ const ChatRoomFooter = ({
           handleClickButton={() => {
             setIsMenuSpread(true);
           }}
+          size={28}
         />
-        <LeftSideButton children={<CameraIcon />} />
-        <LeftSideButton children={<PicIcon />} />
+        <LeftSideButton children={<CameraIcon />} size={28} />
+        <LeftSideButton children={<PicIcon />} size={28} />
       </LeftSideButtonsOuter>
 
       <ChatInput
@@ -103,6 +104,7 @@ const ChatRoomFooter = ({
       <RightSideButton
         children={content ? <SendIcon /> : <MicIcon />}
         handleClickButton={handleSubmitMessage}
+        size={28}
       />
     </ChatRoomFooterContainer>
   );
@@ -132,15 +134,11 @@ const LeftSideButtonsOuter = styled.div<{ $isMenuSpread: boolean }>`
 `;
 
 const LeftSideButton = styled(ButtonWithIcon)`
-  height: 28px;
-  width: 28px;
   margin-bottom: 8px;
   margin-right: 8px;
 `;
 
 const RightSideButton = styled(ButtonWithIcon)`
-  height: 28px;
-  width: 28px;
   margin: 0 0 8px 8px;
 `;
 

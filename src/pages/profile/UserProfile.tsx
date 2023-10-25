@@ -86,6 +86,7 @@ const UserProfile = ({
               setIsNameChanging(false);
             } else setIsNameChanging(true);
           }}
+          size={28}
         />
       </div>
       <div className="status-message-outer">
@@ -109,6 +110,7 @@ const UserProfile = ({
               setIsStatusMessageChanging(false);
             } else setIsStatusMessageChanging(true);
           }}
+          size={28}
         />
       </div>
     </UserProfileContainer>
@@ -192,8 +194,6 @@ const ProfileImageChangeButton = styled.label`
 `;
 
 const ChangeProfileButton = styled(ButtonWithIcon)`
-  width: 28px;
-  height: 28px;
   position: absolute;
   right: 0;
   transform: translate(100%, 0%);

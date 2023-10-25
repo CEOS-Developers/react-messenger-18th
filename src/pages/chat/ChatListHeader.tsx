@@ -17,13 +17,14 @@ const ChatListHeader = ({ query, setQuery }: ChatListHeaderProps) => {
     <ChatListHeaderContainer>
       <ChatListHeaderTop>
         <div className="title">Chats</div>
-        <StartChatButton
+        <ButtonWithIcon
           children={<StartChatIcon />}
           handleClickButton={() => {
             navigate('/new-chat');
           }}
+          size={32}
         />
-        <MoreButton children={<MoreIcon />} />
+        <ButtonWithIcon children={<MoreIcon />} size={32} />
       </ChatListHeaderTop>
       <SearchBar
         query={query}
@@ -51,16 +52,6 @@ const ChatListHeaderTop = styled.div`
     line-height: 160%;
     margin-right: auto;
   }
-`;
-
-const StartChatButton = styled(ButtonWithIcon)`
-  width: 32px;
-  height: 32px;
-`;
-
-const MoreButton = styled(ButtonWithIcon)`
-  width: 32px;
-  height: 32px;
 `;
 
 export default ChatListHeader;
