@@ -4,9 +4,14 @@ import styled from 'styled-components';
 
 interface NewChatHeaderProps {
   query: string;
+  selected: number | null;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
-const NewChatHeader = ({ query, handleChange }: NewChatHeaderProps) => {
+const NewChatHeader = ({
+  query,
+  selected,
+  handleChange,
+}: NewChatHeaderProps) => {
   const navigate = useNavigate();
 
   return (
@@ -18,10 +23,11 @@ const NewChatHeader = ({ query, handleChange }: NewChatHeaderProps) => {
       />
       <CancelButton
         onClick={() => {
-          navigate(-1);
+          if (selected) navigate(`/chat/${selected}`);
+          else navigate(-1);
         }}
       >
-        취소
+        {selected ? '확인' : '취소'}
       </CancelButton>
     </NewChatHeaderContainer>
   );
