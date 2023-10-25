@@ -19,7 +19,7 @@ const ChatListHeader = ({ query, setQuery }: ChatListHeaderProps) => {
         <div className="title">Chats</div>
         <StartChatButton
           children={<StartChatIcon />}
-          handleOnClickButton={() => {
+          handleClickButton={() => {
             navigate('/new-chat');
           }}
         />

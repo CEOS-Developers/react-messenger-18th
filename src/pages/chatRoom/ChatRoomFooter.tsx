@@ -71,7 +71,7 @@ const ChatRoomFooter = ({
       <LeftSideButtonsOuter $isMenuSpread={isMenuSpread}>
         <LeftSideButton
           children={isMenuSpread ? <PlusIcon /> : <BackIcon />}
-          handleOnClickButton={() => {
+          handleClickButton={() => {
             setIsMenuSpread(true);
           }}
         />
@@ -102,7 +102,7 @@ const ChatRoomFooter = ({
       <HiddenInput ref={hiddenInputRef} />
       <RightSideButton
         children={content ? <SendIcon /> : <MicIcon />}
-        handleOnClickButton={handleSubmitMessage}
+        handleClickButton={handleSubmitMessage}
       />
     </ChatRoomFooterContainer>
   );

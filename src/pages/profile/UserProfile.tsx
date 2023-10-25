@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 import { ReactComponent as DefaultProfileIcon } from 'static/images/default-profile-icon.svg';
 import { ReactComponent as CameraIcon } from 'static/images/camera-icon.svg';
+import { ReactComponent as PencilIcon } from 'static/images/pencil-icon.svg';
 import { useUserStore } from 'stores/userStore';
 import { CompressImage } from 'utils/fileCompression';
+import ButtonWithIcon from 'pages/common/ButtonWithIcon';
+import { useState } from 'react';
 
 interface UserProfileProps {
   username: string;
@@ -17,6 +20,14 @@ const UserProfile = ({
 }: UserProfileProps) => {
   const user = useUserStore((state) => state.user);
   const setUser = useUserStore((state) => state.setUser);
+  const [isNameChanging, setIsNameChanging] = useState<Boolean>(false);
+  const [isStatusMessageChanging, setIsStatusMessageChanging] =
+    useState<Boolean>(false);
+  const [newName, setNewName] = useState<string>(username);
+  const [newStatusMessage, setNewStatusMessage] = useState<string | null>(
+    statusMessage
+  );
+
   return (
     <UserProfileContainer>
       <div className="profile-image-outer">
@@ -53,11 +64,57 @@ const UserProfile = ({
         </ProfileImageChangeButton>
       </div>
 
-      <div className="username">{username}</div>
-      <div className="status-message">{statusMessage}</div>
+      <div className="username-outer">
+        {isNameChanging ? (
+          <input
+            type="text"
+            className=""
+            value={newName}
+            onChange={(e) => {
+              setNewName(e.target.value);
+            }}
+          />
+        ) : (
+          <div className="username">{username}</div>
+        )}
+
+        <ChangeProfileButton
+          children={<PencilIcon />}
+          handleClickButton={() => {
+            if (isNameChanging) {
+              setUser({ ...user, name: newName });
+              setIsNameChanging(false);
+            } else setIsNameChanging(true);
+          }}
+        />
+      </div>
+      <div className="status-message-outer">
+        {isStatusMessageChanging ? (
+          <textarea
+            name=""
+            id=""
+            value={newStatusMessage || ''}
+            onChange={(e) => {
+              setNewStatusMessage(e.target.value);
+            }}
+          ></textarea>
+        ) : (
+          <div className="status-message">{statusMessage}</div>
+        )}
+        <ChangeProfileButton
+          children={<PencilIcon />}
+          handleClickButton={() => {
+            if (isStatusMessageChanging) {
+              setUser({ ...user, statusMessage: newStatusMessage });
+              setIsStatusMessageChanging(false);
+            } else setIsStatusMessageChanging(true);
+          }}
+        />
+      </div>
     </UserProfileContainer>
   );
 };
+
 const UserProfileContainer = styled.div`
   margin-top: 66px;
   margin-bottom: 8px;
@@ -69,22 +126,29 @@ const UserProfileContainer = styled.div`
   .profile-image-outer {
     position: relative;
   }
-  .username {
+  .username-outer {
+    display: flex;
+    position: relative;
     margin-top: 20px;
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 160%;
+    .username {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 160%;
+    }
   }
-  .status-message {
-    text-align: center;
-    padding-bottom: 12px;
-    white-space: pre-wrap;
-    width: 100%;
+  .status-message-outer {
+    position: relative;
+    padding: 0 12px 12px 12px;
     margin-top: 4px;
-    color: var(--Gray-2);
-    font-size: 14px;
-    line-height: 160%;
+    width: 100%;
     border-bottom: 1px solid var(--Gray-2);
+    .status-message {
+      text-align: center;
+      white-space: pre-wrap;
+      color: var(--Gray-2);
+      font-size: 14px;
+      line-height: 160%;
+    }
   }
 `;
 
@@ -125,6 +189,14 @@ const ProfileImageChangeButton = styled.label`
   input {
     display: none;
   }
+`;
+
+const ChangeProfileButton = styled(ButtonWithIcon)`
+  width: 28px;
+  height: 28px;
+  position: absolute;
+  right: 0;
+  transform: translate(100%, 0%);
 `;
 
 export default UserProfile;

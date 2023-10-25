@@ -4,16 +4,16 @@ import styled from 'styled-components';
 interface NavBarButtonProps {
   children: ReactNode;
   buttonName: string;
-  handleOnClickButton?: (e?: React.MouseEvent | MouseEvent) => void;
+  handleClickButton?: (e?: React.MouseEvent | MouseEvent) => void;
 }
 
 const NavBarButton = ({
   children,
   buttonName,
-  handleOnClickButton,
+  handleClickButton,
 }: NavBarButtonProps) => {
   return (
-    <NavBarButtonContainer onClick={handleOnClickButton}>
+    <NavBarButtonContainer onClick={handleClickButton}>
       {children}
       <ButtonName>{buttonName}</ButtonName>
     </NavBarButtonContainer>

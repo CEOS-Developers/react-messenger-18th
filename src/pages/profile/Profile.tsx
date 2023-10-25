@@ -17,7 +17,7 @@ const Profile = () => {
     <ProfileContainer>
       <BackButton
         children={<BackIcon />}
-        handleOnClickButton={() => {
+        handleClickButton={() => {
           navigate('/');
         }}
       />
@@ -48,10 +48,12 @@ const Profile = () => {
 const ProfileContainer = styled.div`
   width: 100%;
   height: 100%;
+  padding: 20px 0 0 16px;
   background-color: var(--Background-White);
 `;
 
 const BackButton = styled(ButtonWithIcon)`
-  padding: 20px 0 0 16px;
+  width: 28px;
+  height: 28px;
 `;
 export default Profile;

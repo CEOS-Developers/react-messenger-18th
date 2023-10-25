@@ -16,7 +16,7 @@ const NavBar = () => {
       <NavBarButton
         children={location.pathname === '/' ? <HomeOnIcon /> : <HomeOffIcon />}
         buttonName="Home"
-        handleOnClickButton={() => {
+        handleClickButton={() => {
           navigate('/');
         }}
       />
@@ -25,14 +25,14 @@ const NavBar = () => {
           location.pathname === '/chat' ? <ChatOnIcon /> : <ChatOffIcon />
         }
         buttonName="Chat"
-        handleOnClickButton={() => {
+        handleClickButton={() => {
           navigate('/chat');
         }}
       />
       <NavBarButton
         children={<CallOffIcon />}
         buttonName="Call"
-        handleOnClickButton={() => {}}
+        handleClickButton={() => {}}
       />
     </NavBarContainer>
   );
