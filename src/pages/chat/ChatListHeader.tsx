@@ -2,7 +2,6 @@ import ButtonWithIcon from 'pages/common/ButtonWithIcon';
 import styled from 'styled-components';
 import { ReactComponent as StartChatIcon } from 'static/images/start-chat-icon.svg';
 import { ReactComponent as MoreIcon } from 'static/images/more-icon.svg';
-import { ReactComponent as SearchIcon } from 'static/images/search-icon.svg';
 import { useNavigate } from 'react-router-dom';
 import SearchBar from 'pages/common/SearchBar';
 
@@ -13,12 +12,7 @@ interface ChatListHeaderProps {
 
 const ChatListHeader = ({ query, setQuery }: ChatListHeaderProps) => {
   const navigate = useNavigate();
-  <SearchBar
-    query={query}
-    handleOnChange={(e) => {
-      setQuery(e.target.value);
-    }}
-  />;
+
   return (
     <ChatListHeaderContainer>
       <ChatListHeaderTop>
@@ -33,7 +27,7 @@ const ChatListHeader = ({ query, setQuery }: ChatListHeaderProps) => {
       </ChatListHeaderTop>
       <SearchBar
         query={query}
-        handleOnChange={(e) => {
+        handleChange={(e) => {
           setQuery(e.target.value);
         }}
       />

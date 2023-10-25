@@ -3,18 +3,18 @@ import styled from 'styled-components';
 
 interface SearchBarProps {
   query: string;
-  handleOnChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   customStyle?: string;
 }
 
-const SearchBar = ({ query, handleOnChange, customStyle }: SearchBarProps) => {
+const SearchBar = ({ query, handleChange, customStyle }: SearchBarProps) => {
   return (
     <SearchBarContainer $style={customStyle}>
       <SearchIcon />
       <SearchBarInput
         placeholder="Search"
         value={query}
-        onChange={handleOnChange}
+        onChange={handleChange}
       />
     </SearchBarContainer>
   );

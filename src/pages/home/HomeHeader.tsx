@@ -1,7 +1,6 @@
 import Services from 'pages/home/Services';
 import UserProfile from 'pages/home/UserProfile';
 import styled from 'styled-components';
-import { ReactComponent as SearchIcon } from 'static/images/search-icon.svg';
 import { useState } from 'react';
 import SearchBar from 'pages/common/SearchBar';
 
@@ -14,12 +13,6 @@ const HomeHeader = ({ query, setQuery }: HomeHeaderProps) => {
   const [isStatusMessageSpread, setIsStatusMessageSpread] =
     useState<boolean>(false);
 
-  <SearchBar
-    query={query}
-    handleOnChange={(e) => {
-      setQuery(e.target.value);
-    }}
-  />;
   return (
     <HomeHeaderContainer $isStatusMessageSpread={isStatusMessageSpread}>
       <UserProfile
@@ -33,7 +26,7 @@ const HomeHeader = ({ query, setQuery }: HomeHeaderProps) => {
       />
       <StyledSearchBar
         query={query}
-        handleOnChange={(e) => {
+        handleChange={(e) => {
           setQuery(e.target.value);
         }}
         customStyle="margin: 0 12px;"
