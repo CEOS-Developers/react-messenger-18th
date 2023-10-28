@@ -6,34 +6,55 @@ import mediaAddIcon from "../../../assets/images/mediaAddIcon.svg";
 import voiceAddIcon from "../../../assets/images/voiceAddIcon.svg";
 import { useRecoilState, useRecoilValue } from "recoil";
 import {
-  isUser1State,
-  user1MessageState,
-  user2MesasgeState,
+  firstRoomState,
+  secondRoomState,
+  userAMessageState,
+  userBMesasgeState,
+  userCMessageState,
+  userDMesasgeState,
 } from "../../../recoil/atom";
 
 import { handleKeyDown } from "../../../hooks/handleKeyDown";
+import { useParams } from "react-router-dom";
 
 function ChatInput() {
+  const params = useParams();
   const [inputMessage, setInputMessage] = useState("");
-  const isUser1 = useRecoilValue(isUser1State);
-  const [user1Message, setUser1Message] = useRecoilState(user1MessageState);
-  const [user2Message, setUser2Message] = useRecoilState(user2MesasgeState);
+  const isUser1InFirstRoom = useRecoilValue(firstRoomState);
+  const isUser1InSecondRoom = useRecoilValue(secondRoomState);
+  const [userAMessage, setUserAMessage] = useRecoilState(userAMessageState);
+  const [userBMessage, setUserBMessage] = useRecoilState(userBMesasgeState);
+  const [userCMessage, setUserCMessage] = useRecoilState(userCMessageState);
+  const [userDMessage, setUserDMessage] = useRecoilState(userDMesasgeState);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputMessage(e.target.value);
   };
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    handleKeyDown(
-      event,
-      inputMessage,
-      isUser1,
-      setUser1Message,
-      user1Message,
-      setUser2Message,
-      user2Message,
-      setInputMessage
-    );
+    if (params.roomID === "1") {
+      handleKeyDown(
+        event,
+        inputMessage,
+        isUser1InFirstRoom,
+        setUserAMessage,
+        userAMessage,
+        setUserBMessage,
+        userBMessage,
+        setInputMessage
+      );
+    } else if (params.roomID === "2") {
+      handleKeyDown(
+        event,
+        inputMessage,
+        isUser1InSecondRoom,
+        setUserCMessage,
+        userCMessage,
+        setUserDMessage,
+        userDMessage,
+        setInputMessage
+      );
+    }
   };
 
   const inputRef = useRef<HTMLInputElement | null>(null);

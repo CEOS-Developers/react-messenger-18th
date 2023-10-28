@@ -3,14 +3,25 @@ import { Flex } from "../../atom/Flex";
 import { Text } from "../../atom/Text";
 import { useNavigate } from "react-router-dom";
 
-function ChatItem({ id }) {
+interface ChatItemProps {
+  id: number;
+  name: string;
+}
+
+function ChatItem({ id, name }: ChatItemProps) {
   const navigate = useNavigate();
   const onClick = () => {
     navigate(`/chat/${id}`);
   };
   return (
     <>
-      <Flex width="327px" height="56px" margin="0 auto" gap="12" onClick={onClick}>
+      <Flex
+        width="327px"
+        height="56px"
+        margin="0 auto"
+        gap="12"
+        onClick={onClick}
+      >
         <Flex
           color="mainBlue"
           width="47px"
@@ -22,7 +33,7 @@ function ChatItem({ id }) {
           radius="4px"
         >
           <Text color="white" font="Lato" weight="700">
-            김
+            {name.substr(0, 1)}
           </Text>
         </Flex>
         <Flex direction="column">
@@ -34,7 +45,7 @@ function ChatItem({ id }) {
               lineheight="24px"
               weight="600"
             >
-              김철수
+              {name}
             </Text>
             <Text color="gray" size="10px" lineheight="16px">
               오늘

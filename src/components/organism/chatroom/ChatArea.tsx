@@ -5,12 +5,16 @@ import ChatBubbleWhite from "../../moleclues/chatroom/ChatBubbleWhite";
 import { Space } from "../../atom/Space";
 import { useRecoilValue } from "recoil";
 import {
-  isUser1State,
-  user1MessageState,
-  user2MesasgeState,
+  firstRoomState,
+  secondRoomState,
+  userAMessageState,
+  userBMesasgeState,
+  userCMessageState,
+  userDMesasgeState,
 } from "../../../recoil/atom";
 import dayjs from "dayjs";
 import { sortMessagesByTime } from "../../../hooks/sortMessageByTime";
+import { useParams } from "react-router-dom";
 
 export interface ChatMessage {
   time: string;
@@ -20,10 +24,19 @@ export interface ChatMessage {
 type ChatMessages = ChatMessage[];
 
 function ChatArea() {
-  // 전역 변수 구독
-  const isUser1 = useRecoilValue(isUser1State);
-  const user1Message: ChatMessages = useRecoilValue(user1MessageState);
-  const user2Message: ChatMessages = useRecoilValue(user2MesasgeState);
+  const params = useParams();
+  // useRecoilValue가 하나의 훅이어서 곧바로 조건부 할당이 불가능하기 때문에 전역변수를 모두 구독해줘야함
+  const isUser1InFirstRoom = useRecoilValue(firstRoomState);
+  const isUser1InSecondRoom = useRecoilValue(secondRoomState);
+  const userA: ChatMessages = useRecoilValue(userAMessageState);
+  const userB: ChatMessages = useRecoilValue(userBMesasgeState);
+  const userC: ChatMessages = useRecoilValue(userCMessageState);
+  const userD: ChatMessages = useRecoilValue(userDMesasgeState);
+  // roomID에 따라 isUser1 (메시지 보내는 주체의 본인 여부) , user1Message (본인이 보낸 메시지), user2Message (상대가 보낸 메시지)에 할당하는 전역변수의 값을 다르게 할당
+  const isUser1 =
+    params.roomID === "1" ? isUser1InFirstRoom : isUser1InSecondRoom;
+  const user1Message = params.roomID === "1" ? userA : userC;
+  const user2Message = params.roomID === "1" ? userB : userD;
 
   // user1Message와 user2Message를 합친 후 시간을 기준으로 정렬
   const combinedMessages = sortMessagesByTime([

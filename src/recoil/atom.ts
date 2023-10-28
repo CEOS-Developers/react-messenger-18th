@@ -1,36 +1,75 @@
 import { atom } from "recoil";
 
-export const isUser1State = atom({ key: "isUser1State", default: true });
+// 첫번째 채팅방의 상태
+export const firstRoomState = atom({ key: "firstRoomState", default: true });
 
-export const user1MessageState = atom({
-  key: "user1MessageState",
+export const userAMessageState = atom({
+  key: "userAMessageState",
   default: [],
   // localStorage와 atom을 연동
   effects: [
     ({ setSelf, onSet }) => {
-      const savedData = localStorage.getItem("user1Message");
+      const savedData = localStorage.getItem("userAMessage");
       if (savedData) setSelf(JSON.parse(savedData));
       onSet((newValue, _, isReset) => {
         isReset
-          ? localStorage.removeItem("user1Message")
-          : localStorage.setItem("user1Message", JSON.stringify(newValue));
+          ? localStorage.removeItem("userAMessage")
+          : localStorage.setItem("userAMessage", JSON.stringify(newValue));
       });
     },
   ],
 });
-  
-export const user2MesasgeState = atom({
-  key: "user2MessageState",
+
+export const userBMesasgeState = atom({
+  key: "userBMessageState",
   default: [],
   // localStorage와 atom을 연동
   effects: [
     ({ setSelf, onSet }) => {
-      const savedData = localStorage.getItem("user2Message");
+      const savedData = localStorage.getItem("userBMessage");
       if (savedData) setSelf(JSON.parse(savedData));
       onSet((newValue, _, isReset) => {
         isReset
-          ? localStorage.removeItem("user2Message")
-          : localStorage.setItem("user2Message", JSON.stringify(newValue));
+          ? localStorage.removeItem("userBMessage")
+          : localStorage.setItem("userBMessage", JSON.stringify(newValue));
+      });
+    },
+  ],
+});
+
+// 두번째 채팅방의 상태
+
+export const secondRoomState = atom({ key: "secondRoomState", default: true });
+
+export const userCMessageState = atom({
+  key: "userCMessageState",
+  default: [],
+  // localStorage와 atom을 연동
+  effects: [
+    ({ setSelf, onSet }) => {
+      const savedData = localStorage.getItem("userCMessage");
+      if (savedData) setSelf(JSON.parse(savedData));
+      onSet((newValue, _, isReset) => {
+        isReset
+          ? localStorage.removeItem("userCMessage")
+          : localStorage.setItem("userCMessage", JSON.stringify(newValue));
+      });
+    },
+  ],
+});
+
+export const userDMesasgeState = atom({
+  key: "userDMessageState",
+  default: [],
+  // localStorage와 atom을 연동
+  effects: [
+    ({ setSelf, onSet }) => {
+      const savedData = localStorage.getItem("userDMessage");
+      if (savedData) setSelf(JSON.parse(savedData));
+      onSet((newValue, _, isReset) => {
+        isReset
+          ? localStorage.removeItem("userDMessage")
+          : localStorage.setItem("userDMessage", JSON.stringify(newValue));
       });
     },
   ],
