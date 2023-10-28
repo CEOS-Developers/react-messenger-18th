@@ -20,8 +20,9 @@ export function handleKeyDown(
         time: getTime("YYYY-MM-DD HH:mm:ss"),
         id: uuidv4(), // uuid4 generator를 통한 메시지 고유 id 생성
         text: inputMessage,
+        isRead: false, // 상대가 읽었는지 여부 -> ChatNav에서 사용자 toggle했을시 읽음처리
       };
-      if (isUser1) { 
+      if (isUser1) {
         setUser1Message([...user1Message, newMessage]);
         localStorage.setItem("user1Message", JSON.stringify(user1Message));
       } else {

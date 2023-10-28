@@ -5,9 +5,10 @@ import { Flex } from "../../atom/Flex";
 interface ChatBubbleBlueProps {
   text: string;
   time: string;
+  isRead: boolean;
 }
 
-function ChatBubbleBlue({ text, time }: ChatBubbleBlueProps) {
+function ChatBubbleBlue({ text, time, isRead }: ChatBubbleBlueProps) {
   return (
     <Flex
       radius="16px 16px 0px 16px"
@@ -36,7 +37,7 @@ function ChatBubbleBlue({ text, time }: ChatBubbleBlueProps) {
         lineheight="16px"
         color="white"
       >
-        {time} · 읽음
+        {time} {isRead ? "· 읽음" : ""}
       </Text>
     </Flex>
   );

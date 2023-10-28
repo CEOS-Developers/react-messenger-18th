@@ -56,6 +56,7 @@ function ChatArea() {
       text: message.text,
       id: message.id,
       user: user,
+      isRead: message.isRead,
     };
   });
 
@@ -88,6 +89,7 @@ function ChatArea() {
                 text={el.text}
                 time={dayjs(el.time).format("h:mm a")}
                 key={el.id}
+                isRead={el.isRead}
               />
             ) : (
               <ChatBubbleWhite
@@ -108,6 +110,7 @@ function ChatArea() {
                 text={el.text}
                 time={dayjs(el.time).format("h:mm a")}
                 key={el.id}
+                isRead={el.isRead}
               />
             );
         })}
