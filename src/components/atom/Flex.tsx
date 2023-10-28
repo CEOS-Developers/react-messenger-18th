@@ -23,6 +23,7 @@ interface FlexProps {
   position?: string;
   bottom?: string;
   onClick?: any;
+  cursor?: string;
   inputRef?: RefObject<HTMLDivElement>;
 }
 
@@ -49,6 +50,7 @@ const FlexBase = styled.div<FlexProps>`
   flex-grow: ${({ grow }) => grow};
   position: ${({ position }) => position};
   bottom: ${({ bottom }) => bottom};
+  cursor: ${({ cursor }) => cursor};
 `;
 
 export const Flex: React.FC<FlexProps> = ({

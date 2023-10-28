@@ -3,12 +3,15 @@ import { Flex } from "../../atom/Flex";
 import { Text } from "../../atom/Text";
 import { useNavigate } from "react-router-dom";
 
+
 interface ChatItemProps {
   id: number;
   name: string;
+  lastMessage: string;
 }
 
-function ChatItem({ id, name }: ChatItemProps) {
+function ChatItem({ id, name, lastMessage}: ChatItemProps) {
+
   const navigate = useNavigate();
   const onClick = () => {
     navigate(`/chat/${id}`);
@@ -20,6 +23,7 @@ function ChatItem({ id, name }: ChatItemProps) {
         height="56px"
         margin="0 auto"
         gap="12"
+        cursor="pointer"
         onClick={onClick}
       >
         <Flex
@@ -59,7 +63,7 @@ function ChatItem({ id, name }: ChatItemProps) {
               size="12px"
               lineheight="20px"
             >
-              좋은 저녁입니다.
+              {lastMessage}
             </Text>
             <Flex
               width="23px"
