@@ -27,7 +27,7 @@ function ContactItem() {
         >
           영숙
         </Text>
-        <Text color="gray" size="10px" lineheight="16px">
+        <Text color="gray" size="12px" lineheight="16px">
           좋은 하루
         </Text>
       </Flex>

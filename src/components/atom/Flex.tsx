@@ -22,6 +22,7 @@ interface FlexProps {
   grow?: string;
   position?: string;
   bottom?: string;
+  onClick?: any;
   inputRef?: RefObject<HTMLDivElement>;
 }
 

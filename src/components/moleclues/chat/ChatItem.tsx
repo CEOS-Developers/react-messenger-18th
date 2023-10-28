@@ -1,11 +1,16 @@
 import React from "react";
 import { Flex } from "../../atom/Flex";
 import { Text } from "../../atom/Text";
+import { useNavigate } from "react-router-dom";
 
-function ChatItem() {
+function ChatItem({ id }) {
+  const navigate = useNavigate();
+  const onClick = () => {
+    navigate(`/chat/${id}`);
+  };
   return (
     <>
-      <Flex width="327px" height="56px" margin="0 auto" gap="12">
+      <Flex width="327px" height="56px" margin="0 auto" gap="12" onClick={onClick}>
         <Flex
           color="mainBlue"
           width="47px"
@@ -22,7 +27,13 @@ function ChatItem() {
         </Flex>
         <Flex direction="column">
           <Flex>
-            <Text width="241px" align="left" size="14px" lineheight="24px">
+            <Text
+              width="241px"
+              align="left"
+              size="14px"
+              lineheight="24px"
+              weight="600"
+            >
               김철수
             </Text>
             <Text color="gray" size="10px" lineheight="16px">
