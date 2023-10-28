@@ -20,6 +20,7 @@ export interface ChatMessage {
   time: string;
   id: string;
   text: string;
+  isRead: boolean;
 }
 type ChatMessages = ChatMessage[];
 

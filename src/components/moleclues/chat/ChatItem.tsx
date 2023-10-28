@@ -66,6 +66,7 @@ function ChatItem({ id, name, lastMessage, count }: ChatItemProps) {
             </Text>
             <Flex
               width="23px"
+              height="20px"
               justify="center"
               align="center"
               color="lightBlue"
