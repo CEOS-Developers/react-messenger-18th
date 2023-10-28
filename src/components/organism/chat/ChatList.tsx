@@ -28,14 +28,38 @@ function ChatList() {
     ...userDMessage,
   ]);
   const lastMessageRoom1 =
-    room1SortedMessages[room1SortedMessages.length - 1].text;
+    room1SortedMessages[room1SortedMessages.length - 1]?.text;
   const lastMessageRoom2 =
-    room2SortedMessages[room2SortedMessages.length - 1].text;
-     
+    room2SortedMessages[room2SortedMessages.length - 1]?.text;
+  // user1 (정인영) 입장에서 각각의 채팅방에서 읽지 않은 메시지의 개수 count1, count2
+  let count1 = 0;
+  let count2 = 0;
+  // 마지막 채팅방에서 자신의 메시지가 마지막일 경우에는 읽지 않은 카운트에서 제외
+  if (!isUser1InFirstRoom) {
+    room1SortedMessages.forEach((obj) => {
+      if (!obj.isRead) count1 += 1;
+    });
+  }
+  if (!isUser1InSecondRoom) {
+    room2SortedMessages.forEach((obj) => {
+      if (!obj.isRead) count2 += 1;
+    });
+  }
+
   return (
     <Flex direction="column" gap="16" margin="16px 0px 0px" height="623px">
-      <ChatItem id={1} name={"이현진"} lastMessage={lastMessageRoom1} />
-      <ChatItem id={2} name={"김종완"} lastMessage={lastMessageRoom2} />
+      <ChatItem
+        id={1}
+        name={"이현진"}
+        lastMessage={lastMessageRoom1}
+        count={count1}
+      />
+      <ChatItem
+        id={2}
+        name={"김종완"}
+        lastMessage={lastMessageRoom2}
+        count={count2}
+      />
     </Flex>
   );
 }
