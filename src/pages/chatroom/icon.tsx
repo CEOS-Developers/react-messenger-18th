@@ -1,5 +1,4 @@
 import { iconName, IconSet } from "./constants";
-import styled from "styled-components";
 
 interface IconProps {
   icon: iconName;
