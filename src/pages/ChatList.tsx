@@ -1,39 +1,40 @@
 import React, { useState } from "react";
-import PageHeader from "../components/common/PageHeader";
-import { ReactComponent as Friends } from "../icons/friends.svg";
-import { ReactComponent as Search } from "../icons/search.svg";
-import Profile from "../components/profile/Profile";
+import PageHeader from "../common/components/layout/Header/PageHeader";
+import { ReactComponent as Friends } from "../common/icons/friends.svg";
+import { ReactComponent as Search } from "../common/icons/search.svg";
+import Profile from "../features/user/components/Profile/Profile";
 import styled from "styled-components";
-import useChatListStateChange from "../customHooks/chatlist/useChatListStateChange";
-import { chatListBtnState, chatListState } from "../state/chatListState";
-import Divider from "../components/common/Divider";
-import { dividerState } from "../state/dividerState";
-import Star from "../icons/star/Star";
+import Divider from "../common/components/ui/divider/Divider";
+import Star from "../common/icons/star/Star";
 import theme from "../styles/theme";
-import GroupChatListBox from "../components/chatList/GroupChatListBox";
-import { mainChat, subChat } from "../data/chatListData";
-import SearchBar from "../components/friendList/SearchBar";
+import ChatListBox from "../features/chat/components/ChatListBox/ChatListBox";
+import {
+  defaultMainChatList,
+  defaultSubChatList,
+} from "../features/chat/constants/default-chatlist";
+import SearchBar from "../common/components/ui/searchbar/SearchBar";
 import { SearchBarWrapper } from "./FriendsList";
-import { searchByName } from "../utils/search/searchByName";
+import { searchByName } from "../common/utils/search/searchByName";
 import { useNavigate } from "react-router-dom";
-import { chatRoomState } from "../state/chatRoomState";
-import { GroupChatDataProps } from "../commonprops/chatData/groupChatDataProps";
+import { chatRoomState } from "../features/chat/state/chatroom-state";
+import { DIVIDER_TYPE } from "../common/constants/divider-type";
+import { CHATROOM_TYPE } from "../common/constants/chatroom-type";
 
-interface TextWrapperProps {
-  $isClicked: boolean;
-  $addClass?: string | null;
-}
+const SHOW_LIST_STATE = ["그룹", "개인"];
 
 export default function ChatList() {
   const navigate = useNavigate();
-  const { changeState, subHeaderState } = useChatListStateChange();
+  const [showListState, setShowListState] = useState(SHOW_LIST_STATE[0]);
   const [searchText, setSearchText] = useState("");
   const [showSearchBar, setShowSearchBar] = useState(false);
-  const searchedMainChat = searchByName<GroupChatDataProps>(
-    mainChat,
+  const searchedMainChat = searchByName<chatRoomState>(
+    defaultMainChatList,
     searchText
   );
-  const searchedSubChat = searchByName<GroupChatDataProps>(subChat, searchText);
+  const searchedSubChat = searchByName<chatRoomState>(
+    defaultSubChatList,
+    searchText
+  );
   return (
     <>
       <PageHeader
@@ -60,27 +61,25 @@ export default function ChatList() {
           searchedMainChat.length === 0 && searchedSubChat.length > 0
         }
       >
-        {chatListBtnState.map((btnState) => (
+        {SHOW_LIST_STATE.map((showState, index) => (
           <SubHeaderTextWrapper
-            key={btnState.text}
-            $isClicked={subHeaderState === btnState.state ? true : false}
+            key={showState}
+            $isClicked={showListState === showState ? true : false}
             $addClass={
-              btnState.state === chatListState.GROUP
-                ? "margin-left:2rem;"
-                : null
+              showState === SHOW_LIST_STATE[0] ? "margin-left:2rem;" : null
             }
           >
-            <span onClick={() => changeState(btnState.state)}>
-              {btnState.text}
+            <span onClick={() => setShowListState(SHOW_LIST_STATE[index])}>
+              {showState}
             </span>
           </SubHeaderTextWrapper>
         ))}
         <Divider
-          state={dividerState.LONGTHICK}
+          state={DIVIDER_TYPE.LONGTHICK}
           $addClass="position:absolute; bottom:0;"
         />
       </SubHeader>
-      {subHeaderState === chatListState.GROUP && (
+      {showListState === SHOW_LIST_STATE[0] && (
         <ChatLists>
           <MainChats>
             {searchedMainChat.length > 0 ? (
@@ -90,7 +89,7 @@ export default function ChatList() {
               </MainChatsHeader>
             ) : null}
             {searchedMainChat.map((chat) => (
-              <GroupChatListBox
+              <ChatListBox
                 key={chat.id}
                 img={chat.img}
                 name={chat.name}
@@ -103,13 +102,13 @@ export default function ChatList() {
                   />
                 }
                 onClick={() =>
-                  navigate(`/chatroom/${chatRoomState.MAIN}/${chat.id}`, {
+                  navigate(`/chatroom/${CHATROOM_TYPE.MAIN}/${chat.id}`, {
                     state: {
                       chatRoomTitle: chat.name,
                       img: "/img/default.jpg",
                       people: chat.people,
                       name: "전윤수",
-                      chatRoomState: chatRoomState.MAIN,
+                      chatRoomState: CHATROOM_TYPE.MAIN,
                       chatRoomId: chat.id,
                     },
                   })
@@ -118,24 +117,24 @@ export default function ChatList() {
             ))}
             {searchedMainChat.length > 0 && searchedSubChat.length > 0 ? (
               <Divider
-                state={dividerState.SHORT}
+                state={DIVIDER_TYPE.SHORT}
                 $addClass={`background-color:${theme.colors.gray5}; margin:0.8rem 0;`}
               />
             ) : null}
             {searchedSubChat.map((chat) => (
-              <GroupChatListBox
+              <ChatListBox
                 key={chat.id}
                 img={chat.img}
                 name={chat.name}
                 message={chat.message}
                 onClick={() =>
-                  navigate(`/chatroom/${chatRoomState.SUB}/${chat.id}`, {
+                  navigate(`/chatroom/${CHATROOM_TYPE.SUB}/${chat.id}`, {
                     state: {
                       chatRoomTitle: chat.name,
                       img: "/img/default.jpg",
                       people: chat.people,
                       name: "전윤수",
-                      chatRoomState: chatRoomState.SUB,
+                      chatRoomState: CHATROOM_TYPE.SUB,
                       chatRoomId: chat.id,
                     },
                   })
@@ -156,7 +155,10 @@ const SubHeader = styled.div<{ $onlySubChat: boolean }>`
   margin-bottom: ${(props) => (props.$onlySubChat ? "0.4rem" : null)};
 `;
 
-const SubHeaderTextWrapper = styled.div<TextWrapperProps>`
+const SubHeaderTextWrapper = styled.div<{
+  $isClicked: boolean;
+  $addClass?: string | null;
+}>`
   span {
     color: ${(props) =>
       props.$isClicked

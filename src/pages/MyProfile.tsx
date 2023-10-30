@@ -1,17 +1,34 @@
 import React from "react";
-import PageHeader from "../components/common/PageHeader";
-import { ReactComponent as LeftArrow } from "../icons/arrows/leftarrow.svg";
-import { ReactComponent as Edit } from "../icons/edit.svg";
-import { ReactComponent as Phone } from "../icons/phone.svg";
-import { ReactComponent as Mail } from "../icons/mail.svg";
+import PageHeader from "../common/components/layout/Header/PageHeader";
+import { ReactComponent as LeftArrow } from "../common/icons/arrows/leftarrow.svg";
+import { ReactComponent as Edit } from "../common/icons/edit.svg";
+import { ReactComponent as Phone } from "../common/icons/phone.svg";
+import { ReactComponent as Mail } from "../common/icons/mail.svg";
+import { ReactComponent as Behance } from "../common/icons/profileLink/behance.svg";
+import { ReactComponent as Instagram } from "../common/icons/profileLink/instagram.svg";
+import { ReactComponent as Github } from "../common/icons/profileLink/github.svg";
 import styled from "styled-components";
-import ChipButton from "../components/profile/ChipButton";
-import ContactUserBtn from "../components/profile/ContactUserButton";
-import { profileLinkState } from "../state/profileLinkState";
-import LinkButton from "../components/profile/LinkButton";
+import ChipButton from "../features/user/components/ChipButton/ChipButton";
+import ContactUserBtn from "../features/user/components/ContactUserButton/ContactUserButton";
+import LinkButton from "../features/user/components/LinkButton/LinkButton";
 import { useNavigate } from "react-router-dom";
 import theme from "../styles/theme";
-import Profile from "../components/profile/Profile";
+import Profile from "../features/user/components/Profile/Profile";
+
+const PERSONAL_LINK = [
+  {
+    icon: Behance,
+    text: "Behance",
+  },
+  {
+    icon: Instagram,
+    text: "Instagram",
+  },
+  {
+    icon: Github,
+    text: "Github",
+  },
+];
 
 export default function MyProfile() {
   const navigate = useNavigate();
@@ -47,7 +64,7 @@ export default function MyProfile() {
           <span>바로가기</span>
         </DirectAccessText>
         <DirectAccessLink>
-          {profileLinkState.map((link) => (
+          {PERSONAL_LINK.map((link) => (
             <LinkButton key={link.text} icon={<link.icon />} text={link.text} />
           ))}
         </DirectAccessLink>

@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
-import PageHeader from "../components/common/PageHeader";
-import { ReactComponent as LeftArrow } from "../icons/arrows/leftarrow.svg";
-import { ReactComponent as Search } from "../icons/search.svg";
-import { ReactComponent as Box } from "../icons/box.svg";
-import { ReactComponent as Plus } from "../icons/plus.svg";
-import { ReactComponent as Send } from "../icons/send.svg";
+import PageHeader from "../common/components/layout/Header/PageHeader";
+import { ReactComponent as LeftArrow } from "../common/icons/arrows/leftarrow.svg";
+import { ReactComponent as Search } from "../common/icons/search.svg";
+import { ReactComponent as Box } from "../common/icons/box.svg";
+import { ReactComponent as Plus } from "../common/icons/plus.svg";
+import { ReactComponent as Send } from "../common/icons/send.svg";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import Divider from "../components/common/Divider";
-import { dividerState } from "../state/dividerState";
-import ChatWrapper from "../components/chatroom/ChatWrapper";
-import { getChatRoomData } from "../utils/accessStorage/getChatRoomData";
-import { setChatRoomData } from "../utils/accessStorage/setChatRoomData";
-import { useScrollToBottom } from "../customHooks/chatroom/useScrollToBottom";
-import { printChatTime } from "../utils/time/printChatTime";
-import { defaultChatRoomData } from "../data/defaultChatRoomData";
+import Divider from "../common/components/ui/divider/Divider";
+import ChatWrapper from "../features/chat/components/ChatWrapper/ChatWrapper";
+import { getChatRoomData } from "../common/utils/accessStorage/getChatRoomData";
+import { setChatRoomData } from "../common/utils/accessStorage/setChatRoomData";
+import { useScrollToBottom } from "../common/hooks/useScrollToBottom";
+import { printChatTime } from "../common/utils/time/printChatTime";
+import { defaultChatRoomData } from "../features/chat/constants/default-chat";
 import theme from "../styles/theme";
-import { setChatRecentTime } from "../utils/accessStorage/setChatRecentTime";
+import { setChatRecentTime } from "../common/utils/accessStorage/setChatRecentTime";
+import { DIVIDER_TYPE } from "../common/constants/divider-type";
 
 export default function ChatRoom() {
   const { state } = useLocation();
@@ -98,7 +98,7 @@ export default function ChatRoom() {
         rightIcon2={<Box style={{ marginLeft: "1.2rem" }} />}
         onClick={pageHeaderClicked}
       />
-      <Divider state={dividerState.LONGTHICK} />
+      <Divider state={DIVIDER_TYPE.LONGTHICK} />
       <ChatContainer ref={ref}>
         {chatData &&
           chatData.map((data, index) => (
@@ -131,7 +131,7 @@ export default function ChatRoom() {
           ))}
       </ChatContainer>
       <Divider
-        state={dividerState.LONGTHIN}
+        state={DIVIDER_TYPE.LONGTHIN}
         $addClass={`background-color:${theme.colors.gray5}`}
       />
       <ChatInputContainer>

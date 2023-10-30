@@ -1,31 +1,34 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import PageHeader from "../components/common/PageHeader";
-import { ReactComponent as Arrow } from "../icons/arrows/leftarrow.svg";
-import { ReactComponent as Search } from "../icons/search.svg";
-import { ReactComponent as AddFriend } from "../icons/addfriend.svg";
+import PageHeader from "../common/components/layout/Header/PageHeader";
+import { ReactComponent as Arrow } from "../common/icons/arrows/leftarrow.svg";
+import { ReactComponent as Search } from "../common/icons/search.svg";
+import { ReactComponent as AddFriend } from "../common/icons/addfriend.svg";
 import styled from "styled-components";
-import SearchBar from "../components/friendList/SearchBar";
-import Divider from "../components/common/Divider";
-import { dividerState } from "../state/dividerState";
-import MajorHeader from "../components/friendList/MajorHeader";
+import SearchBar from "../common/components/ui/searchbar/SearchBar";
+import Divider from "../common/components/ui/divider/Divider";
+import MajorHeader from "../features/friend/components/MajorHeader/MajorHeader";
 import PersonalInfo, {
-  PersonalInfoProps,
-} from "../components/friendList/PersonalInfo";
-import { designerListData, developerListData } from "../data/friendListData";
-import { searchByName } from "../utils/search/searchByName";
+  PersonalInfoBoxProps,
+} from "../features/friend/components/PersonalInfoBox/PersonalInfoBox";
+import {
+  defaultDesignerList,
+  defaultDeveloperList,
+} from "../features/friend/constants/default-friendlist";
+import { searchByName } from "../common/utils/search/searchByName";
 import theme from "../styles/theme";
+import { DIVIDER_TYPE } from "../common/constants/divider-type";
 
 export default function FriendsList() {
   const navigate = useNavigate();
   const [searchText, setSearchText] = useState("");
   const [showSearchBar, setShowSearchBar] = useState(false);
-  const searchedDesignerList = searchByName<PersonalInfoProps>(
-    designerListData,
+  const searchedDesignerList = searchByName<PersonalInfoBoxProps>(
+    defaultDesignerList,
     searchText
   );
-  const searchedDeveloperList = searchByName<PersonalInfoProps>(
-    developerListData,
+  const searchedDeveloperList = searchByName<PersonalInfoBoxProps>(
+    defaultDeveloperList,
     searchText
   );
   return (
@@ -43,7 +46,7 @@ export default function FriendsList() {
           <SearchBar search={[searchText, setSearchText]} />
         </SearchBarWrapper>
       ) : null}
-      <Divider state={dividerState.LONGTHICK} />
+      <Divider state={DIVIDER_TYPE.LONGTHICK} />
       <FriendsListContainer>
         {searchedDesignerList.length > 0 ? (
           <DesignerListContainer>
@@ -66,7 +69,7 @@ export default function FriendsList() {
         ) : null}
         {searchedDesignerList.length > 0 && searchedDeveloperList.length > 0 ? (
           <Divider
-            state={dividerState.SHORT}
+            state={DIVIDER_TYPE.SHORT}
             $addClass={`background-color:${theme.colors.gray5}`}
           />
         ) : null}
