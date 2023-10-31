@@ -1,10 +1,28 @@
+import GlobalButton from "components/GlobalButton";
+import GlobalHeader from "components/GlobalHeader";
+import { styled } from "styled-components";
+
 const Friend = () => {
   return (
-    <div>
-      <h1>친구</h1>
-      <p>'친구' 페이지</p>
-    </div>
+    <HeaderWrapper>
+      <GlobalHeader
+        headText={"친구"}
+        leftChild={
+          <GlobalButton
+            text="왼쪽 버튼"
+            customType={"search"}
+            onClick={() => alert("왼쪽 클릭")}
+          />
+        }
+      />
+    </HeaderWrapper>
   );
 };
 
 export default Friend;
+
+const HeaderWrapper = styled.header`
+  position: fixed;
+  top: 38px;
+  width: 375px;
+`;

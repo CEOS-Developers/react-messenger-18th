@@ -18,7 +18,6 @@ export default Calendar;
 const CalendarContainer = styled.div`
   padding: 12px;
   width: 100px;
-  justify-content: center;
 `;
 
 const CalendarWrapper = styled.div`
