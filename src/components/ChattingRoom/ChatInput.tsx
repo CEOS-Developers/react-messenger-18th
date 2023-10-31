@@ -1,19 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled, { css } from "styled-components";
-import { color } from "../assets/styles/color";
-import { useSender } from "../assets/SenderContext";
-import chatData from "../assets/data/chattingdata.json";
+import { color } from "../../assets/styles/color";
+import { useSender } from "../../assets/SenderContext";
+import chatData from "../../assets/data/chattingdata.json";
 
 //components
 import ChattingItem from "./ChattingItem";
 
 //img
-import mic from "../assets/images/mic.svg";
-import photo from "../assets/images/photo.svg";
-import sticker from "../assets/images/sticker.svg";
+import mic from "../../assets/images/mic.svg";
+import photo from "../../assets/images/photo.svg";
+import sticker from "../../assets/images/sticker.svg";
 
-import camera from "../assets/images/camera.svg";
-import sendingbtn from "../assets/images/sendingbtn.svg";
+import camera from "../../assets/images/camera.svg";
+import sendingbtn from "../../assets/images/sendingbtn.svg";
 
 function ChattingInput() {
   const { sender, setSender } = useSender();
@@ -25,8 +25,9 @@ function ChattingInput() {
     }
   );
 
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  //제출시 실행되는 함수
 
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (inputMessage.trim() !== "") {

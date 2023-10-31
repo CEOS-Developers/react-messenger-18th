@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import { color } from "../assets/styles/color";
-import { useSender } from "../assets/SenderContext";
-import userData from "../assets/data/userdata.json";
+import { color } from "../../assets/styles/color";
+import { useSender } from "../../assets/SenderContext";
+import userData from "../../assets/data/userdata.json";
 
 //img
-import back from "../assets/images/back.svg";
-import call from "../assets/images/phone.svg";
-import video from "../assets/images/video.svg";
+import back from "../../assets/images/back.svg";
+import call from "../../assets/images/phone.svg";
+import video from "../../assets/images/video.svg";
 
 function TopContainer() {
   const { sender, setSender } = useSender();

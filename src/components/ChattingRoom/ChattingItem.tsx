@@ -1,8 +1,8 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { color } from "../assets/styles/color";
-import { useSender } from "../assets/SenderContext";
-import userData from "../assets/data/userdata.json";
+import { color } from "../../assets/styles/color";
+import { useSender } from "../../assets/SenderContext";
+import userData from "../../assets/data/userdata.json";
 
 interface ChattingItemProps {
   message: string;

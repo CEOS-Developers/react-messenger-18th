@@ -1,14 +1,25 @@
 import React from "react";
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+//pages
 import ChattingRoom from "./pages/ChattingRoom";
+import ChattingListPage from "./pages/ChattingListPage";
+
+//context
 import { SenderProvider } from "./assets/SenderContext";
 
 function App() {
   return (
     <SenderProvider>
       <GlobalStyle />
-      <ChattingRoom />
+      <Router>
+        <Routes>
+          <Route path={"/"} element={<ChattingListPage />}></Route>
+          <Route path={"/chatting/:chat_id"} element={<ChattingRoom />}></Route>
+        </Routes>
+      </Router>
     </SenderProvider>
   );
 }

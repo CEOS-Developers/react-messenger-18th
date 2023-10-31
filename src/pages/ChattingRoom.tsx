@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 //components
-import TopContainer from "../components/TopContainer";
-import ChatInput from "../components/ChatInput";
+import TopContainer from "../components/ChattingRoom/TopContainer";
+import ChatInput from "../components/ChattingRoom/ChatInput";
 
 //bar
 import bars from "../assets/images/bars.svg";
