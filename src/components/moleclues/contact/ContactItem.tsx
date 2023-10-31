@@ -1,7 +1,7 @@
 import React from "react";
 import { Flex } from "../../atom/Flex";
 import { Text } from "../../atom/Text";
-function ContactItem() {
+function ContactItem({ name, introduction }) {
   return (
     <Flex width="327px" height="68px" gap="12" bordercolor="offWhite">
       <Flex
@@ -14,7 +14,7 @@ function ContactItem() {
         radius="4px"
       >
         <Text color="white" font="Lato" weight="700">
-          김
+          {name[0]}
         </Text>
       </Flex>
       <Flex direction="column">
@@ -25,7 +25,7 @@ function ContactItem() {
           lineheight="24px"
           weight="600"
         >
-          영숙
+          {name}
         </Text>
         <Text
           width="100%"
@@ -34,7 +34,7 @@ function ContactItem() {
           lineheight="16px"
           align="left"
         >
-          좋은 하루
+          {introduction}
         </Text>
       </Flex>
     </Flex>
