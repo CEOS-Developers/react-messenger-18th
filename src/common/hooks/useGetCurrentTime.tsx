@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getCurrentTime } from "../utils/time/getCurrentTime";
+import { getCurrentTime } from "@common/utils/time/getCurrentTime";
 
 export default function useGetCurrentTime() {
   const [currentTime, setCurrentTime] = useState(getCurrentTime());

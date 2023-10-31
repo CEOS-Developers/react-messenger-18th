@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import ChipButton from "../ChipButton/ChipButton";
-import { ReactComponent as TopArrow } from "../../../../common/icons/arrows/toparrow.svg";
+import ChipButton from "@features/friend/components/ChipButton/ChipButton";
+import { ReactComponent as TopArrow } from "@common/icons/arrows/toparrow.svg";
 
 interface MajorHeaderProps {
   people: number;

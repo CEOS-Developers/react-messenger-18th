@@ -1,9 +1,9 @@
 import React from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { styled } from "styled-components";
-import StatusBar from "../StatusBar/StatusBar";
-import HomeIndicator from "../HomeIndicator/HomeIndicator";
-import theme from "../../../../styles/theme";
+import StatusBar from "@common/components/layout/StatusBar/StatusBar";
+import HomeIndicator from "@common/components/layout/HomeIndicator/HomeIndicator";
+import theme from "@styles/theme";
 
 export default function PhoneFrame() {
   const location = useLocation();

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Profile from "../../../user/components/Profile/Profile";
-import { chatRoomState } from "../../state/chatroom-state";
+import Profile from "@features/user/components/Profile/Profile";
+import { chatRoomState } from "@features/chat/state/chatroom-state";
 
 export default function ChatListBox({
   img,

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { ReactComponent as BottomArrow } from "../../../../common/icons/arrows/bottomarrow.svg";
+import { ReactComponent as BottomArrow } from "@common/icons/arrows/bottomarrow.svg";
 
 interface ChipButtonProps {
   text?: string;

@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import { ReactComponent as Group } from "../../../../common/icons/group.svg";
-import { ReactComponent as RightIcon } from "../../../../common/icons/arrows/rightarrow.svg";
+import { ReactComponent as Group } from "@common/icons/group.svg";
+import { ReactComponent as RightIcon } from "@common/icons/arrows/rightarrow.svg";
 import { useNavigate } from "react-router-dom";
-import RoleButton from "../../../../common/components/ui/button/RoleButton";
-import { MAJOR_TYPE } from "../../../../common/constants/major-type";
-import { CHATROOM_TYPE } from "../../../../common/constants/chatroom-type";
+import RoleButton from "@common/components/ui/button/RoleButton";
+import { MAJOR_TYPE } from "@common/constants/major-type";
+import { CHATROOM_TYPE } from "@common/constants/chatroom-type";
 
 export interface PersonalInfoBoxProps {
   id: number;

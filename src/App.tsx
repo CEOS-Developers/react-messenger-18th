@@ -5,12 +5,12 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import PhoneFrame from "./common/components/layout/PhoneFrame/PhoneFrame";
-import ChatList from "./pages/ChatList";
-import FriendsList from "./pages/FriendsList";
-import MyProfile from "./pages/MyProfile";
-import ChatRoom from "./pages/ChatRoom";
-import { CHATROOM_TYPE } from "./common/constants/chatroom-type";
+import PhoneFrame from "@common/components/layout/PhoneFrame/PhoneFrame";
+import ChatList from "@pages/ChatList";
+import FriendsList from "@pages/FriendsList";
+import MyProfile from "@pages/MyProfile";
+import ChatRoom from "@pages/ChatRoom";
+import { CHATROOM_TYPE } from "@common/constants/chatroom-type";
 
 function App() {
   return (

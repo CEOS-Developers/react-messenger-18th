@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { ReactComponent as Search } from "../../../../common/icons/search.svg";
+import { ReactComponent as Search } from "@common/icons/search.svg";
 import { debounce } from "lodash";
 
 interface searchProps {

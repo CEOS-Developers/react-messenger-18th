@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { DIVIDER_TYPE } from "../../../constants/divider-type";
+import { DIVIDER_TYPE } from "@common/constants/divider-type";
 
 interface DividerProps {
   state: string;

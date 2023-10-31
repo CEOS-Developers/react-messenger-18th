@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import Profile from "../../../user/components/Profile/Profile";
-import Bubble from "../Bubble/Bubble";
-import { ChatRoomData } from "../../../../common/utils/accessStorage/getChatRoomData";
+import Profile from "@features/user/components/Profile/Profile";
+import Bubble from "@features/chat/components/Bubble/Bubble";
+import { ChatRoomData } from "@common/utils/accessStorage/getChatRoomData";
 
 export interface ChatWrapperProps {
   img?: string;

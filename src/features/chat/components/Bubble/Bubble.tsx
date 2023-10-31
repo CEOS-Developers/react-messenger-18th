@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { ReactComponent as Like } from "../../../../common/icons/heart.svg";
-import { ChatWrapperProps } from "../ChatWrapper/ChatWrapper";
+import { ReactComponent as Like } from "@common/icons/heart.svg";
+import { ChatWrapperProps } from "@features/chat/components/ChatWrapper/ChatWrapper";
 
 export default function Bubble({
   chatText,

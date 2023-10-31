@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
-import PageHeader from "../common/components/layout/Header/PageHeader";
-import { ReactComponent as LeftArrow } from "../common/icons/arrows/leftarrow.svg";
-import { ReactComponent as Search } from "../common/icons/search.svg";
-import { ReactComponent as Box } from "../common/icons/box.svg";
-import { ReactComponent as Plus } from "../common/icons/plus.svg";
-import { ReactComponent as Send } from "../common/icons/send.svg";
+import PageHeader from "@common/components/layout/Header/PageHeader";
+import { ReactComponent as LeftArrow } from "@common/icons/arrows/leftarrow.svg";
+import { ReactComponent as Search } from "@common/icons/search.svg";
+import { ReactComponent as Box } from "@common/icons/box.svg";
+import { ReactComponent as Plus } from "@common/icons/plus.svg";
+import { ReactComponent as Send } from "@common/icons/send.svg";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import Divider from "../common/components/ui/divider/Divider";
-import ChatWrapper from "../features/chat/components/ChatWrapper/ChatWrapper";
-import { getChatRoomData } from "../common/utils/accessStorage/getChatRoomData";
-import { setChatRoomData } from "../common/utils/accessStorage/setChatRoomData";
-import { useScrollToBottom } from "../common/hooks/useScrollToBottom";
-import { printChatTime } from "../common/utils/time/printChatTime";
-import { defaultChatRoomData } from "../features/chat/constants/default-chat";
-import theme from "../styles/theme";
-import { setChatRecentTime } from "../common/utils/accessStorage/setChatRecentTime";
-import { DIVIDER_TYPE } from "../common/constants/divider-type";
+import Divider from "@common/components/ui/divider/Divider";
+import ChatWrapper from "@features/chat/components/ChatWrapper/ChatWrapper";
+import { getChatRoomData } from "@common/utils/accessStorage/getChatRoomData";
+import { setChatRoomData } from "@common/utils/accessStorage/setChatRoomData";
+import { useScrollToBottom } from "@common/hooks/useScrollToBottom";
+import { printChatTime } from "@common/utils/time/printChatTime";
+import { defaultChatRoomData } from "@features/chat/constants/default-chat";
+import theme from "@styles/theme";
+import { setChatRecentTime } from "@common/utils/accessStorage/setChatRecentTime";
+import { DIVIDER_TYPE } from "@common/constants/divider-type";
 
 export default function ChatRoom() {
   const { state } = useLocation();

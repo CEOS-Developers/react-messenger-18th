@@ -1,4 +1,4 @@
-import { ChatRoomData } from "../../../common/utils/accessStorage/getChatRoomData";
+import { ChatRoomData } from "@common/utils/accessStorage/getChatRoomData";
 
 interface StateProps {
   img?: string;

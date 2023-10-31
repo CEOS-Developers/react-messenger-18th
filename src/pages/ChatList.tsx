@@ -1,24 +1,24 @@
 import React, { useState } from "react";
-import PageHeader from "../common/components/layout/Header/PageHeader";
-import { ReactComponent as Friends } from "../common/icons/friends.svg";
-import { ReactComponent as Search } from "../common/icons/search.svg";
-import Profile from "../features/user/components/Profile/Profile";
+import PageHeader from "@common/components/layout/Header/PageHeader";
+import { ReactComponent as Friends } from "@common/icons/friends.svg";
+import { ReactComponent as Search } from "@common/icons/search.svg";
+import Profile from "@features/user/components/Profile/Profile";
 import styled from "styled-components";
-import Divider from "../common/components/ui/divider/Divider";
-import Star from "../common/icons/star/Star";
-import theme from "../styles/theme";
-import ChatListBox from "../features/chat/components/ChatListBox/ChatListBox";
+import Divider from "@common/components/ui/divider/Divider";
+import Star from "@common/icons/star/Star";
+import theme from "@styles/theme";
+import ChatListBox from "@features/chat/components/ChatListBox/ChatListBox";
 import {
   defaultMainChatList,
   defaultSubChatList,
-} from "../features/chat/constants/default-chatlist";
-import SearchBar from "../common/components/ui/searchbar/SearchBar";
+} from "@features/chat/constants/default-chatlist";
+import SearchBar from "@common/components/ui/searchbar/SearchBar";
 import { SearchBarWrapper } from "./FriendsList";
-import { searchByName } from "../common/utils/search/searchByName";
+import { searchByName } from "@common/utils/search/searchByName";
 import { useNavigate } from "react-router-dom";
-import { chatRoomState } from "../features/chat/state/chatroom-state";
-import { DIVIDER_TYPE } from "../common/constants/divider-type";
-import { CHATROOM_TYPE } from "../common/constants/chatroom-type";
+import { chatRoomState } from "@features/chat/state/chatroom-state";
+import { DIVIDER_TYPE } from "@common/constants/divider-type";
+import { CHATROOM_TYPE } from "@common/constants/chatroom-type";
 
 const SHOW_LIST_STATE = ["그룹", "개인"];
 
