@@ -11,7 +11,7 @@ interface PageHeaderProps {
   onClick?: () => void;
 }
 
-export default function PageHeader({
+export function PageHeader({
   leftIcon,
   title,
   people,

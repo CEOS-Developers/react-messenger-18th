@@ -8,12 +8,7 @@ interface ProfileProps {
   onClick?: () => void;
 }
 
-export default function Profile({
-  $img,
-  $size,
-  $addClass,
-  onClick,
-}: ProfileProps) {
+export function Profile({ $img, $size, $addClass, onClick }: ProfileProps) {
   return (
     <ProfileWrapper
       $img={$img}

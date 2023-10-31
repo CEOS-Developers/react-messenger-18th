@@ -1,11 +1,10 @@
 import React from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { styled } from "styled-components";
-import StatusBar from "@common/components/layout/StatusBar/StatusBar";
-import HomeIndicator from "@common/components/layout/HomeIndicator/HomeIndicator";
+import { StatusBar, HomeIndicator } from "@common/components";
 import theme from "@styles/theme";
 
-export default function PhoneFrame() {
+export function PhoneFrame() {
   const location = useLocation();
 
   const isChatRoom = location.pathname.startsWith("/chatroom");

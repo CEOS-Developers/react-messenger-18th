@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import { DIVIDER_TYPE } from "@common/constants/divider-type";
+import { DIVIDER_TYPE } from "@common/constants";
 
 interface DividerProps {
   state: string;
   $addClass?: string;
 }
 
-export default function Divider({ state, $addClass }: DividerProps) {
+export function Divider({ state, $addClass }: DividerProps) {
   return <DividerWrapper state={state} $addClass={$addClass} />;
 }
 

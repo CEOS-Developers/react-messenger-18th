@@ -7,11 +7,7 @@ interface ContactUserBtnProps {
   addClass?: string;
 }
 
-export default function ContactUserBtn({
-  icon,
-  text,
-  addClass,
-}: ContactUserBtnProps) {
+export function ContactUserBtn({ icon, text, addClass }: ContactUserBtnProps) {
   return (
     <ContactBtnWrapper $addClass={addClass}>
       <IconWrapper>

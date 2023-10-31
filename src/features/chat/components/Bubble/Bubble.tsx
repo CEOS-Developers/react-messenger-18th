@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { ReactComponent as Like } from "@common/icons/heart.svg";
 import { ChatWrapperProps } from "@features/chat/components/ChatWrapper/ChatWrapper";
 
-export default function Bubble({
+export function Bubble({
   chatText,
   file,
   doubleClicked,

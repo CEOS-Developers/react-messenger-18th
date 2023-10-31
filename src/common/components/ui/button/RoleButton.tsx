@@ -6,7 +6,7 @@ interface RoleButtonProps {
   addClass?: string;
 }
 
-export default function RoleButton({ children, addClass }: RoleButtonProps) {
+export function RoleButton({ children, addClass }: RoleButtonProps) {
   return <RoleButtonWrapper $addClass={addClass}>{children}</RoleButtonWrapper>;
 }
 

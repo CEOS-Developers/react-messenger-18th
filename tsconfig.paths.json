@@ -2,16 +2,12 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
-      "@common": ["./common/index.ts"],
       "@common/*": ["./common/*"],
 
-      "@features": ["./features/index.ts"],
       "@features/*": ["./features/*"],
 
-      "@pages": ["./pages/index.ts"],
       "@pages/*": ["./pages/*"],
 
-      "@styles": ["./styles/index.ts"],
       "@styles/*": ["./styles/*"]
     }
   }

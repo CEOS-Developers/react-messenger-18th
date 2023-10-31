@@ -1,5 +1,4 @@
-import { CHATROOM_TYPE } from "@common/constants/chatroom-type";
-import { MAJOR_TYPE } from "@common/constants/major-type";
+import { CHATROOM_TYPE, MAJOR_TYPE } from "@common/constants";
 
 export const defaultDesignerList = [
   {

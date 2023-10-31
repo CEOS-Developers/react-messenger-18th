@@ -6,7 +6,7 @@ interface LinkButtonProps {
   text: string;
 }
 
-export default function LinkButton({ icon, text }: LinkButtonProps) {
+export function LinkButton({ icon, text }: LinkButtonProps) {
   return (
     <LinkBtnWrapper>
       <div>{icon}</div>

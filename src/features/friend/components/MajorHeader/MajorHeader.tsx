@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import ChipButton from "@features/friend/components/ChipButton/ChipButton";
 import { ReactComponent as TopArrow } from "@common/icons/arrows/toparrow.svg";
+import { ChipButton } from "@features/friend";
 
 interface MajorHeaderProps {
   people: number;
   majorIn: string;
 }
 
-export default function MajorHeader({ people, majorIn }: MajorHeaderProps) {
+export function MajorHeader({ people, majorIn }: MajorHeaderProps) {
   return (
     <MajorHeaderWrapper>
       <MajorInfo>

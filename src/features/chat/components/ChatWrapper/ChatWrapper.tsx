@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Profile from "@features/user/components/Profile/Profile";
-import Bubble from "@features/chat/components/Bubble/Bubble";
+import { Profile } from "@features/user";
+import { Bubble } from "@features/chat";
 import { ChatRoomData } from "@common/utils/accessStorage/getChatRoomData";
 
 export interface ChatWrapperProps {
@@ -18,7 +18,7 @@ export interface ChatWrapperProps {
   setShouldScrollToBottom?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function ChatWrapper({
+export function ChatWrapper({
   img,
   name,
   chatText,
@@ -69,4 +69,4 @@ const ChatterName = styled.div`
   }
 `;
 
-export default React.memo(ChatWrapper);
+React.memo(ChatWrapper);

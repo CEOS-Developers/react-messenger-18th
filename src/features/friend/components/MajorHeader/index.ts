@@ -1,0 +1,1 @@
+export { MajorHeader } from "./MajorHeader";

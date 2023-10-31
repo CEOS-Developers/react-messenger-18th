@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import { ReactComponent as Search } from "@common/icons/search.svg";
 import { debounce } from "lodash";
+import { ReactComponent as Search } from "@common/icons/search.svg";
 
 interface searchProps {
   search: [string, React.Dispatch<React.SetStateAction<string>>];
 }
 
-export default function SearchBar({ search }: searchProps) {
+export function SearchBar({ search }: searchProps) {
   const searchBarChanged = debounce(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       search[1](e.target.value.trim());

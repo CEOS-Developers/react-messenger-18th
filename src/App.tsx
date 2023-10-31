@@ -5,7 +5,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import PhoneFrame from "@common/components/layout/PhoneFrame/PhoneFrame";
+import { PhoneFrame } from "@common/components";
 import ChatList from "@pages/ChatList";
 import FriendsList from "@pages/FriendsList";
 import MyProfile from "@pages/MyProfile";

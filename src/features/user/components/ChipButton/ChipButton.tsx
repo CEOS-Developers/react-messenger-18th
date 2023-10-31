@@ -6,7 +6,7 @@ interface ChipButtonProps {
   text?: string;
 }
 
-export default function ChipButton({ text }: ChipButtonProps) {
+export function ChipButton({ text }: ChipButtonProps) {
   return (
     <ButtonWrapper>
       <FieldText>

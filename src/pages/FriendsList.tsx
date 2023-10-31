@@ -1,23 +1,20 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import PageHeader from "@common/components/layout/Header/PageHeader";
+import { PageHeader, Divider, SearchBar } from "@common/components";
+import { DIVIDER_TYPE } from "@common/constants";
+import { searchByName } from "@common/utils";
 import { ReactComponent as Arrow } from "@common/icons/arrows/leftarrow.svg";
 import { ReactComponent as Search } from "@common/icons/search.svg";
 import { ReactComponent as AddFriend } from "@common/icons/addfriend.svg";
-import styled from "styled-components";
-import SearchBar from "@common/components/ui/searchbar/SearchBar";
-import Divider from "@common/components/ui/divider/Divider";
-import MajorHeader from "@features/friend/components/MajorHeader/MajorHeader";
-import PersonalInfo, {
-  PersonalInfoBoxProps,
-} from "@features/friend/components/PersonalInfoBox/PersonalInfoBox";
 import {
+  MajorHeader,
   defaultDesignerList,
   defaultDeveloperList,
-} from "@features/friend/constants/default-friendlist";
-import { searchByName } from "@common/utils/search/searchByName";
+  PersonalInfoBox,
+} from "@features/friend";
+import { PersonalInfoBoxProps } from "@features/friend/components/PersonalInfoBox/PersonalInfoBox";
 import theme from "@styles/theme";
-import { DIVIDER_TYPE } from "@common/constants/divider-type";
 
 export default function FriendsList() {
   const navigate = useNavigate();
@@ -55,7 +52,7 @@ export default function FriendsList() {
               majorIn="Designer"
             />
             {searchedDesignerList.map((designerData, index) => (
-              <PersonalInfo
+              <PersonalInfoBox
                 key={designerData.name + index}
                 id={designerData.id}
                 img={designerData.img}
@@ -80,7 +77,7 @@ export default function FriendsList() {
               majorIn="Frontend"
             />
             {searchedDeveloperList.map((developerData, index) => (
-              <PersonalInfo
+              <PersonalInfoBox
                 key={developerData.name + index}
                 id={developerData.id}
                 img={developerData.img}

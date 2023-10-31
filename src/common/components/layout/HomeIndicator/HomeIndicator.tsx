@@ -5,7 +5,7 @@ interface HomeIndicatorProps {
   $bgColor: string | null;
 }
 
-export default function HomeIndicator({ $bgColor }: HomeIndicatorProps) {
+export function HomeIndicator({ $bgColor }: HomeIndicatorProps) {
   return (
     <IndicatorWrapper $bgColor={$bgColor}>
       <BlackBar />

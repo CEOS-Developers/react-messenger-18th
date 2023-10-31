@@ -1,11 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import { ReactComponent as Group } from "@common/icons/group.svg";
 import { ReactComponent as RightIcon } from "@common/icons/arrows/rightarrow.svg";
-import { useNavigate } from "react-router-dom";
-import RoleButton from "@common/components/ui/button/RoleButton";
-import { MAJOR_TYPE } from "@common/constants/major-type";
-import { CHATROOM_TYPE } from "@common/constants/chatroom-type";
+import { RoleButton } from "@common/components";
+import { MAJOR_TYPE, CHATROOM_TYPE } from "@common/constants";
 
 export interface PersonalInfoBoxProps {
   id: number;
@@ -20,7 +19,7 @@ export interface PersonalInfoBoxProps {
   };
 }
 
-export default function PersonalInfoBox({
+export function PersonalInfoBox({
   id,
   img,
   name,

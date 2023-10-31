@@ -2,10 +2,10 @@ import React from "react";
 import { ReactComponent as NetWork } from "@common/icons/statusbar/network.svg";
 import { ReactComponent as Wifi } from "@common/icons/statusbar/wifi.svg";
 import { ReactComponent as Battery } from "@common/icons/statusbar/battery.svg";
-import styled from "styled-components";
 import useGetCurrentTime from "@common/hooks/useGetCurrentTime";
+import styled from "styled-components";
 
-export default function StatusBar() {
+export function StatusBar() {
   const currentTime = useGetCurrentTime();
 
   return (
