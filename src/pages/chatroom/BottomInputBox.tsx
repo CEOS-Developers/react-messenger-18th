@@ -77,7 +77,7 @@ const InputBoxContainer = styled.div`
 `;
 
 const InputBox = styled.input`
-  width: 235px;
+  width: 220px;
   flex:1;
   padding:12px;
   padding-right:37px;
@@ -95,8 +95,8 @@ const InputBox = styled.input`
 
 const Emotion = styled.img`
   position: absolute;
-  right: 175px;
-  top: 91.5%;
+  right: 70px;
+  top: 50%;
   transform: translateY(-50%);
   z-index: 1;
 `;

@@ -43,13 +43,26 @@ const ChatRoom: React.FC = () => {
   };
 
   return (
-    <Container>
-      <TopInChat currentUser={currentUser} changeUser={changeUser} />
+    <div>
+      <TopWrapper>
+        <TopInChat currentUser={currentUser} changeUser={changeUser} />
+      </TopWrapper>
       <InchatList currentUser={currentUser} chat={chat} />
-      <BottomInputBox onCreate={onCreate} />
-    </Container>
+      <BottomWrapper>
+        <BottomInputBox onCreate={onCreate} />
+      </BottomWrapper>
+    </div>
   );
 };
 
 export default ChatRoom;
-const Container = styled.div``;
+
+const TopWrapper = styled.div`
+  position: fixed;
+  top: 38px;
+`;
+
+const BottomWrapper = styled.div`
+  position: fixed;
+  bottom: 34px;
+`;
