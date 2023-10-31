@@ -7,6 +7,7 @@ interface LinkButtonProps {
   radius?: string;
   icon: ReactNode;
   children: ReactNode;
+  onClick: () => void;
   addClass?: string;
 }
 
@@ -16,6 +17,7 @@ export function LinkButton({
   radius,
   icon,
   children,
+  onClick,
   addClass,
 }: LinkButtonProps) {
   return (
@@ -23,6 +25,7 @@ export function LinkButton({
       $width={width}
       $height={height}
       $radius={radius}
+      onClick={onClick}
       $addClass={addClass}
     >
       {icon}

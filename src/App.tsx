@@ -29,7 +29,6 @@ function App() {
             path={`/chatroom/${CHATROOM_TYPE.FRIEND}/:id`}
             element={<ChatRoom />}
           />
-          <Route path="*" element={<Navigate to="/" />} />
         </Route>
       </Routes>
     </Router>

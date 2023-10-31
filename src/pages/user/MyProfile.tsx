@@ -14,22 +14,25 @@ import { ReactComponent as BottomArrow } from "@common/icons/arrows/bottomarrow.
 import theme from "@styles/theme";
 
 const ACCESS_USER = [
-  { icon: Phone, text: "+82)10-1234-5678" },
-  { icon: Mail, text: "ren6294@naver.com" },
+  { icon: Phone, text: "+82)10-1234-5678", linkTo: "" },
+  { icon: Mail, text: "ren6294@naver.com", linkTo: "" },
 ];
 
 const PERSONAL_LINK = [
   {
     icon: Behance,
     text: "Behance",
+    linkTo: "https://www.behance.net/",
   },
   {
     icon: Instagram,
     text: "Instagram",
+    linkTo: "https://www.instagram.com/",
   },
   {
     icon: Github,
     text: "Github",
+    linkTo: "https://github.com/wokbjso",
   },
 ];
 
@@ -72,6 +75,7 @@ export function MyProfile() {
               height="7.7rem"
               radius="0.8rem"
               icon={<access.icon />}
+              onClick={() => window.open(access.linkTo)}
               addClass="padding: 1.2rem 2rem;"
             >
               <UserInfoLinkBtnText>
@@ -92,6 +96,7 @@ export function MyProfile() {
               width="11.2rem"
               height="7.8rem"
               icon={<link.icon />}
+              onClick={() => window.open(link.linkTo)}
             >
               <SnsLinkBtnText>
                 <span>{link.text}</span>
