@@ -5,7 +5,7 @@ import { color } from "../../assets/styles/color";
 import othermemo from "../../assets/images/othermemo-ex.svg";
 
 const MemoBox = () => {
-  const sender = "me";
+  const sender: string = "me";
   return (
     <Container>
       {sender === "me" ? (
