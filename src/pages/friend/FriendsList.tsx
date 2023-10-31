@@ -16,7 +16,7 @@ import {
 import { PersonalInfoBoxProps } from "@features/friend/components/PersonalInfoBox/PersonalInfoBox";
 import theme from "@styles/theme";
 
-export default function FriendsList() {
+export function FriendsList() {
   const navigate = useNavigate();
   const [searchText, setSearchText] = useState("");
   const [showSearchBar, setShowSearchBar] = useState(false);

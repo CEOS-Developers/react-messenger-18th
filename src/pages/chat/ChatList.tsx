@@ -15,11 +15,11 @@ import {
   defaultMainChatList,
   defaultSubChatList,
 } from "@features/chat";
-import { SearchBarWrapper } from "./FriendsList";
+import { SearchBarWrapper } from "../friend/FriendsList";
 
 const SHOW_LIST_STATE = ["그룹", "개인"];
 
-export default function ChatList() {
+export function ChatList() {
   const navigate = useNavigate();
   const [showListState, setShowListState] = useState(SHOW_LIST_STATE[0]);
   const [searchText, setSearchText] = useState("");

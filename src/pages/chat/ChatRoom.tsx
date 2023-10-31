@@ -18,7 +18,7 @@ import { ChatWrapper, defaultChatRoomData } from "@features/chat";
 import { useScrollToBottom } from "@common/hooks/useScrollToBottom";
 import theme from "@styles/theme";
 
-export default function ChatRoom() {
+export function ChatRoom() {
   const { state } = useLocation();
   const navigate = useNavigate();
   const USER_NAME = "김현민";

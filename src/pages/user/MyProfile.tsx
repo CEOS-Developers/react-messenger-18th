@@ -32,7 +32,7 @@ const PERSONAL_LINK = [
   },
 ];
 
-export default function MyProfile() {
+export function MyProfile() {
   const navigate = useNavigate();
   return (
     <>
