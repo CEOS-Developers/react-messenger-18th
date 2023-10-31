@@ -7,7 +7,13 @@ import { styled } from "styled-components";
 
 const ChatRoom: React.FC = () => {
   const [chat, setChat] = useState<
-    Array<{ value: string; id: number; sender: string; date: string }>
+    Array<{
+      value: string;
+      id: number;
+      sender: string;
+      date: string;
+      calendar: string;
+    }>
   >([]);
   const [currentUser, setCurrentUser] = useState(user.users[0]);
 
@@ -16,22 +22,32 @@ const ChatRoom: React.FC = () => {
     const created_date = new Date();
     const hours = created_date.getHours();
     const minutes = created_date.getMinutes();
+    const daysOfWeek = ["일", "월", "화", "수", "목", "금", "토"];
+    const dayOfWeek = daysOfWeek[created_date.getDay()];
 
     // 시간을 오전(AM) 또는 오후(PM)로 변환
     const period = hours >= 12 ? "오후" : "오전";
     const formattedHours = String(hours % 12 || 12).padStart(2, "0"); // 0시를 12시로 표시하고 두 자리로 변환
     const formattedMinutes = String(minutes).padStart(2, "0"); // 두 자리로 변환
+    const formattedDate = `${created_date.getFullYear()}. ${(
+      created_date.getMonth() + 1
+    )
+      .toString()
+      .padStart(2, "0")}. ${created_date
+      .getDate()
+      .toString()
+      .padStart(2, "0")}. ${dayOfWeek}`;
 
-    const time = `${period} ${formattedHours}:${formattedMinutes}`;
-
+    const time = ` ${period} ${formattedHours}:${formattedMinutes}`;
+    const calendar = formattedDate;
     const newItem = {
       value: data,
       id: randomId,
       sender: currentUser.name,
       date: time,
+      calendar: calendar,
     };
     setChat([...chat, newItem]);
-    console.log(newItem);
   };
 
   const changeUser = (targetId: number) => {

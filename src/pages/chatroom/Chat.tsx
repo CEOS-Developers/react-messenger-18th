@@ -9,6 +9,8 @@ type ChatProps = {
   showDate: boolean; // 메시지 날짜를 표시할지 여부를 결정하는 플래그
   currentUser: { id: number; name: string };
   showProfileImage: boolean;
+  calendar: string;
+  showCalendar: boolean;
 };
 
 const Chat: React.FC<ChatProps> = ({
@@ -18,11 +20,14 @@ const Chat: React.FC<ChatProps> = ({
   showDate,
   currentUser,
   showProfileImage,
+  calendar,
+  showCalendar,
 }) => {
   const isCurrentUser = currentUser.name === sender;
 
   return (
-    <ChatContainer isCurrentUser={isCurrentUser}>
+    <ChatContainer isCurrentUser={isCurrentUser} showCalendar={showCalendar}>
+      {showCalendar && <Calendar>{calendar}</Calendar>}
       {isCurrentUser && showDate && <DateLeft>{date}</DateLeft>}
       {!isCurrentUser && showProfileImage && (
         <ProfileIcon src={"/assets/profile.png"} alt="profile" />
@@ -39,11 +44,18 @@ const Chat: React.FC<ChatProps> = ({
 };
 export default Chat;
 
-const ChatContainer = styled.div<{ isCurrentUser: boolean }>`
+const ChatContainer = styled.div<{
+  isCurrentUser: boolean;
+  showCalendar: boolean;
+}>`
   display: flex;
   align-items: center;
   justify-content: ${(props) =>
-    props.isCurrentUser ? "flex-end" : "flex-start"};
+    props.isCurrentUser
+      ? "flex-end"
+      : props.showCalendar
+      ? "center"
+      : "flex-start"};
   max-width: 216px;
   ${(props) =>
     !props.isCurrentUser &&
@@ -51,6 +63,17 @@ const ChatContainer = styled.div<{ isCurrentUser: boolean }>`
     margin-left: 0;
     margin-right: auto;
   `}
+`;
+
+const Calendar = styled.div`
+  padding: 8px;
+  justify-content: center;
+  border-radius: 16px;
+  opacity: 0.6;
+  background: #33333a;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 500;
 `;
 
 const Content = styled.div<{

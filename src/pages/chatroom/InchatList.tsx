@@ -4,7 +4,13 @@ import React, { useEffect, useRef } from "react";
 
 type InchatListProps = {
   currentUser: { id: number; name: string };
-  chat: Array<{ value: string; id: number; sender: string; date: string }>;
+  chat: Array<{
+    value: string;
+    id: number;
+    sender: string;
+    date: string;
+    calendar: string;
+  }>;
 };
 
 const determineShowProfileImage = (
@@ -34,6 +40,21 @@ const determineshowDate = (
   return displayTime;
 };
 
+const determineCalendar = (
+  chat: Array<{ sender: string; calendar: string }>,
+  index: number
+) => {
+  let displayDate = false;
+  if (index !== chat.length - 1) {
+    const nextDate = chat[index + 1].calendar;
+    if (nextDate !== chat[index].calendar) {
+      displayDate = true;
+    }
+  }
+
+  return displayDate;
+};
+
 const InchatList: React.FC<InchatListProps> = ({ currentUser, chat }) => {
   const chatListRef = useRef<HTMLDivElement>(null);
 
@@ -56,6 +77,8 @@ const InchatList: React.FC<InchatListProps> = ({ currentUser, chat }) => {
             showDate={determineshowDate(chat, index)}
             currentUser={currentUser}
             showProfileImage={determineShowProfileImage(chat, index)}
+            calendar={message.calendar}
+            showCalendar={index === 0 ? true : determineCalendar(chat, index)}
           />
         ))}
       </InChatListWrapper>
