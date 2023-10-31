@@ -9,9 +9,14 @@ import { ReactComponent as Mail } from "@common/icons/mail.svg";
 import { ReactComponent as Behance } from "@common/icons/profileLink/behance.svg";
 import { ReactComponent as Instagram } from "@common/icons/profileLink/instagram.svg";
 import { ReactComponent as Github } from "@common/icons/profileLink/github.svg";
-import { ContactUserBtn, LinkButton, Profile } from "@features/user";
+import { LinkButton, Profile } from "@features/user";
 import { ReactComponent as BottomArrow } from "@common/icons/arrows/bottomarrow.svg";
 import theme from "@styles/theme";
+
+const ACCESS_USER = [
+  { icon: Phone, text: "+82)10-1234-5678" },
+  { icon: Mail, text: "ren6294@naver.com" },
+];
 
 const PERSONAL_LINK = [
   {
@@ -52,20 +57,28 @@ export function MyProfile() {
               color={theme.colors.mainColor}
               addClass="padding: 0.2rem 0.4rem 0.2rem 0.8rem;"
             >
-              <BtnText>
+              <ChipBtnText>
                 <span>Frontend</span>
-              </BtnText>
+              </ChipBtnText>
               <BottomArrow />
             </ChipButton>
           </MainProfileText>
         </MainProfile>
         <ContactUserWrapper>
-          <ContactUserBtn
-            icon={<Phone />}
-            text="+82) 10-1234-5678"
-            addClass="margin-right:0.9rem;"
-          />
-          <ContactUserBtn icon={<Mail />} text="ren6294@naver.com" />
+          {ACCESS_USER.map((access) => (
+            <LinkButton
+              key={access.text}
+              width="16.4rem"
+              height="7.7rem"
+              radius="0.8rem"
+              icon={<access.icon />}
+              addClass="padding: 1.2rem 2rem;"
+            >
+              <UserInfoLinkBtnText>
+                <span>{access.text}</span>
+              </UserInfoLinkBtnText>
+            </LinkButton>
+          ))}
         </ContactUserWrapper>
       </ProfileInfoWrapper>
       <DirectAccessWrapper>
@@ -74,7 +87,16 @@ export function MyProfile() {
         </DirectAccessText>
         <DirectAccessLink>
           {PERSONAL_LINK.map((link) => (
-            <LinkButton key={link.text} icon={<link.icon />} text={link.text} />
+            <LinkButton
+              key={link.text}
+              width="11.2rem"
+              height="7.8rem"
+              icon={<link.icon />}
+            >
+              <SnsLinkBtnText>
+                <span>{link.text}</span>
+              </SnsLinkBtnText>
+            </LinkButton>
           ))}
         </DirectAccessLink>
       </DirectAccessWrapper>
@@ -116,7 +138,7 @@ const UserName = styled.div`
   }
 `;
 
-const BtnText = styled.div`
+const ChipBtnText = styled.div`
   display: flex;
   justify-content: center;
   span {
@@ -142,6 +164,21 @@ const DirectAccessText = styled.div`
   span {
     color: ${(props) => props.theme.colors.gray2};
     ${(props) => props.theme.fontStyles.body2_medium};
+  }
+`;
+
+const UserInfoLinkBtnText = styled.div`
+  margin-top: 0.8rem;
+  span {
+    ${(props) => props.theme.fontStyles.body2}
+    font-size: 1.4rem;
+  }
+`;
+
+const SnsLinkBtnText = styled.div`
+  margin-top: 0.4rem;
+  span {
+    ${(props) => props.theme.fontStyles.body2}
   }
 `;
 
