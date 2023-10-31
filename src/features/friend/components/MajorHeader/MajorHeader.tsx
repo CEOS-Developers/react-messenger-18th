@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { ReactComponent as TopArrow } from "@common/icons/arrows/toparrow.svg";
-import { ChipButton } from "@features/friend";
+import { ChipButton } from "@common/components";
+import theme from "@styles/theme";
 
 interface MajorHeaderProps {
   people: number;
@@ -12,7 +13,16 @@ export function MajorHeader({ people, majorIn }: MajorHeaderProps) {
   return (
     <MajorHeaderWrapper>
       <MajorInfo>
-        <ChipButton text={majorIn} />
+        <ChipButton
+          width="7.1rem"
+          height="2.5rem"
+          color={theme.colors.gray6}
+          radius="0.2rem"
+          fontStyle={theme.fontStyles.body2}
+          addClass="font-size:1.4rem; font-weight:500; padding: 0.2rem 0.8rem;"
+        >
+          {majorIn}
+        </ChipButton>
         <CountText>
           <span>{people}명</span>
         </CountText>

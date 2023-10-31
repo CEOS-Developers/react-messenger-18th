@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { PageHeader } from "@common/components";
+import { ChipButton, PageHeader } from "@common/components";
 import { ReactComponent as LeftArrow } from "@common/icons/arrows/leftarrow.svg";
 import { ReactComponent as Edit } from "@common/icons/edit.svg";
 import { ReactComponent as Phone } from "@common/icons/phone.svg";
@@ -9,12 +9,8 @@ import { ReactComponent as Mail } from "@common/icons/mail.svg";
 import { ReactComponent as Behance } from "@common/icons/profileLink/behance.svg";
 import { ReactComponent as Instagram } from "@common/icons/profileLink/instagram.svg";
 import { ReactComponent as Github } from "@common/icons/profileLink/github.svg";
-import {
-  ChipButton,
-  ContactUserBtn,
-  LinkButton,
-  Profile,
-} from "@features/user";
+import { ContactUserBtn, LinkButton, Profile } from "@features/user";
+import { ReactComponent as BottomArrow } from "@common/icons/arrows/bottomarrow.svg";
 import theme from "@styles/theme";
 
 const PERSONAL_LINK = [
@@ -49,7 +45,19 @@ export function MyProfile() {
             <UserName>
               <span>김현민</span>
             </UserName>
-            <ChipButton text="Frontend" />
+            <ChipButton
+              width="10rem"
+              height="2.8rem"
+              radius="0.4rem"
+              color={theme.colors.mainColor}
+              fontStyle={theme.fontStyles.body1}
+              addClass="padding: 0.2rem 0.4rem 0.2rem 0.8rem;"
+            >
+              <BtnText>
+                <span>Frontend</span>
+              </BtnText>
+              <BottomArrow />
+            </ChipButton>
           </MainProfileText>
         </MainProfile>
         <ContactUserWrapper>
@@ -106,6 +114,16 @@ const UserName = styled.div`
   margin-bottom: 0.4rem;
   span {
     ${(props) => props.theme.fontStyles.headLine0}
+  }
+`;
+
+const BtnText = styled.div`
+  display: flex;
+  justify-content: center;
+  span {
+    color: ${(props) => props.theme.colors.white};
+    ${(props) => props.theme.fontStyles.body1};
+    font-weight: 500;
   }
 `;
 
