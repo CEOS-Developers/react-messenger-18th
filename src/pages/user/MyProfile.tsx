@@ -50,7 +50,6 @@ export function MyProfile() {
               height="2.8rem"
               radius="0.4rem"
               color={theme.colors.mainColor}
-              fontStyle={theme.fontStyles.body1}
               addClass="padding: 0.2rem 0.4rem 0.2rem 0.8rem;"
             >
               <BtnText>

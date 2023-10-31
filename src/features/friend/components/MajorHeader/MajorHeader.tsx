@@ -18,10 +18,9 @@ export function MajorHeader({ people, majorIn }: MajorHeaderProps) {
           height="2.5rem"
           color={theme.colors.gray6}
           radius="0.2rem"
-          fontStyle={theme.fontStyles.body2}
-          addClass="font-size:1.4rem; font-weight:500; padding: 0.2rem 0.8rem;"
+          addClass="padding:0.2rem 0.8rem;"
         >
-          {majorIn}
+          <BtnText>{majorIn}</BtnText>
         </ChipButton>
         <CountText>
           <span>{people}명</span>
@@ -42,6 +41,12 @@ const MajorHeaderWrapper = styled.div`
 
 const MajorInfo = styled.div`
   display: flex;
+`;
+
+const BtnText = styled.span`
+  ${(props) => props.theme.fontStyles.body2};
+  font-size: 1.4rem;
+  font-weight: 500;
 `;
 
 const CountText = styled.div`

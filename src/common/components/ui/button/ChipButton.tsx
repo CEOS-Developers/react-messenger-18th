@@ -7,7 +7,6 @@ interface ChipButtonProps {
   height: string;
   color: string;
   radius: string;
-  fontStyle: string;
   addClass?: string;
 }
 
@@ -17,7 +16,6 @@ export function ChipButton({
   height,
   color,
   radius,
-  fontStyle,
   addClass,
 }: ChipButtonProps) {
   return (
@@ -26,7 +24,6 @@ export function ChipButton({
       $height={height}
       $color={color}
       $radius={radius}
-      $fontStyle={fontStyle}
       $addClass={addClass}
     >
       {children}
@@ -39,7 +36,6 @@ const ChipBtnWrapper = styled.button<{
   $height: string;
   $color: string;
   $radius: string;
-  $fontStyle: string;
   $addClass: string | undefined;
 }>`
   display: flex;
@@ -49,6 +45,5 @@ const ChipBtnWrapper = styled.button<{
   height: ${(props) => props.$height};
   background-color: ${(props) => props.$color};
   border-radius: ${(props) => props.$radius};
-  ${(props) => props.$fontStyle}
   ${(props) => props.$addClass}
 `;
