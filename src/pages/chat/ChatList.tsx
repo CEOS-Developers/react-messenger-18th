@@ -15,7 +15,6 @@ import {
   defaultMainChatList,
   defaultSubChatList,
 } from "@features/chat";
-import { SearchBarWrapper } from "../friend/FriendsList";
 
 const SHOW_LIST_STATE = ["그룹", "개인"];
 
@@ -49,9 +48,7 @@ export function ChatList() {
         }
       />
       {showSearchBar ? (
-        <SearchBarWrapper>
-          <SearchBar search={[searchText, setSearchText]} />
-        </SearchBarWrapper>
+        <SearchBar search={[searchText, setSearchText]} />
       ) : null}
       <SubHeader
         $onlySubChat={

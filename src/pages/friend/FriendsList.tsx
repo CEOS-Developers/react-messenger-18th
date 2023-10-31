@@ -39,9 +39,7 @@ export function FriendsList() {
         rightIcon2={<AddFriend style={{ marginLeft: "1.2rem" }} />}
       />
       {showSearchBar ? (
-        <SearchBarWrapper>
-          <SearchBar search={[searchText, setSearchText]} />
-        </SearchBarWrapper>
+        <SearchBar search={[searchText, setSearchText]} />
       ) : null}
       <Divider state={DIVIDER_TYPE.LONGTHICK} />
       <FriendsListContainer>
@@ -93,12 +91,6 @@ export function FriendsList() {
     </>
   );
 }
-
-export const SearchBarWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1.2rem;
-`;
 
 const FriendsListContainer = styled.div`
   padding: 0 2rem;

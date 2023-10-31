@@ -15,17 +15,26 @@ export function SearchBar({ search }: searchProps) {
     500
   );
   return (
-    <SearchContainer>
-      <span>
-        <Search />
-      </span>
-      <InputWrapper
-        placeholder="이름을 검색해보세요."
-        onChange={searchBarChanged}
-      />
-    </SearchContainer>
+    <SearchBarWrapper>
+      {" "}
+      <SearchContainer>
+        <span>
+          <Search />
+        </span>
+        <InputWrapper
+          placeholder="이름을 검색해보세요."
+          onChange={searchBarChanged}
+        />
+      </SearchContainer>
+    </SearchBarWrapper>
   );
 }
+
+const SearchBarWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+`;
 
 const SearchContainer = styled.div`
   position: relative;
