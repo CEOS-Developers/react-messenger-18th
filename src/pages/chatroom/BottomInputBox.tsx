@@ -55,7 +55,11 @@ const BottomInputBox: React.FC<BottomInputBoxProps> = ({ onCreate }) => {
         onMouseLeave={() => setIsHovered(false)}
       >
         <div>
-          <Icon size={28} icon="send" color="#A4A2B7" />
+          <CustomIcon
+            size={28}
+            icon="send"
+            color={isHovered ? "#1263DC" : "#A4A2B7"}
+          />
         </div>
       </InputBtn>
     </BottomBarContainer>
@@ -104,5 +108,9 @@ const Emotion = styled.img`
 const InputBtn = styled.button`
   background-color: rgba(255, 255, 255, 0);
   border: none;
+  cursor: pointer;
+`;
+
+const CustomIcon = styled(Icon)`
   cursor: pointer;
 `;
