@@ -36,7 +36,7 @@ function ChatList() {
   let count2 = 0;
   // 마지막 채팅방에서 자신의 메시지가 마지막일 경우에는 읽지 않은 카운트에서 제외
   if (!isUser1InFirstRoom) {
-    room1SortedMessages.forEach((obj) => {
+    room1SortedMessages.forEach((obj) => {{}
       if (!obj.isRead) count1 += 1;
     });
   }

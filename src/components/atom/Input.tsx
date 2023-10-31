@@ -10,6 +10,7 @@ interface InputProps {
   weight?: string;
   lineheight?: string;
   fontSize?: string;
+  padding?: string;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   value?: string;
   onKeyDown?: (e: KeyboardEvent<HTMLInputElement>) => void;
@@ -26,8 +27,10 @@ const InputBase = styled.input<InputProps>`
   line-height: ${({ lineheight }) => lineheight};
   font-size: ${({ fontSize }) => fontSize};
   font-weight: ${({ weight }) => weight};
+  padding: ${({ padding }) => padding};
   &::placeholder {
     color: ${({ theme }) => theme.colors["gray"]};
+    font-weight: 400;
   }
 `;
 
@@ -44,6 +47,7 @@ export const Input: React.FC<InputProps> = ({
   value,
   onKeyDown,
   inputRef,
+  padding,
 }: InputProps) => {
   return (
     <InputBase
@@ -60,6 +64,7 @@ export const Input: React.FC<InputProps> = ({
       onChange={onChange}
       onKeyDown={onKeyDown}
       ref={inputRef}
+      padding={padding}
     />
   );
 };
