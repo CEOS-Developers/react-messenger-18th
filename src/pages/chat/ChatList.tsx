@@ -73,70 +73,68 @@ export function ChatList() {
         />
       </SubHeader>
       {showListState === SHOW_LIST_STATE[0] && (
-        <ChatLists>
-          <MainChats>
-            {filterSearchedGroupChat(CHATROOM_TYPE.MAIN).length > 0 ? (
-              <MainChatsHeader>
-                <Star color={theme.colors.gray3} size="2rem" />
-                <span>주요 채팅</span>
-              </MainChatsHeader>
-            ) : null}
-            {filterSearchedGroupChat(CHATROOM_TYPE.MAIN).map((chat) => (
-              <ChatListBox
-                key={chat.id}
-                img={chat.img}
-                name={chat.name}
-                message={chat.message}
-                icon={
-                  <Star
-                    color={theme.colors.mainColor}
-                    size="2.4rem"
-                    addStyle={{ marginBottom: "0.2rem" }}
-                  />
-                }
-                onClick={() =>
-                  navigate(`/chatroom/${CHATROOM_TYPE.MAIN}/${chat.id}`, {
-                    state: {
-                      chatRoomTitle: chat.name,
-                      img: "/img/default.jpg",
-                      people: chat.people,
-                      name: "전윤수",
-                      chatRoomState: CHATROOM_TYPE.MAIN,
-                      chatRoomId: chat.id,
-                    },
-                  })
-                }
-              />
-            ))}
-            {filterSearchedGroupChat(CHATROOM_TYPE.MAIN).length > 0 &&
-            filterSearchedGroupChat(CHATROOM_TYPE.SUB).length > 0 ? (
-              <Divider
-                state={DIVIDER_TYPE.SHORT}
-                $addClass={`background-color:${theme.colors.gray5}; margin:0.8rem 0;`}
-              />
-            ) : null}
-            {filterSearchedGroupChat(CHATROOM_TYPE.SUB).map((chat) => (
-              <ChatListBox
-                key={chat.id}
-                img={chat.img}
-                name={chat.name}
-                message={chat.message}
-                onClick={() =>
-                  navigate(`/chatroom/${CHATROOM_TYPE.SUB}/${chat.id}`, {
-                    state: {
-                      chatRoomTitle: chat.name,
-                      img: "/img/default.jpg",
-                      people: chat.people,
-                      name: "전윤수",
-                      chatRoomState: CHATROOM_TYPE.SUB,
-                      chatRoomId: chat.id,
-                    },
-                  })
-                }
-              />
-            ))}
-          </MainChats>
-        </ChatLists>
+        <GroupChatLists>
+          {filterSearchedGroupChat(CHATROOM_TYPE.MAIN).length > 0 ? (
+            <MainChatsHeader>
+              <Star color={theme.colors.gray3} size="2rem" />
+              <span>주요 채팅</span>
+            </MainChatsHeader>
+          ) : null}
+          {filterSearchedGroupChat(CHATROOM_TYPE.MAIN).map((chat) => (
+            <ChatListBox
+              key={chat.id}
+              img={chat.img}
+              name={chat.name}
+              message={chat.message}
+              icon={
+                <Star
+                  color={theme.colors.mainColor}
+                  size="2.4rem"
+                  addStyle={{ marginBottom: "0.2rem" }}
+                />
+              }
+              onClick={() =>
+                navigate(`/chatroom/${CHATROOM_TYPE.MAIN}/${chat.id}`, {
+                  state: {
+                    chatRoomTitle: chat.name,
+                    img: "/img/default.jpg",
+                    people: chat.people,
+                    name: "전윤수",
+                    chatRoomState: CHATROOM_TYPE.MAIN,
+                    chatRoomId: chat.id,
+                  },
+                })
+              }
+            />
+          ))}
+          {filterSearchedGroupChat(CHATROOM_TYPE.MAIN).length > 0 &&
+          filterSearchedGroupChat(CHATROOM_TYPE.SUB).length > 0 ? (
+            <Divider
+              state={DIVIDER_TYPE.SHORT}
+              $addClass={`background-color:${theme.colors.gray5}; margin:0.8rem 0;`}
+            />
+          ) : null}
+          {filterSearchedGroupChat(CHATROOM_TYPE.SUB).map((chat) => (
+            <ChatListBox
+              key={chat.id}
+              img={chat.img}
+              name={chat.name}
+              message={chat.message}
+              onClick={() =>
+                navigate(`/chatroom/${CHATROOM_TYPE.SUB}/${chat.id}`, {
+                  state: {
+                    chatRoomTitle: chat.name,
+                    img: "/img/default.jpg",
+                    people: chat.people,
+                    name: "전윤수",
+                    chatRoomState: CHATROOM_TYPE.SUB,
+                    chatRoomId: chat.id,
+                  },
+                })
+              }
+            />
+          ))}
+        </GroupChatLists>
       )}
     </>
   );
@@ -153,6 +151,13 @@ const SubHeaderTextWrapper = styled.div<{
   $isClicked: boolean;
   $addClass?: string | null;
 }>`
+  border-bottom: ${(props) =>
+    props.$isClicked ? `0.2rem solid ${props.theme.colors.mainColor}` : null};
+  ${(props) => props.theme.fontStyles.body1};
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  padding: 1.2rem 1.6rem;
   span {
     color: ${(props) =>
       props.$isClicked
@@ -161,21 +166,12 @@ const SubHeaderTextWrapper = styled.div<{
     ${(props) => props.theme.fontStyles.body1}
     cursor: pointer;
   }
-  border-bottom: ${(props) =>
-    props.$isClicked ? `0.2rem solid ${props.theme.colors.mainColor}` : null};
-  ${(props) => props.theme.fontStyles.body1};
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  padding: 1.2rem 1.6rem;
-  ${[(props) => props.$addClass]}
+  ${[(props) => props.$addClass]};
 `;
 
-const ChatLists = styled.div`
+const GroupChatLists = styled.div`
   padding: 0 2rem;
 `;
-
-const MainChats = styled.div``;
 
 const MainChatsHeader = styled.div`
   display: flex;
