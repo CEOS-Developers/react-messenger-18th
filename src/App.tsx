@@ -19,8 +19,9 @@ function App() {
   useEffect(() => {
     const storedVersion = localStorage.getItem('version');
     if (!storedVersion || storedVersion < process.env.REACT_APP_VERSION!) {
+      localStorage.clear();
       localStorage.setItem('version', process.env.REACT_APP_VERSION!);
-      return;
+      // return;
     }
   }, []);
 

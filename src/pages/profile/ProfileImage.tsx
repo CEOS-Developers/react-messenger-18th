@@ -55,9 +55,7 @@ const ProfileImage = ({
 };
 
 const ProfileImageOuter = styled.div`
-  .profile-image-outer {
-    position: relative;
-  }
+  position: relative;
 `;
 
 const ProfileImageConatiner = styled.div`
