@@ -75,15 +75,33 @@ export const userDMesasgeState = atom({
   ],
 });
 
-
 // 사용자 검색창의 상태
 
-export const isSearchState  = atom({
+export const isSearchState = atom({
   key: "isSearchState",
-  default: false
-})
+  default: false,
+});
 
 export const userInputState = atom({
   key: "userInputState",
   default: "",
+});
+
+export const lastMessage1State = atom({
+  key: "lastMessage1State",
+  default: "",
+});
+
+export const lastMessage2State = atom({
+  key: "lastMessage2State",
+  default: "",
+});
+
+export const unReadCount1State = atom({
+  key: "unreadCount1State",
+  default: 0,
+});
+export const unReadCount2State = atom({
+  key: "unreadCount2State",
+  default: 0,
 });

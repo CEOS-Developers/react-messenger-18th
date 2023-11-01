@@ -15,7 +15,10 @@ export const dummyContactList = [
     name: "나서강",
     introduction: "서강대학교 학생",
   },
+  {
+    name: "나오스",
+    introduction: "CEOS 디자인",
+  },
 ];
-
 
 export const dummyChatList = ["이현진", "김종완"];
