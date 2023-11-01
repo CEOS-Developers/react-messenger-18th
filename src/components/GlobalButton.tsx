@@ -40,13 +40,13 @@ const GlobalButton: React.FC<GlobalButtonProps> = ({
     <StyledButton button-type={customType} onClick={handleButtonClick}>
       {customType === "search" && <Icon size={28} icon="search" />}
       {customType === "friend" && (
-        <Icon size={36} icon="friend" color={active ? "blue" : "#B8B7CA"} />
+        <Icon size={36} icon="friend" color={active ? "#1263DC" : "#B8B7CA"} />
       )}
       {customType === "chat" && (
-        <Icon size={36} icon="chat" color={active ? "blue" : "#B8B7CA"} />
+        <Icon size={36} icon="chat" color={active ? "#1263DC" : "#B8B7CA"} />
       )}
       {customType === "mypage" && (
-        <Icon size={36} icon="mypage" color={active ? "blue" : "#B8B7CA"} />
+        <Icon size={36} icon="mypage" color={active ? "#1263DC" : "#B8B7CA"} />
       )}
     </StyledButton>
   );

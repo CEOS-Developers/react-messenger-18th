@@ -47,6 +47,9 @@ const HeadText = styled.div`
   font-size: 24px;
   font-style: normal;
   font-weight: 600;
+  color: #33333a;
+  align-items: center;
+  padding-top: 2px;
 `;
 
 const RightItems = styled.div`

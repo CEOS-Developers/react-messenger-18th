@@ -2,25 +2,17 @@ import GlobalButton from "components/GlobalButton";
 import GlobalFooter from "components/GlobalFooter";
 import GlobalHeader from "components/GlobalHeader";
 import { styled } from "styled-components";
-import { useNavigate } from "react-router-dom";
+import MyPageContent from "./MyPageContent";
 
 const MyPage = () => {
-  const navigate = useNavigate();
-
-  const handleButtonClick = (customType: string) => {
-    if (customType === "friend") {
-      navigate("/"); // friend 페이지로 이동
-    } else if (customType === "chat") {
-      navigate("/chat"); // chat 페이지로 이동
-    } else if (customType === "mypage") {
-      navigate("/mypage"); // mypage 페이지로 이동
-    }
-  };
   return (
     <div>
       <HeaderWrapper>
         <GlobalHeader headText={"마이페이지"} leftChild={null} />
       </HeaderWrapper>
+      <MyPageContentWrapper>
+        <MyPageContent />
+      </MyPageContentWrapper>
       <FooterWrapper>
         <GlobalFooter
           friendBtn={<GlobalButton customType={"friend"} />}
@@ -43,5 +35,11 @@ const HeaderWrapper = styled.header`
 const FooterWrapper = styled.header`
   position: fixed;
   bottom: 34px;
+  width: 375px;
+`;
+
+const MyPageContentWrapper = styled.div`
+  position: fixed;
+  top: 98px;
   width: 375px;
 `;
