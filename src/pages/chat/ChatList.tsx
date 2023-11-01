@@ -29,6 +29,8 @@ export function ChatList() {
   const filterSearchedGroupChat = (type: string) => {
     return searchedGroupChat.filter((groupChat) => groupChat.type === type);
   };
+  const searchedMainGroupChat = filterSearchedGroupChat(CHATROOM_TYPE.MAIN);
+  const searchedSubGroupChat = filterSearchedGroupChat(CHATROOM_TYPE.SUB);
   return (
     <>
       <PageHeader
@@ -50,8 +52,7 @@ export function ChatList() {
       ) : null}
       <SubHeader
         $onlySubChat={
-          filterSearchedGroupChat(CHATROOM_TYPE.MAIN).length === 0 &&
-          filterSearchedGroupChat(CHATROOM_TYPE.SUB).length > 0
+          searchedMainGroupChat.length === 0 && searchedSubGroupChat.length > 0
         }
       >
         {SHOW_LIST_STATE.map((showState, index) => (
@@ -74,13 +75,13 @@ export function ChatList() {
       </SubHeader>
       {showListState === SHOW_LIST_STATE[0] && (
         <GroupChatLists>
-          {filterSearchedGroupChat(CHATROOM_TYPE.MAIN).length > 0 ? (
+          {searchedMainGroupChat.length > 0 ? (
             <MainChatsHeader>
               <Star color={theme.colors.gray3} size="2rem" />
               <span>주요 채팅</span>
             </MainChatsHeader>
           ) : null}
-          {filterSearchedGroupChat(CHATROOM_TYPE.MAIN).map((chat) => (
+          {searchedMainGroupChat.map((chat) => (
             <ChatListBox
               key={chat.id}
               img={chat.img}
@@ -107,14 +108,14 @@ export function ChatList() {
               }
             />
           ))}
-          {filterSearchedGroupChat(CHATROOM_TYPE.MAIN).length > 0 &&
-          filterSearchedGroupChat(CHATROOM_TYPE.SUB).length > 0 ? (
+          {searchedMainGroupChat.length > 0 &&
+          searchedSubGroupChat.length > 0 ? (
             <Divider
               state={DIVIDER_TYPE.SHORT}
               $addClass={`background-color:${theme.colors.gray5}; margin:0.8rem 0;`}
             />
           ) : null}
-          {filterSearchedGroupChat(CHATROOM_TYPE.SUB).map((chat) => (
+          {searchedSubGroupChat.map((chat) => (
             <ChatListBox
               key={chat.id}
               img={chat.img}

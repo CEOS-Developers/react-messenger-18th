@@ -27,8 +27,8 @@ export function FriendsList() {
       (friendList) => friendList.majorIn === type
     );
   };
-  const designerList = filterSearchedFriendsList(MAJOR_TYPE.DESIGNER);
-  const frontEndList = filterSearchedFriendsList(MAJOR_TYPE.FRONTEND);
+  const searchedDesignerList = filterSearchedFriendsList(MAJOR_TYPE.DESIGNER);
+  const searchedFrontEndList = filterSearchedFriendsList(MAJOR_TYPE.FRONTEND);
   return (
     <>
       <PageHeader
@@ -44,10 +44,13 @@ export function FriendsList() {
       ) : null}
       <Divider state={DIVIDER_TYPE.LONGTHICK} />
       <FriendsListContainer>
-        {designerList.length > 0 ? (
+        {searchedDesignerList.length > 0 ? (
           <DesignerListContainer>
-            <MajorHeader people={designerList.length} majorIn="Designer" />
-            {designerList.map((designerData, index) => (
+            <MajorHeader
+              people={searchedDesignerList.length}
+              majorIn="Designer"
+            />
+            {searchedDesignerList.map((designerData, index) => (
               <PersonalInfoBox
                 key={designerData.name + index}
                 id={designerData.id}
@@ -60,27 +63,30 @@ export function FriendsList() {
             ))}
           </DesignerListContainer>
         ) : null}
-        {designerList.length > 0 && frontEndList.length > 0 ? (
+        {searchedDesignerList.length > 0 && searchedFrontEndList.length > 0 ? (
           <Divider
             state={DIVIDER_TYPE.SHORT}
             $addClass={`background-color:${theme.colors.gray5}`}
           />
         ) : null}
-        {frontEndList.length > 0 ? (
-          <DeveloperListContainer>
-            <MajorHeader people={frontEndList.length} majorIn="Frontend" />
-            {frontEndList.map((developerData, index) => (
+        {searchedFrontEndList.length > 0 ? (
+          <FrontEndListContainer>
+            <MajorHeader
+              people={searchedFrontEndList.length}
+              majorIn="Frontend"
+            />
+            {searchedFrontEndList.map((frontEndData, index) => (
               <PersonalInfoBox
-                key={developerData.name + index}
-                id={developerData.id}
-                img={developerData.img}
-                name={developerData.name}
-                message={developerData.message}
-                group={developerData.group}
-                majorIn={developerData.majorIn}
+                key={frontEndData.name + index}
+                id={frontEndData.id}
+                img={frontEndData.img}
+                name={frontEndData.name}
+                message={frontEndData.message}
+                group={frontEndData.group}
+                majorIn={frontEndData.majorIn}
               />
             ))}
-          </DeveloperListContainer>
+          </FrontEndListContainer>
         ) : null}
       </FriendsListContainer>
     </>
@@ -96,6 +102,6 @@ const DesignerListContainer = styled.div`
   padding-top: 2rem;
 `;
 
-const DeveloperListContainer = styled.div`
+const FrontEndListContainer = styled.div`
   padding-top: 2rem;
 `;
