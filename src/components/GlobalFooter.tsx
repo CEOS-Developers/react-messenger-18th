@@ -1,25 +1,22 @@
-import React from "react";
-import GlobalButton from "./GlobalButton";
+import React, { ReactElement, ReactNode } from "react";
 import { styled } from "styled-components";
 
-const GlobalFooter: React.FC = () => {
+interface GlobalFooterProps {
+  friendBtn: ReactNode;
+  chatBtn: ReactNode;
+  mypageBtn: ReactNode;
+}
+
+const GlobalFooter: React.FC<GlobalFooterProps> = ({
+  friendBtn,
+  chatBtn,
+  mypageBtn,
+}: GlobalFooterProps): ReactElement => {
   return (
     <FooterContainer>
-      <GlobalButton
-        text="Button 1"
-        customType="friend"
-        onClick={() => alert("Button 1 clicked")}
-      />
-      <GlobalButton
-        text="Button 2"
-        customType="chat"
-        onClick={() => alert("Button 2 clicked")}
-      />
-      <GlobalButton
-        text="Button 3"
-        customType="mypage"
-        onClick={() => alert("Button 3 clicked")}
-      />
+      <div className="friendBtn">{friendBtn}</div>
+      <div className="chatBtn">{chatBtn}</div>
+      <div className="mypageBtn">{mypageBtn}</div>
     </FooterContainer>
   );
 };
@@ -35,4 +32,4 @@ const FooterContainer = styled.header`
   gap: 24px;
   border-top: 0.33px solid #b8b7ca;
   padding-top: 8px;
-`;
+};`;

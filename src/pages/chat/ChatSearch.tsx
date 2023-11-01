@@ -7,13 +7,7 @@ const ChatSearch = () => {
     <HeaderWrapper>
       <GlobalHeader
         headText={"채팅"}
-        leftChild={
-          <GlobalButton
-            text="왼쪽 버튼"
-            customType={"search"}
-            onClick={() => alert("왼쪽 클릭")}
-          />
-        }
+        leftChild={<GlobalButton customType={"search"} />}
       />
     </HeaderWrapper>
   );
