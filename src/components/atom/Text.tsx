@@ -13,6 +13,7 @@ interface TextProps {
   align?: string;
   width?: string;
   self?: string;
+  padding?: string;
   onClick?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -28,6 +29,7 @@ const StyledText = styled.div<TextProps>`
   font-family: ${({ font }) => font};
   cursor: ${({ cursor }) => cursor};
   align-self: ${({ self }) => self};
+  padding: ${({ padding }) => padding};
 `;
 
 export const Text: React.FC<TextProps> = ({
@@ -42,6 +44,7 @@ export const Text: React.FC<TextProps> = ({
   align = "center",
   width = "fit-content",
   self = "auto",
+  margin = "0",
   ...rest
 }: TextProps) => {
   return (
