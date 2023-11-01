@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { memo, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
 interface StatusMessageProps {
@@ -74,4 +74,4 @@ const StatusMessageOuter = styled.div`
   }
 `;
 
-export default StatusMessage;
+export default memo(StatusMessage);

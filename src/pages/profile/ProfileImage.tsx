@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { ReactComponent as DefaultProfileIcon } from 'static/images/default-profile-icon.svg';
 import { ReactComponent as CameraIcon } from 'static/images/camera-icon.svg';
 import { CompressImage } from 'utils/fileCompression';
+import { memo } from 'react';
 
 interface ProfileImageProps {
   isProfileChanging: boolean;
@@ -93,4 +94,4 @@ const ProfileImageChangeButton = styled.label`
   }
 `;
 
-export default ProfileImage;
+export default memo(ProfileImage);

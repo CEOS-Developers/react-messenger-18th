@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import styled from 'styled-components';
 
 interface UserNameProps {
@@ -51,4 +52,4 @@ const UsernameOuter = styled.div`
   }
 `;
 
-export default UserName;
+export default memo(UserName);
