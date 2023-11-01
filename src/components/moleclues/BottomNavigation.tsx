@@ -17,7 +17,7 @@ function BottomNavigation() {
   const location = useLocation();
   useEffect(() => {
     const path = location.pathname;
-    if (path === "/contact") setIsBlue({ ...isBlue, contact: true });
+    if (path === "/contact") {setIsBlue({ ...isBlue, contact: true })};
     if (path === "/chat") setIsBlue({ ...isBlue, chat: true });
     if (path === "/profile") setIsBlue({ ...isBlue, profile: true });
   }, [location]);

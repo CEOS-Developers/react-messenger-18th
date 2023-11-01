@@ -30,43 +30,54 @@ function SearchContainer() {
       <Flex gap="21" direction="column">
         <Flex direction="column" gap="15" width="335px" margin="0 auto">
           <Space height="4px" />
-          <Text weight="600" padding="0px 0px 0px 3px">
-            친구
-          </Text>
-          <Flex>
-            {filterContactList.map((item) => (
-              <Flex direction="column" align="center">
-                <Flex
-                  color="mainBlue"
-                  width="47px"
-                  height="48px"
-                  align="center"
-                  justify="center"
-                  margin="4px"
-                  radius="4px"
-                >
-                  <Text color="white" weight="700" font="Lato">
-                    {item.name[0]}
-                  </Text>
-                </Flex>
-                <Text size="14px">{item.name}</Text>
+          {filterContactList.length == 0 ? (
+            <Text>결과가 없습니다.</Text>
+          ) : (
+            <>
+              {" "}
+              <Text weight="600" padding="0px 0px 0px 3px">
+                친구
+              </Text>
+              <Flex>
+                {filterContactList.map((item) => (
+                  <Flex direction="column" align="center">
+                    <Flex
+                      color="mainBlue"
+                      width="47px"
+                      height="48px"
+                      align="center"
+                      justify="center"
+                      margin="4px"
+                      radius="4px"
+                    >
+                      <Text color="white" weight="700" font="Lato">
+                        {item.name[0]}
+                      </Text>
+                    </Flex>
+                    <Text size="14px">{item.name}</Text>
+                  </Flex>
+                ))}
               </Flex>
+            </>
+          )}
+        </Flex>
+        {filterChatList.length == 0 ? (
+          ""
+        ) : (
+          <Flex direction="column" gap="15" width="335px" margin="0 auto">
+            <Text weight="600">채팅방</Text>
+            {filterChatList.map((item) => (
+              <ChatItem
+                id={item == "이현진" ? 1 : 2}
+                name={item}
+                lastMessage={
+                  item == "이현진" ? lastMessageRoom1 : lastMessageRoom2
+                }
+                count={item == "이현진" ? unReadCountRoom1 : unReadCountRoom2}
+              ></ChatItem>
             ))}
           </Flex>
-        </Flex>
-        <Flex direction="column" gap="15" width="335px" margin="0 auto">
-          <Text weight="600">채팅방</Text>
-          {filterChatList.map((item) => (
-            <ChatItem
-              id={item == "이현진" ? 1 : 2}
-              name={item}
-              lastMessage={
-                item == "이현진" ? lastMessageRoom1 : lastMessageRoom2
-              }
-              count={item == "이현진" ? unReadCountRoom1 : unReadCountRoom2}
-            ></ChatItem>
-          ))}
-        </Flex>
+        )}
       </Flex>
     </>
   );

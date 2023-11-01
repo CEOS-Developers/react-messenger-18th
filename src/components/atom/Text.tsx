@@ -44,7 +44,6 @@ export const Text: React.FC<TextProps> = ({
   align = "center",
   width = "fit-content",
   self = "auto",
-  margin = "0",
   ...rest
 }: TextProps) => {
   return (
