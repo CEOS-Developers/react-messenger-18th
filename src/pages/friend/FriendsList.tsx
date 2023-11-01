@@ -27,6 +27,8 @@ export function FriendsList() {
       (friendList) => friendList.majorIn === type
     );
   };
+  const designerList = filterSearchedFriendsList(MAJOR_TYPE.DESIGNER);
+  const frontEndList = filterSearchedFriendsList(MAJOR_TYPE.FRONTEND);
   return (
     <>
       <PageHeader
@@ -42,53 +44,42 @@ export function FriendsList() {
       ) : null}
       <Divider state={DIVIDER_TYPE.LONGTHICK} />
       <FriendsListContainer>
-        {filterSearchedFriendsList(MAJOR_TYPE.DESIGNER).length > 0 ? (
+        {designerList.length > 0 ? (
           <DesignerListContainer>
-            <MajorHeader
-              people={filterSearchedFriendsList(MAJOR_TYPE.DESIGNER).length}
-              majorIn="Designer"
-            />
-            {filterSearchedFriendsList(MAJOR_TYPE.DESIGNER).map(
-              (designerData, index) => (
-                <PersonalInfoBox
-                  key={designerData.name + index}
-                  id={designerData.id}
-                  img={designerData.img}
-                  name={designerData.name}
-                  message={designerData.message}
-                  group={designerData.group}
-                  majorIn={designerData.majorIn}
-                />
-              )
-            )}
+            <MajorHeader people={designerList.length} majorIn="Designer" />
+            {designerList.map((designerData, index) => (
+              <PersonalInfoBox
+                key={designerData.name + index}
+                id={designerData.id}
+                img={designerData.img}
+                name={designerData.name}
+                message={designerData.message}
+                group={designerData.group}
+                majorIn={designerData.majorIn}
+              />
+            ))}
           </DesignerListContainer>
         ) : null}
-        {filterSearchedFriendsList(MAJOR_TYPE.DESIGNER).length > 0 &&
-        filterSearchedFriendsList(MAJOR_TYPE.FRONTEND).length > 0 ? (
+        {designerList.length > 0 && frontEndList.length > 0 ? (
           <Divider
             state={DIVIDER_TYPE.SHORT}
             $addClass={`background-color:${theme.colors.gray5}`}
           />
         ) : null}
-        {filterSearchedFriendsList(MAJOR_TYPE.FRONTEND).length > 0 ? (
+        {frontEndList.length > 0 ? (
           <DeveloperListContainer>
-            <MajorHeader
-              people={filterSearchedFriendsList(MAJOR_TYPE.FRONTEND).length}
-              majorIn="Frontend"
-            />
-            {filterSearchedFriendsList(MAJOR_TYPE.FRONTEND).map(
-              (developerData, index) => (
-                <PersonalInfoBox
-                  key={developerData.name + index}
-                  id={developerData.id}
-                  img={developerData.img}
-                  name={developerData.name}
-                  message={developerData.message}
-                  group={developerData.group}
-                  majorIn={developerData.majorIn}
-                />
-              )
-            )}
+            <MajorHeader people={frontEndList.length} majorIn="Frontend" />
+            {frontEndList.map((developerData, index) => (
+              <PersonalInfoBox
+                key={developerData.name + index}
+                id={developerData.id}
+                img={developerData.img}
+                name={developerData.name}
+                message={developerData.message}
+                group={developerData.group}
+                majorIn={developerData.majorIn}
+              />
+            ))}
           </DeveloperListContainer>
         ) : null}
       </FriendsListContainer>
