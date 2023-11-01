@@ -32,11 +32,19 @@ const UserProfile = ({
 
   // 프로필 변경 모드가 바뀔 때 프로필에 변경사항이 있다면 전역 user state 업데이트
   useEffect(() => {
-    if (username !== newName) setUser({ ...user, name: newName });
-    if (statusMessage !== newStatusMessage)
-      setUser({ ...user, statusMessage: newStatusMessage });
-    if (profileImage !== newProfileImage)
-      setUser({ ...user, profileImage: newProfileImage });
+    // console.log(username, newName);
+    if (
+      username !== newName ||
+      statusMessage !== newStatusMessage ||
+      profileImage !== newProfileImage
+    ) {
+      setUser({
+        ...user,
+        name: newName,
+        statusMessage: newStatusMessage,
+        profileImage: newProfileImage,
+      });
+    }
   }, [isProfileChanging]);
 
   return (

@@ -69,7 +69,6 @@ const ProfileImageConatiner = styled.div`
   img,
   svg {
     width: 108px;
-    height: 108px;
   }
 `;
 
