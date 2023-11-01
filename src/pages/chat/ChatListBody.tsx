@@ -13,11 +13,13 @@ interface ChatListBodyProps {
 const ChatListBody = ({ query }: ChatListBodyProps) => {
   const user = useUserStore((state) => state.user);
   const messages = useMessageStore((state) => state.messages);
+  // 각 유저와의 마지막 메시지
   const lastMessages = getLastMessages(user.id, messages);
 
   return (
     <ChatListBodyContainer>
       {lastMessages.map((message) => {
+        // 해당 대화의 상대방 찾기
         const opponentId =
           user.id === message.fromUserId
             ? message.toUserId
@@ -26,7 +28,7 @@ const ChatListBody = ({ query }: ChatListBodyProps) => {
         const opponentUser = storedOpponent
           ? JSON.parse(storedOpponent)
           : userData.data.find((userToCheck) => userToCheck.id === opponentId)!;
-
+        //만약 검색어가 있다면 검색어에 해당하는 채팅방만 display
         if (!include(opponentUser.name, query)) return null;
         return (
           <ChatListElement

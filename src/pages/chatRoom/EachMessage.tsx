@@ -18,6 +18,7 @@ const EachMessage = ({
   isNextDay,
   handleDoubleClickMessage,
 }: EachMessageProps) => {
+  // 나와 상대방을 구분하여 display하도록 order를 정한 후, flex를 통해 나열
   const orders = isOwnMessage ? [1, 0] : [0, 1];
 
   return (

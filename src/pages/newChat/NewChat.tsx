@@ -5,10 +5,11 @@ import NewChatBody from 'pages/newChat/NewChatBody';
 import { ClipLoader } from 'react-spinners';
 
 const NewChat = () => {
-  const [query, setQuery] = useState<string>('');
-  const [selected, setSelected] = useState<number | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [query, setQuery] = useState<string>(''); // 검색어
+  const [selected, setSelected] = useState<number | null>(null); // 선택된 유저
+  const [isLoading, setIsLoading] = useState<boolean>(false); // 로딩 flag
 
+  // 탐색중 효과(그냥 기분만 내봄)
   useEffect(() => {
     if (query) {
       setIsLoading(true);

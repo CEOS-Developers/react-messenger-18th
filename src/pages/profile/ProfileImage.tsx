@@ -32,12 +32,15 @@ const ProfileImage = ({
             accept="image/* .heic .heif"
             onChange={async (e) => {
               if (e.target.files && e.target.files.length) {
+                // 압축 진행
                 const compressedFile = await CompressImage(e.target.files[0]);
                 if (compressedFile) {
+                  // file reader로 이미지 encoding
                   const reader = new FileReader();
                   reader.readAsDataURL(compressedFile);
                   reader.onloadend = () => {
                     if (reader.result) {
+                      // string 형태로 이미지 저장
                       setNewProfileImage(reader.result.toString());
                     }
                   };

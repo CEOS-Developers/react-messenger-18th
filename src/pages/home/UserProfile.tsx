@@ -18,6 +18,7 @@ const UserProfile = ({
 }: UserProfileProps) => {
   const user = useUserStore((state) => state.user);
   const navigate = useNavigate();
+
   return (
     <UserProfileContainer
       $isStatusMessageSpread={isStatusMessageSpread}

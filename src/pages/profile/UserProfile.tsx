@@ -30,6 +30,7 @@ const UserProfile = ({
     profileImage
   );
 
+  // 프로필 변경 모드가 바뀔 때 프로필에 변경사항이 있다면 전역 user state 업데이트
   useEffect(() => {
     if (username !== newName) setUser({ ...user, name: newName });
     if (statusMessage !== newStatusMessage)

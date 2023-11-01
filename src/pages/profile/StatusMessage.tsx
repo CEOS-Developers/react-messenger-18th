@@ -16,6 +16,7 @@ const StatusMessage = ({
 }: StatusMessageProps) => {
   const statusMessageRef = useRef<HTMLTextAreaElement>(null);
 
+  // textarea의 높이 초기 설정
   useEffect(() => {
     if (statusMessageRef.current) {
       statusMessageRef.current.style.height =
@@ -31,8 +32,9 @@ const StatusMessage = ({
           value={newStatusMessage || ''}
           rows={1}
           onChange={(e) => {
-            if (e.target.value.length < 200) {
+            if (e.target.value.length <= 200) {
               setNewStatusMessage(e.target.value);
+              // 내용에 따라 textare의 높이 조절
               e.target.style.height = '40px';
               e.target.style.height = e.target.scrollHeight + 'px';
             }

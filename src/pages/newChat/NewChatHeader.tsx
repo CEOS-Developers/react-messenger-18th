@@ -23,6 +23,7 @@ const NewChatHeader = ({
       />
       <CancelButton
         onClick={() => {
+          // 선택된 유저가 있으면 해당 유저와의 채팅방으로 이동
           if (selected) navigate(`/chat/${selected}`);
           else navigate(-1);
         }}

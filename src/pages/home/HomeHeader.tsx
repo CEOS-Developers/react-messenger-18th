@@ -10,6 +10,7 @@ interface HomeHeaderProps {
 }
 
 const HomeHeader = ({ query, setQuery }: HomeHeaderProps) => {
+  // status message가 펼쳐졌는지에 대한 flag
   const [isStatusMessageSpread, setIsStatusMessageSpread] =
     useState<boolean>(false);
 

@@ -7,6 +7,7 @@ interface SearchBarProps {
   customStyle?: string;
 }
 
+// 홈, 채팅목록, 새로운 채팅 페이지에서의 search bar
 const SearchBar = ({ query, handleChange, customStyle }: SearchBarProps) => {
   return (
     <SearchBarContainer $style={customStyle}>

@@ -10,6 +10,7 @@ import ProfileHeader from 'pages/profile/ProfileHeader';
 
 const Profile = () => {
   const user = useUserStore((state) => state.user);
+  // 프로필 변경 모드 flag
   const [isProfileChanging, setIsProfileChanging] = useState<boolean>(false);
 
   return (

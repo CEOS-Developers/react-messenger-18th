@@ -1,5 +1,6 @@
 import { TMessage } from 'types';
 import userData from 'data/userData.json';
+import { include } from 'utils/search';
 
 const daySelector = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
 const monthSelector = [
@@ -17,6 +18,7 @@ const monthSelector = [
   'Dec',
 ];
 
+// 채팅버블 시간 formatting
 export const convertTimeFormat = (date: string) => {
   const dateObj = new Date(date);
   let amPm = 'AM';
@@ -29,6 +31,7 @@ export const convertTimeFormat = (date: string) => {
   return `${hour}:${String(dateObj.getMinutes()).padStart(2, '0')} ${amPm}`;
 };
 
+// 채팅목록 시간 formatting
 export const convertTimeFormatForChatRoom = (date: string) => {
   const dateObj = new Date(date);
 
@@ -59,6 +62,7 @@ export const convertTimeFormatForChatRoom = (date: string) => {
   return converted;
 };
 
+// 채팅방 날짜 formatting
 export const convertDayDateFormat = (originalDate: string) => {
   const dateObj = new Date(originalDate);
   const day = daySelector[dateObj.getDay()];
@@ -80,6 +84,7 @@ export const checkIsNextDay = (date1: string, date2: string) => {
   return true;
 };
 
+// 채팅목록 구성을 위한 각 유저와의 마지막 메시지 구하기
 export const getLastMessages = (id: number, messages: TMessage[]) => {
   const lastMessages: TMessage[] = [];
   const checkFirst = Array(userData.data.length + 1).fill(0);
@@ -97,4 +102,26 @@ export const getLastMessages = (id: number, messages: TMessage[]) => {
   });
 
   return lastMessages;
+};
+
+// 검색된 유저 목록
+export const getSearchedUsers = (userId: number, query: string) => {
+  const storedUserData = userData.data.filter(
+    (e) => e.id !== userId && include(e.name, query)
+  );
+  // 유저 데이터가 초기 상태에서 변경되어 localStorage에 저장되어 있다면 해당 데이터로 교체
+  for (let i = 0; i < storedUserData.length; i += 1) {
+    const data = localStorage.getItem(`user_${storedUserData[i].id}`);
+    if (data) {
+      storedUserData[i] = JSON.parse(data);
+    }
+  }
+
+  // 사전순 정렬
+  storedUserData.sort((a, b) => {
+    if (a.name < b.name) return -1;
+    else return 1;
+  });
+
+  return storedUserData;
 };

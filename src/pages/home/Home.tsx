@@ -8,6 +8,7 @@ const Home = () => {
   const [query, setQuery] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
+  // 탐색중 효과(그냥 기분만 내봄)
   useEffect(() => {
     if (query) {
       setIsLoading(true);

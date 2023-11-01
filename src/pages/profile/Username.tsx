@@ -22,7 +22,8 @@ const UserName = ({
           className="username-input"
           value={newName}
           onChange={(e) => {
-            if (e.target.value.length < 10) setNewName(e.target.value);
+            // 닉네임 10글자 제한
+            if (e.target.value.length <= 10) setNewName(e.target.value);
           }}
         />
       ) : (

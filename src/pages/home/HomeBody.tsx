@@ -1,8 +1,7 @@
 import FriendListElement from 'pages/home/FriendListElement';
 import styled from 'styled-components';
-import userData from 'data/userData.json';
 import { useUserStore } from 'stores/userStore';
-import { include } from 'utils/search';
+import { getSearchedUsers } from 'utils';
 
 interface HomeBodyProps {
   query: string;
@@ -12,30 +11,16 @@ const HomeBody = ({ query }: HomeBodyProps) => {
   const user = useUserStore((state) => state.user);
   const setUser = useUserStore((state) => state.setUser);
 
-  const storedUserData = userData.data.filter(
-    (e) => e.id !== user.id && include(e.name, query)
-  );
-  for (let i = 0; i < storedUserData.length; i += 1) {
-    const data = localStorage.getItem(`user_${storedUserData[i].id}`);
-    if (data) {
-      storedUserData[i] = JSON.parse(data);
-    }
-  }
-
-  // 사전순 정렬
-  storedUserData.sort((a, b) => {
-    if (a.name < b.name) return -1;
-    else return 1;
-  });
+  const users = getSearchedUsers(user.id, query);
 
   return (
     <HomeBodyContainer>
       <div className="title-outer">
         <div className="title">Friends</div>
-        <div className="friend-number">{storedUserData.length}</div>
+        <div className="friend-number">{users.length}</div>
       </div>
       <div className="friend-list">
-        {storedUserData.map((e) => (
+        {users.map((e) => (
           <FriendListElement
             key={`${e.id}${e.statusMessage}`}
             user={e}
