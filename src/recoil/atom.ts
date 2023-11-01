@@ -74,3 +74,16 @@ export const userDMesasgeState = atom({
     },
   ],
 });
+
+
+// 사용자 검색창의 상태
+
+export const isSearchState  = atom({
+  key: "isSearchState",
+  default: false
+})
+
+export const userInputState = atom({
+  key: "userInputState",
+  default: "",
+});

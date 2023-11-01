@@ -10,7 +10,10 @@ import {
   userDMesasgeState,
 } from "../../../recoil/atom";
 import { sortMessagesByTime } from "../../../hooks/sortMessageByTime";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { userInputState, isSearchState } from "../../../recoil/atom";
+import { Text } from "../../atom/Text";
+import { dummyChatList, dummyContactList } from "../../../assets/\bdummyList";
 
 function ChatList() {
   const userAMessage = useRecoilValue(userAMessageState);
@@ -36,7 +39,9 @@ function ChatList() {
   let count2 = 0;
   // 마지막 채팅방에서 자신의 메시지가 마지막일 경우에는 읽지 않은 카운트에서 제외
   if (!isUser1InFirstRoom) {
-    room1SortedMessages.forEach((obj) => {{}
+    room1SortedMessages.forEach((obj) => {
+      {
+      }
       if (!obj.isRead) count1 += 1;
     });
   }
@@ -45,22 +50,41 @@ function ChatList() {
       if (!obj.isRead) count2 += 1;
     });
   }
+  const isSearch = useRecoilValue(isSearchState);
+  const userInput = useRecoilValue(userInputState);
+  const filterdChatList = dummyChatList.filter((item) =>
+    item.includes(userInput)
+  );
 
   return (
-    <Flex direction="column" gap="16" margin="16px 0px 0px" height="623px">
-      <ChatItem
-        id={1}
-        name={"이현진"}
-        lastMessage={lastMessageRoom1}
-        count={count1}
-      />
-      <ChatItem
-        id={2}
-        name={"김종완"}
-        lastMessage={lastMessageRoom2}
-        count={count2}
-      />
-    </Flex>
+    <>
+      {isSearch ? (
+        <Flex direction="column" gap="21px">
+          <Flex>
+            <Text>친구</Text>
+            <Flex></Flex>
+          </Flex>
+          <Flex>
+            <Text>채팅방</Text>
+          </Flex>
+        </Flex>
+      ) : (
+        <Flex direction="column" gap="16" margin="16px 0px 0px" height="623px">
+          <ChatItem
+            id={1}
+            name={"이현진"}
+            lastMessage={lastMessageRoom1}
+            count={count1}
+          />
+          <ChatItem
+            id={2}
+            name={"김종완"}
+            lastMessage={lastMessageRoom2}
+            count={count2}
+          />
+        </Flex>
+      )}
+    </>
   );
 }
 

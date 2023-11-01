@@ -6,12 +6,17 @@ import chatAddIcon from "../../assets/images/chatAddIcon.svg";
 import searchIcon from "../../assets/images/serachIcon.svg";
 import searchGrayIcon from "../../assets/images/searchGrayIcon.svg";
 import { Input } from "../atom/Input";
+import { useRecoilState } from "recoil";
+import { userInputState, isSearchState } from "../../recoil/atom";
 
 function HomeNav({ title }) {
-  const [isSearch, setIsSearch] = useState(false);
+  const [isSearch, setIsSearch] = useRecoilState(isSearchState);
+  const [userInput, setUserInput] = useRecoilState(userInputState);
   const toggleState = () => {
     setIsSearch(!isSearch);
-    console.log("df");
+  };
+  const onTextChange = (e) => {
+    setUserInput(e.target.value);
   };
   return (
     <>
@@ -36,6 +41,8 @@ function HomeNav({ title }) {
               padding="0px 28px "
               fontSize="16px"
               lineheight="40px"
+              value={userInput}
+              onChange={onTextChange}
             />
             <Text
               size="12px"
