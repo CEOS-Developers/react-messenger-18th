@@ -56,13 +56,18 @@ function ChatNav() {
       width="327px"
       margin="0 auto"
     >
-      <Icon src={backIcon} onClick={goChat}></Icon>
+      <Icon
+        src={backIcon}
+        onClick={goChat}
+        style={{ cursor: "pointer" }}
+      ></Icon>
       <Flex width="247px">
         <Text
           size="18px"
           lineheight="30px"
           font="Pretendard"
           weight="600"
+          cursor="pointer"
           onClick={toggleUser}
         >
           {params.roomID === "1"
