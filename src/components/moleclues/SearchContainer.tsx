@@ -40,7 +40,7 @@ function SearchContainer() {
               </Text>
               <Flex>
                 {filterContactList.map((item) => (
-                  <Flex direction="column" align="center">
+                  <Flex direction="column" align="center" key={item.name}>
                     <Flex
                       color="mainBlue"
                       width="47px"
@@ -69,6 +69,7 @@ function SearchContainer() {
             {filterChatList.map((item) => (
               <ChatItem
                 id={item == "이현진" ? 1 : 2}
+                key={item}
                 name={item}
                 lastMessage={
                   item == "이현진" ? lastMessageRoom1 : lastMessageRoom2

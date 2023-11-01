@@ -21,6 +21,7 @@ function ContactList() {
         >
           {dummyContactList.map((item) => (
             <ContactItem
+              key={item.name}
               name={item.name}
               introduction={item.introduction}
             ></ContactItem>

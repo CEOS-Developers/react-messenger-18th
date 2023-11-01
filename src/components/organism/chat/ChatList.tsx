@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ChatItem from "../../moleclues/chat/ChatItem";
 import { Flex } from "../../atom/Flex";
 import { Text } from "../../atom/Text";
@@ -42,10 +42,10 @@ function ChatList() {
   ]);
   const lastMessageRoom1 =
     room1SortedMessages[room1SortedMessages.length - 1]?.text;
-  setLastMessage1(lastMessageRoom1);
+  
   const lastMessageRoom2 =
     room2SortedMessages[room2SortedMessages.length - 1]?.text;
-  setLastMessage2(lastMessageRoom2);
+  
   // user1 (정인영) 입장에서 각각의 채팅방에서 읽지 않은 메시지의 개수 count1, count2
   let count1 = 0;
   let count2 = 0;
@@ -60,9 +60,14 @@ function ChatList() {
       if (!obj.isRead) count2 += 1;
     });
   }
-  setUnReadCountRoom1(count1);
-  setUnReadCountRoom2(count2);
+
   const isSearch = useRecoilValue(isSearchState);
+  useEffect(()=>{
+    setLastMessage1(lastMessageRoom1);
+    setLastMessage2(lastMessageRoom2);
+    setUnReadCountRoom1(count1);
+    setUnReadCountRoom2(count2);
+  },[]);
 
   return (
     <>
