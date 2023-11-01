@@ -9,11 +9,8 @@ import { ReactComponent as Search } from "@common/icons/search.svg";
 import Star from "@common/icons/star/Star";
 import theme from "@styles/theme";
 import { Profile } from "@features/user";
-import {
-  ChatListBox,
-  groupChatRoomState,
-  defaultGroupChatList,
-} from "@features/chat";
+import { ChatListBox, defaultGroupChatList } from "@features/chat";
+import { filterByCategory } from "@common/utils";
 
 const SHOW_LIST_STATE = ["그룹", "개인"];
 
@@ -22,15 +19,17 @@ export function ChatList() {
   const [showListState, setShowListState] = useState(SHOW_LIST_STATE[0]);
   const [searchText, setSearchText] = useState("");
   const [showSearchBar, setShowSearchBar] = useState(false);
-  const searchedGroupChat = searchByName<groupChatRoomState>(
-    defaultGroupChatList,
-    searchText
+  const searchedGroupChat = searchByName(defaultGroupChatList, searchText);
+  const searchedMainGroupChat = filterByCategory(
+    searchedGroupChat,
+    "type",
+    CHATROOM_TYPE.MAIN
   );
-  const filterSearchedGroupChat = (type: string) => {
-    return searchedGroupChat.filter((groupChat) => groupChat.type === type);
-  };
-  const searchedMainGroupChat = filterSearchedGroupChat(CHATROOM_TYPE.MAIN);
-  const searchedSubGroupChat = filterSearchedGroupChat(CHATROOM_TYPE.SUB);
+  const searchedSubGroupChat = filterByCategory(
+    searchedGroupChat,
+    "type",
+    CHATROOM_TYPE.SUB
+  );
   return (
     <>
       <PageHeader

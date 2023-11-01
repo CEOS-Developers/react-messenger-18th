@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { PageHeader, Divider, SearchBar } from "@common/components";
 import { DIVIDER_TYPE, MAJOR_TYPE } from "@common/constants";
-import { searchByName } from "@common/utils";
+import { filterByCategory, searchByName } from "@common/utils";
 import { ReactComponent as Arrow } from "@common/icons/arrows/leftarrow.svg";
 import { ReactComponent as Search } from "@common/icons/search.svg";
 import { ReactComponent as AddFriend } from "@common/icons/addfriend.svg";
@@ -12,23 +12,23 @@ import {
   PersonalInfoBox,
   defaultFriendsList,
 } from "@features/friend";
-import { PersonalInfoBoxProps } from "@features/friend/components/PersonalInfoBox/PersonalInfoBox";
 import theme from "@styles/theme";
+
 export function FriendsList() {
   const navigate = useNavigate();
   const [searchText, setSearchText] = useState("");
   const [showSearchBar, setShowSearchBar] = useState(false);
-  const searchedFriendsList = searchByName<PersonalInfoBoxProps>(
-    defaultFriendsList,
-    searchText
+  const searchedFriendsList = searchByName(defaultFriendsList, searchText);
+  const searchedDesignerList = filterByCategory(
+    searchedFriendsList,
+    "majorIn",
+    MAJOR_TYPE.DESIGNER
   );
-  const filterSearchedFriendsList = (type: string) => {
-    return searchedFriendsList.filter(
-      (friendList) => friendList.majorIn === type
-    );
-  };
-  const searchedDesignerList = filterSearchedFriendsList(MAJOR_TYPE.DESIGNER);
-  const searchedFrontEndList = filterSearchedFriendsList(MAJOR_TYPE.FRONTEND);
+  const searchedFrontEndList = filterByCategory(
+    searchedFriendsList,
+    "majorIn",
+    MAJOR_TYPE.FRONTEND
+  );
   return (
     <>
       <PageHeader
