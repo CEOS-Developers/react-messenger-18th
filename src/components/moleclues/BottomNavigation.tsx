@@ -8,19 +8,24 @@ import messageIconBlue from "../../assets/images/messageIconBlue.svg";
 import horizontalIcon from "../../assets/images/horizontalIcon.svg";
 import horizontalIconBlue from "../../assets/images/horizontalIconBlue.svg";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
+import { isSearchState } from "../../recoil/atom";
 function BottomNavigation() {
   const [isBlue, setIsBlue] = useState({
     contact: false,
     chat: false,
     profile: false,
   });
+  const setIsSearch = useSetRecoilState(isSearchState);
   const location = useLocation();
   useEffect(() => {
+    // 검색중일때 메뉴 클릭하면 검색중인 상태가 뜨지 않게 조정
+    setIsSearch(false);
     const path = location.pathname;
     if (path === "/contact") {setIsBlue({ ...isBlue, contact: true })};
     if (path === "/chat") setIsBlue({ ...isBlue, chat: true });
     if (path === "/profile") setIsBlue({ ...isBlue, profile: true });
-  }, [location]);
+  }, [location]); 
 
   return (
     <Flex width="375px">
