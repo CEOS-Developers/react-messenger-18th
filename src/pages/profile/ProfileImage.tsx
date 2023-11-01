@@ -68,7 +68,8 @@ const ProfileImageConatiner = styled.div`
   overflow: hidden;
   img,
   svg {
-    width: 108px;
+    width: 100%;
+    object-fit: cover;
   }
 `;
 

@@ -1,4 +1,3 @@
-import ButtonWithIcon from 'pages/common/ButtonWithIcon';
 import styled from 'styled-components';
 import { TMessage } from 'types';
 import { ReactComponent as HeartIcon } from 'static/images/heart-icon.svg';
@@ -29,18 +28,15 @@ const EachMessage = ({
         </DayDateContainer>
       )}
       <MessageBody $isOwnMessage={isOwnMessage}>
-        {!isOwnMessage && (
-          <MessageProfileImage
-            children={
-              message.profileImage ? (
-                <img src={message.profileImage} alt="profile" />
-              ) : (
-                <DefaultProfileIcon />
-              )
-            }
-            size={36}
-          />
-        )}
+        <div className="profile-image-outer">
+          {!isOwnMessage &&
+            (message.profileImage ? (
+              <img src={message.profileImage} alt="profile" />
+            ) : (
+              <DefaultProfileIcon />
+            ))}
+        </div>
+
         <TextAndLikeOuter $order={orders[0]} $isOwnMessage={isOwnMessage}>
           <MessageText
             $isOwnMessage={isOwnMessage}
@@ -76,12 +72,21 @@ const EachMessageContainer = styled.div`
 const MessageBody = styled.div<{ $isOwnMessage: boolean }>`
   display: flex;
   justify-content: ${(props) => (props.$isOwnMessage ? 'end' : 'start')};
-`;
-
-const MessageProfileImage = styled(ButtonWithIcon)`
-  margin-right: 11px;
-  border-radius: 50%;
-  overflow: hidden;
+  .profile-image-outer {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 11px;
+    img,
+    svg {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
 `;
 
 const TextAndLikeOuter = styled.div<{ $order: number; $isOwnMessage: boolean }>`
