@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { PageHeader, SearchBar, Divider } from "@common/components";
-import { DIVIDER_TYPE, CHATROOM_TYPE } from "@common/constants";
+import { DIVIDER_TYPE, CHATROOM_TYPE, MAJOR_TYPE } from "@common/constants";
 import { searchByName } from "@common/utils/search";
 import { ReactComponent as Friends } from "@common/icons/friends.svg";
 import { ReactComponent as Search } from "@common/icons/search.svg";
@@ -41,7 +41,15 @@ export function ChatList() {
           <Profile
             $img="/img/profile.jpg"
             $size="2.4rem"
-            onClick={() => navigate("/my-profile")}
+            onClick={() =>
+              navigate("/profile", {
+                state: {
+                  img: "/img/profile.jpg",
+                  name: "김현민",
+                  majorIn: MAJOR_TYPE.FRONTEND,
+                },
+              })
+            }
             $addClass="margin-left:1.2rem;"
           />
         }

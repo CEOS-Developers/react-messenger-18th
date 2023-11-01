@@ -1,6 +1,6 @@
 export enum MAJOR_TYPE {
-  PLANNER = "planner",
-  DESIGNER = "designer",
-  FRONTEND = "frontend",
-  BACKEND = "backend",
+  PLANNER = "Planner",
+  DESIGNER = "Designer",
+  FRONTEND = "Frontend",
+  BACKEND = "Backend",
 }

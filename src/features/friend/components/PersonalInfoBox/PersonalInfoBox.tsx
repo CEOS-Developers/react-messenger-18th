@@ -34,13 +34,11 @@ export function PersonalInfoBox({
         <ProfilePhoto
           $img={img}
           onClick={() =>
-            navigate(`/chatroom/${CHATROOM_TYPE.FRIEND}/${id}`, {
+            navigate(`/profile`, {
               state: {
-                chatRoomTitle: name,
                 img,
                 name,
-                chatRoomState: CHATROOM_TYPE.FRIEND,
-                chatRoomId: id,
+                majorIn,
               },
             })
           }

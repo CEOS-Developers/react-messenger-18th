@@ -6,7 +6,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import { PhoneFrame } from "@common/components";
-import { ChatList, ChatRoom, FriendsList, MyProfile } from "@pages/index";
+import { ChatList, ChatRoom, FriendsList, UserProfile } from "@pages/index";
 import { CHATROOM_TYPE } from "@common/constants/chatroom-type";
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
         <Route element={<PhoneFrame />}>
           <Route path="/" element={<ChatList />} />
           <Route path="/friends-list" element={<FriendsList />} />
-          <Route path="/my-profile" element={<MyProfile />} />
+          <Route path="/profile" element={<UserProfile />} />
           <Route
             path={`/chatroom/${CHATROOM_TYPE.MAIN}/:id`}
             element={<ChatRoom />}

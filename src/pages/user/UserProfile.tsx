@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { ChipButton, PageHeader } from "@common/components";
 import { ReactComponent as LeftArrow } from "@common/icons/arrows/leftarrow.svg";
 import { ReactComponent as Edit } from "@common/icons/edit.svg";
@@ -36,8 +36,9 @@ const PERSONAL_LINK = [
   },
 ];
 
-export function MyProfile() {
+export function UserProfile() {
   const navigate = useNavigate();
+  const { state } = useLocation();
   return (
     <>
       <PageHeader
@@ -48,10 +49,10 @@ export function MyProfile() {
       />
       <ProfileInfoWrapper>
         <MainProfile>
-          <Profile $img="/img/profile.jpg" $size="14rem" />
+          <Profile $img={state.img} $size="14rem" />
           <MainProfileText>
             <UserName>
-              <span>김현민</span>
+              <span>{state.name}</span>
             </UserName>
             <ChipButton
               width="10rem"
@@ -61,7 +62,7 @@ export function MyProfile() {
               addClass="padding: 0.2rem 0.4rem 0.2rem 0.8rem;"
             >
               <ChipBtnText>
-                <span>Frontend</span>
+                <span>{state.majorIn}</span>
               </ChipBtnText>
               <BottomArrow />
             </ChipButton>
