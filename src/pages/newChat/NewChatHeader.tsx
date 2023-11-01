@@ -41,5 +41,6 @@ const NewChatHeaderContainer = styled.div`
 const CancelButton = styled.button`
   margin-left: 10px;
   color: var(--Gray-3);
+  font-size: 14px;
 `;
 export default NewChatHeader;
