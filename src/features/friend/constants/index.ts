@@ -1,4 +1,1 @@
-export {
-  defaultDesignerList,
-  defaultDeveloperList,
-} from "./default-friendlist";
+export { defaultFriendsList } from "./default-friendlist";

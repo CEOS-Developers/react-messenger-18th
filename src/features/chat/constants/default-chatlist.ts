@@ -2,7 +2,7 @@ import { CHATROOM_TYPE } from "@common/constants";
 
 export const defaultGroupChatList = [
   {
-    id: 1,
+    id: 0,
     img: "/img/satellite.jpg",
     name: "기업적디자인스튜디오(1)",
     people: 19,
@@ -10,7 +10,7 @@ export const defaultGroupChatList = [
     type: CHATROOM_TYPE.MAIN,
   },
   {
-    id: 0,
+    id: 1,
     img: "/img/flower.jpg",
     name: "2022-2 사이드프로젝트",
     people: 4,
@@ -18,7 +18,7 @@ export const defaultGroupChatList = [
     type: CHATROOM_TYPE.SUB,
   },
   {
-    id: 1,
+    id: 2,
     img: "/img/piano.jpg",
     name: "2022-1 사이드프로젝트",
     people: 5,
@@ -26,7 +26,7 @@ export const defaultGroupChatList = [
     type: CHATROOM_TYPE.SUB,
   },
   {
-    id: 0,
+    id: 3,
     img: "/img/cat.jpg",
     name: "CEOS 18기 펫뷸러스",
     people: 5,
