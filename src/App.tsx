@@ -12,19 +12,27 @@ import ProfilePage from "./pages/ProfilePage";
 //context
 import { SenderProvider } from "./assets/SenderContext";
 
+//recoil
+import { RecoilRoot } from "recoil";
+
 function App() {
   return (
-    <SenderProvider>
-      <GlobalStyle />
-      <Router>
-        <Routes>
-          <Route path={"/"} element={<FriendsListPage />}></Route>
-          <Route path={"/chatting"} element={<ChattingListPage />}></Route>
-          <Route path={"/chatting/:chat_id"} element={<ChattingRoom />}></Route>
-          <Route path={"/profile/:user_id"} element={<ProfilePage />}></Route>
-        </Routes>
-      </Router>
-    </SenderProvider>
+    <RecoilRoot>
+      <SenderProvider>
+        <GlobalStyle />
+        <Router>
+          <Routes>
+            <Route path={"/"} element={<FriendsListPage />}></Route>
+            <Route path={"/chatting"} element={<ChattingListPage />}></Route>
+            <Route
+              path={"/chatting/:chat_id"}
+              element={<ChattingRoom />}
+            ></Route>
+            <Route path={"/profile/:user_id"} element={<ProfilePage />}></Route>
+          </Routes>
+        </Router>
+      </SenderProvider>
+    </RecoilRoot>
   );
 }
 

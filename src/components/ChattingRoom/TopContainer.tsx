@@ -10,22 +10,33 @@ import call from "../../assets/images/phone.svg";
 import video from "../../assets/images/video.svg";
 
 function TopContainer() {
-  const { sender, setSender } = useSender();
-  const currentUser = userData[sender === "me" ? "yeom" : "me"];
+  // const { sender, setSender } = useSender();
+  // const currentUser = userData[sender === 0 ? 1 : 0];
 
-  const handleUserInfoClick = () => {
-    setSender(sender === "me" ? "other" : "me");
-  };
+  // const handleUserInfoClick = () => {
+  //   setSender(sender === 0 ? 1 : 0);
+  // };
+  // return (
+  //   <>
+  //     <Container>
+  //       <Box onClick={handleUserInfoClick}>
+  //         <Icon src={back} />
+  //         <UserInfo>
+  //           <Profile src={currentUser.profileImage} />
+  //           <div>
+  //             <UserName>{currentUser.userName}</UserName>
+  //             <UserID>{currentUser.userID}</UserID>
+
   return (
     <>
       <Container>
-        <Box onClick={handleUserInfoClick}>
+        <Box>
           <Icon src={back} />
           <UserInfo>
-            <Profile src={currentUser.profileImage} />
+            <Profile />
             <div>
-              <UserName>{currentUser.userName}</UserName>
-              <UserID>{currentUser.userID}</UserID>
+              <UserName>hi</UserName>
+              <UserID>hello</UserID>
             </div>
           </UserInfo>
         </Box>

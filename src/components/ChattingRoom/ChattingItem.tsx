@@ -2,18 +2,21 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { color } from "../../assets/styles/color";
 import { useSender } from "../../assets/SenderContext";
-import userData from "../../assets/data/userdata.json";
+
+//data
+import { useRecoilValue } from "recoil";
+import { meAtom, chatArrayState } from "../../assets/recoil/recoil";
 
 interface ChattingItemProps {
   message: string;
-  sender: string;
+  sender: number;
   isLastItem: boolean;
 }
 
 function ChattingItem({ message, sender, isLastItem }: ChattingItemProps) {
   const { sender: contextSender } = useSender();
   const isMe = sender === contextSender;
-  const currentUser = userData[sender === "me" ? "yeom" : "me"];
+  const currentUser = useRecoilValue(meAtom);
   return (
     <ChattingItemContainer sender={sender} isMe={isMe}>
       {isMe ? (
@@ -30,7 +33,7 @@ function ChattingItem({ message, sender, isLastItem }: ChattingItemProps) {
 
 export default ChattingItem;
 
-const ChattingItemContainer = styled.div<{ sender: string; isMe: boolean }>`
+const ChattingItemContainer = styled.div<{ sender: number; isMe: boolean }>`
   display: flex;
   align-items: flex-end;
   justify-content: ${(props) => (props.isMe ? "flex-end" : "flex-start")};

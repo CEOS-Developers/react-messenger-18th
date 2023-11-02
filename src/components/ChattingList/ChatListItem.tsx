@@ -1,14 +1,28 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
+import { chattingInterface } from "../../assets/types/interfaces";
+
+import { useRecoilValue } from "recoil";
+import { userArrayState, chatArrayState } from "../../assets/recoil/recoil";
 //img
 import camera from "../../assets/images/camera-line.svg";
 
-const ChatListItem = () => {
+interface ChattingItemProps {
+  chatting: chattingInterface;
+}
+
+const ChatListItem = ({ chatting }: ChattingItemProps) => {
+  const navigate = useNavigate();
+
+  const userArray = useRecoilValue(userArrayState);
+  const friendId = chatting.users.filter((id) => id !== 0)[0];
+  const friendInfoById = userArray.filter((user) => user.id === friendId)[0];
   return (
-    <Box>
-      <UserImg />
+    <Box onClick={() => navigate(`/chatting/${friendInfoById.id}`)}>
+      <UserImg src={friendInfoById.profileImage} />
       <UserInfo>
-        <div className="UserName">Yeom</div>
+        <div className="UserName">{friendInfoById.userName}</div>
         <div className="ChattingInfo">
           <span>새 메세지 3개</span>
           {/* 읽음 여부 따라 색 변경 */}

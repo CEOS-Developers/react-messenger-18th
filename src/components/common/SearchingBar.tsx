@@ -93,7 +93,9 @@ const Icon = styled.img`
 `;
 
 const IconDiv = styled.div`
-  margin: 0 10px;
+  width: 24px;
+  height: 24px;
+  margin: 0 12px 0 10px;
 `;
 
 const SearchingContainer = styled.div`

@@ -18,7 +18,7 @@ import sendingbtn from "../../assets/images/sendingbtn.svg";
 function ChattingInput() {
   const { sender, setSender } = useSender();
   const [inputMessage, setInputMessage] = useState("");
-  const [messages, setMessages] = useState<{ text: string; sender: string }[]>(
+  const [messages, setMessages] = useState<{ text: string; sender: number }[]>(
     () => {
       const storedMessages = localStorage.getItem("chatMessages");
       return storedMessages ? JSON.parse(storedMessages) : chatData;

@@ -1,29 +1,28 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
+//data
+import { useRecoilValue } from "recoil";
+import { meAtom, friendsListAtom } from "../assets/recoil/recoil";
 import { color } from "../assets/styles/color";
 
 //components
 import SearchingBar from "../components/common/SearchingBar";
 import FriendItem from "../components/common/FriendItem";
 
-//data
-import userData from "../assets/data/userdata.json";
-
 //bar
 import bars from "../assets/images/bars.svg";
 import status from "../assets/images/status.svg";
 
 function FriendsListPage() {
-  const dataArray = Object.values(userData);
-  const friendCount = dataArray.length - 1;
-  const otherUsers = dataArray.slice(1);
+  const meUser = useRecoilValue(meAtom);
+  const otherUsers = useRecoilValue(friendsListAtom);
+  const friendCount = otherUsers.length;
   return (
     <Container>
       <StatusBar src={status} />
       <SearchingBar showSearch={false} />
-      <FriendItem user={dataArray[0]} />
+      <FriendItem user={meUser} />
       <Guide>
         <div className="line"></div>
         <span className="friend-number">친구 {friendCount}</span>
