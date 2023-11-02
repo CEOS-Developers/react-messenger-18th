@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useLocation, useNavigate } from "react-router-dom";
 import { PageHeader, Divider } from "@common/components";
@@ -9,34 +9,29 @@ import { ReactComponent as Search } from "@common/icons/search.svg";
 import { ReactComponent as Box } from "@common/icons/box.svg";
 import { ReactComponent as Plus } from "@common/icons/plus.svg";
 import { ReactComponent as Send } from "@common/icons/send.svg";
-import { ChatWrapper, defaultChatRoomData } from "@features/chat";
+import {
+  ChatWrapper,
+  defaultChatRoomData,
+  useChatHeaderClicked,
+} from "@features/chat";
 import { useScrollToBottom } from "@common/hooks/useScrollToBottom";
 import theme from "@styles/theme";
-import { useChatHeaderClicked } from "@features/chat/hooks/useChatHeaderClicked";
+import { useChatInputChanged } from "@features/chat/hooks/useChatInputChanged";
 
 export function ChatRoom() {
   const { state } = useLocation();
   const navigate = useNavigate();
   const STORAGE_KEY = `chatroom${state.chatRoomState}${state.chatRoomId}`;
-  const [chatText, setChatText] = useState("");
   const [shouldScrollToBottom, setShouldScrollToBottom] = useState(true);
-  const [sendBtnState, setSendBtnState] = useState(false);
   const [chatData, setChatData] = useState([
     ...defaultChatRoomData(state),
     ...getChatRoomData(STORAGE_KEY),
   ]);
   const { headerClicked, toggleHeaderClicked } =
     useChatHeaderClicked(setChatData);
+  const { chatText, setChatText, sendBtnState, setSendBtnState, inputChanged } =
+    useChatInputChanged();
   const { ref, scrollToBottom } = useScrollToBottom<HTMLDivElement>();
-  const chatInputChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.value.trim() === "") {
-      setSendBtnState(false);
-    }
-    if (event.target.value.trim() !== "") {
-      setSendBtnState(true);
-    }
-    setChatText(event.target.value);
-  };
   const sendBtnClicked = () => {
     if (!sendBtnState) {
       return;
@@ -120,7 +115,9 @@ export function ChatRoom() {
         <Plus />
         <ChatInput
           placeholder="채팅을 입력해주세요"
-          onChange={chatInputChanged}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+            inputChanged(event)
+          }
           value={chatText}
           onKeyDown={handleKeyPress}
         />
