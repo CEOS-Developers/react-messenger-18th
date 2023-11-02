@@ -37,15 +37,13 @@ const ChatRoom: React.FC = () => {
       .getDate()
       .toString()
       .padStart(2, "0")}. ${dayOfWeek}`;
-
     const time = ` ${period} ${formattedHours}:${formattedMinutes}`;
-    const calendar = formattedDate;
     const newItem = {
       value: data,
       id: randomId,
       sender: currentUser.name,
       date: time,
-      calendar: calendar,
+      calendar: formattedDate,
     };
     setChat([...chat, newItem]);
   };

@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 import Chat from "./Chat";
 import React, { useEffect, useRef } from "react";
+import Calendar from "./Calendar";
 
 type InchatListProps = {
   currentUser: { id: number; name: string };
@@ -68,18 +69,21 @@ const InchatList: React.FC<InchatListProps> = ({ currentUser, chat }) => {
     <InChatListContainer>
       <InChatListWrapper ref={chatListRef} id="chat-container">
         {chat.map((message, index) => (
-          <Chat
-            value={message.value}
-            id={message.id}
-            sender={message.sender}
-            date={message.date}
-            key={message.id}
-            showDate={determineshowDate(chat, index)}
-            currentUser={currentUser}
-            showProfileImage={determineShowProfileImage(chat, index)}
-            calendar={message.calendar}
-            showCalendar={index === 0 ? true : determineCalendar(chat, index)}
-          />
+          <React.Fragment key={message.id}>
+            {index === 0 || determineCalendar(chat, index) ? (
+              <Calendar calendar={message.calendar} />
+            ) : null}
+            <Chat
+              value={message.value}
+              id={message.id}
+              sender={message.sender}
+              date={message.date}
+              key={message.id}
+              showDate={determineshowDate(chat, index)}
+              currentUser={currentUser}
+              showProfileImage={determineShowProfileImage(chat, index)}
+            />
+          </React.Fragment>
         ))}
       </InChatListWrapper>
     </InChatListContainer>
@@ -101,9 +105,4 @@ const InChatListWrapper = styled.div`
   display: flex;
   align-items: flex-end;
   flex-direction: column;
-  > * {
-    &:first-child {
-      margin-top: auto !important;
-    }
-  }
 `;

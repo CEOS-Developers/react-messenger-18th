@@ -8,7 +8,7 @@ const TopInChat: React.FC<{
   return (
     <Container>
       <TopInChatContainer>
-        <StyledBackIcon size={36} icon="back" />
+        <StyledBackIcon size={36} icon="back" color="#33333A" />
         <UserName
           onClick={() => {
             changeUser(currentUser.id);
@@ -17,8 +17,8 @@ const TopInChat: React.FC<{
           {currentUser.name}{" "}
         </UserName>
         <RightItems>
-          <Icon size={28} icon="search" />
-          <Icon size={28} icon="menu" />
+          <Icon size={28} icon="search" color="#33333A" />
+          <Icon size={28} icon="menu" color="#33333A" />
         </RightItems>
       </TopInChatContainer>
     </Container>
@@ -46,6 +46,7 @@ const UserName = styled.div`
   padding-right: 180px;
   padding-top: 2px;
   font-weight: 600;
+  color: #33333a;
 `;
 
 const StyledBackIcon = styled(Icon)`

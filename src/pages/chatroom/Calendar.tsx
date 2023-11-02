@@ -3,10 +3,9 @@ import { styled } from "styled-components";
 
 type ChatProps = {
   calendar: string;
-  showCalendar: boolean;
 };
 
-const Calendar: React.FC<ChatProps> = ({ calendar, showCalendar }) => {
+const Calendar: React.FC<ChatProps> = ({ calendar }) => {
   return (
     <CalendarContainer>
       <CalendarWrapper>{calendar}</CalendarWrapper>
@@ -16,12 +15,17 @@ const Calendar: React.FC<ChatProps> = ({ calendar, showCalendar }) => {
 export default Calendar;
 
 const CalendarContainer = styled.div`
-  padding: 12px;
-  width: 100px;
+  width: 343px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const CalendarWrapper = styled.div`
-  padding: 8px;
+  width: 100px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  display: flex;
   justify-content: center;
   border-radius: 16px;
   opacity: 0.6;
