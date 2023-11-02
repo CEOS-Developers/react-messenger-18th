@@ -71,7 +71,7 @@ export default BottomInputBox;
 const BottomBarContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 0px 20px;
+  padding: 8px 16px;
   align-items: center;
 `;
 const InputBoxContainer = styled.div`
@@ -98,8 +98,7 @@ const InputBox = styled.input`
 `;
 
 const Emotion = styled.img`
-  position: absolute;
-  right: 70px;
+  position: relative;
   top: 50%;
   transform: translateY(-50%);
   z-index: 1;

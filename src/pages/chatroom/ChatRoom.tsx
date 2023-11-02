@@ -72,11 +72,9 @@ const ChatRoom: React.FC = () => {
 export default ChatRoom;
 
 const TopWrapper = styled.div`
-  position: fixed;
   top: 38px;
 `;
 
 const BottomWrapper = styled.div`
-  position: fixed;
   bottom: 34px;
 `;

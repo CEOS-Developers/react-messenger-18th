@@ -95,15 +95,14 @@ const InchatList: React.FC<InchatListProps> = ({ currentUser, chat }) => {
 export default InchatList;
 
 const InChatListContainer = styled.div`
-  height: 624px;
   padding: 0px 16px;
-  margin-top: 60px;
-  margin-bottom: 46px;
 `;
 
 const InChatListWrapper = styled.div`
   height: 610px;
   overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
   display: flex;
   align-items: flex-end;
   flex-direction: column;

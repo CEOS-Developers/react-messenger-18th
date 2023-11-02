@@ -27,19 +27,16 @@ const MyPage = () => {
 export default MyPage;
 
 const HeaderWrapper = styled.header`
-  position: fixed;
   top: 38px;
   width: 375px;
 `;
 
 const FooterWrapper = styled.header`
-  position: fixed;
   bottom: 34px;
   width: 375px;
 `;
 
 const MyPageContentWrapper = styled.div`
-  position: fixed;
   top: 98px;
   width: 375px;
 `;

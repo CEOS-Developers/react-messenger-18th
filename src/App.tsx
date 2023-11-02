@@ -34,17 +34,14 @@ const App: React.FC = () => {
 
 export default App;
 
-const Wrapper = styled.div`
-  width: 375px;
-  height: 812px;
-`;
+const Wrapper = styled.div``;
 
-const Container = styled.div`
-  padding-top: 38px;
-  padding-bottom: 34px;
-`;
+const Container = styled.div``;
 
 export const GlobalStyles = createGlobalStyle`
+  *::-webkit-scrollbar {
+    width: 0;
+  }
   body {
     background-color: #f6f6f6;
     display: flex;
@@ -52,7 +49,6 @@ export const GlobalStyles = createGlobalStyle`
     align-items: center;
     font-family: 'Pretendard';
     min-height: 100vh;
-    margin: 0;
   }
 
   #root {
@@ -60,12 +56,6 @@ export const GlobalStyles = createGlobalStyle`
   }
 `;
 
-const StatusBarImage = styled.img`
-  position: fixed;
-  top: 0;
-`;
+const StatusBarImage = styled.img``;
 
-const HomeImage = styled.img`
-  position: fixed;
-  bottom: 0;
-`;
+const HomeImage = styled.img``;
