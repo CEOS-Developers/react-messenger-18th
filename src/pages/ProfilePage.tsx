@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { color } from "../assets/styles/color";
+
+import { useRecoilValue } from "recoil";
+import { userArrayState } from "../assets/recoil/recoil";
 
 //img
 import back from "../assets/images/back.svg";
@@ -14,14 +17,19 @@ import status from "../assets/images/status.svg";
 
 function ProfilePage() {
   const navigate = useNavigate();
+  const { user_id } = useParams();
+  const userArray = useRecoilValue(userArrayState);
+  const userInfo = userArray.find(
+    (user) => user.id === parseInt(user_id || "0", 10)
+  );
 
   return (
     <Container>
       <StatusBar src={status} />
       <img src={back} className="back" onClick={() => navigate(-1)} />
       <UserInfo>
-        <Profile />
-        <span className="username">염혜인</span>
+        <Profile src={userInfo?.profileImage} />
+        <span className="username">{userInfo?.userName}</span>
         <span className="usermail">yeomhyein123@naver.com</span>
       </UserInfo>
       <LinkContainer>

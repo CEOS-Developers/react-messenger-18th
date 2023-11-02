@@ -5,7 +5,7 @@ import { useSender } from "../../assets/SenderContext";
 
 //data
 import { useRecoilValue } from "recoil";
-import { meAtom, chatArrayState } from "../../assets/recoil/recoil";
+import { userArrayState } from "../../assets/recoil/recoil";
 
 interface ChattingItemProps {
   message: string;
@@ -14,11 +14,13 @@ interface ChattingItemProps {
 }
 
 function ChattingItem({ message, sender, isLastItem }: ChattingItemProps) {
+  const userArray = useRecoilValue(userArrayState);
+  const currentUser = userArray[sender === 0 ? 0 : sender];
   const { sender: contextSender } = useSender();
   const isMe = sender === contextSender;
-  const currentUser = useRecoilValue(meAtom);
+
   return (
-    <ChattingItemContainer sender={sender} isMe={isMe}>
+    <ChattingItemContainer isMe={isMe}>
       {isMe ? (
         <></>
       ) : isLastItem ? (
@@ -33,7 +35,7 @@ function ChattingItem({ message, sender, isLastItem }: ChattingItemProps) {
 
 export default ChattingItem;
 
-const ChattingItemContainer = styled.div<{ sender: number; isMe: boolean }>`
+const ChattingItemContainer = styled.div<{ isMe: boolean }>`
   display: flex;
   align-items: flex-end;
   justify-content: ${(props) => (props.isMe ? "flex-end" : "flex-start")};

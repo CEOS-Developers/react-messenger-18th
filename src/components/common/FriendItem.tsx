@@ -14,25 +14,25 @@ interface FriendItemProps {
     profileImage: string;
     userName: string;
   };
+  emp: boolean;
 }
 
-const FriendItem = ({ user }: FriendItemProps) => {
+const FriendItem = ({ user, emp = false }: FriendItemProps) => {
   const navigate = useNavigate();
   const [isChecked, setIsChecked] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
   // 검색 페이지일 때만 체크 표시 뜨게 하는 state
   const handleToggleCheck = () => {
-    setIsChecked(!isChecked);
     if (!isSearching) {
       navigate(`/profile/${user.id}`);
     } else {
-      navigate("/");
+      setIsChecked(!isChecked);
     }
   };
   return (
     <Box onClick={handleToggleCheck}>
       <UserImg src={user.profileImage} />
-      <UserInfo>
+      <UserInfo emp={emp}>
         <div className="UserName">{user.userName}</div>
         <span className="ChattingInfo">{user.userID}</span>
       </UserInfo>
@@ -67,30 +67,25 @@ const UserImg = styled.img`
   border: 0.7px solid rgba(252, 252, 252, 0.3);
 `;
 
-const UserInfo = styled.div`
+const UserInfo = styled.div<{ emp: boolean }>`
   display: flex;
   width: 283px;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: flex-start;
-  gap: 4px;
+  gap: ${(props) => (props.emp ? "1px" : "4px")};
+
+  font-size: ${(props) => (props.emp ? "0.9rem" : "0.6rem")};
+  font-weight: ${(props) => (props.emp ? 600 : 500)};
+  font-style: normal;
+  line-height: 130%;
 
   .UserName {
   }
   color: ${color.black};
 
-  font-size: 10px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 130%;
-
   .ChattingInfo {
     color: ${color.black};
-
-    font-size: 10px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 130%;
   }
 `;
 

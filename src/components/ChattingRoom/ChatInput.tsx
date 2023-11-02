@@ -2,8 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import styled, { css } from "styled-components";
 import { color } from "../../assets/styles/color";
 import { useSender } from "../../assets/SenderContext";
-import chatData from "../../assets/data/chattingdata.json";
-
+//data
+import { useRecoilValue } from "recoil";
+import { chatArrayState } from "../../assets/recoil/recoil";
 //components
 import ChattingItem from "./ChattingItem";
 
@@ -15,18 +16,23 @@ import sticker from "../../assets/images/sticker.svg";
 import camera from "../../assets/images/camera.svg";
 import sendingbtn from "../../assets/images/sendingbtn.svg";
 
-function ChattingInput() {
+function ChattingInput({ friendId }: { friendId: number }) {
   const { sender, setSender } = useSender();
   const [inputMessage, setInputMessage] = useState("");
+
+  const chatArray = useRecoilValue(chatArrayState);
+  const chattingId: number = friendId - 1;
+
   const [messages, setMessages] = useState<{ text: string; sender: number }[]>(
     () => {
-      const storedMessages = localStorage.getItem("chatMessages");
-      return storedMessages ? JSON.parse(storedMessages) : chatData;
+      const storedMessages = localStorage.getItem(`chatMessages${friendId}`);
+      return storedMessages
+        ? JSON.parse(storedMessages)
+        : chatArray[chattingId].chatList;
     }
   );
 
   //제출시 실행되는 함수
-
   const containerRef = useRef<HTMLDivElement | null>(null);
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -47,7 +53,7 @@ function ChattingInput() {
     if (containerRef.current) {
       containerRef.current.scrollTop = containerRef.current.scrollHeight;
     }
-    localStorage.setItem("chatMessages", JSON.stringify(messages));
+    localStorage.setItem(`chatMessages${friendId}`, JSON.stringify(messages));
   }, [messages]);
 
   //전송버튼 팝업
@@ -105,7 +111,7 @@ function ChattingInput() {
 
 export default ChattingInput;
 
-const Container = styled.div<{ sender: string }>`
+const Container = styled.div<{ sender: number }>`
   display: flex;
   flex-direction: column;
 

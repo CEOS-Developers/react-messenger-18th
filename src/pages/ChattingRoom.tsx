@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
 //components
@@ -10,11 +11,13 @@ import bars from "../assets/images/bars.svg";
 import status from "../assets/images/status.svg";
 
 function ChattingRoom() {
+  const { chat_id } = useParams();
+  const friendId: number = parseInt(chat_id || "1", 10);
   return (
     <Container>
       <StatusBar src={status} />
-      <TopContainer />
-      <ChatInput />
+      <TopContainer friendId={friendId} />
+      <ChatInput friendId={friendId} />
       <Bar src={bars} />
     </Container>
   );

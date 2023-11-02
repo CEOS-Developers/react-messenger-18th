@@ -1,42 +1,36 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { color } from "../../assets/styles/color";
 import { useSender } from "../../assets/SenderContext";
-import userData from "../../assets/data/userdata.json";
+//data
+import { useRecoilValue } from "recoil";
+import { userArrayState } from "../../assets/recoil/recoil";
 
 //img
 import back from "../../assets/images/back.svg";
 import call from "../../assets/images/phone.svg";
 import video from "../../assets/images/video.svg";
 
-function TopContainer() {
-  // const { sender, setSender } = useSender();
-  // const currentUser = userData[sender === 0 ? 1 : 0];
+function TopContainer({ friendId }: { friendId: number }) {
+  const navigate = useNavigate();
+  const { sender, setSender } = useSender();
+  const userArray = useRecoilValue(userArrayState);
+  const currentUser = userArray[sender === 0 ? friendId : 0];
 
-  // const handleUserInfoClick = () => {
-  //   setSender(sender === 0 ? 1 : 0);
-  // };
-  // return (
-  //   <>
-  //     <Container>
-  //       <Box onClick={handleUserInfoClick}>
-  //         <Icon src={back} />
-  //         <UserInfo>
-  //           <Profile src={currentUser.profileImage} />
-  //           <div>
-  //             <UserName>{currentUser.userName}</UserName>
-  //             <UserID>{currentUser.userID}</UserID>
-
+  const handleUserInfoClick = () => {
+    setSender(sender === 0 ? friendId : 0);
+  };
   return (
     <>
       <Container>
         <Box>
-          <Icon src={back} />
+          <Icon src={back} onClick={() => navigate(-1)} />
           <UserInfo>
-            <Profile />
-            <div>
-              <UserName>hi</UserName>
-              <UserID>hello</UserID>
+            <Profile src={currentUser.profileImage} />
+            <div onClick={handleUserInfoClick}>
+              <UserName>{currentUser.userName}</UserName>
+              <UserID>{currentUser.userID}</UserID>
             </div>
           </UserInfo>
         </Box>

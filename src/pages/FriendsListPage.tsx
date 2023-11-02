@@ -22,16 +22,16 @@ function FriendsListPage() {
     <Container>
       <StatusBar src={status} />
       <SearchingBar showSearch={false} />
-      <FriendItem user={meUser} />
+      <FriendItem user={meUser} emp={true} />
       <Guide>
         <div className="line"></div>
         <span className="friend-number">친구 {friendCount}</span>
       </Guide>
-      <ChatListContainer>
+      <FriendListContainer>
         {otherUsers.map((user) => (
-          <FriendItem key={user.id} user={user} />
+          <FriendItem key={user.id} user={user} emp={false} />
         ))}
-      </ChatListContainer>
+      </FriendListContainer>
       <Bar src={bars} />
     </Container>
   );
@@ -48,18 +48,6 @@ const StatusBar = styled.img`
   height: 44px;
 `;
 
-const MemoContainer = styled.div`
-  display: flex;
-  margin-bottom: 16px;
-  margin-left: 6px;
-
-  width: 375px;
-  overflow-x: scroll;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-`;
-
 const Guide = styled.div`
   display: flex;
   flex-direction: column;
@@ -70,15 +58,9 @@ const Guide = styled.div`
     border-bottom: 1px solid ${color.grey1};
     margin-bottom: 16px;
   }
-
-  .message {
-    color: ${color.black};
-    font-size: 13px;
-    font-weight: 600;
-  }
 `;
 
-const ChatListContainer = styled.div`
+const FriendListContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
