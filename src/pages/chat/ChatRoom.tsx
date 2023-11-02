@@ -13,10 +13,11 @@ import {
   ChatWrapper,
   defaultChatRoomData,
   useChatHeaderClicked,
+  useChatInputChanged,
 } from "@features/chat";
 import { useScrollToBottom } from "@common/hooks/useScrollToBottom";
 import theme from "@styles/theme";
-import { useChatInputChanged } from "@features/chat/hooks/useChatInputChanged";
+import { useSendBtnClicked } from "@features/chat/hooks/useSendBtnClicked";
 
 export function ChatRoom() {
   const { state } = useLocation();
@@ -32,30 +33,16 @@ export function ChatRoom() {
   const { chatText, setChatText, sendBtnState, setSendBtnState, inputChanged } =
     useChatInputChanged();
   const { ref, scrollToBottom } = useScrollToBottom<HTMLDivElement>();
-  const sendBtnClicked = () => {
-    if (!sendBtnState) {
-      return;
-    }
-    setChatText("");
-    setShouldScrollToBottom(true);
-    setChatData((prev) => {
-      if (prev[prev.length - 1].time === printChatTime()) {
-        prev[prev.length - 1].time = null;
-      }
-      return [
-        ...prev,
-        {
-          chatText: chatText.trim(),
-          doubleClicked: false,
-          time: printChatTime(),
-          isUser: true,
-        },
-      ];
-    });
-  };
+  const { btnClicked } = useSendBtnClicked({
+    chatText,
+    sendBtnState,
+    setChatText,
+    setShouldScrollToBottom,
+    setChatData,
+  });
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
-      sendBtnClicked();
+      btnClicked();
     }
   };
   useEffect(() => {
@@ -121,7 +108,7 @@ export function ChatRoom() {
           value={chatText}
           onKeyDown={handleKeyPress}
         />
-        <SendBtnWrapper $active={sendBtnState} onClick={sendBtnClicked}>
+        <SendBtnWrapper $active={sendBtnState} onClick={() => btnClicked()}>
           <Send />
         </SendBtnWrapper>
       </ChatInputContainer>
