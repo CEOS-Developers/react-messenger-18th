@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { color } from "../assets/styles/color";
@@ -12,10 +13,12 @@ import bars from "../assets/images/bars.svg";
 import status from "../assets/images/status.svg";
 
 function ProfilePage() {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <StatusBar src={status} />
-      <img src={back} className="back" />
+      <img src={back} className="back" onClick={() => navigate(-1)} />
       <UserInfo>
         <Profile />
         <span className="username">염혜인</span>

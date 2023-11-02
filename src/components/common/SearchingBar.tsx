@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { color } from "../../assets/styles/color";
 
@@ -9,6 +10,18 @@ import write from "../../assets/images/write.svg";
 import share from "../../assets/images/share.svg";
 
 function SearchingBar({ showSearch = true }) {
+  const [isChatting, setIsChatting] = useState(false);
+  //isChatting에 chatting인지 아닌지 useParams로 받아와야함
+
+  const { chat_id } = useParams();
+  const navigate = useNavigate();
+  const handleIconClick = () => {
+    if (chat_id) {
+      navigate("/chatting");
+    } else {
+      navigate("/");
+    }
+  };
   return (
     <div
       style={{
@@ -19,12 +32,20 @@ function SearchingBar({ showSearch = true }) {
     >
       <TopContainer>
         <Box>
-          {showSearch ? <Icon src={back} /> : <IconDiv />}
+          {showSearch ? (
+            <Icon src={back} onClick={handleIconClick} />
+          ) : (
+            <IconDiv />
+          )}
           <UserID>Hello</UserID>
         </Box>
         <Box>
-          <Icon src={write} />
-          {/* <Icon src={share} /> */}
+          {isChatting ? (
+            <Icon src={write} onClick={() => navigate("/chatting")} />
+          ) : (
+            <Icon src={share} onClick={() => navigate("/chatting")} />
+            //새 채팅 만드는 페이지로 이동해야함
+          )}
         </Box>
       </TopContainer>
       <SearchingContainer>
@@ -82,7 +103,7 @@ const SearchingContainer = styled.div`
   width: 93%;
   height: 6%;
   padding: 6px 4px;
-  margin: 6px 0 16px;
+  margin: 6px 0 8px;
   gap: 4px;
 
   border-radius: 8px;

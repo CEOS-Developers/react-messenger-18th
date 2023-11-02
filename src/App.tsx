@@ -18,10 +18,10 @@ function App() {
       <GlobalStyle />
       <Router>
         <Routes>
-          <Route path={"/friends"} element={<FriendsListPage />}></Route>
+          <Route path={"/"} element={<FriendsListPage />}></Route>
           <Route path={"/chatting"} element={<ChattingListPage />}></Route>
           <Route path={"/chatting/:chat_id"} element={<ChattingRoom />}></Route>
-          <Route path={"/profile"} element={<ProfilePage />}></Route>
+          <Route path={"/profile/:user_id"} element={<ProfilePage />}></Route>
         </Routes>
       </Router>
     </SenderProvider>

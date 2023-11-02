@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { color } from "../../assets/styles/color";
 
@@ -6,19 +7,34 @@ import { color } from "../../assets/styles/color";
 import check from "../../assets/images/check.svg";
 import checked from "../../assets/images/checked.svg";
 
-const FriendItem = () => {
+interface FriendItemProps {
+  user: {
+    id: number;
+    userID: string;
+    profileImage: string;
+    userName: string;
+  };
+}
+
+const FriendItem = ({ user }: FriendItemProps) => {
+  const navigate = useNavigate();
   const [isChecked, setIsChecked] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
   // 검색 페이지일 때만 체크 표시 뜨게 하는 state
   const handleToggleCheck = () => {
     setIsChecked(!isChecked);
+    if (!isSearching) {
+      navigate(`/profile/${user.id}`);
+    } else {
+      navigate("/");
+    }
   };
   return (
     <Box onClick={handleToggleCheck}>
-      <UserImg />
+      <UserImg src={user.profileImage} />
       <UserInfo>
-        <div className="UserName">이름</div>
-        <span className="ChattingInfo">인스타그램 아이디</span>
+        <div className="UserName">{user.userName}</div>
+        <span className="ChattingInfo">{user.userID}</span>
       </UserInfo>
       {isSearching ? <CameraIcon src={isChecked ? checked : check} /> : <></>}
     </Box>

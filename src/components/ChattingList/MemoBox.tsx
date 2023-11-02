@@ -1,26 +1,43 @@
+import React, { useState } from "react";
 import styled from "styled-components";
 import { color } from "../../assets/styles/color";
 
 //img
-import othermemo from "../../assets/images/othermemo-ex.svg";
+import memocreate from "../../assets/images/mymemo.svg";
+import memobubble from "../../assets/images/othermemo.svg";
 
-const MemoBox = () => {
-  const sender: string = "me";
+interface MemoBoxProps {
+  user: {
+    id: number;
+    userID: string;
+    profileImage: string;
+    memo: string;
+    userName: string;
+  };
+}
+
+const MemoBox = ({ user }: MemoBoxProps) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const isMe: boolean = user.id == 0;
+
+  const handleBubbleClick = () => {
+    setIsEditing((prevState) => !prevState);
+  };
   return (
     <Container>
-      {sender === "me" ? (
-        <div className="my-memo">
-          <MemoBubble src={othermemo} />
-          <MemoContent></MemoContent>
-        </div>
+      {isMe ? (
+        //isEditing 상태 따라서 style 바꾸기
+        <MyMemoBubble src={isEditing ? memobubble : memocreate} />
       ) : (
-        <div className="other-memo">
-          <MemoBubble />
-          <MemoContent></MemoContent>
+        <MemoBubble src={memobubble} />
+      )}
+      {!isMe && user.memo && (
+        <div className="memo">
+          <MemoContent>{user.memo}</MemoContent>
         </div>
       )}
-      <Profile />
-      <Nicname>내 메모</Nicname>
+      <Profile src={user.profileImage} />
+      <Nicname>{isMe ? "내 메모" : user.userName}</Nicname>
     </Container>
   );
 };
@@ -32,19 +49,36 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
+
+  .memo {
+    position: absolute;
+    width: 70px;
+    height: 20px;
+    top: 20px;
+    left: 0;
+    z-index: 5;
+  }
 `;
 
 const MemoBubble = styled.img`
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  width: 100px;
+  flex-shrink: 0;
+  top: 0px;
+  left: -14px;
   z-index: 3;
 `;
 
-const MemoContent = styled.div``;
+const MyMemoBubble = styled(MemoBubble)`
+  top: 0px;
+  left: -6px;
+  width: 55px;
+`;
 
-const Profile = styled.div`
+const MemoContent = styled.span``;
+
+const Profile = styled.img`
   display: flex;
   width: 70px;
   height: 70px;
@@ -52,7 +86,7 @@ const Profile = styled.div`
   align-items: center;
   flex-shrink: 0;
 
-  margin: 38px 18px 0;
+  margin: 38px 0 0;
 
   border-radius: 50%;
   border: 0.7px solid ${color.grey3};

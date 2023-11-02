@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { color } from "../assets/styles/color";
@@ -7,23 +8,30 @@ import { color } from "../assets/styles/color";
 import SearchingBar from "../components/common/SearchingBar";
 import FriendItem from "../components/common/FriendItem";
 
+//data
+import userData from "../assets/data/userdata.json";
+
 //bar
 import bars from "../assets/images/bars.svg";
 import status from "../assets/images/status.svg";
 
 function FriendsListPage() {
+  const dataArray = Object.values(userData);
+  const friendCount = dataArray.length - 1;
+  const otherUsers = dataArray.slice(1);
   return (
     <Container>
       <StatusBar src={status} />
       <SearchingBar showSearch={false} />
-      <FriendItem />
+      <FriendItem user={dataArray[0]} />
       <Guide>
         <div className="line"></div>
-        <span className="friend-number">친구 43</span>
+        <span className="friend-number">친구 {friendCount}</span>
       </Guide>
       <ChatListContainer>
-        <FriendItem />
-        <FriendItem />
+        {otherUsers.map((user) => (
+          <FriendItem key={user.id} user={user} />
+        ))}
       </ChatListContainer>
       <Bar src={bars} />
     </Container>

@@ -8,22 +8,23 @@ import SearchingBar from "../components/common/SearchingBar";
 import MemoBox from "../components/ChattingList/MemoBox";
 import ChatListItem from "../components/ChattingList/ChatListItem";
 
+//data
+import userData from "../assets/data/userdata.json";
+
 //bar
 import bars from "../assets/images/bars.svg";
 import status from "../assets/images/status.svg";
 
 function ChattingListPage() {
+  const dataArray = Object.values(userData);
   return (
     <Container>
       <StatusBar src={status} />
       <SearchingBar />
       <MemoContainer>
-        <MemoBox />
-        <MemoBox />
-        <MemoBox />
-        <MemoBox />
-        <MemoBox />
-        <MemoBox />
+        {dataArray.map((user) => (
+          <MemoBox key={user.id} user={user} />
+        ))}
       </MemoContainer>
       <Guide>
         <span className="message">메세지</span>
@@ -53,6 +54,7 @@ const MemoContainer = styled.div`
   display: flex;
   margin-bottom: 16px;
   margin-left: 6px;
+  gap: 27px;
 
   width: 375px;
   overflow-x: scroll;
