@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 
 interface ChatListItemProps {
@@ -14,24 +15,31 @@ const ChatListItem: React.FC<ChatListItemProps> = ({
   date,
 }) => {
   return (
-    <ChatFriendContainer>
-      <FriendImg src={"/assets/profile.svg"} alt="profile" />
-      <ChatFriendWrapper>
-        <div>
-          <FriendName>{name}</FriendName>
-          <FriendChat>{content}</FriendChat>
-        </div>
-        <ChatInfo>
-          {unread > 0 && <UnreadContent>{unread}</UnreadContent>}{" "}
-          {/* unread 값이 0보다 큰 경우에만 UnreadContent를 렌더링 */}
-          <DateContent>{date}</DateContent>
-        </ChatInfo>
-      </ChatFriendWrapper>
-    </ChatFriendContainer>
+    <StyledLink to="/chatroom">
+      <ChatFriendContainer>
+        <FriendImg src={"/assets/profile.svg"} alt="profile" />
+        <ChatFriendWrapper>
+          <div>
+            <FriendName>{name}</FriendName>
+            <FriendChat>{content}</FriendChat>
+          </div>
+          <ChatInfo>
+            {unread > 0 && <UnreadContent>{unread}</UnreadContent>}{" "}
+            {/* unread 값이 0보다 큰 경우에만 UnreadContent를 렌더링 */}
+            <DateContent>{date}</DateContent>
+          </ChatInfo>
+        </ChatFriendWrapper>
+      </ChatFriendContainer>
+    </StyledLink>
   );
 };
 
 export default ChatListItem;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+`;
 
 const ChatFriendContainer = styled.div`
   display: flex;
