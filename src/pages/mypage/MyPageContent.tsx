@@ -9,7 +9,7 @@ const MyPageContent = () => {
         <ProfileImg src={"/assets/profile.png"} alt="profile" />
         <ProfileInfo>
           <UserName>
-            <div>세오스</div>
+            <div>최영재</div>
             <ArrowWrapper>
               <Icon size={28} icon="arrow_forward" color="#A4A2B7" />
             </ArrowWrapper>
