@@ -50,7 +50,7 @@ export const GlobalStyles = createGlobalStyle`
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Pretendard-Regular';
+    font-family: 'Pretendard';
     min-height: 100vh;
     margin: 0;
   }
