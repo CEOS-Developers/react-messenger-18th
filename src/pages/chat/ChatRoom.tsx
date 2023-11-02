@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useLocation, useNavigate } from "react-router-dom";
 import { PageHeader, Divider } from "@common/components";
-import { DIVIDER_TYPE } from "@common/constants";
+import { DIVIDER_TYPE, USER_NAME } from "@common/constants";
 import { getChatRoomData, setChatRoomData, printChatTime } from "@common/utils";
 import { ReactComponent as LeftArrow } from "@common/icons/arrows/leftarrow.svg";
 import { ReactComponent as Search } from "@common/icons/search.svg";
@@ -12,21 +12,21 @@ import { ReactComponent as Send } from "@common/icons/send.svg";
 import { ChatWrapper, defaultChatRoomData } from "@features/chat";
 import { useScrollToBottom } from "@common/hooks/useScrollToBottom";
 import theme from "@styles/theme";
+import { useChatHeaderClicked } from "@features/chat/hooks/useChatHeaderClicked";
 
 export function ChatRoom() {
   const { state } = useLocation();
   const navigate = useNavigate();
-  const USER_NAME = "김현민";
   const STORAGE_KEY = `chatroom${state.chatRoomState}${state.chatRoomId}`;
-  const CHAT_TIME_KEY = `chatroom${state.chatRoomState}${state.chatRoomId}time`;
   const [chatText, setChatText] = useState("");
   const [shouldScrollToBottom, setShouldScrollToBottom] = useState(true);
   const [sendBtnState, setSendBtnState] = useState(false);
-  const [headerClicked, setHeaderClicked] = useState(false);
   const [chatData, setChatData] = useState([
     ...defaultChatRoomData(state),
     ...getChatRoomData(STORAGE_KEY),
   ]);
+  const { headerClicked, toggleHeaderClicked } =
+    useChatHeaderClicked(setChatData);
   const { ref, scrollToBottom } = useScrollToBottom<HTMLDivElement>();
   const chatInputChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.value.trim() === "") {
@@ -36,18 +36,6 @@ export function ChatRoom() {
       setSendBtnState(true);
     }
     setChatText(event.target.value);
-  };
-  const pageHeaderClicked = () => {
-    setHeaderClicked((prev) => !prev);
-    setChatData((prevChatData) => {
-      const updatedChatData = prevChatData.map((chatItem) => {
-        return {
-          ...chatItem,
-          isUser: !chatItem.isUser,
-        };
-      });
-      return updatedChatData;
-    });
   };
   const sendBtnClicked = () => {
     if (!sendBtnState) {
@@ -90,7 +78,7 @@ export function ChatRoom() {
         people={state.people}
         rightIcon1={<Search />}
         rightIcon2={<Box style={{ marginLeft: "1.2rem" }} />}
-        onClick={pageHeaderClicked}
+        onClick={() => toggleHeaderClicked()}
       />
       <Divider state={DIVIDER_TYPE.LONGTHICK} />
       <ChatContainer ref={ref}>

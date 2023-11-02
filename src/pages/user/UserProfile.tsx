@@ -27,7 +27,7 @@ const PERSONAL_LINK = [
   {
     icon: Instagram,
     text: "Instagram",
-    linkTo: "https://www.instagram.com/",
+    linkTo: "https://www.instagram.com/hyeonmin_0614",
   },
   {
     icon: Github,
