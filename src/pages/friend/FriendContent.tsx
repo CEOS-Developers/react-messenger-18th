@@ -1,6 +1,5 @@
 import { styled } from "styled-components";
 import FriendItem from "./FriendItem";
-
 import dummyFriendNames from "dummyFriendNames.json";
 
 const FriendContent = () => {

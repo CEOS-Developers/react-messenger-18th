@@ -29,8 +29,8 @@ const GlobalButton: React.FC<GlobalButtonProps> = ({
       (customType === "chatroomsearch" &&
         window.location.pathname === "/chatroomsearch") ||
       (customType === "friend" && window.location.pathname === "/") ||
-      (customType === "chat" && window.location.pathname === "/chat") ||
-      (customType === "mypage" && window.location.pathname === "/mypage")
+      (customType === "mypage" && window.location.pathname === "/mypage") ||
+      (customType === "chat" && window.location.pathname === "/chat")
     ) {
       setActive(true);
     } else {

@@ -2,6 +2,7 @@ import GlobalButton from "components/GlobalButton";
 import GlobalFooter from "components/GlobalFooter";
 import GlobalHeader from "components/GlobalHeader";
 import { styled } from "styled-components";
+import FriendSearchContent from "./FriendSearchContent";
 
 const FriendSearch = () => {
   return (
@@ -12,6 +13,9 @@ const FriendSearch = () => {
           leftChild={<GlobalButton customType={"friendsearch"} />}
         />
       </HeaderWrapper>
+      <SearchWrapper>
+        <FriendSearchContent />
+      </SearchWrapper>
       <FooterWrapper>
         <GlobalFooter
           friendBtn={<GlobalButton customType={"friend"} />}
@@ -34,5 +38,11 @@ const HeaderWrapper = styled.header`
 const FooterWrapper = styled.header`
   position: fixed;
   bottom: 34px;
+  width: 375px;
+`;
+
+const SearchWrapper = styled.header`
+  position: fixed;
+  top: 98px;
   width: 375px;
 `;
