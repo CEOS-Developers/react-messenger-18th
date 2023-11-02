@@ -1,14 +1,24 @@
 import ChatRoom from './pages/ChatRoom';
+import ChatList from './pages/ChatList';
+import MyPage from './pages/MyPage';
+import FriendList from './pages/FriendList';
 import React from 'react';
 import styled from 'styled-components';
 import theme from './style/theme';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
     <Wrapper>
-      <Box>
+      <Routes>
+        <Route path="/" element={<FriendList />} />
+        <Route path="/chatlist" element={<ChatList />} />
+        {/* <Route path="/chatroom/:cid" element={<ChatRoom />} /> */}
+        <Route path="/mypage/:uid" element={<MyPage />} />
+      </Routes>
+      {/* <Box>
         <ChatRoom id={0} />
-      </Box>
+      </Box> */}
     </Wrapper>
   );
 }
