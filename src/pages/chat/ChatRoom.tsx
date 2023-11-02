@@ -1,9 +1,9 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useLocation, useNavigate } from "react-router-dom";
 import { PageHeader, Divider } from "@common/components";
 import { DIVIDER_TYPE, USER_NAME } from "@common/constants";
-import { getChatRoomData, setChatRoomData, printChatTime } from "@common/utils";
+import { getChatRoomData, setChatRoomData } from "@common/utils";
 import { ReactComponent as LeftArrow } from "@common/icons/arrows/leftarrow.svg";
 import { ReactComponent as Search } from "@common/icons/search.svg";
 import { ReactComponent as Box } from "@common/icons/box.svg";

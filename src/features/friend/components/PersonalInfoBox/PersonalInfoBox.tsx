@@ -5,19 +5,7 @@ import { ReactComponent as Group } from "@common/icons/group.svg";
 import { ReactComponent as RightIcon } from "@common/icons/arrows/rightarrow.svg";
 import { RoleButton } from "@common/components";
 import { MAJOR_TYPE, CHATROOM_TYPE } from "@common/constants";
-
-export interface PersonalInfoBoxProps {
-  id: number;
-  img: string;
-  name: string;
-  message: string;
-  majorIn: string;
-  group: {
-    id: number;
-    name: string;
-    state: string;
-  };
-}
+import { PersonalInfoBoxProps } from "@features/friend";
 
 export function PersonalInfoBox({
   id,
@@ -66,6 +54,10 @@ export function PersonalInfoBox({
                   ? "D"
                   : majorIn === MAJOR_TYPE.FRONTEND
                   ? "F"
+                  : majorIn === MAJOR_TYPE.BACKEND
+                  ? "B"
+                  : majorIn === MAJOR_TYPE.PLANNER
+                  ? "P"
                   : ""}
               </span>
             </RoleButton>

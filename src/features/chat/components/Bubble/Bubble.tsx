@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { ReactComponent as Like } from "@common/icons/heart.svg";
-import { ChatWrapperProps } from "@features/chat/components/ChatWrapper/ChatWrapper";
+import { ChatDetailState } from "@features/chat";
 
 export function Bubble({
   chatText,
@@ -13,7 +13,7 @@ export function Bubble({
   chatData,
   setChatData,
   setShouldScrollToBottom,
-}: Omit<ChatWrapperProps, "img" | "name">) {
+}: Omit<ChatDetailState, "img" | "name">) {
   const bubbleDoubleClicked = () => {
     if (
       index !== undefined &&

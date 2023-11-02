@@ -3,20 +3,6 @@ import styled from "styled-components";
 import { Profile } from "@features/user";
 import { Bubble, ChatDetailState } from "@features/chat";
 
-export interface ChatWrapperProps {
-  img?: string;
-  name?: string;
-  chatText: string;
-  file?: string;
-  doubleClicked: boolean;
-  time: string | null;
-  isUser: boolean;
-  index?: number;
-  chatData?: ChatDetailState[] | [];
-  setChatData?: React.Dispatch<React.SetStateAction<ChatDetailState[] | []>>;
-  setShouldScrollToBottom?: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
 export function ChatWrapper({
   img,
   name,
@@ -29,7 +15,7 @@ export function ChatWrapper({
   chatData,
   setChatData,
   setShouldScrollToBottom,
-}: ChatWrapperProps) {
+}: ChatDetailState) {
   return (
     <Wrapper $isUser={isUser}>
       {img ? (
