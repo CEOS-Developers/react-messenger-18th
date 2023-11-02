@@ -4,7 +4,13 @@ import { styled } from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 interface GlobalButtonProps {
-  customType: "search" | "friend" | "chat" | "mypage"; // 타입을 정의
+  customType:
+    | "friendsearch"
+    | "chatsearch"
+    | "chatroomsearch"
+    | "friend"
+    | "chat"
+    | "mypage"; // 타입을 정의
 }
 
 const GlobalButton: React.FC<GlobalButtonProps> = ({
@@ -16,6 +22,12 @@ const GlobalButton: React.FC<GlobalButtonProps> = ({
   useEffect(() => {
     // URL이 해당 customType과 일치하면 버튼을 활성화
     if (
+      (customType === "friendsearch" &&
+        window.location.pathname === "/friendsearch") ||
+      (customType === "chatsearch" &&
+        window.location.pathname === "/chatsearch") ||
+      (customType === "chatroomsearch" &&
+        window.location.pathname === "/chatroomsearch") ||
       (customType === "friend" && window.location.pathname === "/") ||
       (customType === "chat" && window.location.pathname === "/chat") ||
       (customType === "mypage" && window.location.pathname === "/mypage")
@@ -31,6 +43,12 @@ const GlobalButton: React.FC<GlobalButtonProps> = ({
       navigate("/");
     } else if (customType === "chat") {
       navigate("/chat");
+    } else if (customType === "friendsearch") {
+      navigate("/friendsearch");
+    } else if (customType === "chatsearch") {
+      navigate("/chatsearch");
+    } else if (customType === "chatroomsearch") {
+      navigate("/chatroomsearch");
     } else if (customType === "mypage") {
       navigate("/mypage");
     }
@@ -38,7 +56,11 @@ const GlobalButton: React.FC<GlobalButtonProps> = ({
 
   return (
     <StyledButton button-type={customType} onClick={handleButtonClick}>
-      {customType === "search" && <Icon size={28} icon="search" />}
+      {(customType === "friendsearch" ||
+        customType === "chatsearch" ||
+        customType === "chatroomsearch") && (
+        <Icon size={28} icon="search" color={active ? "#1263DC" : "#B8B7CA"} />
+      )}
       {customType === "friend" && (
         <Icon size={36} icon="friend" color={active ? "#1263DC" : "#B8B7CA"} />
       )}

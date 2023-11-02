@@ -7,6 +7,8 @@ import Chat from "./pages/chat/Chat";
 import ChatRoom from "./pages/chatroom/ChatRoom";
 import Friend from "./pages/friend/Friend";
 import MyPage from "pages/mypage/MyPage";
+import ChatSearch from "pages/chat/ChatSearch";
+import FriendSearch from "pages/friend/FriendSearch";
 
 const App: React.FC = () => {
   return (
@@ -16,7 +18,9 @@ const App: React.FC = () => {
         <Container>
           <Routes>
             <Route path="/" element={<Friend />} />
+            <Route path="/friendsearch" element={<FriendSearch />} />
             <Route path="/chat" element={<Chat />} />
+            <Route path="/chatsearch" element={<ChatSearch />} />
             <Route path="/mypage" element={<MyPage />} />
             <Route path="/chatroom" element={<ChatRoom />} />
           </Routes>

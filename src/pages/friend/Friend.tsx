@@ -10,7 +10,7 @@ const Friend = () => {
       <HeaderWrapper>
         <GlobalHeader
           headText={"친구"}
-          leftChild={<GlobalButton customType={"search"} />}
+          leftChild={<GlobalButton customType={"friendsearch"} />}
         />
       </HeaderWrapper>
       <FriendContentWrapper>

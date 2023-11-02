@@ -21,7 +21,7 @@ const Chat = () => {
       <HeaderWrapper>
         <GlobalHeader
           headText={"채팅"}
-          leftChild={<GlobalButton customType={"search"} />}
+          leftChild={<GlobalButton customType={"chatsearch"} />}
         />
       </HeaderWrapper>
       <FooterWrapper>
