@@ -1,4 +1,4 @@
-import { ChatRoomData } from "@common/utils/accessStorage/getChatRoomData";
+import { ChatDetailState } from "../state";
 
 interface StateProps {
   img?: string;
@@ -6,7 +6,7 @@ interface StateProps {
 }
 
 export const defaultChatRoomData = (state: StateProps) => {
-  const initialChatData: ChatRoomData[] = [
+  const initialChatData: ChatDetailState[] = [
     {
       img: state.img,
       name: state.name,

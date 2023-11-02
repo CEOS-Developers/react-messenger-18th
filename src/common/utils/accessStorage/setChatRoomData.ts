@@ -1,5 +1,5 @@
-import { ChatRoomData } from "./getChatRoomData";
+import { ChatDetailState } from "@features/chat";
 
-export const setChatRoomData = (key: string, data: ChatRoomData[]) => {
+export const setChatRoomData = (key: string, data: ChatDetailState[]) => {
   localStorage.setItem(key, JSON.stringify(data));
 };

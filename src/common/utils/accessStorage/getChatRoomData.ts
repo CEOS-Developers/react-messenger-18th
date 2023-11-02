@@ -1,14 +1,6 @@
-export interface ChatRoomData {
-  img?: string;
-  name?: string;
-  chatText: string;
-  file?: string;
-  doubleClicked: boolean;
-  time: string | null;
-  isUser: boolean;
-}
+import { ChatDetailState } from "@features/chat";
 
-export const getChatRoomData = (key: string): ChatRoomData[] | [] => {
+export const getChatRoomData = (key: string): ChatDetailState[] | [] => {
   const storedData = localStorage.getItem(key);
 
   if (storedData === null) {

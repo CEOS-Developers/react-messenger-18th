@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-export interface groupChatRoomState {
+export interface GroupChatRoomState {
   id: number;
   img: string;
   name: string;

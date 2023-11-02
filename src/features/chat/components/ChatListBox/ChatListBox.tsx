@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Profile } from "@features/user";
-import { groupChatRoomState } from "@features/chat";
+import { GroupChatRoomState } from "@features/chat";
 
 export function ChatListBox({
   img,
@@ -9,7 +9,7 @@ export function ChatListBox({
   message,
   icon,
   onClick,
-}: Omit<groupChatRoomState, "id" | "people" | "type">) {
+}: Omit<GroupChatRoomState, "id" | "people" | "type">) {
   return (
     <BoxWrapper onClick={onClick}>
       <Profile $img={img} $size="5.6rem" />

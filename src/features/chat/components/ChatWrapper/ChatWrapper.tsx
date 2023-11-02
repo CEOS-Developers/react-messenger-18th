@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Profile } from "@features/user";
-import { Bubble } from "@features/chat";
-import { ChatRoomData } from "@common/utils/accessStorage/getChatRoomData";
+import { Bubble, ChatDetailState } from "@features/chat";
 
 export interface ChatWrapperProps {
   img?: string;
@@ -13,8 +12,8 @@ export interface ChatWrapperProps {
   time: string | null;
   isUser: boolean;
   index?: number;
-  chatData?: ChatRoomData[] | [];
-  setChatData?: React.Dispatch<React.SetStateAction<ChatRoomData[] | []>>;
+  chatData?: ChatDetailState[] | [];
+  setChatData?: React.Dispatch<React.SetStateAction<ChatDetailState[] | []>>;
   setShouldScrollToBottom?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
