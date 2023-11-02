@@ -13,7 +13,7 @@ interface ChattingItemProps {
 function ChattingItem({ message, sender, isLastItem }: ChattingItemProps) {
   const { sender: contextSender } = useSender();
   const isMe = sender === contextSender;
-  const currentUser = userData[sender === "me" ? "other" : "me"];
+  const currentUser = userData[sender === "me" ? "yeom" : "me"];
   return (
     <ChattingItemContainer sender={sender} isMe={isMe}>
       {isMe ? (

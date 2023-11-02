@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 //pages
 import ChattingRoom from "./pages/ChattingRoom";
 import ChattingListPage from "./pages/ChattingListPage";
+import FriendsListPage from "./pages/FriendsListPage";
 import ProfilePage from "./pages/ProfilePage";
 
 //context
@@ -17,6 +18,7 @@ function App() {
       <GlobalStyle />
       <Router>
         <Routes>
+          <Route path={"/friends"} element={<FriendsListPage />}></Route>
           <Route path={"/chatting"} element={<ChattingListPage />}></Route>
           <Route path={"/chatting/:chat_id"} element={<ChattingRoom />}></Route>
           <Route path={"/profile"} element={<ProfilePage />}></Route>

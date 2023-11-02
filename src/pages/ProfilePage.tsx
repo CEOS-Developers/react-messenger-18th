@@ -36,7 +36,6 @@ function ProfilePage() {
           <img src={link} />
         </LinkItem>
       </LinkContainer>
-
       <Bar src={bars} />
     </Container>
   );

@@ -11,7 +11,7 @@ import video from "../../assets/images/video.svg";
 
 function TopContainer() {
   const { sender, setSender } = useSender();
-  const currentUser = userData[sender === "me" ? "other" : "me"];
+  const currentUser = userData[sender === "me" ? "yeom" : "me"];
 
   const handleUserInfoClick = () => {
     setSender(sender === "me" ? "other" : "me");

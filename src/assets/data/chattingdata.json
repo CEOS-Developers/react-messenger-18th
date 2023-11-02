@@ -1,5 +1,22 @@
-[
-  { "text": "안녕하세요!", "sender": "me" },
-  { "text": "안녕하세요! 반가워요!", "sender": "other" },
-  { "text": "어떻게 지내세요?", "sender": "me" }
-]
+{
+  "chattings": [
+    {
+      "chattingId": 0,
+      "users": [0, 1],
+      "chatList": [
+        { "text": "안녕하세요!", "sender": "me" },
+        { "text": "안녕하세요! 반가워요!", "sender": "yeom" },
+        { "text": "어떻게 지내세요?", "sender": "me" }
+      ]
+    },
+    {
+      "chattingId": 1,
+      "users": [0, 2],
+      "chatList": [
+        { "text": "안녕하세요!", "sender": "me" },
+        { "text": "반가워요!", "sender": "user1" },
+        { "text": "이 채팅은 user1", "sender": "me" }
+      ]
+    }
+  ]
+}

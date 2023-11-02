@@ -8,7 +8,7 @@ import search from "../../assets/images/search.svg";
 import write from "../../assets/images/write.svg";
 import share from "../../assets/images/share.svg";
 
-function SearchingBar() {
+function SearchingBar({ showSearch = true }) {
   return (
     <div
       style={{
@@ -19,7 +19,7 @@ function SearchingBar() {
     >
       <TopContainer>
         <Box>
-          <Icon src={back} />
+          {showSearch ? <Icon src={back} /> : <IconDiv />}
           <UserID>Hello</UserID>
         </Box>
         <Box>
@@ -71,6 +71,10 @@ const Icon = styled.img`
   margin: 0 12px 0 10px;
 `;
 
+const IconDiv = styled.div`
+  margin: 0 10px;
+`;
+
 const SearchingContainer = styled.div`
   display: flex;
   justify-content: flex-start;
@@ -78,7 +82,7 @@ const SearchingContainer = styled.div`
   width: 93%;
   height: 6%;
   padding: 6px 4px;
-  margin: 6px 0;
+  margin: 6px 0 16px;
   gap: 4px;
 
   border-radius: 8px;
