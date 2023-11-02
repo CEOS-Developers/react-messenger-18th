@@ -2,11 +2,11 @@ import React from "react";
 import { ReactComponent as NetWork } from "@common/icons/statusbar/network.svg";
 import { ReactComponent as Wifi } from "@common/icons/statusbar/wifi.svg";
 import { ReactComponent as Battery } from "@common/icons/statusbar/battery.svg";
-import useGetCurrentTime from "@common/hooks/useGetCurrentTime";
+import useUpdateCurrentTime from "@common/hooks/useUpdateCurrentTime";
 import styled from "styled-components";
 
 export function StatusBar() {
-  const currentTime = useGetCurrentTime();
+  const currentTime = useUpdateCurrentTime();
 
   return (
     <StatusBarWrapper>

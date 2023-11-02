@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { getCurrentTime } from "@common/utils/time/getCurrentTime";
 
-export default function useGetCurrentTime() {
+export default function useUpdateCurrentTime() {
   const [currentTime, setCurrentTime] = useState(getCurrentTime());
 
   useEffect(() => {
