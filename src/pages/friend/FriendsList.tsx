@@ -59,6 +59,13 @@ export function FriendsList() {
                 message={designerData.message}
                 group={designerData.group}
                 majorIn={designerData.majorIn}
+                phoneNumber={designerData.phoneNumber}
+                phoneLink={designerData.phoneLink}
+                email={designerData.email}
+                emailLink={designerData.emailLink}
+                behanceLink={designerData.behanceLink}
+                instagramLink={designerData.instagramLink}
+                githubLink={designerData.githubLink}
               />
             ))}
           </DesignerListContainer>
@@ -84,6 +91,13 @@ export function FriendsList() {
                 message={frontEndData.message}
                 group={frontEndData.group}
                 majorIn={frontEndData.majorIn}
+                phoneNumber={frontEndData.phoneNumber}
+                phoneLink={frontEndData.phoneLink}
+                email={frontEndData.email}
+                emailLink={frontEndData.emailLink}
+                behanceLink={frontEndData.behanceLink}
+                instagramLink={frontEndData.instagramLink}
+                githubLink={frontEndData.githubLink}
               />
             ))}
           </FrontEndListContainer>

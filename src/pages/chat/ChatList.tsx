@@ -47,6 +47,13 @@ export function ChatList() {
                   img: "/img/profile.jpg",
                   name: "김현민",
                   majorIn: MAJOR_TYPE.FRONTEND,
+                  phoneNumber: "+82)10-1234-5678",
+                  phoneLink: "",
+                  email: "hyeonmin@naver.com",
+                  emailLInk: "",
+                  behanceLink: "https://www.behance.net/",
+                  instagramLink: "https://www.instagram.com/hyeonmin_0614",
+                  githubLink: "https://github.com/wokbjso",
                 },
               })
             }

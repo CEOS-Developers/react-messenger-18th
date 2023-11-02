@@ -13,32 +13,30 @@ import { LinkButton, Profile } from "@features/user";
 import { ReactComponent as BottomArrow } from "@common/icons/arrows/bottomarrow.svg";
 import theme from "@styles/theme";
 
-const ACCESS_USER = [
-  { icon: Phone, text: "+82)10-1234-5678", linkTo: "" },
-  { icon: Mail, text: "ren6294@naver.com", linkTo: "" },
-];
-
-const PERSONAL_LINK = [
-  {
-    icon: Behance,
-    text: "Behance",
-    linkTo: "https://www.behance.net/",
-  },
-  {
-    icon: Instagram,
-    text: "Instagram",
-    linkTo: "https://www.instagram.com/hyeonmin_0614",
-  },
-  {
-    icon: Github,
-    text: "Github",
-    linkTo: "https://github.com/wokbjso",
-  },
-];
-
 export function UserProfile() {
   const navigate = useNavigate();
   const { state } = useLocation();
+  const ACCESS_USER = [
+    { icon: Phone, text: state.phoneNumber, linkTo: state.phoneLink },
+    { icon: Mail, text: state.email, linkTo: state.emailLink },
+  ];
+  const PERSONAL_LINK = [
+    {
+      icon: Behance,
+      text: "Behance",
+      linkTo: state.behanceLink,
+    },
+    {
+      icon: Instagram,
+      text: "Instagram",
+      linkTo: state.instagramLink,
+    },
+    {
+      icon: Github,
+      text: "Github",
+      linkTo: state.githubLink,
+    },
+  ];
   return (
     <>
       <PageHeader

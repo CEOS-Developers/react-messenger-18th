@@ -14,6 +14,13 @@ export function PersonalInfoBox({
   message,
   majorIn,
   group,
+  phoneNumber,
+  phoneLink,
+  email,
+  emailLink,
+  behanceLink,
+  instagramLink,
+  githubLink,
 }: PersonalInfoBoxProps) {
   const navigate = useNavigate();
   return (
@@ -27,6 +34,13 @@ export function PersonalInfoBox({
                 img,
                 name,
                 majorIn,
+                phoneNumber,
+                phoneLink,
+                email,
+                emailLink,
+                behanceLink,
+                instagramLink,
+                githubLink,
               },
             })
           }
