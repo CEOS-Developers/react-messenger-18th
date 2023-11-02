@@ -24,9 +24,11 @@ const Chat: React.FC<ChatProps> = ({
   return (
     <ChatContainer isCurrentUser={isCurrentUser}>
       {isCurrentUser && showDate && <DateLeft>{date}</DateLeft>}
-      {!isCurrentUser && showProfileImage && (
-        <ProfileIcon src={"/assets/profile.png"} alt="profile" />
-      )}
+      <ProfileIconWrapper>
+        {!isCurrentUser && showProfileImage && (
+          <ProfileIcon src={"/assets/profile.png"} alt="profile" />
+        )}
+      </ProfileIconWrapper>
       <Content
         isCurrentUser={isCurrentUser}
         showProfileImage={showProfileImage}
@@ -43,10 +45,12 @@ const ChatContainer = styled.div<{
   isCurrentUser: boolean;
 }>`
   display: flex;
+  flex-direction: row;
   align-items: center;
+  gap: 4px;
   justify-content: ${(props) =>
     props.isCurrentUser ? "center" : "flex-start"};
-  max-width: 216px;
+
   ${(props) =>
     !props.isCurrentUser &&
     `
@@ -68,8 +72,8 @@ const Content = styled.div<{
     props.isCurrentUser ? "rgba(242, 241, 248, 1)" : "rgba(51, 51, 58, 1)"};
   font-weight: 400;
   padding: 8px 12px;
-
-  margin-top: 4px;
+  max-width: 216px;
+  margin-bottom: 4px;
   margin-left: ${(props) =>
     props.showProfileImage ? "0px" : !props.isCurrentUser ? "48px" : "0px"};
 `;
@@ -79,9 +83,9 @@ const DateLeft = styled.div`
   color: rgba(130, 128, 153, 1);
   font-weight: 400;
   font-size: 10px;
-  margin-top: 31%;
   padding-right: 4px;
   white-space: nowrap;
+  margin-top: auto;
 `;
 
 const DateRight = styled.div`
@@ -89,7 +93,7 @@ const DateRight = styled.div`
   color: rgba(130, 128, 153, 1);
   font-weight: 400;
   font-size: 10px;
-  margin-top: 22px;
+  margin-top: auto;
   padding-left: 4px;
 `;
 
@@ -97,4 +101,9 @@ const ProfileIcon = styled.img`
   width: 40px;
   height: 40px;
   padding-right: 8px;
+`;
+
+const ProfileIconWrapper = styled.div`
+  align-self: flex-start; // 프로필 아이콘을 위쪽으로 정렬
+  padding-top: 1px;
 `;

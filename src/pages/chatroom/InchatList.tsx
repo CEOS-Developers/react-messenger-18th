@@ -71,7 +71,9 @@ const InchatList: React.FC<InchatListProps> = ({ currentUser, chat }) => {
         {chat.map((message, index) => (
           <React.Fragment key={message.id}>
             {index === 0 || determineCalendar(chat, index) ? (
-              <Calendar calendar={message.calendar} />
+              <Wrapper>
+                <Calendar calendar={message.calendar} />
+              </Wrapper>
             ) : null}
             <Chat
               value={message.value}
@@ -105,4 +107,8 @@ const InChatListWrapper = styled.div`
   display: flex;
   align-items: flex-end;
   flex-direction: column;
+`;
+
+const Wrapper = styled.div`
+  padding: 12px 0px;
 `;

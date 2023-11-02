@@ -15,7 +15,7 @@ const Calendar: React.FC<ChatProps> = ({ calendar }) => {
 export default Calendar;
 
 const CalendarContainer = styled.div`
-  width: 343px;
+  width: 345px;
   display: flex;
   justify-content: center;
   align-items: center;
