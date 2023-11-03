@@ -2,18 +2,25 @@ import React from "react";
 import styled from "styled-components";
 import { debounce } from "lodash";
 import { ReactComponent as Search } from "@common/icons/search.svg";
+import { useEffect } from "react";
+import { useSetFocus } from "@common/hooks/useSetFocus";
 
 interface searchProps {
   search: [string, React.Dispatch<React.SetStateAction<string>>];
 }
 
 export function SearchBar({ search }: searchProps) {
+  const { ref, setFocus } = useSetFocus<HTMLInputElement>();
+
   const searchBarChanged = debounce(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       search[1](e.target.value.trim());
     },
     500
   );
+  useEffect(() => {
+    setFocus();
+  }, []);
   return (
     <SearchBarWrapper>
       {" "}
@@ -22,6 +29,7 @@ export function SearchBar({ search }: searchProps) {
           <Search />
         </span>
         <InputWrapper
+          ref={ref}
           placeholder="이름을 검색해보세요."
           onChange={searchBarChanged}
         />

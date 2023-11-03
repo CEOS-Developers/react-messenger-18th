@@ -18,6 +18,7 @@ import {
 import { useScrollToBottom } from "@common/hooks/useScrollToBottom";
 import theme from "@styles/theme";
 import { useSendBtnClicked } from "@features/chat/hooks/useSendBtnClicked";
+import { useSetFocus } from "@common/hooks/useSetFocus";
 
 export function ChatRoom() {
   const { state } = useLocation();
@@ -33,6 +34,7 @@ export function ChatRoom() {
   const { chatText, setChatText, sendBtnState, setSendBtnState, inputChanged } =
     useChatInputChanged();
   const { ref, scrollToBottom } = useScrollToBottom<HTMLDivElement>();
+  const { ref: setFocusRef, setFocus } = useSetFocus<HTMLInputElement>();
   const { btnClicked } = useSendBtnClicked({
     chatText,
     sendBtnState,
@@ -45,6 +47,9 @@ export function ChatRoom() {
       btnClicked();
     }
   };
+  useEffect(() => {
+    setFocus();
+  }, []);
   useEffect(() => {
     if (shouldScrollToBottom) {
       setSendBtnState(false);
@@ -101,6 +106,7 @@ export function ChatRoom() {
       <ChatInputContainer>
         <Plus />
         <ChatInput
+          ref={setFocusRef}
           placeholder="채팅을 입력해주세요"
           onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
             inputChanged(event)
