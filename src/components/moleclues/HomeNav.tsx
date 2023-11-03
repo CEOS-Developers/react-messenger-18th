@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Flex } from "../atom/Flex";
 import { Text } from "../atom/Text";
 import { Icon } from "../atom/Icon";
@@ -12,12 +12,19 @@ import { userInputState, isSearchState } from "../../recoil/atom";
 function HomeNav({ title }) {
   const [isSearch, setIsSearch] = useRecoilState(isSearchState);
   const [userInput, setUserInput] = useRecoilState(userInputState);
+  const inputRef = useRef<HTMLInputElement>(null);
   const toggleState = () => {
     setIsSearch(!isSearch);
+    setUserInput("");
   };
   const onTextChange = (e) => {
     setUserInput(e.target.value);
   };
+
+  useEffect(() => {
+    inputRef?.current?.focus();
+  }, [isSearch]);
+
   return (
     <>
       <Flex align="center" gap="8" height="30px" justify="center">
@@ -43,6 +50,7 @@ function HomeNav({ title }) {
               lineheight="40px"
               value={userInput}
               onChange={onTextChange}
+              inputRef={inputRef}
             />
             <Text
               size="12px"

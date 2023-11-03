@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import {
   userInputState,
@@ -30,7 +30,7 @@ function SearchContainer() {
       <Flex gap="21" direction="column">
         <Flex direction="column" gap="15" width="335px" margin="0 auto">
           <Space height="4px" />
-          {filterContactList.length == 0 ? (
+          {filterContactList.length === 0 ? (
             <Text>결과가 없습니다.</Text>
           ) : (
             <>
@@ -61,20 +61,20 @@ function SearchContainer() {
             </>
           )}
         </Flex>
-        {filterChatList.length == 0 ? (
+        {filterChatList.length === 0 ? (
           ""
         ) : (
           <Flex direction="column" gap="15" width="335px" margin="0 auto">
             <Text weight="600">채팅방</Text>
             {filterChatList.map((item) => (
               <ChatItem
-                id={item == "이현진" ? 1 : 2}
+                id={item === "이현진" ? 1 : 2}
                 key={item}
                 name={item}
                 lastMessage={
-                  item == "이현진" ? lastMessageRoom1 : lastMessageRoom2
+                  item ==="이현진" ? lastMessageRoom1 : lastMessageRoom2
                 }
-                count={item == "이현진" ? unReadCountRoom1 : unReadCountRoom2}
+                count={item === "이현진" ? unReadCountRoom1 : unReadCountRoom2}
               ></ChatItem>
             ))}
           </Flex>
