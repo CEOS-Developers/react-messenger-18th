@@ -12,13 +12,21 @@ import MemoBox from "../components/ChattingList/MemoBox";
 import ChatListItem from "../components/ChattingList/ChatListItem";
 
 //bar
-import bars from "../assets/images/bars.svg";
 import status from "../assets/images/status.svg";
 
 function ChattingListPage() {
   const userArray = useRecoilValue(userArrayState);
   const chatArray = useRecoilValue(chatArrayState);
   const [keyword, setKeyword] = useState<string>("");
+
+  const filteredUsers = userArray.filter((user) =>
+    user.userName.toLowerCase().includes(keyword.toLowerCase())
+  );
+  const filteredUserId = filteredUsers.map((user) => user.id - 1);
+
+  const filteredChats = chatArray.filter((chatting) =>
+    filteredUserId.includes(chatting.chattingId)
+  );
 
   return (
     <Container>
@@ -38,7 +46,7 @@ function ChattingListPage() {
         <span className="request">요청</span>
       </Guide>
       <ChatListContainer>
-        {chatArray.map((chatting) => (
+        {filteredChats.map((chatting) => (
           <ChatListItem key={chatting.chattingId} chatting={chatting} />
         ))}
       </ChatListContainer>

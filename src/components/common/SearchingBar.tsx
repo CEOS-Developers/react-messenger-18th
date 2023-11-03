@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { color } from "../../assets/styles/color";
 
@@ -23,13 +23,13 @@ function SearchingBar({
   keyword,
   setKeyword,
 }: SearchingBarProps) {
-  const [isChatting, setIsChatting] = useState(false);
-  //isChatting에 chatting인지 아닌지 useParams로 받아와야함
-
   const meUser = useRecoilValue(meAtom);
 
   const { chat_id } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
+  const isChatting = location.pathname === "/chatting";
+
   const handleIconClick = () => {
     if (chat_id) {
       navigate("/chatting");
