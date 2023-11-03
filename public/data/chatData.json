@@ -1,0 +1,24 @@
+[
+  {
+    "userId": 4,
+    "chatData": [
+      { "userId": 4, "isLike": false, "chat": "어디냐", "time": "15:00" },
+      { "userId": 0, "isLike": false, "chat": "집", "time": "15:40" },
+      { "userId": 4, "isLike": false, "chat": "중도가자", "time": "15:50" }
+    ]
+  },
+  {
+    "userId": 5,
+    "chatData": [
+      { "userId": 5, "isLike": false, "chat": "과제안함?", "time": "18:00" },
+      { "userId": 0, "isLike": false, "chat": "할거야", "time": "18:50" },
+      { "userId": 5, "isLike": false, "chat": "언제", "time": "18:55" },
+      {
+        "userId": 0,
+        "isLike": false,
+        "chat": "어쩌라고 화나게하지마",
+        "time": "19:00"
+      }
+    ]
+  }
+]

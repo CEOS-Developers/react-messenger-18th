@@ -3,8 +3,11 @@ import styled from 'styled-components';
 import theme from '../style/theme';
 import ProfileSmallIcon from '../static/ProfileSmallIcon';
 import ProfileIcon from '../static/PropfileIcon';
+import { Route, Routes } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 interface ChatListBoxProps {
+  userId: number;
   userName: string;
   comment: string;
   newNum: number;
@@ -16,24 +19,30 @@ const ChatListBox: React.FC<ChatListBoxProps> = ({
   comment,
   newNum,
   latestTime,
+  userId,
 }) => {
   return (
-    <Wrapper>
-      <ProfileSmallIcon width={56} height={56} />
-      <RightWrapper>
-        <RightWrapperTop>
-          <SubText>{userName}</SubText>
-          <Caption>{latestTime}</Caption>
-        </RightWrapperTop>
-        <RightWrapperBottom>
-          <Caption>{comment}</Caption>
-          <NewNum>{newNum}</NewNum>
-        </RightWrapperBottom>
-      </RightWrapper>
-    </Wrapper>
+    <StyledLink to={`/chatroom/${userId}`}>
+      <Wrapper>
+        <ProfileSmallIcon width={56} height={56} />
+        <RightWrapper>
+          <RightWrapperTop>
+            <SubText>{userName}</SubText>
+            <Caption>{latestTime}</Caption>
+          </RightWrapperTop>
+          <RightWrapperBottom>
+            <Caption>{comment}</Caption>
+            <NewNum>{newNum}</NewNum>
+          </RightWrapperBottom>
+        </RightWrapper>
+      </Wrapper>
+    </StyledLink>
   );
 };
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
 const SubText = styled.div`
   font-style: ${theme.fonts.subText};
 `;
@@ -52,8 +61,8 @@ const NewNum = styled.div`
   font-style: ${theme.fonts.caption1};
   background-color: ${theme.colors.purple};
   border-radius: 99px;
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
 `;
 const RightWrapperBottom = styled.div`
   display: flex;
@@ -77,7 +86,7 @@ const RightWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 80%;
-  gap: 5px;
+  gap: 7px;
 `;
 
 const Wrapper = styled.div`
@@ -86,6 +95,7 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   padding-left: 10px;
+  padding-right: 20px;
   padding-top: 1rem;
   padding-bottom: 1rem;
 

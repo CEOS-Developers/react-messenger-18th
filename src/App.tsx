@@ -12,7 +12,7 @@ function App() {
     <Routes>
       <Route path="/" element={<FriendList />} />
       <Route path="/chatlist" element={<ChatList />} />
-      {/* <Route path="/chatroom/:cid" element={<ChatRoom />} /> */}
+      <Route path="/chatroom/:userId" element={<ChatRoom />} />
       <Route path="/mypage" element={<MyPage />} />
     </Routes>
   );

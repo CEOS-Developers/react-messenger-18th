@@ -39,6 +39,7 @@ const ChatList = () => {
       <Body>
         {chatData.map((it) => (
           <ChatListBox
+            userId={it.userId}
             userName={it.userName}
             latestTime={it.latestTime}
             comment={it.latestMent}
