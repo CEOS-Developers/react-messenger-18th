@@ -1,0 +1,132 @@
+{
+  "chattings": [
+    {
+      "chatRoomId": 0,
+      "userList": [0, 3],
+      "chatList": [
+        {
+          "chatId": 0,
+          "userId": 0,
+          "message": "오늘 회의가 다음주로 미뤄졌다고 하네요",
+          "date": "Thu Nov 2 2023 09:41:56 GMT+0900 (한국 표준시)",
+          "like": 0
+        },
+        {
+          "chatId": 1,
+          "userId": 3,
+          "message": "그럼 오늘은 일찍 퇴근합시다",
+          "date": "Thu Nov 2 2023 10:31:42 GMT+0900 (한국 표준시)",
+          "like": 0
+        }
+      ]
+    },
+    {
+      "chatRoomId": 1,
+      "userList": [0, 2],
+      "chatList": [
+        {
+          "chatId": 0,
+          "userId": 2,
+          "message": "회의 때 공유드린 파일 확인해보셨나요?",
+          "date": "Wed Oct 4 2023 16:18:14 GMT+0900 (한국 표준시)",
+          "like": 0
+        },
+        {
+          "chatId": 1,
+          "userId": 0,
+          "message": "네 확인했습니다. 감사합니다!",
+          "date": "Wed Oct 4 2023 16:18:16 GMT+0900 (한국 표준시)",
+          "like": 0
+        }
+      ]
+    },
+    {
+      "chatRoomId": 2,
+      "userList": [0, 4],
+      "chatList": [
+        {
+          "chatId": 0,
+          "userId": 0,
+          "message": "안녕하세요",
+          "date": "Wed Oct 6 2023 16:18:14 GMT+0900 (한국 표준시)",
+          "like": 0
+        },
+        {
+          "chatId": 1,
+          "userId": 4,
+          "message": "고생하셨습니다. 부장님도 주말 잘 보내세요.",
+          "date": "Wed Oct 7 2023 19:07:16 GMT+0900 (한국 표준시)",
+          "like": 0
+        },
+        {
+          "chatId": 2,
+          "userId": 0,
+          "message": "혹시 어제 보내드린 자료 확인하셨나요?",
+          "date": "Wed Oct 17 2023 13:18:16 GMT+0900 (한국 표준시)",
+          "like": 0
+        }
+      ]
+    },
+    {
+      "chatRoomId": 3,
+      "userList": [0, 1],
+      "chatList": [
+        {
+          "chatId": 0,
+          "userId": 0,
+          "message": "오늘 정말 고생하셨습니다.",
+          "date": "Thu Sep 22 2022 19:18:14 GMT+0900 (한국 표준시)",
+          "like": 0
+        },
+        {
+          "chatId": 1,
+          "userId": 1,
+          "message": "네, 고생하셨습니다. 조심해서 들어가세요.",
+          "date": "Thu Sep 22 2022 19:34:16 GMT+0900 (한국 표준시)",
+          "like": 0
+        },
+        {
+          "chatId": 2,
+          "userId": 0,
+          "message": "혹시 오늘 점심에 통화 가능하신가요?",
+          "date": "Fri Sep 23 2022 09:22:16 GMT+0900 (한국 표준시)",
+          "like": 0
+        },
+        {
+          "chatId": 3,
+          "userId": 1,
+          "message": "네, 가능합니다.",
+          "date": "Fri Sep 23 2022 09:24:16 GMT+0900 (한국 표준시)",
+          "like": 0
+        }
+      ]
+    },
+    {
+      "chatRoomId": 4,
+      "userList": [0, 5],
+      "chatList": [
+        {
+          "chatId": 0,
+          "userId": 5,
+          "message": "이만 퇴근해보겠습니다.",
+          "date": "Tue Jul 12 2022 18:20:14 GMT+0900 (한국 표준시)",
+          "like": 0
+        },
+        {
+          "chatId": 1,
+          "userId": 0,
+          "message": "네, 부장님 나이스",
+          "date": "Tue Jul 12 2022 18:37:16 GMT+0900 (한국 표준시)",
+          "like": 0
+        },
+        {
+          "chatId": 2,
+          "userId": 5,
+          "message": "부탁드린 자료 준비 되었을까요?",
+          "date": "Wed Jul 13 2022 10:32:16 GMT+0900 (한국 표준시)",
+          "like": 0
+        }
+      ]
+    }
+  ]
+}

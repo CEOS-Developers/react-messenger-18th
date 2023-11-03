@@ -1,0 +1,64 @@
+{
+  "users": [
+    {
+      "userId": 0,
+      "name": "신현재",
+      "profileImage": "",
+      "company": "삼성전자",
+      "department": "HR",
+      "rank": "부장",
+      "isWorking": "근무 중",
+      "favorite": 0
+    },
+    {
+      "userId": 1,
+      "name": "신낸재",
+      "profileImage": "",
+      "company": "카카오뱅크",
+      "department": "프로덕트팀",
+      "rank": "팀장",
+      "isWorking": "퇴근",
+      "favorite": 0
+    },
+    {
+      "userId": 2,
+      "name": "현재",
+      "profileImage": "",
+      "company": "하나은행",
+      "department": "영업1팀",
+      "rank": "차장",
+      "isWorking": "퇴근",
+      "favorite": 0
+    },
+    {
+      "userId": 3,
+      "name": "나는낸재",
+      "profileImage": "",
+      "company": "제일기획",
+      "department": "기획2팀",
+      "rank": "팀장",
+      "isWorking": "퇴근",
+      "favorite": 0
+    },
+    {
+      "userId": 4,
+      "name": "Hyunjae Shin",
+      "profileImage": "",
+      "company": "삼성전자",
+      "department": "글로벌사업부",
+      "rank": "부장",
+      "isWorking": "근무 중",
+      "favorite": 0
+    },
+    {
+      "userId": 5,
+      "name": "신현재다",
+      "profileImage": "",
+      "company": "삼성전자",
+      "department": "DX",
+      "rank": "부장",
+      "isWorking": "근무 중",
+      "favorite": 0
+    }
+  ]
+}
