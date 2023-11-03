@@ -36,7 +36,8 @@ const FriendList = () => {
 
       <Body>
         <MyProfileWrapper>
-          내 프로필
+          <SubTitle>내 프로필</SubTitle>
+
           {userData.map(
             (it, index) =>
               index === 0 && (
@@ -45,7 +46,7 @@ const FriendList = () => {
           )}
         </MyProfileWrapper>
         <FriendsWrapper>
-          친구
+          <SubTitle>친구 {userData.length - 1}</SubTitle>
           {userData.map(
             (it, index) =>
               index > 0 && (
@@ -63,9 +64,16 @@ const FriendList = () => {
 const MyProfile = styled.div``;
 const MyProfileWrapper = styled.div``;
 
+const SubTitle = styled.div`
+  font-style: ${theme.fonts.caption1};
+  padding-left: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+`;
+
 const FriendsWrapper = styled.div`
   width: 100%;
-  border-top: 2px solid ${theme.colors.g2};
+  border-top: 1px solid ${theme.colors.g2};
 `;
 
 const IconList = styled.div`
@@ -81,11 +89,10 @@ const MyHeader = styled.div`
 
   font-style: ${theme.fonts.heading};
 
-  height: 100%;
+  height: 10%;
   width: 100%;
 
   background-color: white;
-  padding: 1rem;
   padding-left: 2rem;
   padding-right: 1rem;
 
@@ -102,7 +109,7 @@ const Wrapper = styled.div`
 `;
 
 const Body = styled.div`
-  height: 100%;
+  height: 80%;
   width: 100%;
 `;
 export default FriendList;

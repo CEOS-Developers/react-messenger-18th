@@ -38,10 +38,10 @@ const Wrapper = styled.div`
   gap: 1.5rem;
 
   width: 100%;
-  height: 100%;
+  height: 10%;
 
   background-color: white;
-  margin-top: 1px solid ${theme.colors.g2};
+  border-top: 2px solid ${theme.colors.g2};
 `;
 
 export default Footer;
