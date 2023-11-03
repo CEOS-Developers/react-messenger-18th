@@ -16,7 +16,6 @@ interface UserData {
 }
 
 const FriendList = () => {
-  //mock데이터 세팅
   const [userData, setUserData] = useState<UserData[]>([]);
 
   useEffect(() => {
@@ -36,13 +35,23 @@ const FriendList = () => {
       </MyHeader>
 
       <Body>
-        <MyProfileWrapper>내 프로필</MyProfileWrapper>
-
+        <MyProfileWrapper>
+          내 프로필
+          {userData.map(
+            (it, index) =>
+              index === 0 && (
+                <ProfileBox userName={it.userName} comment={it.comment} />
+              )
+          )}
+        </MyProfileWrapper>
         <FriendsWrapper>
           친구
-          {userData.map((it) => (
-            <ProfileBox userName={it.userName} comment={it.comment} />
-          ))}
+          {userData.map(
+            (it, index) =>
+              index > 0 && (
+                <ProfileBox userName={it.userName} comment={it.comment} />
+              )
+          )}
         </FriendsWrapper>
       </Body>
 
@@ -88,7 +97,7 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  height: 100%;
+  height: 100vh;
   width: 100%;
 `;
 

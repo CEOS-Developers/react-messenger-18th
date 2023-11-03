@@ -9,17 +9,12 @@ import { Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    <Wrapper>
-      <Routes>
-        <Route path="/" element={<FriendList />} />
-        <Route path="/chatlist" element={<ChatList />} />
-        {/* <Route path="/chatroom/:cid" element={<ChatRoom />} /> */}
-        <Route path="/mypage" element={<MyPage />} />
-      </Routes>
-      {/* <Box>
-        <ChatRoom id={0} />
-      </Box> */}
-    </Wrapper>
+    <Routes>
+      <Route path="/" element={<FriendList />} />
+      <Route path="/chatlist" element={<ChatList />} />
+      {/* <Route path="/chatroom/:cid" element={<ChatRoom />} /> */}
+      <Route path="/mypage" element={<MyPage />} />
+    </Routes>
   );
 }
 
@@ -30,11 +25,11 @@ const Box = styled.div`
   background: var(--white, #fff);
 `;
 
-const Wrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-`;
+// const Wrapper = styled.div`
+//   width: 100%;
+//   height: 100%;
+//   display: flex;
+//   justify-content: center;
+// `;
 
 export default App;
