@@ -102,6 +102,7 @@ const YourChat = styled.div`
   background-color: ${theme.colors.g2};
   overflow: hidden;
   display: inline-block;
+  overflow-wrap: break-word;
 `;
 
 const MyChat = styled.div`
@@ -110,6 +111,7 @@ const MyChat = styled.div`
   background-color: ${theme.colors.purple};
   color: white;
   display: inline-block;
+  overflow-wrap: break-word;
 `;
 
 const Wrapper = styled.div`

@@ -32,7 +32,7 @@ const ChatListBox: React.FC<ChatListBoxProps> = ({
           </RightWrapperTop>
           <RightWrapperBottom>
             <Caption>{comment}</Caption>
-            <NewNum>{newNum}</NewNum>
+            {newNum !== 0 ? <NewNum>{newNum}</NewNum> : null}
           </RightWrapperBottom>
         </RightWrapper>
       </Wrapper>

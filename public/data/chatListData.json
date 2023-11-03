@@ -9,15 +9,22 @@
   {
     "userId": 4,
     "userName": "장수화",
-    "latestMent": "내일 언제 보는데",
-    "newNum": 0,
+    "latestMent": "가자니까",
+    "newNum": 2,
     "latestTime": "13:22"
   },
   {
     "userId": 5,
     "userName": "이서현",
     "latestMent": "카피바라 보고싶다",
-    "newNum": 5,
+    "newNum": 0,
+    "latestTime": "06:22"
+  },
+  {
+    "userId": 6,
+    "userName": "이주원",
+    "latestMent": "씨프 책 빌려주라",
+    "newNum": 0,
     "latestTime": "06:22"
   }
 ]
