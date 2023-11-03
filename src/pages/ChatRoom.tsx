@@ -15,12 +15,12 @@ interface UserData {
 }
 
 interface ChatList {
-  userId: string;
+  userId: number;
   chatData: Array<ChatData>;
 }
 
 interface ChatData {
-  userId: string;
+  userId: number;
   isLike: boolean;
   chat: string;
   time: string;
@@ -82,7 +82,20 @@ const ChatRoom = () => {
   };
 
   //inputText변동시 chatData추가
-  useEffect(() => {}, [inputText]);
+  useEffect(() => {
+    const currentDate = getCurrentDate();
+    if (inputText.trim() !== '') {
+      const newItem: ChatData = {
+        userId: 0,
+        isLike: false,
+        chat: inputText,
+        time: currentDate,
+      };
+      const updatedChatData = [...chatData, newItem];
+      setChatData(updatedChatData);
+      console.log(updatedChatData);
+    }
+  }, [inputText]);
 
   useEffect(() => {
     if (isInputFocused && bodyRef.current) {
