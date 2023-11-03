@@ -1,3 +1,4 @@
+// 채팅방, 연락처에 대한 더미리스트 (기능 구현상으로 채팅방 추가, 연락처 추가 불가능)
 export const dummyContactList = [
   {
     name: "이현진",
