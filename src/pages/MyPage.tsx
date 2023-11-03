@@ -1,11 +1,12 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import Footer from '../components/Footer';
 
 const MyPage = () => {
-  const { uid } = useParams();
   return (
     <div>
-      <h1>{uid}사용자 마이페이지 냐냥</h1>
+      <h1>사용자 마이페이지 냐냥</h1>
+      <Footer />
     </div>
   );
 };

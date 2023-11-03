@@ -14,7 +14,7 @@ function App() {
         <Route path="/" element={<FriendList />} />
         <Route path="/chatlist" element={<ChatList />} />
         {/* <Route path="/chatroom/:cid" element={<ChatRoom />} /> */}
-        <Route path="/mypage/:uid" element={<MyPage />} />
+        <Route path="/mypage" element={<MyPage />} />
       </Routes>
       {/* <Box>
         <ChatRoom id={0} />
