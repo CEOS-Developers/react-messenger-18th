@@ -24,21 +24,23 @@ const MemoBox = ({ user }: MemoBoxProps) => {
     setIsEditing((prevState) => !prevState);
   };
   return (
-    <Container>
-      {isMe ? (
-        //isEditing 상태 따라서 style 바꾸기
-        <MyMemoBubble src={isEditing ? memobubble : memocreate} />
-      ) : (
-        <MemoBubble src={memobubble} />
-      )}
-      {!isMe && user.memo && (
-        <div className="memo">
-          <MemoContent>{user.memo}</MemoContent>
-        </div>
-      )}
-      <Profile src={user.profileImage} />
-      <Nicname>{isMe ? "내 메모" : user.userName}</Nicname>
-    </Container>
+    user.memo && (
+      <Container>
+        {isMe ? (
+          //isEditing 상태 따라서 style 바꾸기
+          <MyMemoBubble src={isEditing ? memobubble : memocreate} />
+        ) : (
+          <MemoBubble src={memobubble} />
+        )}
+        {!isMe && user.memo && (
+          <div className="memo">
+            <MemoContent>{user.memo}</MemoContent>
+          </div>
+        )}
+        <Profile src={user.profileImage} />
+        <Nicname>{isMe ? "내 메모" : user.userName}</Nicname>
+      </Container>
+    )
   );
 };
 

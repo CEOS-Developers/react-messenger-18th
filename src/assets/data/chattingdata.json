@@ -13,9 +13,16 @@
       "chattingId": 1,
       "users": [0, 2],
       "chatList": [
-        { "text": "안녕하세요!", "sender": 0 },
-        { "text": "반가워요!", "sender": 2 },
-        { "text": "이 채팅은 user1", "sender": 0 }
+        { "text": "멍멍", "sender": 0 },
+        { "text": "왈왈", "sender": 2 }
+      ]
+    },
+    {
+      "chattingId": 2,
+      "users": [0, 3],
+      "chatList": [
+        { "text": "야옹", "sender": 0 },
+        { "text": "meow", "sender": 3 }
       ]
     }
   ]

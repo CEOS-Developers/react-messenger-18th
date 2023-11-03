@@ -7,6 +7,7 @@ import { useRecoilValue } from "recoil";
 import { chatArrayState } from "../../assets/recoil/recoil";
 //components
 import ChattingItem from "./ChattingItem";
+import ChattingDate from "./ChattingDate";
 
 //img
 import mic from "../../assets/images/mic.svg";
