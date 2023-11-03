@@ -51,9 +51,13 @@ const FriendList = () => {
   );
 };
 
-const FriendsWrapper = styled.div``;
 const MyProfile = styled.div``;
 const MyProfileWrapper = styled.div``;
+
+const FriendsWrapper = styled.div`
+  width: 100%;
+  border-top: 2px solid ${theme.colors.g2};
+`;
 
 const IconList = styled.div`
   display: flex;
@@ -73,8 +77,10 @@ const MyHeader = styled.div`
 
   background-color: white;
   padding: 1rem;
+  padding-left: 2rem;
+  padding-right: 1rem;
 
-  margin-bottom: 1px solid ${theme.colors.g2};
+  border-bottom: 2px solid ${theme.colors.g2};
 `;
 const Wrapper = styled.div`
   display: flex;
@@ -84,14 +90,10 @@ const Wrapper = styled.div`
 
   height: 100%;
   width: 100%;
-  padding: 1rem;
 `;
 
 const Body = styled.div`
-  height: 80%;
-  overflow-y: auto;
-  padding: 5px;
-
-  scroll-behavior: smooth;
+  height: 100%;
+  width: 100%;
 `;
 export default FriendList;
