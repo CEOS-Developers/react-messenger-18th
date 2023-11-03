@@ -1,6 +1,4 @@
-// ChatListItem.tsx
 import styled from "styled-components";
-
 //images
 import groupIcon from "../../assets/images/Group.svg";
 import rightarrowIcon from "../../assets/images/rightarrowIcon.svg";

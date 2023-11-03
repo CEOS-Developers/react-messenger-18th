@@ -1,14 +1,16 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
-import bottomBar from "../../assets/images/LightBottomBar.svg";
+import { useNavigate } from "react-router-dom";
+//components
+import ChatListItem from "../../components/ChatlistItem/chatlistitem";
 import StatusBar from "../../components/StatusBar/statusbar";
 import TopBar from "../../components/TopBar/topbar";
 import SearchBar from "../../components/SearchBar/serachbar";
+//images
 import friendsIcon from "../../assets/images/Friends.svg";
-import { useNavigate } from "react-router-dom";
 import userData from "../../assets/datas/userdata.json";
 import chatData from "../../assets/datas/chatdata.json";
-import ChatListItem from "../../components/ChatlistItem/chatlistitem";
+import bottomBar from "../../assets/images/LightBottomBar.svg";
 interface Message {
   id: number;
   sender: string;
@@ -51,6 +53,7 @@ export default function ChatList() {
         lastMessage[user.id] = lastChat;
         return {
           ...user,
+          // 마지막 메시지가 있으면 해당 시간을 가져옴
           lastMessageTimestamp: lastChat
             ? new Date(lastChat.timestamp)
             : new Date(0),
@@ -70,7 +73,7 @@ export default function ChatList() {
         newLastMessagesWithUnread[user.id] = updatedMessage;
       }
     });
-
+    //unread 업데이트 저장
     setLastMessages(newLastMessagesWithUnread);
 
     // 타임스탬프 기준으로 사용자 정렬: 가장 최근 메시지가 위에 오게 함

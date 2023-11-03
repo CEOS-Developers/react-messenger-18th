@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+//images
 import cameraIcon from "../../assets/images/Camera.svg";
 import appStoreIcon from "../../assets/images/App-Store.svg";
 import dictationIcon from "../../assets/images/Dictation.svg";
@@ -33,15 +34,11 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSend }) => {
   };
 
   const handleSendClick = () => {
+    console.log("Send button clicked"); // Add this line for debugging
     if (inputValue.trim() !== "") {
-      console.log("inputValue");
       onSend(inputValue);
     }
     setInputValue("");
-  };
-
-  const imageClick = () => {
-    console.log("Click");
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -67,8 +64,8 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSend }) => {
           required
         />
         {isInputFocused ? (
-          //handleSendClick 작동??
-          <Send src={sendIcon} alt="send icon" onClick={handleSendClick} />
+          //handleSendClick 작동?? click 작동
+          <Send onClick={handleSendClick} />
         ) : (
           <Dictation src={dictationIcon} alt="dictation icon" />
         )}
@@ -138,13 +135,18 @@ const Dictation = styled.img`
   right: 1.25rem;
 `;
 
-const Send = styled.img`
+const Send = styled.button`
   width: 1.6875rem;
   height: 1.6875rem;
+  background: url(${sendIcon}) no-repeat center center;
+  border: none;
   position: absolute; //input fiield 안에 위치
+  z-index: 10;
   right: 1.25rem;
-  &:hover {
-    cursor: pointer;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
   }
 `;
 

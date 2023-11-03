@@ -1,15 +1,16 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import userData from "../../assets/datas/userdata.json";
+//component
+import SearchBar from "../../components/SearchBar/serachbar";
+//이미지들
+import bigIcon from "../../assets/images/BigIcon.svg";
 import bottomBar from "../../assets/images/LightBottomBar.svg";
 import StatusBar from "../../components/StatusBar/statusbar";
 import TopBar from "../../components/TopBar/topbar";
-import searchBar1 from "../../assets/images/Searchbars.svg";
-import SearchBar from "../../components/SearchBar/serachbar";
-import friendsIcon from "../../assets/images/Friends.svg";
-import { useNavigate } from "react-router-dom";
-import userData from "../../assets/datas/userdata.json";
-import bigIcon from "../../assets/images/BigIcon.svg";
 import bubbleImg from "../../assets/images/bubbleStatusImg.svg";
-import { useState } from "react";
+
 interface User {
   id: number;
   name: string;
@@ -25,6 +26,7 @@ export default function Friends() {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [friends, setFriends] = useState(userData.users);
+
   function getFilteredUsers(users: User[], searchTerm: string) {
     if (!searchTerm) return users;
     const filteredUsers = users.filter((user) =>
@@ -84,7 +86,7 @@ const ProfileContainer = styled.div`
   border: solid var(--gray-1);
 `;
 
-const Title = styled.text`
+const Title = styled.span`
   font-family: "SF Pro Text";
   font-size: 2.125rem;
   font-style: normal;

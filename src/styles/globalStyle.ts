@@ -7,7 +7,7 @@ const GlobalStyle = createGlobalStyle`
         box-sizing:border-box;
         padding: 0;
         margin: 0;
-        font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-family: "SF Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
     }
     html,body{

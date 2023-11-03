@@ -1,11 +1,12 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+//이미지 & datas
 import bottomBar from "../../assets/images/LightBottomBar.svg";
 import StatusBar from "../../components/StatusBar/statusbar";
 import BigIconLogo from "../../assets/images/BigIconLogo.svg";
 import Github from "../../assets/images/github.svg";
 import RightArrow from "../../assets/images/Arrow.svg";
 import Instagram from "../../assets/images/instagram.svg";
-import { useNavigate } from "react-router-dom";
 import userData from "../../assets/datas/userdata.json";
 
 export default function Profile() {
