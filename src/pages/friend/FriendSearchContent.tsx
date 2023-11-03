@@ -10,7 +10,7 @@ const FriendSearchContent = () => {
   };
 
   return (
-    <div>
+    <Container>
       <FriendSearchContainer>
         <InputBox
           name="search"
@@ -26,7 +26,7 @@ const FriendSearchContent = () => {
             <FriendItem key={index} name={filteredFriend.name} />
           ))}
       </FriendContainer>
-    </div>
+    </Container>
   );
 };
 
@@ -38,8 +38,12 @@ const FriendSearchContainer = styled.div`
 `;
 
 const FriendContainer = styled.div`
-  height: 523px;
+  height: 550px;
   overflow: auto;
+`;
+
+const Container = styled.div`
+  height: 610px;
 `;
 
 const InputBox = styled.input`

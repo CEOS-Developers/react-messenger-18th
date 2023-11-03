@@ -39,58 +39,70 @@ const BottomInputBox: React.FC<BottomInputBoxProps> = ({ onCreate }) => {
           }}
           onKeyDown={handleKeyDown}
         />
-        <Emotion src={"/assets/emotion.png"} alt="sentiment_smile" />
+        <Emotion src={"/assets/emotion.svg"} alt="sentiment_smile" />
       </InputBoxContainer>
     ),
     [message]
   );
 
   return (
-    <BottomBarContainer>
-      <Icon size={28} icon="attach_file" color="#A4A2B7" />
-      {inputBoxWithSentiment}
-      <InputBtn
-        onClick={handleSubmit}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        <div>
-          <CustomIcon
-            size={28}
-            icon="send"
-            color={isHovered ? "#1263DC" : "#A4A2B7"}
-          />
-        </div>
-      </InputBtn>
-    </BottomBarContainer>
+    <Container>
+      <BottomBarContainer>
+        <Icon size={28} icon="attach_file" color="#A4A2B7" />
+        {inputBoxWithSentiment}
+        <InputBtn
+          onClick={handleSubmit}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          <div>
+            <CustomIcon
+              size={28}
+              icon="send"
+              color={isHovered ? "#1263DC" : "#A4A2B7"}
+            />
+          </div>
+        </InputBtn>
+      </BottomBarContainer>
+    </Container>
   );
 };
 
 export default BottomInputBox;
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 8px 16px;
+  width: 343px;
+`;
+
 const BottomBarContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 8px 16px;
   align-items: center;
 `;
+
 const InputBoxContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-left: 4px;
+  width: 276px;
+  padding-left: 20px;
 `;
 
 const InputBox = styled.input`
-  width: 220px;
+  max-width:213px;
+  align-items: center;
   flex:1;
-  padding:12px;
-  padding-right:37px;
   border: none;
+  padding:12px;
+  padding-right:35px;
   outline: none;
   border-radius: 16px;
   background-color: #f2f1f8;
   font-weight: 400;
   color: #33333A; 
+  
 
   ::placeholder {
     color: #A4A2B7; 
@@ -98,9 +110,9 @@ const InputBox = styled.input`
 `;
 
 const Emotion = styled.img`
-  position: relative;
+  position: relative; /* position을 absolute로 변경 */
   top: 50%;
-  transform: translateY(-50%);
+  right: 11%;
   z-index: 1;
 `;
 

@@ -15,6 +15,6 @@ const FriendContent = () => {
 export default FriendContent;
 
 const FriendContainer = styled.div`
-  height: 608px;
+  height: 610px;
   overflow: auto;
 `;

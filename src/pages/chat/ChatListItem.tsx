@@ -15,7 +15,7 @@ const ChatListItem: React.FC<ChatListItemProps> = ({
   date,
 }) => {
   return (
-    <StyledLink to="/chatroom">
+    <StyledLink to={`/chatroom`}>
       <ChatFriendContainer>
         <FriendImg src={"/assets/profile.svg"} alt="profile" />
         <ChatFriendWrapper>
@@ -89,8 +89,10 @@ const UnreadContent = styled.div`
   width: 24px;
   height: 24px;
   text-align: center;
-  line-height: 27px;
+  line-height: 23px;
   font-family: Pretendard;
+  text-edge: cap;
+  font-variant-numeric: lining-nums tabular-nums;
   font-size: 13px;
   font-style: normal;
   font-weight: 500;

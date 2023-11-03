@@ -9,7 +9,7 @@ const ChatFriendSearch = () => {
     setUserInput(e.target.value);
   };
   return (
-    <div>
+    <Container>
       <ChatFriendSearchContainer>
         <InputBox
           name="search"
@@ -35,7 +35,7 @@ const ChatFriendSearch = () => {
             />
           ))}
       </FriendChatContainer>
-    </div>
+    </Container>
   );
 };
 export default ChatFriendSearch;
@@ -46,8 +46,12 @@ const ChatFriendSearchContainer = styled.div`
   flex-direction: column;
 `;
 
+const Container = styled.div`
+  height: 610px;
+`;
+
 const FriendChatContainer = styled.div`
-  height: 523px;
+  height: 550px;
   overflow: auto;
 `;
 const InputBox = styled.input`

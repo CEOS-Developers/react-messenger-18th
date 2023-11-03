@@ -1,5 +1,6 @@
 import Icon from "./icon";
 import { styled } from "styled-components";
+import { Link } from "react-router-dom";
 
 const TopInChat: React.FC<{
   currentUser: { id: number; name: string };
@@ -8,7 +9,9 @@ const TopInChat: React.FC<{
   return (
     <Container>
       <TopInChatContainer>
-        <StyledBackIcon size={36} icon="back" color="#33333A" />
+        <Link to="/chat">
+          <StyledBackIcon size={36} icon="back" color="#33333A" />
+        </Link>
         <UserName
           onClick={() => {
             changeUser(currentUser.id);

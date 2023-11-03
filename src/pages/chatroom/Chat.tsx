@@ -26,7 +26,7 @@ const Chat: React.FC<ChatProps> = ({
       {isCurrentUser && showDate && <DateLeft>{date}</DateLeft>}
       <ProfileIconWrapper>
         {!isCurrentUser && showProfileImage && (
-          <ProfileIcon src={"/assets/profile.png"} alt="profile" />
+          <ProfileIcon src={"/assets/profile.svg"} alt="profile" />
         )}
       </ProfileIconWrapper>
       <Content

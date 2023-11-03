@@ -9,6 +9,7 @@ import Friend from "./pages/friend/Friend";
 import MyPage from "pages/mypage/MyPage";
 import ChatSearch from "pages/chat/ChatSearch";
 import FriendSearch from "pages/friend/FriendSearch";
+import ChatRoomSearch from "pages/chatroom/ChatRoomSearch";
 
 const App: React.FC = () => {
   return (
@@ -23,6 +24,7 @@ const App: React.FC = () => {
             <Route path="/chatsearch" element={<ChatSearch />} />
             <Route path="/mypage" element={<MyPage />} />
             <Route path="/chatroom" element={<ChatRoom />} />
+            <Route path="/chatroomsearch" element={<ChatRoomSearch />} />
           </Routes>
         </Container>
         <HomeImage src="/assets/home.svg" alt="home img" />
@@ -44,10 +46,10 @@ export const GlobalStyles = createGlobalStyle`
   }
   body {
     background-color: #f6f6f6;
+    font-family: "Pretendard-Regular";
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Pretendard';
     min-height: 100vh;
   }
 

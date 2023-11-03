@@ -21,6 +21,6 @@ const ChatContent = () => {
 export default ChatContent;
 
 const ChatListContainer = styled.div`
-  height: 608px;
+  height: 610px;
   overflow: auto;
 `;

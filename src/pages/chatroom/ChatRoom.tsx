@@ -4,8 +4,11 @@ import { useState } from "react";
 import InchatList from "./InchatList";
 import user from "user.json";
 import { styled } from "styled-components";
+import { useParams } from "react-router-dom";
 
 const ChatRoom: React.FC = () => {
+  let { name } = useParams();
+  console.log("Received name:", name);
   const [chat, setChat] = useState<
     Array<{
       value: string;

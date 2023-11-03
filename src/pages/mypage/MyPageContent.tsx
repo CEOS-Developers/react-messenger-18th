@@ -4,9 +4,9 @@ import LinkContent from "./LinkContent";
 
 const MyPageContent = () => {
   return (
-    <div>
+    <MyPageContainer>
       <ProfileContainer>
-        <ProfileImg src={"/assets/profile.png"} alt="profile" />
+        <ProfileImg src={"/assets/profile.svg"} alt="profile" />
         <ProfileInfo>
           <UserName>
             <div>김세오</div>
@@ -32,11 +32,15 @@ const MyPageContent = () => {
         url="https://www.instagram.com/hambaga/"
         text="instagram"
       />
-    </div>
+    </MyPageContainer>
   );
 };
 
 export default MyPageContent;
+
+const MyPageContainer = styled.div`
+  height: 610px;
+`;
 
 const ProfileContainer = styled.div`
   display: flex;
