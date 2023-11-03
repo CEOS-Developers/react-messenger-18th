@@ -7,6 +7,8 @@ const GlobalStyle = createGlobalStyle`
         box-sizing:border-box;
         padding: 0;
         margin: 0;
+        font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
     }
     html,body{
         height:100%;
@@ -19,11 +21,17 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding:0;
         display: flex;
+        flex-direction:column;
         justify-content: center;
         height:100vh;
         width:100vw;
 
     }
+    :hover {
+    cursor: pointer;
+  } 
+
+    
 `;
 
 export default GlobalStyle;

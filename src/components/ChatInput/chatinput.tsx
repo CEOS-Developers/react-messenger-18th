@@ -118,7 +118,6 @@ const Input = styled.textarea`
   }
   &::placeholder {
     display: flex;
-
     align-items: center;
   }
 

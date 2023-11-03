@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import arrowIcon from "../../assets/images/Arrow.svg";
+import arrowIcon from "../../assets/images/chatBackArrow.svg";
 import userIcon from "../../assets/images/User.svg";
 import facetime from "../../assets/images/Facetime.svg";
+import { useNavigate } from "react-router-dom";
 
 interface ChatHeaderProps {
   chatName: string;
@@ -13,9 +14,14 @@ const ChatTitle: React.FC<ChatHeaderProps> = ({
   chatID,
   changeUser,
 }) => {
+  const navigate = useNavigate();
   return (
     <ChatTitleContainer>
-      <ArrowIcon src={arrowIcon} alt="arrow Icon" />
+      <ArrowIcon
+        src={arrowIcon}
+        alt="arrow Icon"
+        onClick={() => navigate("/chatlist")}
+      />
       <UserIcon onClick={changeUser} src={userIcon} alt="user Icon" />
       <UserSection onClick={changeUser}>
         <UserName>{chatName}</UserName>

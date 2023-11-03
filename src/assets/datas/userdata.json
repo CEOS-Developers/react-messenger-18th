@@ -3,15 +3,72 @@
        {
           "id": 1,
           "name": "신동현",
-          "instagram":"@s_d0nghyun"
+          "instagram":"@s_d0nghyun",
+          "status":""
 
        },
        {
           "id": 2,
           "name": "이예진",
-          "instagram":"@leebyvae"
+          "instagram":"@leebyvae",
+          "status":""
 
-       }
+       },
+       {
+         "id": 3,
+         "name": "강은정",
+         "instagram":"@0o0go",
+         "status":"👍"
+
+      },{
+         "id": 4,
+         "name": "강은비",
+         "instagram":"@siverrainy_",
+         "status":"날씨 완전 가을🍁"
+
+      },{
+         "id": 5,
+         "name": "고세희 선배님",
+         "instagram":"@saysehi",
+         "status":""
+
+      },{
+         "id": 6,
+         "name": "곽수연",
+         "instagram":"@jusdjkl",
+         "status":"우하하하"
+
+      },{
+         "id": 7,
+         "name": "권은수",
+         "instagram":"@jusdjkl",
+         "status":""
+
+      },{
+         "id": 8,
+         "name": "김진솔",
+         "instagram":"@jusdjkl",
+         "status":"가을가을가을"
+
+      },{
+         "id": 9,
+         "name": "김가영",
+         "instagram":"@odeegayo",
+         "status":""
+
+      },{
+         "id": 10,
+         "name": "김하은 오빠",
+         "instagram":"@ggksenvl",
+         "status":""
+
+      },{
+         "id":11,
+         "name": "문지영 언니",
+         "instagram":"@m00nzi0",
+         "status":"공부?"
+
+      }
     ]
  }
  
