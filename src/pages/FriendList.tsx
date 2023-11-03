@@ -89,10 +89,9 @@ const MyHeader = styled.div`
 
   font-style: ${theme.fonts.heading};
 
-  height: 10%;
+  height: 7%;
   width: 100%;
 
-  background-color: white;
   padding-left: 2rem;
   padding-right: 1rem;
 

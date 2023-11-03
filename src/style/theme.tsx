@@ -2,11 +2,11 @@ import React from 'react';
 
 const theme = {
   colors: {
-    purple: 'rgba(151, 71, 255, 1)',
+    purple: '#9747ff',
     white: 'rgba(255, 255, 255, 1)',
     g1: 'rgba(251, 251, 251, 1)',
     g2: 'rgba(238, 238, 238, 1)',
-    g3: 'rgba(217, 217, 217, 1)',
+    g3: '#d9d9d9',
     g4: 'rgba(179, 179, 179, 1)',
     g5: 'rgba(132, 132, 132, 1)',
     black: 'rgba(0, 0, 0, 1)',
