@@ -85,6 +85,7 @@ const Profile = styled.img`
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
+  object-fit: cover;
 
   margin: 38px 0 0;
 

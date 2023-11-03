@@ -54,6 +54,7 @@ const UserImg = styled.img`
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
+  object-fit: cover;
 
   border-radius: 50%;
   border: 0.7px solid rgba(252, 252, 252, 0.3);

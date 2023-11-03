@@ -4,6 +4,7 @@ export interface userInterface {
   userID: string;
   profileImage: string;
   memo: string;
+  email: string;
 }
 
 export interface chatInterface {

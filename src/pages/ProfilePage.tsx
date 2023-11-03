@@ -11,6 +11,10 @@ import { userArrayState } from "../assets/recoil/recoil";
 import back from "../assets/images/back.svg";
 import link from "../assets/images/link.svg";
 
+import insta from "../assets/images/insta.svg";
+import behance from "../assets/images/behance.svg";
+import github from "../assets/images/github.svg";
+
 //bar
 import bars from "../assets/images/bars.svg";
 import status from "../assets/images/status.svg";
@@ -30,22 +34,32 @@ function ProfilePage() {
       <UserInfo>
         <Profile src={userInfo?.profileImage} />
         <span className="username">{userInfo?.userName}</span>
-        <span className="usermail">yeomhyein123@naver.com</span>
+        <span className="usermail">{userInfo?.email}</span>
       </UserInfo>
       <LinkContainer>
         <span className="link-title">다른 사람이 나와 소통할 수 있는 방법</span>
-        <LinkItem>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <img className="link-icon" />
-            <span>instagram 1</span>
+        <Link href="https://www.instagram.com/">
+          <div className="box">
+            <img className="link-icon" src={insta} />
+            <span>instagram</span>
           </div>
           <img src={link} />
-        </LinkItem>
+        </Link>
+        <Link href="https://github.com/">
+          <div className="box">
+            <img className="link-icon" src={github} />
+            <span>github</span>
+          </div>
+          <img src={link} />
+        </Link>
+
+        <Link href="https://www.behance.net/">
+          <div className="box">
+            <img className="link-icon" src={behance} />
+            <span>Behance</span>
+          </div>
+          <img src={link} />
+        </Link>
       </LinkContainer>
       <Bar src={bars} />
     </Container>
@@ -103,6 +117,7 @@ const Profile = styled.img`
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
+  object-fit: cover;
 `;
 
 const LinkContainer = styled.div`
@@ -116,12 +131,20 @@ const LinkContainer = styled.div`
   }
 `;
 
-const LinkItem = styled.div`
+const Link = styled.a.attrs({ target: "_blank" })`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 16px;
   padding-right: 6px;
+
+  cursor: pointer;
+  text-decoration: none;
+
+  .box {
+    display: flex;
+    align-items: center;
+  }
 
   .link-icon {
     width: 32px;
@@ -133,6 +156,7 @@ const LinkItem = styled.div`
   }
 
   span {
+    color: black;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
