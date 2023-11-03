@@ -8,8 +8,7 @@ import friendsIcon from "../../assets/images/Friends.svg";
 import { useNavigate } from "react-router-dom";
 import userData from "../../assets/datas/userdata.json";
 import chatData from "../../assets/datas/chatdata.json";
-import groupIcon from "../../assets/images/Group.svg";
-import rightarrowIcon from "../../assets/images/rightarrowIcon.svg";
+import ChatListItem from "../../components/ChatlistItem/chatlistitem";
 interface Message {
   id: number;
   sender: string;
@@ -26,39 +25,9 @@ interface ChatData {
   [key: string]: Message[];
 }
 
-function formatTimestamp(isoString?: string) {
-  if (!isoString) return "No last message";
-
-  const date = new Date(isoString);
-  date.setHours(0, 0, 0, 0);
-
-  const now = new Date();
-  now.setHours(0, 0, 0, 0);
-
-  const diffTime = now.getTime() - date.getTime();
-  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-
-  // 날짜 차이에 따른 문자열 반환
-  //오늘은 시간 정보, 전날은 "어제", 그 전날은 '~일전'으로 반환해줌
-  if (diffDays === 0) {
-    const date = new Date(isoString);
-    let hours = date.getHours();
-    const minutes = date.getMinutes();
-    const ampm = hours >= 12 ? "PM" : "AM";
-    hours = hours % 12;
-    hours = hours ? hours : 12;
-    const strHours = hours < 10 ? `0${hours}` : `${hours}`;
-    const strMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
-    return `${strHours}:${strMinutes} ${ampm}`;
-  } else if (diffDays === 1) {
-    return "어제";
-  } else {
-    return `${diffDays}일 전`;
-  }
-}
-
 export default function ChatList() {
   const navigate = useNavigate();
+
   const [lastMessages, setLastMessages] = useState<
     Record<string, Message | null>
   >({});
@@ -72,13 +41,14 @@ export default function ChatList() {
     ) as ChatData;
 
     // 모든 사용자의 마지막 메시지와 시간 가져오기
-    const newLastMessages: Record<string, Message | null> = {};
+    const lastMessage: Record<string, Message | null> = {};
+
     const usersWithLastMessage = userData.users
       .filter((user) => savedChats[user.id.toString()]?.length > 0) // chatData가 있는 사용자만 가져옴
       .map((user) => {
         const userChat = savedChats[user.id.toString()];
         const lastChat = userChat ? userChat[userChat.length - 1] : null;
-        newLastMessages[user.id] = lastChat;
+        lastMessage[user.id] = lastChat;
         return {
           ...user,
           lastMessageTimestamp: lastChat
@@ -91,7 +61,7 @@ export default function ChatList() {
     // 모든 사용자의 마지막 메시지에 대한 unread 상태 업데이트 :
     // 마지막 sender가 내가 아닌 경우 unread 로 처리
     userData.users.forEach((user) => {
-      const lastMsg = newLastMessages[user.id];
+      const lastMsg = lastMessage[user.id];
       if (lastMsg) {
         const updatedMessage = {
           ...lastMsg,
@@ -123,7 +93,7 @@ export default function ChatList() {
 
   return (
     <div className="pageWrapper">
-      <ProfileContainer>
+      <ChatRoomContainer>
         <StatusBar />
         <TopBar />
         <Title>
@@ -135,37 +105,22 @@ export default function ChatList() {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         <ChatlistContainer>
-          {filteredUsers.map((user, index) => (
-            <ChatlistItem
-              key={index}
+          {filteredUsers.map((user) => (
+            <ChatListItem
+              key={user.id}
+              user={user}
+              lastMessage={lastMessages[user.id.toString()]}
               onClick={() => navigate(`/chat/${user.id}`)}
-            >
-              {lastMessages[user.id]?.unread && <UnreadIndicator />}
-              <GroupIcon src={groupIcon} />
-              <ChatlistData>
-                <ChatlistDataTitle>
-                  <Name>{user.name}</Name>
-                  <TimeContainer>
-                    <Time>
-                      {formatTimestamp(lastMessages[user.id]?.timestamp)}
-                    </Time>
-                    <img src={rightarrowIcon} />
-                  </TimeContainer>
-                </ChatlistDataTitle>
-                <LastMessage>
-                  {lastMessages[user.id]?.content || ""}
-                </LastMessage>
-              </ChatlistData>
-            </ChatlistItem>
+            />
           ))}
         </ChatlistContainer>
         <BottomBarIcon src={bottomBar} alt="bottom bar Icon" />
-      </ProfileContainer>
+      </ChatRoomContainer>
     </div>
   );
 }
 
-const ProfileContainer = styled.div`
+const ChatRoomContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -199,80 +154,8 @@ const BottomBarIcon = styled.img`
   bottom: 0;
 `;
 
-const Name = styled.text`
-  font-family: "SF Pro Text";
-  font-size: 1.125rem;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-`;
-const LastMessage = styled.div`
-  /* width: 17.25rem; */
-  height: 2.25rem;
-  color: var(--gray-1);
-  font-family: "SF Pro Text";
-  font-size: 0.9375rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-`;
-
 const ChatlistContainer = styled.div`
   overflow-y: auto; // 세로 스크롤
   width: 100%;
   height: 100%;
-`;
-const ChatlistItem = styled.div`
-  width: 100%;
-  height: 5.25rem;
-  display: flex;
-  padding: 0.81rem 1.56rem;
-  position: relative;
-
-  &::after {
-    content: "";
-    position: absolute;
-    left: 5.1rem;
-    right: 0;
-    bottom: 0;
-    border-bottom: 1px solid var(--gray-1);
-  }
-`;
-
-const Time = styled.div`
-  font-family: "SF Pro Text";
-  font-size: 0.9375rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  color: var(--gray-1);
-`;
-const ChatlistData = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  padding-left: 0.87rem;
-`;
-const ChatlistDataTitle = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 0.25rem;
-`;
-
-const TimeContainer = styled.div`
-  display: flex;
-`;
-const UnreadIndicator = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 0.8rem;
-  width: 0.56rem;
-  height: 0.56rem;
-  border-radius: 50%;
-  background-color: var(--blue);
-`;
-const GroupIcon = styled.img`
-  margin-left: 0.2rem;
 `;
