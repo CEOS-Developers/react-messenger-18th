@@ -10,8 +10,8 @@ const SendIcon: React.FC<IconProps> = ({
 }) => {
   return (
     <svg
-      width="33"
-      height="28"
+      width="26"
+      height="26"
       viewBox="0 0 30 30"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

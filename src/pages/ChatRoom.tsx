@@ -104,13 +104,23 @@ const ChatRoom = () => {
     <Wrapper>
       <Header text={userName} />
       <Body ref={bodyRef}>
-        {chatData.map((chatItem) => (
+        {chatData.map((chatItem, index) => (
           <ChatBox
             text={chatItem.chat}
             hasTail={false}
             isMe={!chatItem.userId}
-            time={chatItem.time}
-            isFirst={true}
+            time={
+              (index === 0 || chatData[index - 1].time !== chatItem.time) &&
+              !(
+                index < chatData.length - 1 &&
+                chatData[index + 1].time === chatItem.time
+              )
+                ? chatItem.time
+                : ''
+            }
+            isFirst={
+              index === 0 || chatData[index - 1].userId !== chatItem.userId
+            }
             user={userName}
           />
         ))}
