@@ -46,7 +46,6 @@ const ChatList = () => {
           />
         ))}
       </Body>
-
       <Footer />
     </Wrapper>
   );
