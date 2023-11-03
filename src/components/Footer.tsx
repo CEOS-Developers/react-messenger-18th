@@ -33,8 +33,13 @@ const Footer = () => {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
+  gap: 1.5rem;
+
+  width: 100%;
+  height: 100%;
+
   background-color: white;
   margin-top: 1px solid ${theme.colors.g2};
 `;
