@@ -22,13 +22,21 @@ export interface ChatMessage {
   text: string;
   isRead: boolean;
 }
-type ChatMessages = ChatMessage[];
+interface UserSortedChatMessage{
+  user: string;
+  time: string;
+  id: string;
+  text: string;
+  isRead: boolean;
+}
+
+export type ChatMessages = ChatMessage[];
 
 function ChatArea() {
   const params = useParams();
   // useRecoilValue가 하나의 훅이어서 곧바로 조건부 할당이 불가능하기 때문에 전역변수를 모두 구독해줘야함
-  const isUser1InFirstRoom = useRecoilValue(firstRoomState);
-  const isUser1InSecondRoom = useRecoilValue(secondRoomState);
+  const isUser1InFirstRoom: boolean = useRecoilValue(firstRoomState);
+  const isUser1InSecondRoom: boolean = useRecoilValue(secondRoomState);
   const userA: ChatMessages = useRecoilValue(userAMessageState);
   const userB: ChatMessages = useRecoilValue(userBMesasgeState);
   const userC: ChatMessages = useRecoilValue(userCMessageState);
@@ -83,7 +91,7 @@ function ChatArea() {
       >
         <Space height="25px" />
 
-        {sortedMessagesWithUser.map((el) => {
+        {sortedMessagesWithUser.map((el: UserSortedChatMessage) => {
           if (isUser1)
             return el.user === "User 1" ? (
               <ChatBubbleBlue

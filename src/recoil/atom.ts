@@ -1,9 +1,10 @@
 import { atom } from "recoil";
+import { ChatMessages } from "../components/organism/chatroom/ChatArea";
 
 // 첫번째 채팅방의 상태
 export const firstRoomState = atom({ key: "firstRoomState", default: true });
 
-export const userAMessageState = atom({
+export const userAMessageState = atom<ChatMessages>({
   key: "userAMessageState",
   default: [],
   // localStorage와 atom을 연동
@@ -20,7 +21,7 @@ export const userAMessageState = atom({
   ],
 });
 
-export const userBMesasgeState = atom({
+export const userBMesasgeState = atom<ChatMessages>({
   key: "userBMessageState",
   default: [],
   // localStorage와 atom을 연동
@@ -41,7 +42,7 @@ export const userBMesasgeState = atom({
 
 export const secondRoomState = atom({ key: "secondRoomState", default: true });
 
-export const userCMessageState = atom({
+export const userCMessageState = atom<ChatMessages>({
   key: "userCMessageState",
   default: [],
   // localStorage와 atom을 연동
@@ -58,7 +59,7 @@ export const userCMessageState = atom({
   ],
 });
 
-export const userDMesasgeState = atom({
+export const userDMesasgeState = atom<ChatMessages>({
   key: "userDMessageState",
   default: [],
   // localStorage와 atom을 연동

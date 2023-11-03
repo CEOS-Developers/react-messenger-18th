@@ -15,16 +15,16 @@ import {
   userCMessageState,
   userDMesasgeState,
 } from "../../../recoil/atom";
-
+import { ChatMessages } from "../../organism/chatroom/ChatArea";
 function ChatNav() {
   const [isUser1InFirstRoom, setIsUser1InFirstRoom] =
     useRecoilState(firstRoomState);
   const [isUser1InSecondRoom, setIsUser1InSecondRoom] =
     useRecoilState(secondRoomState);
-  const [userAMessage, setUserAMessage] = useRecoilState(userAMessageState);
-  const [userBMessage, setUserBMessage] = useRecoilState(userBMesasgeState);
-  const [userCMessage, setUserCMessage] = useRecoilState(userCMessageState);
-  const [userDMessage, setUserDMessage] = useRecoilState(userDMesasgeState);
+  const [userAMessage, setUserAMessage] = useRecoilState<ChatMessages>(userAMessageState);
+  const [userBMessage, setUserBMessage] = useRecoilState<ChatMessages>(userBMesasgeState);
+  const [userCMessage, setUserCMessage] = useRecoilState<ChatMessages>(userCMessageState);
+  const [userDMessage, setUserDMessage] = useRecoilState<ChatMessages>(userDMesasgeState);
   const params = useParams();
 
   // 현재는 채팅방이 2개 밖에 없기 때문에 삼항 연산자를 통해 채팅방 내비게이션의 모습을 결정함

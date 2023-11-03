@@ -6,7 +6,12 @@ import { Text } from "../../atom/Text";
 import personIcon from "../../../assets/images/personIcon.svg";
 import rightIcon from "../../../assets/images/rightIcon.svg";
 
-function MyProfileMenu({ icon, name }) {
+interface MyProfileMenuProps {
+  icon: string;
+  name: string;
+}
+
+function MyProfileMenu({ icon, name }: MyProfileMenuProps) {
   return (
     <>
       <Space height="8px" />

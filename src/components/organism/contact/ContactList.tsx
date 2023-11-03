@@ -5,8 +5,12 @@ import { dummyContactList } from "../../../assets/\bdummyList";
 import { isSearchState } from "../../../recoil/atom";
 import { useRecoilValue } from "recoil";
 import SearchContainer from "../../moleclues/SearchContainer";
+interface ContactItem {
+  name: string;
+  introduction: string;
+}
 function ContactList() {
-  const isSearch = useRecoilValue(isSearchState);
+  const isSearch:boolean = useRecoilValue(isSearchState);
   return (
     <>
       {isSearch ? (
@@ -19,7 +23,7 @@ function ContactList() {
           height="623px"
           margin="16px 0px 0px"
         >
-          {dummyContactList.map((item) => (
+          {dummyContactList.map((item: ContactItem) => (
             <ContactItem
               key={item.name}
               name={item.name}

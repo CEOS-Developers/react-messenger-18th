@@ -20,7 +20,6 @@ function HomeNav({ title }) {
   const onTextChange = (e) => {
     setUserInput(e.target.value);
   };
-
   useEffect(() => {
     inputRef?.current?.focus();
   }, [isSearch]);

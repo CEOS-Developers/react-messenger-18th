@@ -3,7 +3,12 @@ import StatusBar from "../moleclues/StatusBar";
 import HomeNav from "../moleclues/HomeNav";
 import { Flex } from "../atom/Flex";
 
-function HomeHeader({ title, isBorder }) {
+interface HomeHeaderProps {
+  title: string;
+  isBorder: boolean;
+}
+
+function HomeHeader({ title, isBorder }: HomeHeaderProps) {
   return (
     <Flex
       direction="column"

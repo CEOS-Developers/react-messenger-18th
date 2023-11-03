@@ -4,7 +4,12 @@ import { Flex } from "../../atom/Flex";
 import { Icon } from "../../atom/Icon";
 import { Text } from "../../atom/Text";
 
-function MyProfileLink({ icon, name }) {
+interface MyProfileLinkProps {
+  icon: string;
+  name: string;
+}
+
+function MyProfileLink({ icon, name }: MyProfileLinkProps) {
   return (
     <>
       <Flex>

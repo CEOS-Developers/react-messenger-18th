@@ -7,9 +7,10 @@ import messageIcon from "../../assets/images/messageIcon.svg";
 import messageIconBlue from "../../assets/images/messageIconBlue.svg";
 import horizontalIcon from "../../assets/images/horizontalIcon.svg";
 import horizontalIconBlue from "../../assets/images/horizontalIconBlue.svg";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { isSearchState } from "../../recoil/atom";
+
 function BottomNavigation() {
   const [isBlue, setIsBlue] = useState({
     contact: false,
@@ -18,14 +19,17 @@ function BottomNavigation() {
   });
   const setIsSearch = useSetRecoilState(isSearchState);
   const location = useLocation();
+
   useEffect(() => {
-    // 검색중일때 메뉴 클릭하면 검색중인 상태가 뜨지 않게 조정
     setIsSearch(false);
     const path = location.pathname;
-    if (path === "/contact") {setIsBlue({ ...isBlue, contact: true })};
-    if (path === "/chat") setIsBlue({ ...isBlue, chat: true });
-    if (path === "/profile") setIsBlue({ ...isBlue, profile: true });
-  }, [location]); 
+    setIsBlue((prevState) => ({
+      ...prevState,
+      contact: path === "/contact",
+      chat: path === "/chat",
+      profile: path === "/profile",
+    }));
+  }, [location]);
 
   return (
     <Flex width="375px">
@@ -33,10 +37,7 @@ function BottomNavigation() {
         <Link to="/contact">
           <Flex width="58px" height="44px" justify="center" align="center">
             {isBlue.contact ? (
-              <Icon
-                src={groupIconBlue}
-                style={{ width: "32px", height: "32px" }}
-              />
+              <Icon src={groupIconBlue} style={{ width: "32px", height: "32px" }} />
             ) : (
               <Icon src={groupIcon} style={{ width: "32px", height: "32px" }} />
             )}
@@ -45,30 +46,18 @@ function BottomNavigation() {
         <Link to="/chat">
           <Flex width="58px" height="44px" justify="center" align="center">
             {isBlue.chat ? (
-              <Icon
-                src={messageIconBlue}
-                style={{ width: "32px", height: "32px" }}
-              />
+              <Icon src={messageIconBlue} style={{ width: "32px", height: "32px" }} />
             ) : (
-              <Icon
-                src={messageIcon}
-                style={{ width: "32px", height: "32px" }}
-              />
+              <Icon src={messageIcon} style={{ width: "32px", height: "32px" }} />
             )}
           </Flex>
         </Link>
         <Link to="/profile">
           <Flex width="58px" height="44px" justify="center" align="center">
             {isBlue.profile ? (
-              <Icon
-                src={horizontalIconBlue}
-                style={{ width: "32px", height: "32px" }}
-              />
+              <Icon src={horizontalIconBlue} style={{ width: "32px", height: "32px" }} />
             ) : (
-              <Icon
-                src={horizontalIcon}
-                style={{ width: "32px", height: "32px" }}
-              />
+              <Icon src={horizontalIcon} style={{ width: "32px", height: "32px" }} />
             )}
           </Flex>
         </Link>
