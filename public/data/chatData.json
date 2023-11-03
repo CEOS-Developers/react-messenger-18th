@@ -1,0 +1,53 @@
+[
+  {
+    "userId": 3,
+    "chatData": [
+      {
+        "userId": 4,
+        "isLike": false,
+        "chat": "밥 먹으러 가자",
+        "time": "17:22"
+      }
+    ]
+  },
+  {
+    "userId": 4,
+    "chatData": [
+      { "userId": 4, "isLike": false, "chat": "어디냐", "time": "15:00" },
+      { "userId": 0, "isLike": false, "chat": "집", "time": "15:40" },
+      { "userId": 4, "isLike": false, "chat": "중도가자", "time": "15:50" },
+      { "userId": 4, "isLike": false, "chat": "가자니까", "time": "15:50" }
+    ]
+  },
+  {
+    "userId": 5,
+    "chatData": [
+      { "userId": 5, "isLike": false, "chat": "과제안함?", "time": "18:00" },
+      { "userId": 0, "isLike": false, "chat": "할거야", "time": "18:50" },
+      { "userId": 5, "isLike": false, "chat": "언제", "time": "18:55" },
+      {
+        "userId": 0,
+        "isLike": false,
+        "chat": "어쩌라고 화나게하지마",
+        "time": "19:00"
+      },
+      {
+        "userId": 0,
+        "isLike": false,
+        "chat": "카피바라 보고싶다",
+        "time": "20:00"
+      }
+    ]
+  },
+  {
+    "userId": 6,
+    "chatData": [
+      {
+        "userId": 6,
+        "isLike": false,
+        "chat": "씨프 책 빌려주라",
+        "time": "06:22"
+      }
+    ]
+  }
+]

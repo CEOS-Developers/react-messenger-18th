@@ -1,0 +1,30 @@
+[
+  {
+    "userId": 3,
+    "userName": "변희민",
+    "latestMent": "밥 먹으러 가자",
+    "newNum": 1,
+    "latestTime": "17:22"
+  },
+  {
+    "userId": 4,
+    "userName": "장수화",
+    "latestMent": "가자니까",
+    "newNum": 2,
+    "latestTime": "13:22"
+  },
+  {
+    "userId": 5,
+    "userName": "이서현",
+    "latestMent": "카피바라 보고싶다",
+    "newNum": 0,
+    "latestTime": "06:22"
+  },
+  {
+    "userId": 6,
+    "userName": "이주원",
+    "latestMent": "씨프 책 빌려주라",
+    "newNum": 0,
+    "latestTime": "06:22"
+  }
+]
