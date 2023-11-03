@@ -32,8 +32,10 @@ function ChattingInput({ friendId }: { friendId: number }) {
     }
   );
 
-  //제출시 실행되는 함수
+  // 제출시 실행되는 함수
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const inputBoxRef = useRef<HTMLTextAreaElement | null>(null);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (inputMessage.trim() !== "") {
@@ -49,14 +51,20 @@ function ChattingInput({ friendId }: { friendId: number }) {
     }
   };
 
+  const handleSendButtonClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    handleSubmit(e);
+  };
+
   useEffect(() => {
     if (containerRef.current) {
       containerRef.current.scrollTop = containerRef.current.scrollHeight;
     }
     localStorage.setItem(`chatMessages${friendId}`, JSON.stringify(messages));
-  }, [messages]);
+  }, [messages, friendId]);
 
-  //전송버튼 팝업
+  // 전송버튼 팝업
   const [isFocused, setIsFocused] = useState(false);
   const handleInputFocus = () => {
     setIsFocused(true);
@@ -65,6 +73,21 @@ function ChattingInput({ friendId }: { friendId: number }) {
   const handleInputBlur = () => {
     setIsFocused(false);
   };
+
+  // 엔터로 전송, shift+엔터로 줄바꿈
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleSubmit(e);
+    }
+  };
+
+  //줄 바뀌면 textarea 크기 같이 증가
+  const autoAdjustTextarea = (element: HTMLTextAreaElement) => {
+    element.style.height = "auto";
+    element.style.height = element.scrollHeight + "px";
+  };
+
   return (
     <>
       <Container ref={containerRef} sender={sender}>
@@ -82,28 +105,35 @@ function ChattingInput({ friendId }: { friendId: number }) {
         ))}
       </Container>
       <InputContainer onSubmit={handleSubmit}>
-        <InputDiv isFocused={isFocused}>
+        <InputDiv>
           <CameraIcon src={camera} />
           <InputBox
-            type="text"
             placeholder="메세지 보내기..."
-            onFocus={handleInputFocus}
+            onFocus={(e) => {
+              handleInputFocus();
+              autoAdjustTextarea(e.target);
+            }}
             onBlur={handleInputBlur}
             value={inputMessage}
-            onChange={(e) => setInputMessage(e.target.value)}
+            onChange={(e) => {
+              setInputMessage(e.target.value);
+              autoAdjustTextarea(e.target);
+            }}
+            onKeyDown={handleKeyDown}
+            ref={inputBoxRef}
           />
+          {isFocused ? (
+            <SendButton onClick={handleSendButtonClick}>
+              <SendBtnIcon src={sendingbtn} />
+            </SendButton>
+          ) : (
+            <IconDiv>
+              <Icon src={mic} />
+              <Icon src={photo} />
+              <Icon src={sticker} />
+            </IconDiv>
+          )}
         </InputDiv>
-        {isFocused ? (
-          <SendButton>
-            <SendBtnIcon src={sendingbtn} />
-          </SendButton>
-        ) : (
-          <IconDiv>
-            <Icon src={mic} />
-            <Icon src={photo} />
-            <Icon src={sticker} />
-          </IconDiv>
-        )}
       </InputContainer>
     </>
   );
@@ -118,6 +148,8 @@ const Container = styled.div<{ sender: number }>`
   width: 375px;
   height: 630px;
   flex-shrink: 0;
+  gap: 8px;
+  padding: 16px 0;
 
   overflow-y: scroll;
 
@@ -128,15 +160,15 @@ const Container = styled.div<{ sender: number }>`
 
 const InputContainer = styled.form`
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
 
   width: 352px;
-  height: 41px;
+  max-height: 110px;
   flex-shrink: 0;
 
   border-radius: 20px;
-  padding-right: 2px;
+  padding: 4px;
   border: 1px solid ${color.grey2};
 `;
 
@@ -147,17 +179,21 @@ const CameraIcon = styled.img`
   margin: 0 4px;
 `;
 
-const InputDiv = styled.div<{ isFocused: boolean }>`
+const InputDiv = styled.form`
   display: flex;
-  align-items: center;
-  width: ${(props) => (props.isFocused ? "100%" : "68%")};
+  align-items: flex-end;
+  width: 100%;
 `;
 
-const InputBox = styled.input`
+const InputBox = styled.textarea`
   color: ${color.black};
   width: 100%;
+  min-height: 42px;
+  max-height: 102px;
+  resize: none;
   border: none;
   outline: none;
+  word-break: break-all;
 
   font-family: "Pretendard-Regular";
   font-size: 13px;
@@ -168,10 +204,14 @@ const InputBox = styled.input`
   &::placeholder {
     color: ${color.grey3};
   }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const IconDiv = styled.div`
-  gap: 16px;
+  display: flex;
 `;
 
 const Icon = styled.img`
