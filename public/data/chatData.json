@@ -4,7 +4,8 @@
     "chatData": [
       { "userId": 4, "isLike": false, "chat": "어디냐", "time": "15:00" },
       { "userId": 0, "isLike": false, "chat": "집", "time": "15:40" },
-      { "userId": 4, "isLike": false, "chat": "중도가자", "time": "15:50" }
+      { "userId": 4, "isLike": false, "chat": "중도가자", "time": "15:50" },
+      { "userId": 4, "isLike": false, "chat": "가자니까", "time": "15:50" }
     ]
   },
   {

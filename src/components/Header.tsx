@@ -4,16 +4,18 @@ import theme from '../style/theme';
 import SearchIcon from '../static/SearchIcon';
 import HamburgerIcon from '../static/HamburgerIcon';
 import BackIcon from '../static/BackIcon';
+import { Link, useLocation } from 'react-router-dom';
 
 interface HeaderProps {
   text: string;
-  onClick?: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ text, onClick }) => {
+const Header: React.FC<HeaderProps> = ({ text }) => {
   return (
-    <Wrapper onClick={onClick}>
-      <BackIcon />
+    <Wrapper>
+      <Link to="/chatlist">
+        <BackIcon />
+      </Link>
       {text}
       <IconList>
         <SearchIcon />

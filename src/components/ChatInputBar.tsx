@@ -119,6 +119,7 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 10px;
+  padding-bottom: 2rem;
 `;
 
 export default ChatInputBar;
