@@ -83,7 +83,7 @@ function ChattingInput({ friendId }: { friendId: number }) {
     }
   };
 
-  //줄 바뀌면 textarea 크기 같이 증가
+  //줄 바뀌면 textarea 높이 같이 증가
   const autoAdjustTextarea = (element: HTMLTextAreaElement) => {
     element.style.height = "auto";
     element.style.height = element.scrollHeight + "px";
@@ -91,7 +91,7 @@ function ChattingInput({ friendId }: { friendId: number }) {
 
   return (
     <>
-      <Container ref={containerRef} sender={sender}>
+      <Container ref={containerRef}>
         {messages.map((message, index) => (
           <ChattingItem
             key={index}
@@ -142,12 +142,12 @@ function ChattingInput({ friendId }: { friendId: number }) {
 
 export default ChattingInput;
 
-const Container = styled.div<{ sender: number }>`
+const Container = styled.div`
   display: flex;
   flex-direction: column;
 
   width: 375px;
-  height: 630px;
+  height: 672px;
   flex-shrink: 0;
   gap: 8px;
   padding: 16px 0;
@@ -160,9 +160,12 @@ const Container = styled.div<{ sender: number }>`
 `;
 
 const InputContainer = styled.form`
+  position: absolute;
+  bottom: 8px;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
+  background-color: #fff;
 
   width: 352px;
   max-height: 110px;

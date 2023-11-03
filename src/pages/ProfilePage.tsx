@@ -16,7 +16,7 @@ import behance from "../assets/images/behance.svg";
 import github from "../assets/images/github.svg";
 
 //bar
-import bars from "../assets/images/bars.svg";
+
 import status from "../assets/images/status.svg";
 
 function ProfilePage() {
@@ -61,7 +61,6 @@ function ProfilePage() {
           <img src={link} />
         </Link>
       </LinkContainer>
-      <Bar src={bars} />
     </Container>
   );
 }
@@ -72,14 +71,14 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #fff;
-
-  padding-left: 12px;
+  width: 375px;
+  height: 812px;
 
   .back {
     width: 24px;
     height: 24px;
     flex-shrink: 0;
-    margin-top: 16px;
+    margin: 16px 0 0 12px;
   }
 `;
 
@@ -122,6 +121,7 @@ const Profile = styled.img`
 
 const LinkContainer = styled.div`
   margin-top: 24px;
+  padding-left: 12px;
 
   .link-title {
     color: ${color.grey3};

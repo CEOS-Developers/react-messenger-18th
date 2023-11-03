@@ -7,7 +7,6 @@ import TopContainer from "../components/ChattingRoom/TopContainer";
 import ChatInput from "../components/ChattingRoom/ChatInput";
 
 //bar
-import bars from "../assets/images/bars.svg";
 import status from "../assets/images/status.svg";
 
 function ChattingRoom() {
@@ -18,7 +17,6 @@ function ChattingRoom() {
       <StatusBar src={status} />
       <TopContainer friendId={friendId} />
       <ChatInput friendId={friendId} />
-      <Bar src={bars} />
     </Container>
   );
 }
@@ -26,10 +24,14 @@ function ChattingRoom() {
 export default ChattingRoom;
 
 const Container = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+
   background-color: #fff;
+  width: 375px;
+  height: 812px;
 `;
 
 const StatusBar = styled.img`
