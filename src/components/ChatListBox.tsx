@@ -45,6 +45,7 @@ const StyledLink = styled(Link)`
 `;
 const SubText = styled.div`
   font-style: ${theme.fonts.subText};
+  color: black;
 `;
 
 const Caption = styled.div`
