@@ -18,13 +18,14 @@ const ChatListItem = ({ chatting }: ChattingItemProps) => {
   const userArray = useRecoilValue(userArrayState);
   const friendId = chatting.users.filter((id) => id !== 0)[0];
   const friendInfoById = userArray.filter((user) => user.id === friendId)[0];
+  const lastChat = chatting.chatList.at(-1);
   return (
     <Box onClick={() => navigate(`/chatting/${friendInfoById.id}`)}>
       <UserImg src={friendInfoById.profileImage} />
       <UserInfo>
         <div className="UserName">{friendInfoById.userName}</div>
         <div className="ChattingInfo">
-          <span>새 메세지 3개</span>
+          <span>{lastChat?.text}</span>
           <span> • 0시간 </span>
         </div>
       </UserInfo>
