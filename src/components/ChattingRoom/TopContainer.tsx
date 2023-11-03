@@ -21,11 +21,16 @@ function TopContainer({ friendId }: { friendId: number }) {
   const handleUserInfoClick = () => {
     setSender(sender === 0 ? friendId : 0);
   };
+
+  const handleBackClick = () => {
+    setSender(0);
+    navigate(-1);
+  };
   return (
     <>
       <Container>
         <Box>
-          <Icon src={back} onClick={() => navigate(-1)} />
+          <Icon src={back} onClick={handleBackClick} />
           <UserInfo>
             <Profile src={currentUser.profileImage} />
             <div onClick={handleUserInfoClick}>

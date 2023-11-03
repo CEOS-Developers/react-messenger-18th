@@ -18,11 +18,16 @@ import status from "../assets/images/status.svg";
 function ChattingListPage() {
   const userArray = useRecoilValue(userArrayState);
   const chatArray = useRecoilValue(chatArrayState);
+  const [keyword, setKeyword] = useState<string>("");
 
   return (
     <Container>
       <StatusBar src={status} />
-      <SearchingBar />
+      <SearchingBar
+        showSearch={true}
+        keyword={keyword}
+        setKeyword={setKeyword}
+      />
       <MemoContainer>
         {userArray.map((user) => (
           <MemoBox key={user.id} user={user} />
@@ -37,7 +42,6 @@ function ChattingListPage() {
           <ChatListItem key={chatting.chattingId} chatting={chatting} />
         ))}
       </ChatListContainer>
-      <Bar src={bars} />
     </Container>
   );
 }
@@ -46,6 +50,8 @@ export default ChattingListPage;
 
 const Container = styled.div`
   background-color: #fff;
+  width: 375px;
+  height: 812px;
 `;
 
 const StatusBar = styled.img`
@@ -55,12 +61,12 @@ const StatusBar = styled.img`
 
 const MemoContainer = styled.div`
   display: flex;
-  width: 375px;
   margin-bottom: 16px;
   margin-left: 6px;
   gap: 27px;
 
   overflow-x: scroll;
+  white-space: nowrap;
   &::-webkit-scrollbar {
     display: none;
   }
@@ -91,9 +97,4 @@ const ChatListContainer = styled.div`
   flex-direction: column;
   gap: 16px;
   margin-top: 24px;
-`;
-
-const Bar = styled.img`
-  width: 375px;
-  height: 34px;
 `;

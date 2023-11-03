@@ -25,7 +25,6 @@ const ChatListItem = ({ chatting }: ChattingItemProps) => {
         <div className="UserName">{friendInfoById.userName}</div>
         <div className="ChattingInfo">
           <span>새 메세지 3개</span>
-          {/* 읽음 여부 따라 색 변경 */}
           <span> • 6시간 </span>
         </div>
       </UserInfo>

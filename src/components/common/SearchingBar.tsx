@@ -3,15 +3,30 @@ import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { color } from "../../assets/styles/color";
 
+import { useRecoilValue } from "recoil";
+import { meAtom } from "../../assets/recoil/recoil";
+
 //img
 import back from "../../assets/images/back.svg";
 import search from "../../assets/images/search.svg";
 import write from "../../assets/images/write.svg";
 import share from "../../assets/images/share.svg";
 
-function SearchingBar({ showSearch = true }) {
+interface SearchingBarProps {
+  showSearch: boolean;
+  keyword: string;
+  setKeyword: (term: string) => void;
+}
+
+function SearchingBar({
+  showSearch = true,
+  keyword,
+  setKeyword,
+}: SearchingBarProps) {
   const [isChatting, setIsChatting] = useState(false);
   //isChatting에 chatting인지 아닌지 useParams로 받아와야함
+
+  const meUser = useRecoilValue(meAtom);
 
   const { chat_id } = useParams();
   const navigate = useNavigate();
@@ -37,7 +52,7 @@ function SearchingBar({ showSearch = true }) {
           ) : (
             <IconDiv />
           )}
-          <UserID>Hello</UserID>
+          <UserID>{meUser.userID}</UserID>
         </Box>
         <Box>
           {isChatting ? (
@@ -50,7 +65,12 @@ function SearchingBar({ showSearch = true }) {
       </TopContainer>
       <SearchingContainer>
         <img src={search} />
-        <input placeholder="검색"></input>
+        <input
+          placeholder="검색"
+          type="text"
+          value={keyword}
+          onChange={(e) => setKeyword(e.target.value)}
+        ></input>
       </SearchingContainer>
     </div>
   );
