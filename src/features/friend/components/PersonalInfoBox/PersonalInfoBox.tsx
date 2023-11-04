@@ -5,7 +5,7 @@ import { ReactComponent as Group } from "@common/icons/group.svg";
 import { ReactComponent as RightIcon } from "@common/icons/arrows/rightarrow.svg";
 import { RoleButton } from "@common/components";
 import { MAJOR_TYPE, CHATROOM_TYPE } from "@common/constants";
-import { PersonalInfoBoxProps } from "@features/friend";
+import { PersonalInfoProps } from "@features/friend";
 
 export function PersonalInfoBox({
   id,
@@ -21,7 +21,7 @@ export function PersonalInfoBox({
   behanceLink,
   instagramLink,
   githubLink,
-}: PersonalInfoBoxProps) {
+}: PersonalInfoProps) {
   const navigate = useNavigate();
   return (
     <InfoWrapper>

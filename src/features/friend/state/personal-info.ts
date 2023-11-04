@@ -1,4 +1,4 @@
-export interface PersonalInfoBoxProps {
+export interface PersonalInfoProps {
   id: number;
   img: string;
   name: string;
