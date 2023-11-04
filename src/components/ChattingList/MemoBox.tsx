@@ -18,10 +18,12 @@ interface MemoBoxProps {
 
 const MemoBox = ({ user }: MemoBoxProps) => {
   const [isEditing, setIsEditing] = useState(false);
+  const [inputMemo, setInputMemo] = useState(user.memo || "");
+
   const isMe: boolean = user.id == 0;
 
   const handleBubbleClick = () => {
-    setIsEditing((prevState) => !prevState);
+    setIsEditing(!isEditing);
   };
 
   if (!user.memo && !isMe) {
@@ -31,16 +33,26 @@ const MemoBox = ({ user }: MemoBoxProps) => {
   return (
     <Container>
       {isMe ? (
-        //isEditing 상태 따라서 style 바꾸기
-        <MyMemoBubble src={isEditing ? memobubble : memocreate} />
+        user.memo ? (
+          <MemoBubble src={memobubble} />
+        ) : isEditing ? (
+          <div>
+            <MemoBubble src={memobubble} onClick={handleBubbleClick} />
+            <span className="memo">•••</span>
+          </div>
+        ) : (
+          <MyMemoBubble src={memocreate} onClick={handleBubbleClick} />
+        )
       ) : (
         <MemoBubble src={memobubble} />
       )}
-      {!isMe && user.memo && (
+
+      {user.memo && (
         <div className="memo">
           <MemoContent>{user.memo}</MemoContent>
         </div>
       )}
+
       <Profile src={user.profileImage} />
       <Nicname>{isMe ? "내 메모" : user.userName}</Nicname>
     </Container>
