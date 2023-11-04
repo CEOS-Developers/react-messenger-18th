@@ -20,7 +20,8 @@ const FriendSearchContent = () => {
         />
       </FriendSearchContainer>
       <FriendContainer>
-        {dummyFriendNames
+        {dummyFriendNames.users
+          .filter((friend, index) => index > 0) // 첫 번째 데이터를 제외
           .filter((friend) => friend.name.includes(userInput))
           .map((filteredFriend, index) => (
             <FriendItem key={index} name={filteredFriend.name} />
@@ -31,6 +32,7 @@ const FriendSearchContent = () => {
 };
 
 export default FriendSearchContent;
+
 const FriendSearchContainer = styled.div`
   padding: 8px 16px 6px 16px;
   align-items: center;

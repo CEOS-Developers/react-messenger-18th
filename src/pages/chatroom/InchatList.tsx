@@ -48,7 +48,7 @@ const determineCalendar = (
   let displayDate = false;
   if (index !== chat.length - 1) {
     const nextDate = chat[index + 1].calendar;
-    if (nextDate !== chat[index].calendar) {
+    if (nextDate.split(" ")[0] !== chat[index].calendar.split(" ")[0]) {
       displayDate = true;
     }
   }
@@ -70,7 +70,7 @@ const InchatList: React.FC<InchatListProps> = ({ currentUser, chat }) => {
       <InChatListWrapper ref={chatListRef} id="chat-container">
         {chat.map((message, index) => (
           <React.Fragment key={message.id}>
-            {index === 0 || determineCalendar(chat, index) ? (
+            {index === 0 ? (
               <Wrapper>
                 <Calendar calendar={message.calendar} />
               </Wrapper>
@@ -106,6 +106,7 @@ const InChatListWrapper = styled.div`
   display: flex;
   align-items: flex-end;
   flex-direction: column;
+  gap: 4px;
 `;
 
 const Wrapper = styled.div`

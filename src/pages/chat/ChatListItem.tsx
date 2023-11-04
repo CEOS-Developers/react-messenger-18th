@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 
 interface ChatListItemProps {
+  id: number;
   name: string;
   content: string;
   unread: number;
@@ -9,13 +10,14 @@ interface ChatListItemProps {
 }
 
 const ChatListItem: React.FC<ChatListItemProps> = ({
+  id,
   name,
   content,
   unread,
   date,
 }) => {
   return (
-    <StyledLink to={`/chatroom`}>
+    <StyledLink to={`/chatroom/${id}`}>
       <ChatFriendContainer>
         <FriendImg src={"/assets/profile.svg"} alt="profile" />
         <ChatFriendWrapper>

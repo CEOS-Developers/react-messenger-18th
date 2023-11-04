@@ -1,62 +1,81 @@
-[
-  {
-    "name": "김지원",
-    "content": "그래서 어떻게 됨?",
-    "unread": 3,
-    "date": "9월 20일"
-  },
-  {
-    "name": "박원빈",
-    "content": "ㅇㅋ 낼 봐~",
-    "unread": 1,
-    "date": "오전 10:09"
-  },
-  {
-    "name": "엄마아들",
-    "content": "어쩌라고",
-    "unread": 2,
-    "date": "어제"
-  },
-  {
-    "name": "이마크",
-    "content": "오호라",
-    "unread": 0,
-    "date": "2023년 9월 20일"
-  },
-  {
-    "name": "치과",
-    "content": "[예약 안내]",
-    "unread": 0,
-    "date": "2023년 9월 19일"
-  },
-  {
-    "name": "엄마",
-    "content": "집에 언제오니",
-    "unread": 0,
-    "date": "2023년 9월 17일"
-  },
-  {
-    "name": "우리 정우",
-    "content": "잘생겼지",
-    "unread": 0,
-    "date": "2023년 9월 11일"
-  },
-  {
-    "name": "최영재",
-    "content": "오 진짜?",
-    "unread": 0,
-    "date": "2023년 8월 10일"
-  },
-  {
-    "name": "황런쥔",
-    "content": "히히",
-    "unread": 0,
-    "date": "2023년 8월 7일"
-  },
-  {
-    "name": "114",
-    "content": "[Web 발신]",
-    "unread": 0,
-    "date": "2023년 8월 3일"
-  }
-]
+{
+  "users": [
+    {
+      "id": 0,
+      "name": "김지원",
+      "content": "ㅇㅇ",
+      "unread": 3,
+      "date": "9월 20일"
+    },
+    {
+      "id": 1,
+      "name": "최영재",
+      "content": "그래서 어떻게 됨?",
+      "unread": 3,
+      "date": "9월 20일"
+    },
+    {
+      "id": 2,
+      "name": "박원빈",
+      "content": "ㅇㅋ 낼 봐~",
+      "unread": 1,
+      "date": "오전 10:09"
+    },
+    {
+      "id": 3,
+      "name": "엄마아들",
+      "content": "어쩌라고",
+      "unread": 2,
+      "date": "어제"
+    },
+    {
+      "id": 4,
+      "name": "이마크",
+      "content": "오호라",
+      "unread": 0,
+      "date": "2023년 9월 20일"
+    },
+    {
+      "id": 5,
+      "name": "치과",
+      "content": "[예약 안내]",
+      "unread": 0,
+      "date": "2023년 9월 19일"
+    },
+    {
+      "id": 6,
+      "name": "엄마",
+      "content": "집에 언제오니",
+      "unread": 0,
+      "date": "2023년 9월 17일"
+    },
+    {
+      "id": 7,
+      "name": "김정우",
+      "content": "잘생겼지",
+      "unread": 0,
+      "date": "2023년 9월 20일"
+    },
+    {
+      "id": 8,
+      "name": "유세오",
+      "content": "오 진짜?",
+      "unread": 0,
+      "date": "2023년 8월 10일"
+    },
+    {
+      "id": 9,
+      "name": "황런쥔",
+      "content": "히히",
+      "unread": 0,
+      "date": "2023년 8월 7일"
+    },
+    {
+      "id": 10,
+      "name": "114",
+      "content": "[Web 발신]",
+      "unread": 0,
+      "date": "2023년 8월 3일"
+    }
+  ]
+}

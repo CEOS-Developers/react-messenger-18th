@@ -9,7 +9,6 @@ import Friend from "./pages/friend/Friend";
 import MyPage from "pages/mypage/MyPage";
 import ChatSearch from "pages/chat/ChatSearch";
 import FriendSearch from "pages/friend/FriendSearch";
-import ChatRoomSearch from "pages/chatroom/ChatRoomSearch";
 
 const App: React.FC = () => {
   return (
@@ -23,8 +22,7 @@ const App: React.FC = () => {
             <Route path="/chat" element={<Chat />} />
             <Route path="/chatsearch" element={<ChatSearch />} />
             <Route path="/mypage" element={<MyPage />} />
-            <Route path="/chatroom" element={<ChatRoom />} />
-            <Route path="/chatroomsearch" element={<ChatRoomSearch />} />
+            <Route path="/chatroom/:chatId" element={<ChatRoom />} />
           </Routes>
         </Container>
         <HomeImage src="/assets/home.svg" alt="home img" />

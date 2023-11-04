@@ -1,27 +1,35 @@
 import BottomInputBox from "./BottomInputBox";
 import TopInChat from "./TopInChat";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import InchatList from "./InchatList";
-import user from "user.json";
+import chatdata from "chatdata.json";
+import userdata from "dummyFriendNames.json";
 import { styled } from "styled-components";
 import { useParams } from "react-router-dom";
+import { idText } from "typescript";
 
 const ChatRoom: React.FC = () => {
-  let { name } = useParams();
-  console.log("Received name:", name);
+  const { chatId } = useParams<{ chatId: string }>();
+  const chatRoomLocalStorageKey = `chatData_${chatId}`;
+  const savedChat = localStorage.getItem(chatRoomLocalStorageKey);
   const [chat, setChat] = useState<
     Array<{
+      roomId: number;
       value: string;
       id: number;
       sender: string;
       date: string;
       calendar: string;
     }>
-  >([]);
-  const [currentUser, setCurrentUser] = useState(user.users[0]);
+  >(savedChat ? JSON.parse(savedChat) : []);
+  const OtherUser = chatId
+    ? userdata.users.find((user) => user.id === parseInt(chatId, 10))
+    : null;
+  const [currentUser, setCurrentUser] = useState(
+    OtherUser || userdata.users[0]
+  );
 
   const onCreate = (data: string) => {
-    const randomId = Math.floor(Math.random() * 1000); // 0에서 999 사이의 랜덤 정수
     const created_date = new Date();
     const hours = created_date.getHours();
     const minutes = created_date.getMinutes();
@@ -42,22 +50,51 @@ const ChatRoom: React.FC = () => {
       .padStart(2, "0")}. ${dayOfWeek}`;
     const time = ` ${period} ${formattedHours}:${formattedMinutes}`;
     const newItem = {
+      roomId: currentUser.id,
       value: data,
-      id: randomId,
+      id: currentUser.id,
       sender: currentUser.name,
       date: time,
       calendar: formattedDate,
     };
+    const newData = [...chat, newItem];
+    localStorage.setItem(chatRoomLocalStorageKey, JSON.stringify(newData));
     setChat([...chat, newItem]);
   };
 
-  const changeUser = (targetId: number) => {
-    if (targetId === 0) {
-      setCurrentUser(user.users[1]);
-    } else {
-      setCurrentUser(user.users[0]);
+  const changeUser = (userId: number) => {
+    const selectedUser = userdata.users.find((user) => user.id === userId);
+    if (selectedUser) {
+      if (selectedUser.id === 0) {
+        setCurrentUser(OtherUser || userdata.users[0]);
+      } else {
+        const userWithIdZero = userdata.users.find((user) => user.id === 0);
+        if (userWithIdZero) {
+          setCurrentUser(userWithIdZero);
+        }
+      }
     }
   };
+
+  const mounted = useRef(false);
+  useEffect(() => {
+    const currentChatData = chatdata.chatdata.filter(
+      (item) => item.roomId === currentUser.id
+    );
+    const localStorageData = JSON.parse(
+      localStorage.getItem(chatRoomLocalStorageKey) || "[]"
+    );
+    if (!mounted.current) {
+      mounted.current = true;
+    } else {
+      if (
+        localStorageData.length == 0 ||
+        currentChatData.length == localStorageData.length
+      ) {
+        setChat((prevChat) => [...prevChat, ...currentChatData]);
+      }
+    }
+  }, [chatdata.chatdata]);
 
   return (
     <div>

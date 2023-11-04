@@ -19,15 +19,16 @@ const ChatFriendSearch = () => {
         />
       </ChatFriendSearchContainer>
       <FriendChatContainer>
-        {dummyFriendNames
+        {dummyFriendNames.users
           .filter(
-            (friend) =>
-              friend.name.includes(userInput) ||
-              friend.content.includes(userInput)
+            (friend, index) =>
+              index > 0 && // 첫 번째 데이터를 제외
+              (friend.name.includes(userInput) ||
+                friend.content.includes(userInput))
           )
           .map((filteredFriend, index) => (
             <ChatListItem
-              key={index}
+              id={index}
               name={filteredFriend.name}
               content={filteredFriend.content}
               unread={filteredFriend.unread}

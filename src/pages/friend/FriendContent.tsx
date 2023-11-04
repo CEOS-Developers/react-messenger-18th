@@ -5,9 +5,13 @@ import dummyFriendNames from "dummyFriendNames.json";
 const FriendContent = () => {
   return (
     <FriendContainer>
-      {dummyFriendNames.map((friend, index) => (
-        <FriendItem key={index} name={friend.name} />
-      ))}
+      {dummyFriendNames.users.map((friend, index) => {
+        if (index > 0) {
+          // 첫 번째 데이터를 제외
+          return <FriendItem key={index} name={friend.name} />;
+        }
+        return null; // 첫 번째 데이터는 제외
+      })}
     </FriendContainer>
   );
 };
