@@ -1,0 +1,202 @@
+import React, { useState } from "react";
+import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import { PageHeader, SearchBar, Divider } from "@common/components";
+import { DIVIDER_TYPE, CHATROOM_TYPE, MAJOR_TYPE } from "@common/constants";
+import { searchByName } from "@common/utils/search";
+import { ReactComponent as Friends } from "@common/icons/friends.svg";
+import { ReactComponent as Search } from "@common/icons/search.svg";
+import Star from "@common/icons/star/Star";
+import theme from "@styles/theme";
+import { Profile } from "@features/user";
+import { ChatListBox, defaultGroupChatList } from "@features/chat";
+import { filterByCategory } from "@common/utils";
+
+const SHOW_LIST_STATE = ["그룹", "개인"];
+
+export function ChatList() {
+  const navigate = useNavigate();
+  const [showListState, setShowListState] = useState(SHOW_LIST_STATE[0]);
+  const [searchText, setSearchText] = useState("");
+  const [showSearchBar, setShowSearchBar] = useState(false);
+  const searchedGroupChat = searchByName(defaultGroupChatList, searchText);
+  const searchedMainGroupChat = filterByCategory(
+    searchedGroupChat,
+    "type",
+    CHATROOM_TYPE.MAIN
+  );
+  const searchedSubGroupChat = filterByCategory(
+    searchedGroupChat,
+    "type",
+    CHATROOM_TYPE.SUB
+  );
+  return (
+    <>
+      <PageHeader
+        leftIcon={<Friends onClick={() => navigate("/friends-list")} />}
+        rightIcon1={
+          <Search onClick={() => setShowSearchBar((prev) => !prev)} />
+        }
+        rightIcon2={
+          <Profile
+            $img="/img/profile.jpg"
+            $size="2.4rem"
+            onClick={() =>
+              navigate("/profile", {
+                state: {
+                  img: "/img/profile.jpg",
+                  name: "김현민",
+                  majorIn: MAJOR_TYPE.FRONTEND,
+                  phoneNumber: "+82)10-1234-5678",
+                  phoneLink: "",
+                  email: "hyeonmin@naver.com",
+                  emailLInk: "",
+                  behanceLink: "https://www.behance.net/",
+                  instagramLink: "https://www.instagram.com/hyeonmin_0614",
+                  githubLink: "https://github.com/wokbjso",
+                },
+              })
+            }
+            $addClass="margin-left:1.2rem;"
+          />
+        }
+      />
+      {showSearchBar ? (
+        <SearchBar search={[searchText, setSearchText]} />
+      ) : null}
+      <SubHeader
+        $onlySubChat={
+          searchedMainGroupChat.length === 0 && searchedSubGroupChat.length > 0
+        }
+      >
+        {SHOW_LIST_STATE.map((showState, index) => (
+          <SubHeaderTextWrapper
+            key={showState}
+            $isClicked={showListState === showState ? true : false}
+            $addClass={
+              showState === SHOW_LIST_STATE[0] ? "margin-left:2rem;" : null
+            }
+          >
+            <span onClick={() => setShowListState(SHOW_LIST_STATE[index])}>
+              {showState}
+            </span>
+          </SubHeaderTextWrapper>
+        ))}
+        <Divider
+          state={DIVIDER_TYPE.LONGTHICK}
+          $addClass="position:absolute; bottom:0;"
+        />
+      </SubHeader>
+      {showListState === SHOW_LIST_STATE[0] && (
+        <GroupChatLists>
+          {searchedMainGroupChat.length > 0 ? (
+            <MainChatsHeader>
+              <Star color={theme.colors.gray3} size="2rem" />
+              <span>주요 채팅</span>
+            </MainChatsHeader>
+          ) : null}
+          {searchedMainGroupChat.map((chat) => (
+            <ChatListBox
+              key={chat.id}
+              img={chat.img}
+              name={chat.name}
+              message={chat.message}
+              icon={
+                <Star
+                  color={theme.colors.mainColor}
+                  size="2.4rem"
+                  addStyle={{ marginBottom: "0.2rem" }}
+                />
+              }
+              onClick={() =>
+                navigate(`/chatroom/${CHATROOM_TYPE.MAIN}/${chat.id}`, {
+                  state: {
+                    chatRoomTitle: chat.name,
+                    img: "/img/default.jpg",
+                    people: chat.people,
+                    name: "전윤수",
+                    chatRoomState: CHATROOM_TYPE.MAIN,
+                    chatRoomId: chat.id,
+                  },
+                })
+              }
+            />
+          ))}
+          {searchedMainGroupChat.length > 0 &&
+          searchedSubGroupChat.length > 0 ? (
+            <Divider
+              state={DIVIDER_TYPE.SHORT}
+              $addClass={`background-color:${theme.colors.gray5}; margin:0.8rem 0;`}
+            />
+          ) : null}
+          {searchedSubGroupChat.map((chat) => (
+            <ChatListBox
+              key={chat.id}
+              img={chat.img}
+              name={chat.name}
+              message={chat.message}
+              onClick={() =>
+                navigate(`/chatroom/${CHATROOM_TYPE.SUB}/${chat.id}`, {
+                  state: {
+                    chatRoomTitle: chat.name,
+                    img: "/img/default.jpg",
+                    people: chat.people,
+                    name: "전윤수",
+                    chatRoomState: CHATROOM_TYPE.SUB,
+                    chatRoomId: chat.id,
+                  },
+                })
+              }
+            />
+          ))}
+        </GroupChatLists>
+      )}
+    </>
+  );
+}
+
+const SubHeader = styled.div<{ $onlySubChat: boolean }>`
+  position: relative;
+  height: 5rem;
+  display: flex;
+  margin-bottom: ${(props) => (props.$onlySubChat ? "0.4rem" : null)};
+`;
+
+const SubHeaderTextWrapper = styled.div<{
+  $isClicked: boolean;
+  $addClass?: string | null;
+}>`
+  border-bottom: ${(props) =>
+    props.$isClicked ? `0.2rem solid ${props.theme.colors.mainColor}` : null};
+  ${(props) => props.theme.fontStyles.body1};
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  padding: 1.2rem 1.6rem;
+  span {
+    color: ${(props) =>
+      props.$isClicked
+        ? props.theme.colors.mainColor
+        : props.theme.colors.gray4};
+    ${(props) => props.theme.fontStyles.body1}
+    cursor: pointer;
+  }
+  ${[(props) => props.$addClass]};
+`;
+
+const GroupChatLists = styled.div`
+  padding: 0 2rem;
+`;
+
+const MainChatsHeader = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 2rem 0rem 0.8rem 0;
+  span {
+    color: ${(props) => props.theme.colors.gray2};
+    ${(props) => props.theme.fontStyles.body2};
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-left: 0.4rem;
+  }
+`;

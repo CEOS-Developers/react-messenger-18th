@@ -1,0 +1,1 @@
+export { PersonalInfoBox } from "./PersonalInfoBox";
