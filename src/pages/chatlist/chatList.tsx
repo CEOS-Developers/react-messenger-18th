@@ -34,6 +34,7 @@ export default function ChatList() {
     Record<string, Message | null>
   >({});
 
+  //마지막 메시지가 최근인 순서로 sorting
   const [sortedUsers, setSortedUsers] = useState(userData.users);
 
   useEffect(() => {
@@ -45,7 +46,8 @@ export default function ChatList() {
     // 모든 사용자의 마지막 메시지와 시간 가져오기
     const lastMessage: Record<string, Message | null> = {};
 
-    const usersWithLastMessage = userData.users
+    //userMessage: Message기록이 있는 유저들 필터링 + 마지막 대화 시간 가져옴
+    const userMessage = userData.users
       .filter((user) => savedChats[user.id.toString()]?.length > 0) // chatData가 있는 사용자만 가져옴
       .map((user) => {
         const userChat = savedChats[user.id.toString()];
@@ -53,35 +55,33 @@ export default function ChatList() {
         lastMessage[user.id] = lastChat;
         return {
           ...user,
-          // 마지막 메시지가 있으면 해당 시간을 가져옴
           lastMessageTimestamp: lastChat
-            ? new Date(lastChat.timestamp)
-            : new Date(0),
+            ? new Date(lastChat.timestamp) // 마지막 메시지가 있으면 해당 시간을 가져옴
+            : new Date(0), // 마지막 timestamp 없으면 기본 시간으로 예외처리
         };
       });
 
-    const newLastMessagesWithUnread: Record<string, Message | null> = {};
-    // 모든 사용자의 마지막 메시지에 대한 unread 상태 업데이트 :
-    // 마지막 sender가 내가 아닌 경우 unread 로 처리
-    userData.users.forEach((user) => {
-      const lastMsg = lastMessage[user.id];
-      if (lastMsg) {
-        const updatedMessage = {
-          ...lastMsg,
-          unread: lastMsg.sender !== "신동현",
-        };
-        newLastMessagesWithUnread[user.id] = updatedMessage;
-      }
-    });
-    //unread 업데이트 저장
-    setLastMessages(newLastMessagesWithUnread);
-
     // 타임스탬프 기준으로 사용자 정렬: 가장 최근 메시지가 위에 오게 함
-    const sortedUsers = usersWithLastMessage.sort(
+    const sortedUsers = userMessage.sort(
       (a, b) =>
         b.lastMessageTimestamp.getTime() - a.lastMessageTimestamp.getTime()
     );
     setSortedUsers(sortedUsers);
+
+    const lastMessageUnread: Record<string, Message | null> = {};
+    // 모든 사용자의 마지막 메시지에 대한 unread 상태 업데이트 :
+    // 마지막 sender가 내(신동현)가 아닌 경우 unread 로 처리
+    userData.users.forEach((user) => {
+      const lastMsg = lastMessage[user.id];
+      if (lastMsg) {
+        lastMessageUnread[user.id] = {
+          ...lastMsg,
+          unread: lastMsg.sender !== "신동현",
+        };
+      }
+    });
+    //unread 업데이트 저장
+    setLastMessages(lastMessageUnread);
   }, []);
 
   //searchBar에서 검색하면, 필터링된 사용자만 뜨게 하는 부분
