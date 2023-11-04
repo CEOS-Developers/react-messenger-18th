@@ -11,29 +11,50 @@ interface ChattingItemProps {
   message: string;
   sender: number;
   isLastItem: boolean;
+
+  timestamp: string;
+  isDateMessage: boolean;
 }
 
-function ChattingItem({ message, sender, isLastItem }: ChattingItemProps) {
+function ChattingItem({
+  message,
+  sender,
+  isLastItem,
+  timestamp,
+  isDateMessage,
+}: ChattingItemProps) {
   const userArray = useRecoilValue(userArrayState);
   const currentUser = userArray[sender === 0 ? 0 : sender];
   const { sender: contextSender } = useSender();
   const isMe = sender === contextSender;
 
   return (
-    <ChattingItemContainer isMe={isMe}>
-      {isMe ? (
-        <></>
-      ) : isLastItem ? (
-        <UserImg src={currentUser.profileImage} />
-      ) : (
-        <NoneImg />
-      )}
-      <ChattingItemContent isMe={isMe}>{message}</ChattingItemContent>
-    </ChattingItemContainer>
+    <>
+      {isDateMessage && <DateContainer>{timestamp}</DateContainer>}
+      <ChattingItemContainer isMe={isMe}>
+        {isMe ? (
+          <></>
+        ) : isLastItem ? (
+          <UserImg src={currentUser.profileImage} />
+        ) : (
+          <NoneImg />
+        )}
+        <ChattingItemContent isMe={isMe}>{message}</ChattingItemContent>
+      </ChattingItemContainer>
+    </>
   );
 }
 
 export default ChattingItem;
+
+const DateContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  font-size: 12px;
+  color: ${color.grey3};
+`;
 
 const ChattingItemContainer = styled.div<{ isMe: boolean }>`
   display: flex;

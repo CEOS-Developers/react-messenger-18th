@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { color } from "../../assets/styles/color";
 import { useSender } from "../../assets/SenderContext";
 //data
@@ -7,7 +7,6 @@ import { useRecoilValue } from "recoil";
 import { chatArrayState } from "../../assets/recoil/recoil";
 //components
 import ChattingItem from "./ChattingItem";
-import ChattingDate from "./ChattingDate";
 
 //img
 import mic from "../../assets/images/mic.svg";
@@ -24,14 +23,14 @@ function ChattingInput({ friendId }: { friendId: number }) {
   const chatArray = useRecoilValue(chatArrayState);
   const chattingId: number = friendId - 1;
 
-  const [messages, setMessages] = useState<{ text: string; sender: number }[]>(
-    () => {
-      const storedMessages = localStorage.getItem(`chatMessages${friendId}`);
-      return storedMessages
-        ? JSON.parse(storedMessages)
-        : chatArray[chattingId].chatList;
-    }
-  );
+  const [messages, setMessages] = useState<
+    { text: string; sender: number; timestamp: string }[]
+  >(() => {
+    const storedMessages = localStorage.getItem(`chatMessages${friendId}`);
+    return storedMessages
+      ? JSON.parse(storedMessages)
+      : chatArray[chattingId].chatList;
+  });
 
   // 제출시 실행되는 함수
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -43,10 +42,12 @@ function ChattingInput({ friendId }: { friendId: number }) {
       const newMessage = {
         text: inputMessage,
         sender: sender,
+        timestamp: new Date().toString(),
       };
       if (containerRef.current) {
         containerRef.current.scrollTop = containerRef.current.scrollHeight;
       }
+
       setMessages((prevMessages) => [...prevMessages, newMessage]);
       setInputMessage("");
     }
@@ -89,6 +90,49 @@ function ChattingInput({ friendId }: { friendId: number }) {
     element.style.height = element.scrollHeight + "px";
   };
 
+  // //시간 계산 관련 코드
+  const [isDateMessage, setIsDateMessage] = useState<boolean>(false);
+
+  const handleIsDate = (
+    message: { text: string; sender: number; timestamp: string },
+    index: number
+  ) => {
+    const timestamp = new Date(message.timestamp);
+    if (index === 0) {
+      setIsDateMessage(true);
+    } else if (index > 0) {
+      const prevMessage = messages[index - 1];
+      const prevTimestamp = new Date(prevMessage.timestamp);
+
+      const timeDifference = timestamp.getTime() - prevTimestamp.getTime();
+
+      if (timeDifference >= 60 * 60 * 1000) {
+        // 1시간 이상 차이
+        const hours = timestamp.getHours();
+        const minutes = timestamp.getMinutes();
+        const amOrPm = hours < 12 ? "오전" : "오후";
+        const newDate = `${amOrPm} ${hours % 12}:${minutes}`;
+        setIsDateMessage(true);
+        return newDate;
+      } else if (timeDifference >= 24 * 60 * 60 * 1000) {
+        // 1일 이상 차이
+        const month = timestamp.getMonth() + 1;
+        const day = timestamp.getDate();
+        const hours = timestamp.getHours();
+        const minutes = timestamp.getMinutes();
+        const amOrPm = hours < 12 ? "오전" : "오후";
+        const newDate = `${month}월 ${day}일 ${amOrPm} ${
+          hours % 12
+        }:${minutes}`;
+        setIsDateMessage(true);
+        return newDate;
+      } else {
+        setIsDateMessage(false);
+        return null; // 시간 차이가 1시간 미만, 1일 미만인 경우
+      }
+    }
+  };
+
   return (
     <>
       <Container ref={containerRef}>
@@ -102,6 +146,8 @@ function ChattingInput({ friendId }: { friendId: number }) {
               (index < messages.length - 1 &&
                 message.sender !== messages[index + 1].sender)
             }
+            timestamp={message.timestamp}
+            isDateMessage={isDateMessage}
           />
         ))}
       </Container>

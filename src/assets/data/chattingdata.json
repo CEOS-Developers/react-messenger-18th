@@ -4,25 +4,37 @@
       "chattingId": 0,
       "users": [0, 1],
       "chatList": [
-        { "text": "안녕하세요!", "sender": 0 },
-        { "text": "안녕하세요! 반가워요!", "sender": 1 },
-        { "text": "어떻게 지내세요?", "sender": 0 }
+        {
+          "text": "안녕하세요!",
+          "sender": 0,
+          "timestamp": "2023-10-31T08:00:00"
+        },
+        {
+          "text": "안녕하세요! 반가워요!",
+          "sender": 1,
+          "timestamp": "2023-10-31T08:15:00"
+        },
+        {
+          "text": "어떻게 지내세요?",
+          "sender": 0,
+          "timestamp": "2023-10-31T08:30:00"
+        }
       ]
     },
     {
       "chattingId": 1,
       "users": [0, 2],
       "chatList": [
-        { "text": "멍멍", "sender": 0 },
-        { "text": "왈왈", "sender": 2 }
+        { "text": "멍멍", "sender": 0, "timestamp": "2023-10-31T09:00:00" },
+        { "text": "왈왈", "sender": 2, "timestamp": "2023-10-31T09:15:00" }
       ]
     },
     {
       "chattingId": 2,
       "users": [0, 3],
       "chatList": [
-        { "text": "야옹", "sender": 0 },
-        { "text": "meow", "sender": 3 }
+        { "text": "야옹", "sender": 0, "timestamp": "2023-10-31T10:00:00" },
+        { "text": "meow", "sender": 3, "timestamp": "2023-10-31T10:15:00" }
       ]
     }
   ]
