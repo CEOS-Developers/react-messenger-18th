@@ -1,0 +1,99 @@
+import React from "react";
+import styled, { css } from "styled-components";
+import { color } from "../../assets/styles/color";
+import { useSender } from "../../assets/SenderContext";
+
+//data
+import { useRecoilValue } from "recoil";
+import { userArrayState } from "../../assets/recoil/recoil";
+
+interface ChattingItemProps {
+  message: string;
+  sender: number;
+  isLastItem: boolean;
+
+  timestamp: string;
+  isDateMessage: boolean;
+}
+
+function ChattingItem({
+  message,
+  sender,
+  isLastItem,
+  timestamp,
+  isDateMessage,
+}: ChattingItemProps) {
+  const userArray = useRecoilValue(userArrayState);
+  const currentUser = userArray[sender === 0 ? 0 : sender];
+  const { sender: contextSender } = useSender();
+  const isMe = sender === contextSender;
+
+  return (
+    <>
+      {isDateMessage && <DateContainer>{timestamp}</DateContainer>}
+      <ChattingItemContainer isMe={isMe}>
+        {isMe ? (
+          <></>
+        ) : isLastItem ? (
+          <UserImg src={currentUser.profileImage} />
+        ) : (
+          <NoneImg />
+        )}
+        <ChattingItemContent isMe={isMe}>{message}</ChattingItemContent>
+      </ChattingItemContainer>
+    </>
+  );
+}
+
+export default ChattingItem;
+
+const DateContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  font-size: 12px;
+  color: ${color.grey3};
+`;
+
+const ChattingItemContainer = styled.div<{ isMe: boolean }>`
+  display: flex;
+  align-items: flex-end;
+  justify-content: ${(props) => (props.isMe ? "flex-end" : "flex-start")};
+`;
+
+const ChattingItemContent = styled.div<{ isMe: boolean }>`
+  display: flex;
+  padding: 12px;
+  align-items: center;
+  max-width: 70%;
+  margin: 0 12px;
+
+  border-radius: 20px;
+  background: ${(props) => (props.isMe ? color.grey1 : color.white)};
+
+  ${(props) =>
+    !props.isMe &&
+    css`
+      border: 1px solid ${color.grey2};
+    `}
+`;
+
+const UserImg = styled.img`
+  display: flex;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+
+  margin: 0 0 4px 15px;
+`;
+
+const NoneImg = styled.div`
+  display: flex;
+  width: 26px;
+  height: 26px;
+
+  margin: 0 0 4px 15px;
+`;
