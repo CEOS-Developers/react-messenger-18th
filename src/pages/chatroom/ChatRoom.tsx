@@ -6,7 +6,6 @@ import chatdata from "chatdata.json";
 import userdata from "dummyFriendNames.json";
 import { styled } from "styled-components";
 import { useParams } from "react-router-dom";
-import { idText } from "typescript";
 
 const ChatRoom: React.FC = () => {
   const { chatId } = useParams<{ chatId: string }>();
@@ -76,7 +75,6 @@ const ChatRoom: React.FC = () => {
     }
   };
 
-  const mounted = useRef(false);
   useEffect(() => {
     const currentChatData = chatdata.chatdata.filter(
       (item) => item.roomId === currentUser.id
@@ -84,15 +82,12 @@ const ChatRoom: React.FC = () => {
     const localStorageData = JSON.parse(
       localStorage.getItem(chatRoomLocalStorageKey) || "[]"
     );
-    if (!mounted.current) {
-      mounted.current = true;
-    } else {
-      if (
-        localStorageData.length == 0 ||
-        currentChatData.length == localStorageData.length
-      ) {
-        setChat((prevChat) => [...prevChat, ...currentChatData]);
-      }
+
+    if (
+      localStorageData.length == 0 ||
+      currentChatData.length == localStorageData.length
+    ) {
+      setChat((prevChat) => [...prevChat, ...currentChatData]);
     }
   }, [chatdata.chatdata]);
 
