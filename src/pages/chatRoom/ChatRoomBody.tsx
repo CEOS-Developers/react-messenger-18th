@@ -19,6 +19,7 @@ const ChatRoomBody = ({ messages, bodyRef }: ChatRoomBodyProps) => {
   const { id }: { id?: string } = useParams();
 
   const setMessages = useMessageStore((state) => state.setMessages);
+  const wholeMessages = useMessageStore((state) => state.messages);
 
   const user = useUserStore((state) => state.user);
   const setUser = useUserStore((state) => state.setUser);
@@ -31,7 +32,8 @@ const ChatRoomBody = ({ messages, bodyRef }: ChatRoomBodyProps) => {
 
   // 더블클리 이벤트 헨들러
   const handleDoubleClickMessage = (messageId: number) => {
-    const newMessages = [...messages];
+    // const newMessages = [...messages];
+    const newMessages = [...wholeMessages];
     // 더블 클릭된 메시지의 index 찾기
     const clickedIdx = newMessages.findIndex(
       (message) => message.id === messageId
