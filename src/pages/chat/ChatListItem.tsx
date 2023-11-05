@@ -16,8 +16,12 @@ const ChatListItem: React.FC<ChatListItemProps> = ({
   unread,
   date,
 }) => {
+  const handleClick = () => {
+    // 클릭 시 onClick 함수 호출
+  };
+
   return (
-    <StyledLink to={`/chatroom/${id}`}>
+    <StyledLink to={`/chatroom/${id}`} onClick={handleClick}>
       <ChatFriendContainer>
         <FriendImg src={"/assets/profile.svg"} alt="profile" />
         <ChatFriendWrapper>

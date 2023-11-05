@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 import dummyFriendNames from "dummyFriendNames.json";
 import ChatListItem from "./ChatListItem";
+import { useState } from "react";
 
 const ChatContent = () => {
   return (
