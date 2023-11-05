@@ -1,0 +1,84 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "오대균",
+      "profileImage": null,
+      "statusMessage": "긴 상태메시지 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+      "likedMessages": [0, 4],
+      "github": "https://github.com/oooppq/",
+      "behance": null,
+      "instagram": "https://www.instagram.com/daegyunii/"
+    },
+    {
+      "id": 2,
+      "name": "배수연",
+      "profileImage": null,
+      "statusMessage": "짧은 상태메시지",
+      "likedMessages": [0, 7],
+      "github": null,
+      "behance": "https://www.behance.net/baesy07017a2a",
+      "instagram": null
+    },
+    {
+      "id": 3,
+      "name": "세오스",
+      "profileImage": null,
+      "statusMessage": "안녕하세요 세오스입니다. 저는 세오스입니다.",
+      "likedMessages": [],
+      "github": "https://github.com/CEOS-Developers",
+      "behance": null,
+      "instagram": "https://www.instagram.com/ceos.sinchon/"
+    },
+    {
+      "id": 4,
+      "name": "일론머스크",
+      "profileImage": null,
+      "statusMessage": "안녕하세요. 저는 자동차를 사랑하는 남자 일론 머스크입니다.",
+      "likedMessages": [],
+      "github": null,
+      "behance": null,
+      "instagram": null
+    },
+    {
+      "id": 5,
+      "name": "오소균",
+      "profileImage": null,
+      "statusMessage": "끼잉",
+      "likedMessages": [],
+      "github": null,
+      "behance": null,
+      "instagram": null
+    },
+    {
+      "id": 6,
+      "name": "2023년",
+      "profileImage": null,
+      "statusMessage": "거의 끝나간다..",
+      "likedMessages": [],
+      "github": null,
+      "behance": null,
+      "instagram": null
+    },
+    {
+      "id": 7,
+      "name": "호랑이",
+      "profileImage": null,
+      "statusMessage": "지금부터는 엑스트라에요.",
+      "likedMessages": [],
+      "github": null,
+      "behance": null,
+      "instagram": null
+    },
+    {
+      "id": 8,
+      "name": "고양이",
+      "profileImage": null,
+      "statusMessage": "지금부터는 엑스트라에요.",
+      "likedMessages": [],
+      "github": null,
+      "behance": null,
+      "instagram": null
+    }
+  ]
+}
